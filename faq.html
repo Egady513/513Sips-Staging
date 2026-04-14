@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | 513Sips — Mobile Bartending Questions Answered</title>
+    <meta name="description" content="Common questions about 513Sips mobile bartending in Cincinnati — dry hire, booking, service area, certifications, pricing, and more.">
+    <meta name="keywords" content="mobile bartender Cincinnati, craft cocktail catering, event bartending, dry-hire bartender Ohio">
+    <link rel="canonical" href="https://www.513sips.com/faq.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.513sips.com/faq.html">
+    <meta property="og:title" content="FAQ | 513Sips — Mobile Bartending Questions Answered">
+    <meta property="og:description" content="Common questions about 513Sips mobile bartending — dry hire, booking, service area, certifications, pricing, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --navy: #1a1a2e; --navy-light: #2d2d4a; --navy-dark: #12121f;
+            --cream: #f5f2eb; --copper: #b87333; --copper-light: #d4915a; --charcoal: #2d3748;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.6; }
+
+        /* ── Nav ── */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(245,242,235,0.92); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(184,115,51,0.12);
+            padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo img { height: 36px; width: auto; }
+        .nav-back {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 600;
+            color: var(--navy); text-decoration: none; letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+        .nav-back:hover { color: var(--copper); }
+        .nav-book {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.6rem 1.25rem; background: linear-gradient(135deg, var(--copper), var(--copper-light));
+            color: var(--navy-dark); font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem; font-weight: 700; letter-spacing: 0.5px;
+            text-transform: uppercase; text-decoration: none; border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .nav-book:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(184,115,51,0.4); }
+
+        /* ── Hero ── */
+        .faq-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 4rem 2rem 3rem; text-align: center; color: white;
+        }
+        .faq-hero .tag {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic;
+            color: var(--copper-light); display: block; margin-bottom: 0.75rem;
+        }
+        .faq-hero h1 {
+            font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 7vw, 3.5rem);
+            font-weight: 700; margin-bottom: 1rem; line-height: 1.15;
+        }
+        .faq-hero h1 span { color: var(--copper-light); }
+        .faq-hero p {
+            color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 520px; margin: 0 auto;
+        }
+
+        /* ── FAQ Content ── */
+        .faq-content { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+        .faq-category { margin-bottom: 2.5rem; }
+        .faq-category-label {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic;
+            color: var(--copper); text-transform: none; letter-spacing: 0;
+            display: block; margin-bottom: 1rem; padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(184,115,51,0.2);
+        }
+
+        .faq-item {
+            background: white; border-radius: 14px; margin-bottom: 0.75rem;
+            border: 1px solid rgba(184,115,51,0.12); overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .faq-item:hover { border-color: rgba(184,115,51,0.3); }
+        .faq-item.active { border-color: rgba(184,115,51,0.35); }
+        .faq-item.active .faq-question { color: var(--copper); }
+        .faq-item.active .faq-left-bar { background: var(--copper); }
+
+        .faq-question {
+            padding: 1.1rem 1.25rem; display: flex; align-items: center;
+            gap: 0.75rem; cursor: pointer; font-weight: 500;
+            color: var(--navy); transition: color 0.3s ease; min-height: 56px;
+        }
+        .faq-left-bar {
+            width: 3px; min-width: 3px; height: 1.2em; border-radius: 2px;
+            background: transparent; transition: background 0.3s ease; align-self: center;
+        }
+        .faq-question-text { flex: 1; font-size: 0.97rem; }
+        .faq-icon { color: var(--copper); transition: transform 0.3s ease; flex-shrink: 0; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+        .faq-item.active .faq-answer { max-height: 400px; }
+        .faq-answer-inner {
+            padding: 0 1.25rem 1.25rem 2.5rem;
+            color: var(--charcoal); opacity: 0.85; line-height: 1.75; font-size: 0.95rem;
+        }
+
+        /* ── CTA section ── */
+        .faq-cta {
+            background: var(--navy); margin: 0 1.5rem 3rem; border-radius: 20px;
+            padding: 2.5rem 2rem; text-align: center; color: white;
+        }
+        .faq-cta h2 {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .faq-cta p { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 1.75rem; }
+        .faq-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary-cta {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.875rem 2rem; background: linear-gradient(135deg, var(--copper), var(--copper-light));
+            color: var(--navy-dark); font-family: 'Montserrat', sans-serif;
+            font-size: 0.88rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+            text-decoration: none; border-radius: 50px; transition: all 0.3s ease;
+        }
+        .btn-primary-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(184,115,51,0.4); }
+        .btn-secondary-cta {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.875rem 2rem; background: transparent;
+            color: white; font-family: 'Montserrat', sans-serif;
+            font-size: 0.88rem; font-weight: 600; letter-spacing: 0.5px;
+            text-decoration: none; border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.4); transition: all 0.3s ease;
+        }
+        .btn-secondary-cta:hover { border-color: var(--copper); color: var(--copper-light); }
+
+        /* ── Footer ── */
+        .faq-footer {
+            background: var(--navy-dark); color: rgba(255,255,255,0.5);
+            text-align: center; padding: 1.5rem 2rem; font-size: 0.85rem;
+        }
+        .faq-footer a { color: var(--copper-light); text-decoration: none; }
+        .faq-footer a:hover { text-decoration: underline; }
+
+        /* ── Sticky bottom CTA (mobile) ── */
+        .sticky-cta {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+            background: linear-gradient(135deg, var(--copper), var(--copper-light));
+            padding: 0.875rem 1.5rem; text-align: center;
+        }
+        .sticky-cta a {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: var(--navy-dark); font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem; font-weight: 700; letter-spacing: 0.5px;
+            text-decoration: none; text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+            .sticky-cta { display: block; }
+            .faq-content { padding: 2rem 1rem 5rem; }
+            .faq-cta { margin: 0 1rem 2rem; padding: 2rem 1.25rem; }
+            .faq-cta-btns { flex-direction: column; }
+            .btn-primary-cta, .btn-secondary-cta { justify-content: center; }
+            .nav { padding: 0.875rem 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <a href="index.html" class="nav-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+            Back to Home
+        </a>
+        <a href="index.html" class="nav-logo">
+            <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips mobile bartending logo">
+        </a>
+        <a href="index.html#contact" class="nav-book">Book Now</a>
+    </nav>
+
+    <!-- Hero -->
+    <div class="faq-hero">
+        <span class="tag">Questions & Answers</span>
+        <h1>Frequently <span>Asked</span></h1>
+        <p>Everything you need to know about 513Sips mobile bartending — from booking to bar dimensions.</p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="faq-content">
+
+        <div class="faq-category">
+            <span class="faq-category-label">The Basics</span>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-left-bar"></div>
+                    <span class="faq-question-text">How does "dry hire" bartending work?</span>
+                    <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">We provide the bartender, equipment, and full bar setup — you provide the alcohol. Per Ohio state law, we can't sell alcohol directly, but we make it easy: we'll give you a customized shopping list based on your menu, and we offer a courier service to handle pickup for an additional fee.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-left-bar"></div>
+                    <span class="faq-question-text">What types of events do you bartend?</span>
+                    <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">We serve all kinds of private events — weddings, birthday parties, corporate gatherings, BBQs, tailgates, baby showers, holiday parties, and more. No event is too small or too large. Public events like festivals require nonprofit or 501(c)(3) sponsorship.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-left-bar"></div>
+                    <span class="faq-question-text">What areas do you service?</span>
+                    <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">We're based in Cincinnati's Hyde Park area and serve Greater Cincinnati, Northern Kentucky, and Southwest Indiana — roughly a 30-mile radius. Need us further out? Just ask — we're happy to discuss custom pricing for extended travel.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-category">
+            <span class="faq-category-label">Credentials & Safety</span>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-left-bar"></div>
+                    <span class="faq-question-text">Are you insured? What certifications do you have?</span>
+                    <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Yes — we carry vendor liability insurance for every event. 513Sips is a licensed Ohio LLC, and our bartenders are ASK (Alcohol Server Knowledge) certified, TIPS trained, and Food Safety certified through StateFoodSafety.com. Private property events require no permits; for public property events, the host is responsible for obtaining the necessary permits.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-left-bar"></div>
+                    <span class="faq-question-text">What about bad weather for outdoor events?</span>
+                    <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Rain or shine, we show up. We operate in all weather conditions. If you'd like extra protection for outdoor events, we offer tent coverage as an optional add-on.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-category">
+            <span class="faq-category-label">Booking & Logistics</span>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-left-bar"></div>
+                    <span class="faq-question-text">How do I book?</span>
+                    <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Start by filling out our contact form or reaching out directly. We'll schedule a quick consultation to go over event details, then send you a detailed quote. To lock in your date, we require a signed contract and a 25% nonrefundable deposit. Full payment is due two weeks before the event.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-left-bar"></div>
+                    <span class="faq-question-text">How large is the bar? Will it fit my space?</span>
+                    <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Our mobile bar is 5 feet wide, 4 feet tall, and 2 feet deep — on wheels for easy positioning. You'll want about 4 additional feet behind the bar for the bartender to work comfortably. It fits in most spaces, but reach out and we'll help you confirm.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-left-bar"></div>
+                    <span class="faq-question-text">What is your refund policy?</span>
+                    <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">The initial deposit is nonrefundable since we turn away other bookings once your date is confirmed. If you cancel at least two weeks before the event, remaining payments may be refunded minus any materials already purchased. Full details are outlined in the contract.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CTA Block -->
+    <div class="faq-cta">
+        <h2>Still Have Questions?</h2>
+        <p>We'd love to chat about your event. Reach out and we'll get back to you within 24 hours.</p>
+        <div class="faq-cta-btns">
+            <a href="index.html#contact" class="btn-primary-cta">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Send Us a Message
+            </a>
+            <a href="tel:+15133222645" class="btn-secondary-cta">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                (513) 322-2645
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="faq-footer">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> 513Sips — Elevated Mobile Bartending &nbsp;|&nbsp; <a href="index.html">Back to Home</a> &nbsp;|&nbsp; <a href="gallery.html">Gallery</a></p>
+    </div>
+
+    <!-- Sticky mobile CTA -->
+    <div class="sticky-cta">
+        <a href="index.html#contact">
+            Book Your Event
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.closest('.faq-item');
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

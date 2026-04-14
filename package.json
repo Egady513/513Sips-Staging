@@ -1,0 +1,11 @@
+{
+  "name": "513sips-tools",
+  "version": "1.0.0",
+  "description": "513Sips website and tools",
+  "scripts": {
+    "sync-gallery": "node scripts/fetch-gallery.js"
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1"
+  }
+}

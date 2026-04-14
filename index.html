@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513Sips | Premium Mobile Bartending in Cincinnati, OH</title>
+    <meta name="description" content="513Sips brings craft cocktail bartending to your event. Premium dry-hire mobile bartending for weddings, corporate events, and private parties in Cincinnati, OH.">
+    <meta name="keywords" content="mobile bartender Cincinnati, craft cocktail catering, event bartending, dry-hire bartender Ohio">
+    <link rel="canonical" href="https://www.513sips.com/">
+    <!-- Open Graph / Social Share -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.513sips.com/">
+    <meta property="og:title" content="513Sips | Premium Mobile Bartending in Cincinnati, OH">
+    <meta property="og:description" content="Craft cocktail bartending for weddings, corporate events, and private parties in Cincinnati. We bring the bar to you.">
+    <meta property="og:image" content="https://res.cloudinary.com/dkfypt2cb/image/upload/b_black,c_pad,w_1200,h_630/513Sips_White_ums9lm.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="513Sips | Premium Mobile Bartending in Cincinnati, OH">
+    <meta name="twitter:description" content="Premium mobile bartending for weddings, corporate events, and private parties in Cincinnati.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dkfypt2cb/image/upload/b_black,c_pad,w_1200,h_630/513Sips_White_ums9lm.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { DEFAULT: '#1a1a2e', light: '#2d2d4a', dark: '#12121f' },
+                        cream: '#f5f2eb',
+                        copper: { DEFAULT: '#b87333', light: '#d4915a' },
+                        charcoal: '#2d3748'
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --navy: #1a1a2e; --navy-light: #2d2d4a; --navy-dark: #12121f; --cream: #f5f2eb; --copper: #b87333; --copper-light: #d4915a; --charcoal: #2d3748; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
+        
+        /* Tubelight Navbar */
+        .tubelight-nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(245, 242, 235, 0.7); backdrop-filter: blur(20px); border-radius: 9999px; padding: 0.75rem 1.5rem; border: 1px solid rgba(184, 115, 51, 0.2); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tubelight-nav.scrolled { background: rgba(245, 242, 235, 0.95); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.15); }
+        .tubelight-container { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+        .tubelight-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); text-decoration: none; margin-right: 1.5rem; }
+        .tubelight-logo span { color: var(--copper); }
+        .tubelight-links { display: flex; position: relative; gap: 0.25rem; }
+        .tubelight-link { padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 500; color: var(--charcoal); text-decoration: none; border-radius: 9999px; position: relative; z-index: 2; transition: color 0.3s ease; white-space: nowrap; }
+        .tubelight-link:hover, .tubelight-link.active { color: var(--navy); }
+        .tubelight-highlight { position: absolute; height: 100%; background: linear-gradient(135deg, rgba(184, 115, 51, 0.25), rgba(212, 145, 90, 0.15)); border-radius: 9999px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1; box-shadow: 0 2px 12px rgba(184, 115, 51, 0.3); border: 1px solid rgba(184, 115, 51, 0.3); }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--navy); }
+        
+        /* Hero with Background Image */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('images/hero/Updated Bar with Flowers.png'); background-size: cover; background-position: center; opacity: 0.3; z-index: 1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(26, 26, 46, 0.7) 50%, rgba(45, 45, 74, 0.6) 100%); z-index: 2; }
+        .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; pointer-events: none; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(184, 115, 51, 0.6), transparent 70%); top: -10%; left: -10%; animation: float-orb 20s infinite ease-in-out; }
+        .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(212, 145, 90, 0.4), transparent 70%); bottom: 10%; right: -5%; animation: float-orb 15s infinite ease-in-out reverse; }
+        .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(184, 115, 51, 0.3), transparent 70%); top: 40%; left: 30%; animation: float-orb 18s infinite ease-in-out; animation-delay: -5s; }
+        @keyframes float-orb { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(30px, -30px) scale(1.1); } 50% { transform: translate(-20px, 20px) scale(0.95); } 75% { transform: translate(20px, 10px) scale(1.05); } }
+        .hero-content { text-align: center; color: white; padding: 0 2rem; max-width: 900px; z-index: 10; position: relative; }
+        .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--copper-light); margin-bottom: 1rem; opacity: 0; }
+        
+        /* Text Generate Effect */
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; text-align: center; }
+        .hero-title .line-1 { display: block; }
+        .hero-title .line-2 { display: flex; align-items: baseline; justify-content: center; gap: 0.2em; }
+        .hero-title .word { display: inline-block; opacity: 0; transform: translateY(40px) rotateX(-90deg); transform-origin: center top; }
+        .hero-title .word.visible { opacity: 1; transform: translateY(0) rotateX(0); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .hero-title span.copper { color: var(--copper); }
+
+        /* Rotating Text Animation */
+        .rotating-text-container { display: inline-block; position: relative; height: 1.2em; vertical-align: baseline; overflow: hidden; margin: 0; padding: 0; min-width: 4.5em; text-align: right; }
+        .rotating-text { display: flex; flex-direction: column; animation: rotate-words 12s ease-in-out infinite; }
+        .rotating-text span { display: block; height: 1.2em; line-height: 1.2; color: var(--copper); text-align: right; }
+        @keyframes rotate-words {
+            0%, 18% { transform: translateY(0); }
+            20%, 38% { transform: translateY(-1.2em); }
+            40%, 58% { transform: translateY(-2.4em); }
+            60%, 78% { transform: translateY(-3.6em); }
+            80%, 98% { transform: translateY(-4.8em); }
+            100% { transform: translateY(-6.0em); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title .line-2 { gap: 0.15em; }
+            .rotating-text-container { min-width: 3.5em; }
+        }
+        
+        .hero-description { font-size: 1.1rem; font-weight: 300; max-width: 600px; margin: 0 auto 2.5rem; opacity: 0; filter: blur(10px); color: rgba(255, 255, 255, 0.9); transition: all 0.8s ease; }
+        .hero-description.visible { opacity: 1; filter: blur(0); }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; opacity: 0; transform: translateY(30px); transition: all 0.8s ease 0.6s; }
+        .hero-buttons.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Magnetic Button */
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 50px; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: none; }
+        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s ease; }
+        .btn:hover::before { left: 100%; }
+        .btn-magnetic { position: relative; display: inline-block; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .btn-primary { background: linear-gradient(135deg, var(--copper), var(--copper-light)); color: var(--navy-dark); box-shadow: 0 4px 20px rgba(184, 115, 51, 0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(184, 115, 51, 0.5); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid rgba(255, 255, 255, 0.5); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: white; transform: translateY(-3px); }
+        .btn-outline { background: transparent; color: var(--copper); border: 2px solid var(--copper); }
+        .btn-outline:hover { background: var(--copper); color: var(--navy-dark); transform: translateY(-3px); }
+        
+        .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+        .scroll-indicator { width: 24px; height: 40px; border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 12px; position: relative; }
+        .scroll-indicator::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; background: var(--copper); border-radius: 2px; animation: scroll-bounce 2s infinite; }
+        @keyframes scroll-bounce { 0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; } 50% { transform: translateX(-50%) translateY(12px); opacity: 0.3; } }
+        
+        /* Sections */
+        section { padding: 6rem 2rem; position: relative; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; opacity: 0; filter: blur(10px); transform: translateY(30px); transition: all 0.8s ease; }
+        .section-header.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .section-tag { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--copper); margin-bottom: 0.5rem; }
+        
+        /* Text Shimmer Effect */
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; color: var(--navy); margin-bottom: 1rem; position: relative; display: inline-block; }
+        .section-title.shimmer { background: linear-gradient(90deg, var(--navy) 0%, var(--copper) 50%, var(--navy) 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s linear infinite; }
+        @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+        .section-subtitle { font-size: 1.1rem; color: var(--charcoal); max-width: 600px; margin: 0 auto; opacity: 0.8; }
+        
+        /* Services with Card Spotlight */
+        .services { background: white; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .service-card { background: var(--cream); border-radius: 24px; padding: 3rem 2rem; text-align: center; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: 1px solid rgba(184, 115, 51, 0.1); opacity: 0; filter: blur(10px); transform: translateY(40px); }
+        .service-card.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--copper), var(--copper-light)); transform: scaleX(0); transition: transform 0.4s ease; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(26, 26, 46, 0.1); border-color: rgba(184, 115, 51, 0.3); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card .spotlight { position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(184, 115, 51, 0.15), transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.3s ease; transform: translate(-50%, -50%); }
+        .service-card:hover .spotlight { opacity: 1; }
+        .service-icon { width: 90px; height: 90px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--navy), var(--navy-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--copper); transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2); position: relative; z-index: 1; }
+        .service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); background: linear-gradient(135deg, var(--copper), var(--copper-light)); color: var(--navy); box-shadow: 0 15px 40px rgba(184, 115, 51, 0.4); }
+        .service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem; color: var(--navy); position: relative; z-index: 1; }
+        .service-description { color: var(--charcoal); font-size: 0.95rem; line-height: 1.7; opacity: 0.8; position: relative; z-index: 1; }
+        
+        /* About with Animated Numbers */
+        .about { background: var(--cream); overflow: hidden; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-image { position: relative; opacity: 0; filter: blur(10px); transform: translateX(-50px); transition: all 0.8s ease; }
+        .about-image.visible { opacity: 1; filter: blur(0); transform: translateX(0); }
+        .about-image-main { border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(26, 26, 46, 0.2); position: relative; }
+        .about-image-main img { width: 100%; height: 500px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+        .about-image:hover .about-image-main img { transform: scale(1.05); }
+        .about-image-accent { position: absolute; bottom: -30px; right: -30px; width: 200px; height: 200px; background: linear-gradient(135deg, var(--copper), var(--copper-light)); border-radius: 24px; z-index: -1; }
+        .about-content { padding: 2rem 0; opacity: 0; filter: blur(10px); transform: translateX(50px); transition: all 0.8s ease 0.2s; }
+        .about-content.visible { opacity: 1; filter: blur(0); transform: translateX(0); }
+        .about-tag { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--copper); margin-bottom: 0.5rem; }
+        .about-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.2; }
+        .about-text { color: var(--charcoal); margin-bottom: 1.5rem; line-height: 1.8; opacity: 0.85; }
+        
+        /* Team */
+        .team { background: white; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        .team-card { background: var(--cream); border-radius: 24px; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(184, 115, 51, 0.1); opacity: 0; filter: blur(10px); transform: translateY(40px); position: relative; }
+        .team-card.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .team-card .spotlight { position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(184, 115, 51, 0.15), transparent 70%); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.3s ease; transform: translate(-50%, -50%); z-index: 0; }
+        .team-card:hover .spotlight { opacity: 1; }
+        .team-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(26, 26, 46, 0.12); }
+        .team-image { width: 100%; height: 320px; background: linear-gradient(135deg, var(--navy-light), var(--navy)); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: var(--copper); z-index: 1; }
+        .team-info { padding: 1.5rem; text-align: center; position: relative; z-index: 1; }
+        .team-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
+        .team-role { color: var(--copper); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.75rem; }
+        .team-bio { color: var(--charcoal); font-size: 0.9rem; opacity: 0.8; line-height: 1.6; }
+        
+        /* Pricing Section - Package Cards */
+        .pricing { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; }
+        .pricing .section-title { color: white; }
+        .pricing .section-title.shimmer { background: linear-gradient(90deg, white 0%, var(--copper-light) 50%, white 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        /* Trust signals — softer shimmer: cream sweep instead of aggressive navy→copper→navy */
+        .trust-signals .section-title.shimmer { background: linear-gradient(90deg, var(--cream) 0%, var(--copper-light) 50%, var(--cream) 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 6s linear infinite; }
+        .pricing .section-subtitle { color: rgba(255, 255, 255, 0.8); }
+        .pricing .section-tag { color: var(--copper-light); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .pricing-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(184, 115, 51, 0.2); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; filter: blur(10px); transform: translateY(40px); position: relative; overflow: hidden; }
+        .pricing-card.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .pricing-card:hover { transform: translateY(-10px); border-color: rgba(184, 115, 51, 0.5); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); }
+        .pricing-card.featured { background: linear-gradient(135deg, rgba(184, 115, 51, 0.2), rgba(212, 145, 90, 0.1)); border-color: var(--copper); }
+        /* "Most Popular" pill badge — desktop and mobile */
+        .pricing-card.featured::before { display: none; }
+        .popular-badge {
+            display: block; position: absolute; top: 1rem; right: 1rem;
+            background: var(--copper); color: var(--navy-dark);
+            font-size: 0.65rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+            padding: 0.25rem 0.7rem; border-radius: 9999px;
+        }
+        .pricing-card-header { text-align: center; margin-bottom: 1.5rem; }
+        .pricing-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .pricing-card-price { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--copper); margin-bottom: 0.5rem; }
+        .pricing-card-price span { font-size: 1rem; color: rgba(255, 255, 255, 0.6); font-weight: 400; }
+        .pricing-card-desc { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+        .pricing-card-features { list-style: none; margin-bottom: 2rem; }
+        .pricing-card-features li { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9); }
+        .pricing-card-features li i { color: var(--copper); flex-shrink: 0; margin-top: 0.15rem; }
+        .pricing-cta { text-align: center; margin-top: 3rem; }
+        
+        /* Gallery - Horizontal Scroll Style */
+        .gallery { background: var(--cream); padding: 6rem 2rem; }
+
+        /* Bento Gallery Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 280px 280px;
+            gap: 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .bento-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(184, 115, 51, 0.3);
+        }
+        .bento-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .bento-item:hover img {
+            transform: scale(1.06);
+        }
+        .bento-item .bento-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 26, 46, 0.6) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .bento-item:hover .bento-overlay { opacity: 1; }
+        /* Span the hero image across 2 columns */
+        .bento-item:nth-child(1) { grid-column: span 2; }
+        /* Last item spans 2 columns on bottom right */
+        .bento-item:nth-child(6) { grid-column: span 2; }
+
+        .gallery-cta {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+        .gallery-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--copper);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .gallery-cta a:hover {
+            gap: 0.75rem;
+            color: var(--copper-light);
+        }
+        .gallery-cta a svg {
+            transition: transform 0.3s ease;
+        }
+        .gallery-cta a:hover svg {
+            transform: translateX(4px);
+        }
+        
+        
+        
+        /* Trust Signals / Why 513Sips */
+        .trust-signals { background: var(--navy); padding: 5rem 2rem; position: relative; overflow: hidden; }
+        .trust-signals::before { content: ''; position: absolute; top: -50%; left: -20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(184, 115, 51, 0.08), transparent 70%); border-radius: 50%; pointer-events: none; }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .trust-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            transition: all 0.4s ease;
+        }
+        .trust-card:hover {
+            background: rgba(184, 115, 51, 0.08);
+            border-color: rgba(184, 115, 51, 0.3);
+            transform: translateY(-4px);
+        }
+        .trust-card-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.2), rgba(212, 145, 90, 0.1));
+        }
+        .trust-card-icon svg { color: var(--copper-light); }
+        .trust-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+        .trust-card p {
+            font-size: 0.88rem;
+            color: rgba(245, 242, 235, 0.6);
+            line-height: 1.6;
+        }
+
+        /* Form success */
+        .form-success-message {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        .success-icon {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials with Navigation */
+        .testimonials { background: white; }
+        .testimonials-container { position: relative; max-width: 800px; margin: 0 auto; }
+        .testimonial-wrapper { position: relative; overflow: hidden; min-height: 420px; }
+        .testimonial-card { position: absolute; top: 0; left: 0; width: 100%; background: var(--cream); border-radius: 24px; padding: 3rem; border: 1px solid rgba(184, 115, 51, 0.1); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateX(50px); pointer-events: none; }
+        .testimonial-card.active { opacity: 1; transform: translateX(0); pointer-events: all; position: relative; }
+        .testimonial-card.prev { opacity: 0; transform: translateX(-50px); }
+        .testimonial-card-image { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--copper), var(--copper-light)); padding: 3px; overflow: hidden; }
+        .testimonial-card-image-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: var(--copper); }
+        .testimonial-card-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.6; }
+        .testimonial-card-author { font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
+        .testimonial-card-event { font-size: 0.85rem; color: var(--copper); }
+        .testimonial-nav { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+        .testimonial-nav-btn { width: 50px; height: 50px; border-radius: 50%; background: white; border: 2px solid rgba(184, 115, 51, 0.3); color: var(--copper); cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .testimonial-nav-btn:hover { background: var(--copper); border-color: var(--copper); color: white; transform: scale(1.1); }
+        .testimonial-dots { display: flex; gap: 0.5rem; }
+        .testimonial-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(184, 115, 51, 0.3); cursor: pointer; transition: all 0.3s ease; }
+        .testimonial-dot.active { background: var(--copper); transform: scale(1.2); }
+        
+        /* Instagram Auto Slider */
+        .instagram { background: var(--navy); color: white; padding: 4rem 0; overflow: hidden; }
+        .instagram .section-title { color: white; }
+        .instagram .section-title.shimmer { background: linear-gradient(90deg, white 0%, var(--copper-light) 50%, white 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .instagram .section-tag { color: var(--copper-light); }
+        .instagram-slider-container { position: relative; width: 100%; overflow: hidden; margin: 3rem 0; }
+        .instagram-slider { display: flex; gap: 1rem; animation: slide-infinite 30s linear infinite; width: max-content; }
+        .instagram-item { width: 280px; height: 280px; border-radius: 16px; overflow: hidden; flex-shrink: 0; position: relative; background: linear-gradient(135deg, var(--navy-light), var(--navy)); }
+        .instagram-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .instagram-item:hover img { transform: scale(1.1); }
+        .instagram-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(184, 115, 51, 0.8); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+        .instagram-item:hover .instagram-overlay { opacity: 1; }
+        .instagram-icon { color: white; font-size: 1.5rem; }
+        @keyframes slide-infinite { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .instagram-cta { text-align: center; margin-top: 2rem; }
+        
+        /* FAQ */
+        .faq { background: white; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--cream); border-radius: 16px; margin-bottom: 1rem; overflow: hidden; border: 1px solid rgba(184, 115, 51, 0.1); transition: all 0.3s ease; opacity: 0; filter: blur(10px); transform: translateY(20px); }
+        .faq-item.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .faq-item:hover { border-color: rgba(184, 115, 51, 0.3); }
+        .faq-question { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 500; color: var(--navy); transition: color 0.3s ease; }
+        .faq-question:hover { color: var(--copper); }
+        .faq-icon { width: 24px; height: 24px; transition: transform 0.3s ease; color: var(--copper); }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-item.active .faq-answer { max-height: 300px; padding: 0 1.5rem 1.5rem; }
+        .faq-answer p { color: var(--charcoal); opacity: 0.8; line-height: 1.7; }
+        
+        /* Contact with Blur Fade */
+        .contact { background: var(--cream); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .contact-info { opacity: 0; filter: blur(10px); transform: translateX(-30px); transition: all 0.8s ease; }
+        .contact-info.visible { opacity: 1; filter: blur(0); transform: translateX(0); }
+        .contact-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--navy); }
+        .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+        .contact-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--copper), var(--copper-light)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s ease; }
+        .contact-item:hover .contact-icon { transform: scale(1.1) rotate(5deg); }
+        .contact-details h4 { font-size: 1rem; color: var(--navy); margin-bottom: 0.25rem; }
+        .contact-details p, .contact-details a { color: var(--charcoal); text-decoration: none; transition: color 0.3s ease; opacity: 0.8; }
+        .contact-details a:hover { color: var(--copper); }
+        .contact-form { background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 20px 40px rgba(26, 26, 46, 0.1); opacity: 0; filter: blur(10px); transform: translateX(30px); transition: all 0.8s ease 0.2s; }
+        .contact-form.visible { opacity: 1; filter: blur(0); transform: translateX(0); }
+        .contact-form .form-group { margin-bottom: 1.5rem; }
+        .contact-form .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500; color: var(--navy); }
+        .contact-form .form-group input, .contact-form .form-group textarea, .contact-form .form-group select { width: 100%; padding: 1rem; border: 2px solid rgba(184, 115, 51, 0.2); border-radius: 12px; font-family: 'Montserrat', sans-serif; font-size: 1rem; background: var(--cream); color: var(--charcoal); transition: all 0.3s ease; box-sizing: border-box; }
+        .contact-form .form-group input[type="date"] { -webkit-appearance: none; appearance: none; box-sizing: border-box; width: 100%; }
+        .contact-form .form-group input:focus, .contact-form .form-group textarea:focus, .contact-form .form-group select:focus { outline: none; border-color: var(--copper); box-shadow: 0 0 0 4px rgba(184, 115, 51, 0.1); }
+        .contact-form .form-group textarea { min-height: 120px; resize: vertical; }
+        .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        
+        /* Footer with Fluid Dock */
+        .footer { background: var(--navy-dark); color: white; padding: 4rem 2rem 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; opacity: 0; filter: blur(10px); transform: translateY(30px); transition: all 0.8s ease; }
+        .footer-grid.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .footer-brand .logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: white; margin-bottom: 1rem; display: inline-block; text-decoration: none; }
+        .footer-brand .logo span { color: var(--copper); }
+        .footer-brand p { color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .fluid-dock { display: flex; gap: 1rem; padding: 0.75rem 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 9999px; border: 1px solid rgba(184, 115, 51, 0.2); width: fit-content; }
+        .dock-item { width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; }
+        .dock-item:hover { background: var(--copper); color: var(--navy); transform: scale(1.2) translateY(-5px); }
+        .dock-item::before { content: attr(data-label); position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; color: var(--copper); }
+        .dock-item:hover::before { opacity: 1; }
+        .footer-column h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 1.5rem; color: white; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s ease; display: inline-block; }
+        .footer-links a:hover { color: var(--copper); transform: translateX(5px); }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; }
+        /* ── Mobile Nav Overlay ── */
+        .mobile-menu {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--navy); z-index: 999;
+            display: flex; flex-direction: column;
+            opacity: 0; pointer-events: none;
+            transform: translateX(100%);
+            transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+        .mobile-menu-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.5rem 1.5rem; border-bottom: 1px solid rgba(184,115,51,0.15);
+        }
+        .mobile-menu-logo { height: 36px; width: auto; }
+        .mobile-menu-close {
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%; width: 44px; height: 44px; color: white;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.3s ease;
+        }
+        .mobile-menu-close:hover { background: var(--copper); }
+        .mobile-menu-links { flex: 1; display: flex; flex-direction: column; padding: 1rem 0; }
+        .mobile-menu-links a {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.5rem; color: rgba(245,242,235,0.85);
+            font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 500;
+            text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.25s ease;
+        }
+        .mobile-menu-links a:hover { color: white; padding-left: 2rem; background: rgba(184,115,51,0.08); }
+        .mobile-menu-links a .link-arrow { color: var(--copper); opacity: 0; transition: opacity 0.25s ease; }
+        .mobile-menu-links a:hover .link-arrow { opacity: 1; }
+        .mobile-menu-footer {
+            padding: 1.5rem; border-top: 1px solid rgba(184,115,51,0.15);
+        }
+        .mobile-menu-cta {
+            display: block; width: 100%; padding: 1rem;
+            background: linear-gradient(135deg, var(--copper), var(--copper-light));
+            color: var(--navy-dark); font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem; font-weight: 700; letter-spacing: 1px;
+            text-transform: uppercase; text-align: center; text-decoration: none;
+            border-radius: 50px; border: none; cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(184,115,51,0.4); }
+
+        /* ── Sticky Bottom CTA (mobile only) ── */
+        .sticky-book-cta {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+            background: linear-gradient(135deg, var(--copper), var(--copper-light));
+            padding: 0.875rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .sticky-book-cta.visible { transform: translateY(0); }
+        .sticky-book-cta a {
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+            color: var(--navy-dark); font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem; font-weight: 700; letter-spacing: 0.5px;
+            text-transform: uppercase; text-decoration: none;
+        }
+
+        /* ── FAQ Desktop Preview ── */
+        .faq-desktop-preview { max-width: 900px; margin: 0 auto; }
+        .faq-preview-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem; margin-bottom: 2.5rem;
+        }
+        .faq-preview-card {
+            background: var(--cream); border-radius: 16px; padding: 1.75rem 1.5rem;
+            border: 1px solid rgba(184,115,51,0.12);
+            transition: all 0.3s ease;
+        }
+        .faq-preview-card:hover {
+            border-color: rgba(184,115,51,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(26,26,46,0.08);
+        }
+        .faq-preview-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: linear-gradient(135deg, rgba(184,115,51,0.12), rgba(212,145,90,0.08));
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1rem; color: var(--copper);
+        }
+        .faq-preview-card h4 {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+            font-weight: 600; color: var(--navy); margin-bottom: 0.5rem;
+        }
+        .faq-preview-card p { font-size: 0.88rem; color: var(--charcoal); opacity: 0.8; line-height: 1.6; }
+        .faq-desktop-cta { text-align: center; }
+        .faq-mobile-preview { display: none; }
+
+        /* ── Services Snap Scroll (mobile) ── */
+        .services-scroll-track { display: none; }
+        .services-scroll-dots {
+            display: none; justify-content: center; gap: 0.5rem; margin-top: 1.5rem;
+        }
+        .services-scroll-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(184,115,51,0.3); cursor: pointer; transition: all 0.3s ease;
+        }
+        .services-scroll-dot.active { background: var(--copper); transform: scale(1.3); }
+
+        /* ── Pricing Snap Scroll (mobile) ── */
+        .pricing-scroll-track {
+            display: none;
+        }
+        .pricing-scroll-dots {
+            display: none;
+            justify-content: center; gap: 0.5rem; margin-top: 1.5rem;
+        }
+        .pricing-scroll-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(255,255,255,0.3); cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .pricing-scroll-dot.active { background: var(--copper); transform: scale(1.3); }
+
+        /* ── Trust Signals Snap Scroll (mobile) ── */
+        .trust-scroll-track { display: none; }
+        .trust-scroll-dots {
+            display: none; justify-content: center;
+            gap: 0.5rem; margin-top: 1.5rem;
+        }
+        .trust-scroll-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s ease;
+        }
+        .trust-scroll-dot.active { background: var(--copper); transform: scale(1.3); }
+
+        /* ── Mobile Gallery Teaser ── */
+        .mobile-gallery-teaser { display: none; }
+        .mobile-gallery-teaser-imgs {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;
+        }
+        .mobile-gallery-teaser-imgs img {
+            width: 100%; aspect-ratio: 1; object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* ── FAQ Mobile Preview ── */
+        .faq-mobile-preview { display: none; }
+        .faq-mobile-cta-block {
+            text-align: center; padding: 1rem 0 0;
+        }
+        .faq-mobile-cta-block a {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-family: 'Montserrat', sans-serif; font-size: 0.95rem;
+            font-weight: 600; color: var(--copper); text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+        .faq-mobile-cta-block a:hover { gap: 0.75rem; }
+
+        @media (max-width: 1024px) {
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            /* Nav — compact pill with logo centered between phantom spacer and hamburger */
+            .tubelight-nav { width: auto; min-width: 210px; padding: 0.5rem 1rem; top: 1rem; }
+            .tubelight-links { display: none; }
+            .mobile-menu-btn { display: block; flex-shrink: 0; }
+            /* phantom left spacer = same width as hamburger to balance centering */
+            .tubelight-container::before { content: ''; width: 40px; flex-shrink: 0; }
+            .tubelight-logo { flex: 1; display: flex; justify-content: center; align-items: center; margin-right: 0; }
+            .tubelight-logo img { height: 52px !important; width: auto !important; }
+
+            /* Sticky bottom CTA */
+            .sticky-book-cta { display: block; }
+
+            /* Hero */
+            .hero { min-height: 100svh; }
+            .hero-title { font-size: clamp(2rem, 9vw, 2.8rem); }
+            .hero-title .line-2 { gap: 0.1em; }
+            .rotating-text-container { min-width: 3em; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; justify-content: center; }
+            .hero-description { font-size: 1rem; }
+            .orb-1 { width: 250px; height: 250px; }
+            .orb-2 { width: 200px; height: 200px; }
+            .orb-3 { width: 150px; height: 150px; }
+
+            /* Services — hide grid, show scroll track */
+            .services-grid { display: none; }
+            .services-scroll-track {
+                display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+                gap: 1rem; padding: 1rem 1.5rem 1.5rem;
+                scrollbar-width: none; -ms-overflow-style: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .services-scroll-track::-webkit-scrollbar { display: none; }
+            .services-scroll-track .service-card {
+                flex: 0 0 82vw; max-width: 320px;
+                scroll-snap-align: center; opacity: 1; filter: none; transform: none;
+                padding: 2rem 1.5rem;
+            }
+            .services-scroll-dots { display: flex; }
+
+            /* About */
+            .about-image { max-width: 80%; margin: 0 auto; }
+
+            /* Pricing — hide grid, show scroll track */
+            .pricing-grid { display: none; }
+            .pricing-scroll-track {
+                display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+                gap: 1rem; padding: 1rem 1.5rem 1.5rem;
+                scrollbar-width: none; -ms-overflow-style: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .pricing-scroll-track::-webkit-scrollbar { display: none; }
+            .pricing-scroll-track .pricing-card {
+                flex: 0 0 82vw; max-width: 340px;
+                scroll-snap-align: center; border-radius: 20px;
+            }
+            .pricing-scroll-dots { display: flex; }
+
+            /* Bento gallery → mobile teaser */
+            .bento-grid { display: none; }
+            .gallery-cta { display: none; }
+            .mobile-gallery-teaser { display: block; }
+
+            /* Testimonials */
+            .testimonial-card { padding: 2rem 1.5rem; }
+            .testimonial-wrapper { min-height: 380px; }
+            .testimonial-dot { width: 12px; height: 12px; }
+            .testimonial-nav-btn { width: 44px; height: 44px; }
+
+            /* Trust signals — hide grid, show scroll track */
+            .trust-grid { display: none; }
+            .trust-scroll-track {
+                display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+                gap: 1rem; padding: 1rem 1.5rem 1.5rem;
+                scrollbar-width: none; -ms-overflow-style: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .trust-scroll-track::-webkit-scrollbar { display: none; }
+            .trust-scroll-track .trust-card {
+                flex: 0 0 78vw; max-width: 300px;
+                scroll-snap-align: center;
+            }
+            .trust-scroll-dots { display: flex; }
+
+            /* FAQ — hide desktop preview, show mobile preview */
+            .faq-desktop-preview { display: none; }
+            .faq-mobile-preview { display: block; }
+
+            /* Contact form */
+            .contact-form { padding: 1.75rem 1.25rem; }
+            .contact-form .form-row { grid-template-columns: 1fr; }
+            .contact-form .form-group input,
+            .contact-form .form-group select,
+            .contact-form .form-group textarea {
+                font-size: 16px; min-height: 48px; padding: 0.85rem 1rem;
+            }
+            .contact-form .form-group textarea { min-height: 100px; }
+
+            /* Footer */
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .fluid-dock { margin: 0 auto; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            /* hide duplicate footer nav on mobile */
+            .footer-column:not(:first-child) { display: none; }
+        }
+
+        /* Instagram Section */
+        .instagram-section { background: var(--navy-dark); padding: 4rem 0; overflow: hidden; }
+        .instagram-handle-header { text-align: center; margin-bottom: 2rem; }
+        .instagram-handle-header a { text-decoration: none; display: inline-block; }
+        .instagram-section .section-tag { color: var(--copper-light); }
+        .instagram-section .section-title.shimmer { font-size: clamp(3.2rem, 6vw, 5rem); background: linear-gradient(90deg, white 0%, var(--copper-light) 50%, white 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s linear infinite; }
+        .instagram-scroll-wrapper { overflow: hidden; mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); }
+        .instagram-scroll-track { display: flex; gap: 0.75rem; width: max-content; animation: ig-scroll 35s linear infinite; padding: 0 0.375rem; }
+        .instagram-scroll-track:hover { animation-play-state: paused; }
+        @keyframes ig-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .instagram-scroll-item { width: 240px; height: 240px; flex-shrink: 0; border-radius: 10px; overflow: hidden; display: block; cursor: pointer; background: var(--navy); position: relative; }
+        .instagram-scroll-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .instagram-scroll-item:hover img { transform: scale(1.06); }
+        .instagram-scroll-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.75rem; background: linear-gradient(to top, rgba(26,26,46,0.95) 0%, rgba(26,26,46,0.6) 70%, transparent 100%); font-family: 'Montserrat', sans-serif; font-size: 0.68rem; color: rgba(255,255,255,0.9); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; opacity: 0; transition: opacity 0.3s ease; }
+        .instagram-scroll-item:hover .instagram-scroll-caption { opacity: 1; }
+        @media (max-width: 768px) {
+            .instagram-scroll-item { width: 190px; height: 190px; }
+            .instagram-scroll-caption { font-size: 0.65rem; }
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed; bottom: 5.5rem; right: 1.25rem; z-index: 998;
+            width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+            background: linear-gradient(135deg, var(--copper), var(--copper-light));
+            color: var(--navy-dark); display: none; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(184, 115, 51, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .back-to-top.visible { display: flex; }
+        .back-to-top:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(184, 115, 51, 0.5); }
+        @media (min-width: 769px) {
+            /* On desktop, no sticky CTA bar — sit closer to bottom edge */
+            .back-to-top { bottom: 2rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": ["LocalBusiness", "FoodService"],
+                "@id": "https://www.513sips.com/#business",
+                "name": "513Sips",
+                "description": "Premium craft cocktail mobile bartending for weddings, corporate events, and private celebrations in Cincinnati, Ohio.",
+                "url": "https://www.513sips.com",
+                "telephone": "+1-513-322-2645",
+                "email": "contact@513sips.com",
+                "image": "https://res.cloudinary.com/dkfypt2cb/image/upload/b_black,c_pad,w_1200,h_630/513Sips_White_ums9lm.png",
+                "priceRange": "$$$",
+                "areaServed": {
+                    "@type": "GeoCircle",
+                    "geoMidpoint": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 39.1031,
+                        "longitude": -84.5120
+                    },
+                    "geoRadius": "80467"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Cincinnati",
+                    "addressRegion": "OH",
+                    "addressCountry": "US"
+                },
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Mobile Bartending Services",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Mobile Bartending"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Craft Cocktail Catering"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Event Bar Service"
+                            }
+                        }
+                    ]
+                },
+                "sameAs": [
+                    "https://www.instagram.com/513sips"
+                ]
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://www.513sips.com/#organization",
+                "name": "513Sips",
+                "url": "https://www.513sips.com",
+                "logo": "https://res.cloudinary.com/dkfypt2cb/image/upload/b_black,c_pad,w_1200,h_630/513Sips_White_ums9lm.png",
+                "email": "contact@513sips.com",
+                "telephone": "+1-513-322-2645",
+                "sameAs": [
+                    "https://www.instagram.com/513sips"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.513sips.com/#website",
+                "url": "https://www.513sips.com",
+                "name": "513Sips",
+                "publisher": {
+                    "@id": "https://www.513sips.com/#organization"
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.513sips.com/?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <nav class="tubelight-nav" id="navbar">
+        <div class="tubelight-container">
+            <a href="#" class="tubelight-logo"><img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips logo — premium mobile bartending Cincinnati" style="height:40px;width:auto;display:inline-block;vertical-align:middle;margin-right:8px;"></a>
+            <div class="tubelight-links" id="tubelight-links">
+                <div class="tubelight-highlight" id="tubelight-highlight"></div>
+                <a href="#home" class="tubelight-link active" data-index="0">Home</a>
+                <a href="#services" class="tubelight-link" data-index="1">Services</a>
+                <a href="#about" class="tubelight-link" data-index="2">About</a>
+                <a href="#pricing" class="tubelight-link" data-index="3">Packages</a>
+                <a href="gallery.html" class="tubelight-link" data-index="4">Gallery</a>
+                <a href="faq.html" class="tubelight-link" data-index="5">FAQ</a>
+                <a href="#contact" class="tubelight-link" data-index="6">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips logo — premium mobile bartending Cincinnati" class="mobile-menu-logo">
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="#home"><span>Home</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="#services"><span>Services</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="#about"><span>About</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="#pricing"><span>Packages</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="gallery.html"><span>Gallery</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="faq.html"><span>FAQ</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="#contact"><span>Contact</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="mobile-menu-footer">
+            <a href="#contact" class="mobile-menu-cta">Book Your Event</a>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+    </button>
+
+    <!-- Sticky bottom CTA (mobile only) -->
+    <div class="sticky-book-cta" id="sticky-book-cta">
+        <a href="#contact">
+            Book Your Event
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+    </div>
+
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Elevated Mobile Bartending</p>
+            <h1 class="hero-title" id="hero-title"><span class="line-1">We Bring The</span><span class="line-2"><span class="rotating-text-container"><span class="rotating-text"><span>Bar</span><span>Experience</span><span>Celebration</span><span>Moments</span><span>Party</span></span></span><span style="white-space:nowrap">To You</span></span></h1>
+            <p class="hero-description" id="hero-description">Premium craft cocktails and professional bartending services for weddings, corporate events, and private celebrations throughout Cincinnati.</p>
+            <div class="hero-buttons" id="hero-buttons">
+                <span class="btn-magnetic">
+                    <a href="#contact" class="btn btn-primary magnetic-btn">
+                        <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+                        Book Now
+                    </a>
+                </span>
+                <span class="btn-magnetic">
+                    <a href="gallery.html" class="btn btn-secondary magnetic-btn">
+                        <i data-lucide="images" style="width: 18px; height: 18px;"></i>
+                        View Gallery
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-indicator"></div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">What We Offer</p>
+                <h2 class="section-title shimmer">Our Services</h2>
+                <p class="section-subtitle">From intimate gatherings to grand celebrations, we create unforgettable beverage experiences tailored to your event.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-spotlight>
+                    <div class="spotlight"></div>
+                    <div class="service-icon">
+                        <i data-lucide="heart" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Weddings</h3>
+                    <p class="service-description">Make your special day unforgettable with custom cocktail menus, champagne service, and professional bartenders who ensure every toast is perfect.</p>
+                </div>
+                <div class="service-card" data-spotlight>
+                    <div class="spotlight"></div>
+                    <div class="service-icon">
+                        <i data-lucide="building-2" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Corporate Events</h3>
+                    <p class="service-description">Elevate your company gatherings, holiday parties, and networking events with sophisticated beverage service that impresses clients and colleagues.</p>
+                </div>
+                <div class="service-card" data-spotlight>
+                    <div class="spotlight"></div>
+                    <div class="service-icon">
+                        <i data-lucide="party-popper" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Private Parties</h3>
+                    <p class="service-description">From birthday celebrations to anniversary parties, we bring the bar experience to your home or venue with personalized service.</p>
+                </div>
+            </div>
+
+            <!-- Mobile services snap-scroll -->
+            <div class="services-scroll-track" id="services-scroll-track">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="heart" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Weddings</h3>
+                    <p class="service-description">Make your special day unforgettable with custom cocktail menus, champagne service, and professional bartenders who ensure every toast is perfect.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="building-2" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Corporate Events</h3>
+                    <p class="service-description">Elevate your company gatherings, holiday parties, and networking events with sophisticated beverage service that impresses clients and colleagues.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="party-popper" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Private Parties</h3>
+                    <p class="service-description">From birthday celebrations to anniversary parties, we bring the bar experience to your home or venue with personalized service.</p>
+                </div>
+            </div>
+            <div class="services-scroll-dots" id="services-dots">
+                <div class="services-scroll-dot active" data-index="0"></div>
+                <div class="services-scroll-dot" data-index="1"></div>
+                <div class="services-scroll-dot" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-image-main">
+                        <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774786967/Image_15_dnrfnm.jpg" alt="Eddie from 513Sips crafting cocktails behind the mobile bar in Cincinnati">
+                    </div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <p class="about-tag">Our Story</p>
+                    <h2 class="about-title">From Vision to Reality</h2>
+                    <p class="about-text">513Sips was born out of equal parts family, community, and a love for creating unforgettable experiences. Growing up with an "open house," there were constantly guests at the table; every holiday or random Saturday seemed to turn into a celebration. That tradition shaped me; that's why amongst my friends, I'm known as "The Hub." Always the one planning or hosting. I carry that through my role as The Greater Cincinnati Penn State Alumni President and everything else I do, trying to make moments matter and celebrate. What sticks with me is how every gathering seemed to elevate friends into family.</p>
+                    <p class="about-text">My dad and I often joke about that upbringing and where it's gotten us today — how the best events, the ones that cater to the guests, carry the moments that bring people closer together. It wasn't long after one of our chats, drinks in hand, we agreed that a good bar is often the centerpoint of those gatherings: it's where stories are told, jokes are made and memories are cemented. That conversation sparked the idea for 513Sips. A name that pays homage to our home city, Cincinnati.</p>
+                    <p class="about-text">What started as a fun family reflection grew into something bigger: a vision to create a mobile bar that brings those same feelings of connection and celebration wherever people gather. Now I get to help others create those same unforgettable memories that they will cherish for the rest of their life.</p>
+                    <p class="about-text">At the end of the day, 513Sips isn't just about serving drinks — it's about carrying on a tradition: making hosting effortless, elevating every gathering, and helping friends feel like family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Investment</p>
+                <h2 class="section-title shimmer">Our Packages</h2>
+                <p class="section-subtitle">Transparent pricing for exceptional service. Choose the package that fits your event, or build your own with our add-ons.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <h3 class="pricing-card-name">Base Package</h3>
+                        <div class="pricing-card-price" style="font-size: 1.2rem; color: rgba(255,255,255,0.7); margin-bottom: 0.25rem;">Starting at</div>
+                        <div class="pricing-card-price">$650</div>
+                        <p class="pricing-card-desc">Essential bar service for intimate gatherings</p>
+                    </div>
+                    <ul class="pricing-card-features">
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 3 hours of service</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Up to 50 guests</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 1 professional bartender</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Service of beer, wine, seltzers & champagne</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> All bar tools & equipment</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Ice procurement & cold storage</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Full bar setup & breakdown</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Single-event liability insurance</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Travel within 30 miles</li>
+                    </ul>
+                    <span class="btn-magnetic" style="display: block;">
+                        <a href="#contact" class="btn btn-outline magnetic-btn" style="width: 100%; justify-content: center;">
+                            <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                            Contact Us
+                        </a>
+                    </span>
+                </div>
+                <div class="pricing-card featured">
+                    <span class="popular-badge">Most Popular</span>
+                    <div class="pricing-card-header">
+                        <h3 class="pricing-card-name">Signature Package</h3>
+                        <div class="pricing-card-price" style="font-size: 1.2rem; color: rgba(255,255,255,0.7); margin-bottom: 0.25rem;">Starting at</div>
+                        <div class="pricing-card-price">$1,325</div>
+                        <p class="pricing-card-desc">Premium experience for unforgettable events</p>
+                    </div>
+                    <ul class="pricing-card-features">
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 4 hours of service</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Up to 100 guests</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 2 professional bartenders</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Full bar upgrade (multiple liquor/SKU)</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 1 signature cocktail included</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> All bar tools & equipment</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Mixers, garnishes & homemade syrups</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Ice procurement & cold storage</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Full bar setup & breakdown</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Single-event liability insurance</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Travel within 30 miles</li>
+                    </ul>
+                    <span class="btn-magnetic" style="display: block;">
+                        <a href="#contact" class="btn btn-primary magnetic-btn" style="width: 100%; justify-content: center;">
+                            <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                            Contact Us
+                        </a>
+                    </span>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <h3 class="pricing-card-name">Add-Ons</h3>
+                        <div class="pricing-card-price" style="font-size: 1.2rem; color: rgba(255,255,255,0.7); margin-bottom: 0.25rem;">Contact for Pricing</div>
+                        <div class="pricing-card-price">Custom</div>
+                        <p class="pricing-card-desc">Extras to enhance your experience</p>
+                    </div>
+                    <ul class="pricing-card-features">
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Additional Hours</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Extra Bartenders</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Signature Cocktails</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Glassware Options</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Alcohol Procurement</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Additional Spirits & Basic Cocktails*</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Coffee/Hot Chocolate Service</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Arch Backdrop</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Tent Rental</li>
+                    </ul>
+                    <span class="btn-magnetic" style="display: block;">
+                        <a href="#contact" class="btn btn-outline magnetic-btn" style="width: 100%; justify-content: center;">
+                            <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                            Contact Us
+                        </a>
+                    </span>
+                    <p style="margin-top: 1rem; color: rgba(255,255,255,0.45); font-size: 0.75rem; line-height: 1.5;">*Adds spirits and mixers for simple one-and-one pours (e.g. gin & tonic, vodka soda) — not a full service cocktail bar. Signature cocktails are a separate add-on.</p>
+                </div>
+            </div>
+            <!-- Mobile snap-scroll pricing track -->
+            <div class="pricing-scroll-track" id="pricing-scroll-track">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <h3 class="pricing-card-name">Base Package</h3>
+                        <div class="pricing-card-price" style="font-size: 1.2rem; color: rgba(255,255,255,0.7); margin-bottom: 0.25rem;">Starting at</div>
+                        <div class="pricing-card-price">$650</div>
+                        <p class="pricing-card-desc">Essential bar service for intimate gatherings</p>
+                    </div>
+                    <ul class="pricing-card-features">
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 3 hours of service</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Up to 50 guests</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 1 professional bartender</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Service of beer, wine, seltzers & champagne</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> All bar tools & equipment</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Ice procurement & cold storage</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Full bar setup & breakdown</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Single-event liability insurance</li>
+                    </ul>
+                    <span class="btn-magnetic" style="display: block;">
+                        <a href="#contact" class="btn btn-outline magnetic-btn" style="width: 100%; justify-content: center;">Book Now</a>
+                    </span>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-card-header">
+                        <span class="popular-badge">Most Popular</span>
+                        <h3 class="pricing-card-name">Signature Package</h3>
+                        <div class="pricing-card-price" style="font-size: 1.2rem; color: rgba(255,255,255,0.7); margin-bottom: 0.25rem;">Starting at</div>
+                        <div class="pricing-card-price">$1,325</div>
+                        <p class="pricing-card-desc">Premium experience for unforgettable events</p>
+                    </div>
+                    <ul class="pricing-card-features">
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 4 hours of service</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Up to 100 guests</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 2 professional bartenders</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> All bar tools & equipment</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 1 signature cocktail</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Homemade syrups & garnishes</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Ice procurement & cold storage</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Full bar setup & breakdown</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Single-event liability insurance</li>
+                    </ul>
+                    <span class="btn-magnetic" style="display: block;">
+                        <a href="#contact" class="btn btn-primary magnetic-btn" style="width: 100%; justify-content: center;">Book Now</a>
+                    </span>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <h3 class="pricing-card-name">Add-Ons</h3>
+                        <div class="pricing-card-price" style="font-size: 1.2rem; color: rgba(255,255,255,0.7); margin-bottom: 0.25rem;">Contact for Pricing</div>
+                        <div class="pricing-card-price">Custom</div>
+                        <p class="pricing-card-desc">Extras to enhance your experience</p>
+                    </div>
+                    <ul class="pricing-card-features">
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Additional Hours</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Extra Bartenders</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Signature Cocktails</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Glassware Options</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Alcohol Procurement</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Additional Spirits & Basic Cocktails*</li>
+                        <li><i data-lucide="plus" style="width: 18px; height: 18px;"></i> Tent Rental</li>
+                    </ul>
+                    <span class="btn-magnetic" style="display: block;">
+                        <a href="#contact" class="btn btn-outline magnetic-btn" style="width: 100%; justify-content: center;">Get Quote</a>
+                    </span>
+                    <p style="margin-top: 1rem; color: rgba(255,255,255,0.45); font-size: 0.75rem; line-height: 1.5;">*Adds spirits and mixers for simple one-and-one pours (e.g. gin & tonic, vodka soda) — not a full service cocktail bar. Signature cocktails are a separate add-on.</p>
+                </div>
+            </div>
+            <div class="pricing-scroll-dots" id="pricing-dots">
+                <div class="pricing-scroll-dot active" data-index="0"></div>
+                <div class="pricing-scroll-dot" data-index="1"></div>
+                <div class="pricing-scroll-dot" data-index="2"></div>
+            </div>
+
+            <div class="pricing-cta">
+                <span class="btn-magnetic">
+                    <a href="#contact" class="btn btn-primary magnetic-btn">
+                        <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                        Get Custom Quote
+                    </a>
+                </span>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: rgba(255,255,255,0.6); font-size: 0.9rem; font-style: italic;">*Final pricing may vary based on event details and add-ons</p>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Our Work</p>
+                <h2 class="section-title shimmer">Event Gallery</h2>
+                <p class="section-subtitle">A glimpse into the craft, the setups, and the moments we help create.</p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-item">
+                    <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_800,h_560,q_auto,f_webp/Eddie_Behnid_Bar_xq7t2e.jpg" alt="513Sips mobile bar setup with cozy fireplace ambiance at a Cincinnati event" loading="lazy">
+                    <div class="bento-overlay"></div>
+                </div>
+                <div class="bento-item">
+                    <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_400,h_560,q_auto,f_webp/Rudolph_Sour_ubvbrz.jpg" alt="513Sips signature Rudolph Sour craft cocktail with festive garnish" loading="lazy">
+                    <div class="bento-overlay"></div>
+                </div>
+                <div class="bento-item">
+                    <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_400,h_560,q_auto,f_webp/IMG_4930_cv0gzs.jpg" alt="Close-up of a handcrafted 513Sips cocktail with fresh garnish" loading="lazy">
+                    <div class="bento-overlay"></div>
+                </div>
+                <div class="bento-item">
+                    <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_400,h_560,q_auto,f_webp/IMG_0534_h0ktfq.jpg" alt="Elegant 513Sips mobile bar display at a private Cincinnati celebration" loading="lazy">
+                    <div class="bento-overlay"></div>
+                </div>
+                <div class="bento-item">
+                    <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_400,h_560,q_auto,f_webp/IMG_5363_d8gidp.jpg" alt="Handcrafted craft cocktail by 513Sips Cincinnati mobile bartending" loading="lazy">
+                    <div class="bento-overlay"></div>
+                </div>
+                <div class="bento-item">
+                    <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_800,h_560,q_auto,f_webp/IMG_0637_riv7pu.jpg" alt="513Sips professional mobile bar serving guests at a Cincinnati event" loading="lazy">
+                    <div class="bento-overlay"></div>
+                </div>
+            </div>
+
+            <!-- Mobile gallery teaser (replaces bento on small screens) -->
+            <div class="mobile-gallery-teaser">
+                <div class="mobile-gallery-teaser-imgs">
+                    <img id="teaser-img-1" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_400,h_400,q_auto,f_webp/Eddie_Behnid_Bar_xq7t2e.jpg" alt="513Sips mobile bar setup at a Cincinnati private event">
+                    <img id="teaser-img-2" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_400,h_400,q_auto,f_webp/Rudolph_Sour_ubvbrz.jpg" alt="513Sips signature Rudolph Sour craft cocktail with festive garnish">
+                </div>
+                <a href="gallery.html" class="btn btn-primary" style="width:100%;justify-content:center;display:flex;">
+                    View Our Gallery
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:0.5rem"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="gallery-cta">
+                <a href="gallery.html">
+                    View Full Gallery
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed -->
+    <section class="instagram-section" id="instagram">
+        <div class="instagram-handle-header">
+            <p class="section-tag">Follow Along</p>
+            <a href="https://www.instagram.com/513sips" target="_blank" rel="noopener">
+                <h2 class="section-title shimmer">@513sips</h2>
+            </a>
+        </div>
+        <div class="instagram-scroll-wrapper">
+            <div class="instagram-scroll-track" id="instagram-scroll-track">
+                <!-- Posts injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Testimonials</p>
+                <h2 class="section-title shimmer">What Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from the people we've had the pleasure of serving.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-wrapper">
+                    <div class="testimonial-card active" data-index="0">
+                        <div class="testimonial-card-image">
+                            <div class="testimonial-card-image-inner" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;">TS</div>
+                        </div>
+                        <p class="testimonial-card-quote">"Eddie was amazing! He created custom cocktails and mocktails just for our party, and every drink was a hit! 10/10 I can't wait to have him back for our next event!"</p>
+                        <p class="testimonial-card-author">Tyler S.</p>
+                        <p class="testimonial-card-event">Private Party</p>
+                    </div>
+                    <div class="testimonial-card" data-index="1">
+                        <div class="testimonial-card-image">
+                            <div class="testimonial-card-image-inner" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;">HK</div>
+                        </div>
+                        <p class="testimonial-card-quote">"513Sips was awesome to have at a birthday party I attended. The bar setup was classy, the bartender exuded professionalism and experience. A perfect addition to enhance any event. Would highly recommend you check it out!"</p>
+                        <p class="testimonial-card-author">Hannah K.</p>
+                        <p class="testimonial-card-event">Birthday Party</p>
+                    </div>
+                    <div class="testimonial-card" data-index="2">
+                        <div class="testimonial-card-image">
+                            <div class="testimonial-card-image-inner" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;">EK</div>
+                        </div>
+                        <p class="testimonial-card-quote">"I'm not one to always get a margarita at the bar, as every bar usually will use a generic margarita mix with heavy syrups. But the bartender clearly knows their craft with this one. The balance of homemade lime juice mixture, smooth tequila, and just the right touch of salt. Easily one of the best I've had."</p>
+                        <p class="testimonial-card-author">Eric K.</p>
+                        <p class="testimonial-card-event">Craft Cocktail Experience</p>
+                    </div>
+                    <div class="testimonial-card" data-index="3">
+                        <div class="testimonial-card-image">
+                            <div class="testimonial-card-image-inner" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;">KS</div>
+                        </div>
+                        <p class="testimonial-card-quote">"513Sips mobile bar cart was the perfect addition to our birthday party! He was so friendly and very professional. He brought all his own supplies, which made it very easy for me! The drinks were delicious and got so many compliments from the guests."</p>
+                        <p class="testimonial-card-author">Katie S.</p>
+                        <p class="testimonial-card-event">Birthday Party</p>
+                    </div>
+                    <div class="testimonial-card" data-index="4">
+                        <div class="testimonial-card-image">
+                            <div class="testimonial-card-image-inner" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;">LB</div>
+                        </div>
+                        <p class="testimonial-card-quote">"From the very first sip, I knew this wasn't your average cocktail experience. Every drink is a perfect balance of flavor, creativity, and craftsmanship. His signature margarita was more than just a drink it was an experience. Highly recommend for anyone who appreciates a top-tier cocktail!"</p>
+                        <p class="testimonial-card-author">Lauren B.</p>
+                        <p class="testimonial-card-event">Cocktail Experience</p>
+                    </div>
+                    <div class="testimonial-card" data-index="5">
+                        <div class="testimonial-card-image">
+                            <div class="testimonial-card-image-inner" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;">SS</div>
+                        </div>
+                        <p class="testimonial-card-quote">"513Sips helped us by bartending at a birthday party. He asked what our preferences were with drinks and came up with a menu that matched our party theme and even had decorations for the bar that went with theme. As a host it's nice when you have one less thing to worry and Eddie made things run smoother."</p>
+                        <p class="testimonial-card-author">Shelby S.</p>
+                        <p class="testimonial-card-event">Birthday Party</p>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-nav-btn" id="testimonial-prev">
+                        <i data-lucide="chevron-left" style="width: 24px; height: 24px;"></i>
+                    </button>
+                    <div class="testimonial-dots">
+                        <div class="testimonial-dot active" data-index="0"></div>
+                        <div class="testimonial-dot" data-index="1"></div>
+                        <div class="testimonial-dot" data-index="2"></div>
+                        <div class="testimonial-dot" data-index="3"></div>
+                        <div class="testimonial-dot" data-index="4"></div>
+                        <div class="testimonial-dot" data-index="5"></div>
+                    </div>
+                    <button class="testimonial-nav-btn" id="testimonial-next">
+                        <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-signals" id="why-513sips">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag" style="color: var(--copper-light);">Why 513Sips</p>
+                <h2 class="section-title shimmer" style="color: var(--cream);">Crafted with Care, Served with Confidence</h2>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>ASK Certified</h3>
+                    <p>Alcohol Server Knowledge certified — trained in responsible service, safety, and Ohio liquor laws.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                    </div>
+                    <h3>TIPS Trained</h3>
+                    <p>Training for Intervention Procedures — the gold standard in responsible alcohol service nationwide.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Fully Insured</h3>
+                    <p>Vendor liability coverage on every event — peace of mind for you, your guests, and your venue.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h3>Food Safety Certified</h3>
+                    <p>Certified through <a href="https://www.statefoodsafety.com/" target="_blank" rel="noopener" style="color:var(--copper-light);text-decoration:underline;">StateFoodSafety.com</a> — trained in proper food handling, hygiene, and safety standards for every event.</p>
+                </div>
+            </div>
+
+            <!-- Mobile trust signals snap-scroll -->
+            <div class="trust-scroll-track" id="trust-scroll-track">
+                <div class="trust-card">
+                    <div class="trust-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>ASK Certified</h3>
+                    <p>Alcohol Server Knowledge certified — trained in responsible service, safety, and Ohio liquor laws.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                    </div>
+                    <h3>TIPS Trained</h3>
+                    <p>Training for Intervention Procedures — the gold standard in responsible alcohol service nationwide.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Fully Insured</h3>
+                    <p>Vendor liability coverage on every event — peace of mind for you, your guests, and your venue.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h3>Food Safety Certified</h3>
+                    <p>Certified through StateFoodSafety.com — trained in proper food handling, hygiene, and safety standards.</p>
+                </div>
+            </div>
+            <div class="trust-scroll-dots" id="trust-dots">
+                <div class="trust-scroll-dot active" data-index="0"></div>
+                <div class="trust-scroll-dot" data-index="1"></div>
+                <div class="trust-scroll-dot" data-index="2"></div>
+                <div class="trust-scroll-dot" data-index="3"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Questions</p>
+                <h2 class="section-title shimmer">Frequently Asked</h2>
+                <p class="section-subtitle">Find answers to common questions about our mobile bartending services.</p>
+            </div>
+
+            <!-- Desktop FAQ teaser — 3 preview cards + link to faq.html -->
+            <div class="faq-desktop-preview">
+                <div class="faq-preview-grid">
+                    <div class="faq-preview-card">
+                        <div class="faq-preview-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <h4>How does dry hire work?</h4>
+                        <p>We provide the bar, bartender, and equipment. You supply the alcohol — we'll give you a customized shopping list.</p>
+                    </div>
+                    <div class="faq-preview-card">
+                        <div class="faq-preview-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <h4>How do I book?</h4>
+                        <p>Fill out the contact form, we'll consult on details, send a quote, then confirm with a signed contract and 25% deposit.</p>
+                    </div>
+                    <div class="faq-preview-card">
+                        <div class="faq-preview-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h4>Are you insured &amp; certified?</h4>
+                        <p>Yes — vendor liability insurance on every event, plus ASK, TIPS, and Food Safety certifications.</p>
+                    </div>
+                </div>
+                <div class="faq-desktop-cta">
+                    <a href="faq.html" class="btn btn-outline" style="display:inline-flex;align-items:center;gap:0.5rem;border:2px solid var(--copper);color:var(--copper);padding:0.875rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;letter-spacing:0.5px;text-decoration:none;text-transform:uppercase;transition:all 0.3s ease;" onmouseover="this.style.background='var(--copper)';this.style.color='var(--navy-dark)'" onmouseout="this.style.background='transparent';this.style.color='var(--copper)'">
+                        View All 8 FAQs
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile FAQ preview -->
+            <div class="faq-mobile-preview">
+                <div class="faq-item" style="margin-bottom:0.75rem;">
+                    <div class="faq-question"><span>How does "dry hire" bartending work?</span><i data-lucide="plus" class="faq-icon"></i></div>
+                    <div class="faq-answer"><p>We bring the bartender, bar, and equipment — you supply the alcohol. We'll give you a detailed shopping list and can help coordinate pickup.</p></div>
+                </div>
+                <div class="faq-item" style="margin-bottom:0.75rem;">
+                    <div class="faq-question"><span>How do I book?</span><i data-lucide="plus" class="faq-icon"></i></div>
+                    <div class="faq-answer"><p>Fill out our contact form below. We'll schedule a consultation, send a quote, and confirm your date with a signed contract and 25% deposit.</p></div>
+                </div>
+                <div class="faq-item" style="margin-bottom:1.5rem;">
+                    <div class="faq-question"><span>What areas do you service?</span><i data-lucide="plus" class="faq-icon"></i></div>
+                    <div class="faq-answer"><p>Greater Cincinnati, Northern Kentucky, and Southwest Indiana — roughly 30 miles from Hyde Park. Extended travel available upon request.</p></div>
+                </div>
+                <div class="faq-mobile-cta-block">
+                    <a href="faq.html">
+                        View All FAQs
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Get In Touch</p>
+                <h2 class="section-title shimmer">Book Your Event</h2>
+                <p class="section-subtitle">Ready to elevate your next event? Let's discuss how we can create the perfect beverage experience for you.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="mail" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <a href="mailto:contact@513sips.com">contact@513sips.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="phone" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <a href="tel:+15133222645">(513) 322-2645</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="map-pin" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Cincinnati, OH<br>Serving Greater Cincinnati Area</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="clock" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Hours</h4>
+                            <p>Available 7 Days a Week<br>By Appointment Only</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Your Name</label>
+                                <input type="text" id="contact-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email Address</label>
+                                <input type="email" id="contact-email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-phone">Phone Number</label>
+                                <input type="tel" id="contact-phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-date">Event Date</label>
+                                <input type="date" id="contact-date" name="date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-event-type">Event Type</label>
+                            <select id="contact-event-type" name="event-type">
+                                <option value="">Select Event Type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="private">Private Party</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Tell Us About Your Event</label>
+                            <textarea id="contact-message" name="message" placeholder="Number of guests, venue, special requests..."></textarea>
+                        </div>
+                        <span class="btn-magnetic" style="display: block;">
+                            <button type="submit" class="btn btn-primary magnetic-btn" style="width:100%;">
+                                <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                                Send Inquiry
+                            </button>
+                        </span>
+                    </form>
+                    <div id="form-success" class="form-success-message" style="display:none;">
+                        <div class="success-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--copper)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--navy); margin:1rem 0 0.5rem;">Thank You!</h3>
+                        <p style="color:var(--charcoal); font-size:1rem; line-height:1.6;">Your inquiry has been sent. We'll be in touch within 24 hours to discuss your event.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips mobile bartending logo" style="height:50px;width:auto;display:inline-block;vertical-align:middle;filter:brightness(0) invert(1);"></a>
+                    <p>Elevating celebrations throughout Cincinnati with craft cocktails and professional bartending services.</p>
+                    <div class="fluid-dock">
+                        <a href="https://www.instagram.com/513sips/" target="_blank" class="dock-item" data-label="Instagram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/people/513Sips/61581731595256/" target="_blank" class="dock-item" data-label="Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Weddings</a></li>
+                        <li><a href="#services">Corporate Events</a></li>
+                        <li><a href="#services">Private Parties</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> 513Sips. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Text Generate Effect for Hero
+        function animateHeroText() {
+            // The rotating text animation runs automatically via CSS
+            // Just ensure elements are visible
+        }
+        animateHeroText();
+
+        // Hero blur fade animations
+        setTimeout(() => {
+            document.getElementById('hero-description').classList.add('visible');
+        }, 800);
+        setTimeout(() => {
+            document.getElementById('hero-buttons').classList.add('visible');
+        }, 1200);
+        gsap.to('.hero-subtitle', { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: 'power3.out' });
+        gsap.to('.hero-scroll', { opacity: 1, duration: 1, delay: 1.5, ease: 'power3.out' });
+
+        // Magnetic Button Effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Tubelight highlight effect
+        const tubelightLinks = document.querySelectorAll('.tubelight-link');
+        const tubelightHighlight = document.getElementById('tubelight-highlight');
+        const tubelightLinksContainer = document.getElementById('tubelight-links');
+
+        function updateHighlight(link) {
+            const rect = link.getBoundingClientRect();
+            const containerRect = tubelightLinksContainer.getBoundingClientRect();
+            tubelightHighlight.style.width = rect.width + 'px';
+            tubelightHighlight.style.left = (rect.left - containerRect.left) + 'px';
+        }
+
+        const activeLink = document.querySelector('.tubelight-link.active');
+        if (activeLink) setTimeout(() => updateHighlight(activeLink), 100);
+
+        tubelightLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => updateHighlight(link));
+            link.addEventListener('click', (e) => {
+                tubelightLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                updateHighlight(link);
+            });
+        });
+
+        tubelightLinksContainer.addEventListener('mouseleave', () => {
+            const active = document.querySelector('.tubelight-link.active');
+            if (active) updateHighlight(active);
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const closeMobileMenu = () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Sticky bottom CTA — show after scrolling past hero
+        const stickyBookCta = document.getElementById('sticky-book-cta');
+        if (stickyBookCta) {
+            const heroSection = document.getElementById('home');
+            const ctaObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        stickyBookCta.classList.add('visible');
+                    } else {
+                        stickyBookCta.classList.remove('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+            if (heroSection) ctaObserver.observe(heroSection);
+        }
+
+        // Services snap-scroll dots
+        const servicesTrack = document.getElementById('services-scroll-track');
+        const servicesDots = document.querySelectorAll('#services-dots .services-scroll-dot');
+        if (servicesTrack && servicesDots.length) {
+            servicesTrack.addEventListener('scroll', () => {
+                const cards = servicesTrack.querySelectorAll('.service-card');
+                const scrollLeft = servicesTrack.scrollLeft;
+                const cardWidth = cards[0] ? cards[0].offsetWidth + 16 : 1;
+                const activeIdx = Math.round(scrollLeft / cardWidth);
+                servicesDots.forEach((dot, i) => dot.classList.toggle('active', i === activeIdx));
+            });
+            servicesDots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    const cards = servicesTrack.querySelectorAll('.service-card');
+                    if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+            });
+        }
+
+        // Pricing snap-scroll dots
+        const pricingTrack = document.getElementById('pricing-scroll-track');
+        const pricingDots = document.querySelectorAll('#pricing-dots .pricing-scroll-dot');
+        if (pricingTrack && pricingDots.length) {
+            pricingTrack.addEventListener('scroll', () => {
+                const cards = pricingTrack.querySelectorAll('.pricing-card');
+                const scrollLeft = pricingTrack.scrollLeft;
+                const cardWidth = cards[0] ? cards[0].offsetWidth + 16 : 1;
+                const activeIdx = Math.round(scrollLeft / cardWidth);
+                pricingDots.forEach((dot, i) => dot.classList.toggle('active', i === activeIdx));
+            });
+            pricingDots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    const cards = pricingTrack.querySelectorAll('.pricing-card');
+                    if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+            });
+        }
+
+        // Trust signals snap-scroll dots
+        const trustTrack = document.getElementById('trust-scroll-track');
+        const trustDots = document.querySelectorAll('#trust-dots .trust-scroll-dot');
+        if (trustTrack && trustDots.length) {
+            trustTrack.addEventListener('scroll', () => {
+                const cards = trustTrack.querySelectorAll('.trust-card');
+                const scrollLeft = trustTrack.scrollLeft;
+                const cardWidth = cards[0] ? cards[0].offsetWidth + 16 : 1;
+                const activeIdx = Math.round(scrollLeft / cardWidth);
+                trustDots.forEach((dot, i) => dot.classList.toggle('active', i === activeIdx));
+            });
+            trustDots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    const cards = trustTrack.querySelectorAll('.trust-card');
+                    if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+            });
+        }
+
+        // Testimonials swipe gesture support
+        (() => {
+            const wrapper = document.querySelector('.testimonial-wrapper');
+            if (!wrapper) return;
+            let startX = 0, isDragging = false;
+            wrapper.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+            wrapper.addEventListener('touchend', e => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) document.getElementById('testimonial-next')?.click();
+                    else document.getElementById('testimonial-prev')?.click();
+                }
+            });
+        })();
+
+        // Card Spotlight Effect
+        document.querySelectorAll('[data-spotlight]').forEach(card => {
+            const spotlight = card.querySelector('.spotlight');
+            if (!spotlight) return;
+            
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                spotlight.style.left = x + 'px';
+                spotlight.style.top = y + 'px';
+            });
+        });
+
+        // Blur Fade + Scroll Animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        
+        const blurFadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-header, .service-card, .about-image, .about-content, .team-card, .pricing-card, .gallery-item, .gallery-filters, .faq-item, .contact-info, .contact-form, .footer-grid').forEach(el => {
+            blurFadeObserver.observe(el);
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Testimonials Navigation
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const prevBtn = document.getElementById('testimonial-prev');
+        const nextBtn = document.getElementById('testimonial-next');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonialCards.forEach((card, i) => {
+                card.classList.remove('active', 'prev');
+                if (i === index) {
+                    card.classList.add('active');
+                } else if (i < index) {
+                    card.classList.add('prev');
+                }
+            });
+            testimonialDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentTestimonial = index;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            const newIndex = currentTestimonial === 0 ? testimonialCards.length - 1 : currentTestimonial - 1;
+            showTestimonial(newIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const newIndex = currentTestimonial === testimonialCards.length - 1 ? 0 : currentTestimonial + 1;
+            showTestimonial(newIndex);
+        });
+
+        testimonialDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => showTestimonial(i));
+        });
+
+        // Contact Form — Formspree AJAX submission
+        const bookingForm = document.getElementById('booking-form');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(bookingForm);
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="32"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" values="32;0" dur="1s" repeatCount="indefinite"/></circle></svg> Sending...';
+            fetch(bookingForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    bookingForm.style.display = 'none';
+                    document.getElementById('form-success').style.display = 'block';
+                } else {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i data-lucide="send" style="width:18px;height:18px;"></i> Send Inquiry';
+                    lucide.createIcons();
+                    alert('Something went wrong. Please try again or email us directly at contact@513sips.com.');
+                }
+            }).catch(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i data-lucide="send" style="width:18px;height:18px;"></i> Send Inquiry';
+                lucide.createIcons();
+                alert('Network error. Please try again or email us directly at contact@513sips.com.');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        
+        // Bento gallery — click any photo to go to full gallery
+        document.querySelectorAll('.bento-item').forEach(item => {
+            item.addEventListener('click', () => {
+                window.location.href = 'gallery.html';
+            });
+        });
+
+        // Mobile gallery teaser — random photo pair on every page load
+        (function() {
+            const teaserPool = [
+                // Cocktails
+                { id: 'Rudolph_Sour_ubvbrz',   alt: 'Signature cocktail' },
+                { id: 'IMG_4930_cv0gzs',       alt: 'Cocktail close-up' },
+                { id: 'IMG_5363_d8gidp',       alt: 'Handcrafted cocktail' },
+                { id: 'IMG_4045_lwlybu',       alt: 'Craft cocktail' },
+                { id: 'IMG_4210_zyylog',       alt: 'Signature drink' },
+                { id: 'IMG_5470_ejf4ga',       alt: 'Artisan cocktail' },
+                { id: 'IMG_0445_bgoske',       alt: 'Cocktail creation' },
+                // Behind the Bar
+                { id: 'Eddie_Behnid_Bar_xq7t2e', alt: '513Sips bar setup' },
+                { id: 'IMG_0534_h0ktfq',         alt: 'Elegant event bar' },
+                { id: 'IMG_0637_riv7pu',         alt: 'Bar at an event' },
+                { id: 'IMG_0350_fg18ru',         alt: 'Behind the bar' },
+            ];
+            const shuffled = teaserPool.sort(() => Math.random() - 0.5);
+            const base = 'https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_400,h_400,q_auto,f_webp/';
+            const img1 = document.getElementById('teaser-img-1');
+            const img2 = document.getElementById('teaser-img-2');
+            if (img1) { img1.src = base + shuffled[0].id + '.jpg'; img1.alt = shuffled[0].alt; }
+            if (img2) { img2.src = base + shuffled[1].id + '.jpg'; img2.alt = shuffled[1].alt; }
+        })();
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) backToTopBtn.classList.add('visible');
+            else backToTopBtn.classList.remove('visible');
+        }, { passive: true });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Instagram scroll feed via Behold.so JSON
+        (function() {
+            const track = document.getElementById('instagram-scroll-track');
+            if (!track) return;
+            fetch('https://feeds.behold.so/iCK50w8i1eqKhkXvdLpY')
+                .then(r => r.json())
+                .then(data => {
+                    const posts = data.posts || [];
+                    if (!posts.length) return;
+                    const makeItems = () => posts.map(post => {
+                        const a = document.createElement('a');
+                        a.href = post.permalink;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.className = 'instagram-scroll-item';
+                        const img = document.createElement('img');
+                        img.src = post.sizes.medium.mediaUrl;
+                        img.alt = '513Sips on Instagram';
+                        img.loading = 'lazy';
+                        a.appendChild(img);
+                        if (post.prunedCaption) {
+                            const cap = document.createElement('div');
+                            cap.className = 'instagram-scroll-caption';
+                            cap.textContent = post.prunedCaption;
+                            a.appendChild(cap);
+                        }
+                        return a;
+                    });
+                    // Render twice for seamless infinite loop
+                    makeItems().forEach(el => track.appendChild(el));
+                    makeItems().forEach(el => track.appendChild(el));
+                })
+                .catch(() => {});
+        })();
+
+    </script>
+</body>
+</html>
