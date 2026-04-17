@@ -743,6 +743,102 @@
                 transition-duration: 0.01ms !important;
             }
         }
+        /* ── Legal Modals ── */
+        .legal-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 20, 0.82);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        .legal-modal-overlay.active { display: flex; }
+        .legal-modal {
+            background: var(--navy);
+            border: 1px solid rgba(184, 115, 51, 0.25);
+            border-radius: 16px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+        }
+        .legal-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            flex-shrink: 0;
+        }
+        .legal-modal-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--cream);
+            margin: 0;
+        }
+        .legal-modal-header h2 span { color: var(--copper); }
+        .legal-modal-close {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            line-height: 1;
+            transition: color 0.2s;
+            border-radius: 6px;
+        }
+        .legal-modal-close:hover { color: var(--copper); background: rgba(184,115,51,0.1); }
+        .legal-modal-body {
+            padding: 1.75rem 2rem;
+            overflow-y: auto;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.92rem;
+            line-height: 1.75;
+        }
+        .legal-modal-body h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--copper);
+            margin: 1.5rem 0 0.5rem;
+            letter-spacing: 0.02em;
+        }
+        .legal-modal-body h3:first-child { margin-top: 0; }
+        .legal-modal-body p { margin-bottom: 0.75rem; }
+        .legal-modal-body ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+        .legal-modal-body ul li { margin-bottom: 0.4rem; }
+        .legal-modal-body .legal-note {
+            background: rgba(184,115,51,0.08);
+            border-left: 3px solid var(--copper);
+            padding: 0.75rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.88rem;
+        }
+        .legal-modal-footer {
+            padding: 1rem 2rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            flex-shrink: 0;
+        }
+        .legal-modal-footer p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        @media (max-width: 640px) {
+            .legal-modal { border-radius: 12px; max-height: 90vh; }
+            .legal-modal-header { padding: 1.25rem 1.25rem; }
+            .legal-modal-body { padding: 1.25rem; }
+            .legal-modal-footer { padding: 0.75rem 1.25rem 1rem; }
+        }
     </style>
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -1611,8 +1707,8 @@
                     <h4>Support</h4>
                     <ul class="footer-links">
                         <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#" onclick="openLegalModal('privacy'); return false;">Privacy Policy</a></li>
+                        <li><a href="#" onclick="openLegalModal('tos'); return false;">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
@@ -1990,6 +2086,136 @@
                 .catch(() => {});
         })();
 
+    </script>
+
+    <!-- Privacy Policy Modal -->
+    <div id="modal-privacy" class="legal-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title">
+        <div class="legal-modal">
+            <div class="legal-modal-header">
+                <h2 id="modal-privacy-title">Privacy <span>Policy</span></h2>
+                <button class="legal-modal-close" onclick="closeLegalModal('privacy')" aria-label="Close">&times;</button>
+            </div>
+            <div class="legal-modal-body">
+                <p>Effective Date: January 1, 2025 &nbsp;|&nbsp; 513Sips &mdash; a division of Elevated Ventures EG, LLC, Cincinnati, Ohio</p>
+
+                <h3>Information We Collect</h3>
+                <p>We collect only what you provide directly to us through our contact form: your name, email address, phone number, and event details. We do not collect payment information through this website.</p>
+
+                <h3>How We Use Your Information</h3>
+                <ul>
+                    <li>To respond to your inquiry and provide a quote for our services</li>
+                    <li>To communicate about your event details and booking</li>
+                    <li>To send occasional updates about 513Sips (you may opt out at any time)</li>
+                </ul>
+
+                <h3>We Do Not Sell Your Data</h3>
+                <p>Your personal information is never sold, rented, or shared with third parties for marketing purposes. Period.</p>
+
+                <h3>Photography & Marketing</h3>
+                <div class="legal-note">By booking our services, you grant 513Sips permission to photograph or film the bar setup and service area for marketing use (social media, website, promotions). No identifiable guest images will be used without separate written permission.</div>
+
+                <h3>Data Security</h3>
+                <p>We take reasonable precautions to protect your information. Our contact form is served over HTTPS. We do not store credit card or banking information.</p>
+
+                <h3>Your Rights</h3>
+                <p>You may request to view, update, or delete any personal information we hold about you by contacting us at <a href="mailto:contact@513sips.com" style="color:var(--copper);">contact@513sips.com</a>.</p>
+
+                <h3>Contact</h3>
+                <p>Questions about this policy? Reach us at <a href="mailto:contact@513sips.com" style="color:var(--copper);">contact@513sips.com</a> or <a href="tel:+15133222645" style="color:var(--copper);">(513) 322-2645</a>.</p>
+            </div>
+            <div class="legal-modal-footer">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Elevated Ventures EG, LLC d/b/a 513Sips. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="modal-tos" class="legal-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-tos-title">
+        <div class="legal-modal">
+            <div class="legal-modal-header">
+                <h2 id="modal-tos-title">Terms of <span>Service</span></h2>
+                <button class="legal-modal-close" onclick="closeLegalModal('tos')" aria-label="Close">&times;</button>
+            </div>
+            <div class="legal-modal-body">
+                <p>The following summarizes key terms that govern all 513Sips service agreements. Full contract provided upon booking. &mdash; Elevated Ventures EG, LLC d/b/a 513Sips, Cincinnati, Ohio</p>
+
+                <h3>Payment Terms</h3>
+                <ul>
+                    <li><strong>Deposit:</strong> 50% non-refundable deposit due at signing to hold your date</li>
+                    <li><strong>Remaining Balance:</strong> Due 14 days before your event</li>
+                    <li><strong>Late Payments:</strong> Subject to a 15% late fee</li>
+                    <li><strong>Payment Methods:</strong> Electronic only &mdash; Venmo, PayPal, or Zelle. No cash or checks.</li>
+                    <li><strong>Non-Payment:</strong> If balance is unpaid 7 days before the event, 513Sips may cancel with no refund of deposit</li>
+                </ul>
+
+                <h3>Cancellation Policy</h3>
+                <div class="legal-note">All cancellations must be submitted in writing to contact@513sips.com.</div>
+                <ul>
+                    <li><strong>10+ days before event:</strong> 75% refund (less the non-refundable deposit)</li>
+                    <li><strong>5–9 days before event:</strong> 50% refund (less the non-refundable deposit)</li>
+                    <li><strong>Day of event or &lt;5 days:</strong> No refund</li>
+                    <li><strong>513Sips cancels</strong> (emergency, illness, force majeure): Full refund including deposit</li>
+                </ul>
+
+                <h3>Age Verification & Guest Conduct</h3>
+                <ul>
+                    <li>513Sips will not serve anyone under 21 or visibly intoxicated</li>
+                    <li>Our bartenders have the right to refuse service at their discretion</li>
+                    <li>The client is responsible for guest conduct and any incidents arising from alcohol consumption</li>
+                </ul>
+
+                <h3>Liability & Indemnification</h3>
+                <p>513Sips maintains general liability and liquor liability insurance for every event. By booking, the client agrees to hold 513Sips harmless from claims, damages, or legal costs arising from alcohol consumption, guest behavior, property damage, or venue hazards at the event.</p>
+
+                <h3>Dry-Hire Service</h3>
+                <p>513Sips is a dry-hire service. We provide professional bartending, equipment, setup, and mixers. The client provides all alcoholic beverages. Alcohol remains the client's property before, during, and after the event. This structure ensures full compliance with Ohio liquor laws.</p>
+
+                <h3>Photography Release</h3>
+                <p>513Sips may photograph or film the bar setup and service area for marketing purposes. No identifiable guest images will be used without written permission.</p>
+
+                <h3>Questions?</h3>
+                <p>Contact us at <a href="mailto:contact@513sips.com" style="color:var(--copper);">contact@513sips.com</a> or <a href="tel:+15133222645" style="color:var(--copper);">(513) 322-2645</a> before booking if you have any questions about these terms.</p>
+            </div>
+            <div class="legal-modal-footer">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Elevated Ventures EG, LLC d/b/a 513Sips. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openLegalModal(type) {
+            const overlay = document.getElementById('modal-' + type);
+            if (!overlay) return;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Focus close button for accessibility
+            const closeBtn = overlay.querySelector('.legal-modal-close');
+            if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
+        }
+        function closeLegalModal(type) {
+            const overlay = document.getElementById('modal-' + type);
+            if (!overlay) return;
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        // Close on overlay click (outside modal)
+        document.querySelectorAll('.legal-modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.legal-modal-overlay.active').forEach(overlay => {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
     </script>
 </body>
 </html>
