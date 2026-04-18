@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | 513Sips — Mobile Bartending Cincinnati</title>
+    <meta name="description" content="Tips, guides, and insights for planning your Cincinnati event bar experience from the experts at 513Sips mobile bartending.">
+    <meta name="keywords" content="mobile bartending blog Cincinnati, event bar tips, dry-hire bar guide, Cincinnati bartending">
+    <link rel="canonical" href="https://www.513sips.com/blog/">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.513sips.com/blog/">
+    <meta property="og:title" content="Blog | 513Sips — Mobile Bartending Cincinnati">
+    <meta property="og:description" content="Tips, guides, and insights for planning your Cincinnati event bar experience from the experts at 513Sips.">
+    <meta property="og:image" content="https://res.cloudinary.com/dkfypt2cb/image/upload/b_black,c_pad,w_1200,h_630/513Sips_White_ums9lm.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | 513Sips — Mobile Bartending Cincinnati">
+    <meta name="twitter:description" content="Tips, guides, and insights for planning your Cincinnati event bar experience.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dkfypt2cb/image/upload/b_black,c_pad,w_1200,h_630/513Sips_White_ums9lm.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { DEFAULT: '#1a1a2e', light: '#2d2d4a', dark: '#12121f' },
+                        cream: '#f5f2eb',
+                        copper: { DEFAULT: '#b87333', light: '#d4915a' },
+                        charcoal: '#2d3748'
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --navy: #1a1a2e; --navy-light: #2d2d4a; --navy-dark: #12121f; --cream: #f5f2eb; --copper: #b87333; --copper-light: #d4915a; --charcoal: #2d3748; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
+
+        /* Tubelight Navbar */
+        .tubelight-nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(245, 242, 235, 0.7); backdrop-filter: blur(20px); border-radius: 9999px; padding: 0.75rem 1.5rem; border: 1px solid rgba(184, 115, 51, 0.2); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tubelight-nav.scrolled { background: rgba(245, 242, 235, 0.95); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.15); }
+        .tubelight-container { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+        .tubelight-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); text-decoration: none; margin-right: 1.5rem; }
+        .tubelight-links { display: flex; position: relative; gap: 0.25rem; }
+        .tubelight-link { padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 500; color: var(--charcoal); text-decoration: none; border-radius: 9999px; position: relative; z-index: 2; transition: color 0.3s ease; white-space: nowrap; }
+        .tubelight-link:hover, .tubelight-link.active { color: var(--navy); }
+        .tubelight-highlight { position: absolute; height: 100%; background: linear-gradient(135deg, rgba(184, 115, 51, 0.25), rgba(212, 145, 90, 0.15)); border-radius: 9999px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1; box-shadow: 0 2px 12px rgba(184, 115, 51, 0.3); border: 1px solid rgba(184, 115, 51, 0.3); }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--navy); }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--navy); z-index: 999;
+            display: flex; flex-direction: column;
+            opacity: 0; pointer-events: none;
+            transform: translateX(100%);
+            transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+        .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 1.5rem; border-bottom: 1px solid rgba(184,115,51,0.15); }
+        .mobile-menu-logo { height: 36px; width: auto; }
+        .mobile-menu-close { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; width: 44px; height: 44px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s ease; }
+        .mobile-menu-close:hover { background: var(--copper); }
+        .mobile-menu-links { flex: 1; display: flex; flex-direction: column; padding: 1rem 0; }
+        .mobile-menu-links a { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; color: rgba(245,242,235,0.85); font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.25s ease; }
+        .mobile-menu-links a:hover { color: white; padding-left: 2rem; background: rgba(184,115,51,0.08); }
+        .mobile-menu-links a .link-arrow { color: var(--copper); opacity: 0; transition: opacity 0.25s ease; }
+        .mobile-menu-links a:hover .link-arrow { opacity: 1; }
+        .mobile-menu-footer { padding: 1.5rem; border-top: 1px solid rgba(184,115,51,0.15); }
+        .mobile-menu-cta { display: block; width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--copper), var(--copper-light)); color: var(--navy-dark); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; text-decoration: none; border-radius: 50px; border: none; cursor: pointer; transition: all 0.3s ease; }
+        .mobile-menu-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(184,115,51,0.4); }
+
+        /* Page hero */
+        .page-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%); padding: 9rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; }
+        .page-hero::before { content: ''; position: absolute; top: -50%; left: -20%; width: 60%; height: 200%; background: radial-gradient(circle, rgba(184,115,51,0.12) 0%, transparent 60%); pointer-events: none; }
+        .page-hero::after { content: ''; position: absolute; bottom: -30%; right: -10%; width: 50%; height: 150%; background: radial-gradient(circle, rgba(212,145,90,0.08) 0%, transparent 60%); pointer-events: none; }
+        .page-hero-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--copper); margin-bottom: 1rem; }
+        .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; color: white; line-height: 1.15; margin-bottom: 1.25rem; }
+        .page-hero p { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; color: rgba(245,242,235,0.75); max-width: 560px; margin: 0 auto; }
+
+        /* Blog grid */
+        .blog-section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2.5rem; }
+        .post-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(26,26,46,0.07); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .post-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,26,46,0.13); }
+        .post-card-thumb { height: 200px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #3a3a5c 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .post-card-thumb::before { content: ''; position: absolute; top: -30%; left: -20%; width: 70%; height: 160%; background: radial-gradient(circle, rgba(184,115,51,0.35) 0%, transparent 65%); }
+        .post-card-thumb::after { content: ''; position: absolute; bottom: -20%; right: -10%; width: 50%; height: 120%; background: radial-gradient(circle, rgba(212,145,90,0.2) 0%, transparent 65%); }
+        .post-card-thumb-icon { position: relative; z-index: 2; opacity: 0.6; }
+        .post-card-thumb-icon svg { width: 48px; height: 48px; color: var(--copper-light); }
+        .post-card-category { position: absolute; top: 1rem; left: 1rem; background: var(--copper); color: white; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 9999px; z-index: 3; }
+        .post-card-body { padding: 1.75rem; }
+        .post-card-meta { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 500; color: rgba(45,55,72,0.55); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .post-card-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--copper); display: inline-block; }
+        .post-card h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 700; color: var(--navy); line-height: 1.25; margin-bottom: 0.85rem; }
+        .post-card p { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: rgba(45,55,72,0.75); line-height: 1.7; margin-bottom: 1.5rem; }
+        .post-card-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--copper); text-decoration: none; transition: gap 0.25s ease; }
+        .post-card-link:hover { gap: 0.7rem; }
+        .post-card-link svg { width: 16px; height: 16px; transition: transform 0.25s ease; }
+        .post-card-link:hover svg { transform: translateX(3px); }
+
+        /* Footer */
+        .footer { background: var(--navy-dark); color: white; padding: 4rem 2rem 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-brand .logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: white; margin-bottom: 1rem; display: inline-block; text-decoration: none; }
+        .footer-brand p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .fluid-dock { display: flex; gap: 1rem; padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.05); border-radius: 9999px; border: 1px solid rgba(184,115,51,0.2); width: fit-content; }
+        .dock-item { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .dock-item:hover { background: var(--copper); color: var(--navy); transform: scale(1.2) translateY(-5px); }
+        .footer-column h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 1.5rem; color: white; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s ease; display: inline-block; }
+        .footer-links a:hover { color: var(--copper); transform: translateX(5px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .tubelight-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-column:not(:first-child) { display: none; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .blog-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="tubelight-nav" id="navbar">
+        <div class="tubelight-container">
+            <a href="../index.html" class="tubelight-logo"><img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips logo — premium mobile bartending Cincinnati" style="height:40px;width:auto;display:inline-block;vertical-align:middle;margin-right:8px;"></a>
+            <div class="tubelight-links" id="tubelight-links">
+                <div class="tubelight-highlight" id="tubelight-highlight"></div>
+                <a href="../index.html#home" class="tubelight-link" data-index="0">Home</a>
+                <a href="../index.html#services" class="tubelight-link" data-index="1">Services</a>
+                <a href="../index.html#about" class="tubelight-link" data-index="2">About</a>
+                <a href="../index.html#pricing" class="tubelight-link" data-index="3">Packages</a>
+                <a href="../gallery.html" class="tubelight-link" data-index="4">Gallery</a>
+                <a href="../faq.html" class="tubelight-link" data-index="5">FAQ</a>
+                <a href="index.html" class="tubelight-link active" data-index="6">Blog</a>
+                <a href="../index.html#contact" class="tubelight-link" data-index="7">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips logo — premium mobile bartending Cincinnati" class="mobile-menu-logo">
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="../index.html#home"><span>Home</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="../index.html#services"><span>Services</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="../index.html#about"><span>About</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="../index.html#pricing"><span>Packages</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="../gallery.html"><span>Gallery</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="../faq.html"><span>FAQ</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="index.html"><span>Blog</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="../index.html#contact"><span>Contact</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="mobile-menu-footer">
+            <a href="../index.html#contact" class="mobile-menu-cta">Book Your Event</a>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <p class="page-hero-eyebrow">Event Planning &amp; Bartending Insights</p>
+        <h1>The 513Sips Blog</h1>
+        <p>Tips, guides, and real talk from Cincinnati's favorite mobile bartending team — so your next event goes off without a hitch.</p>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-grid" id="blog-grid">
+
+                <!-- Post Card: What Is Dry-Hire -->
+                <article class="post-card">
+                    <div class="post-card-thumb">
+                        <span class="post-card-category">Dry-Hire 101</span>
+                        <div class="post-card-thumb-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22H6a2 2 0 0 1-2-2V7l2-5h8l2 5v13a2 2 0 0 1-2 2h-2"/><path d="M6 12h12"/><circle cx="12" cy="17" r="3"/><path d="M12 14v6"/></svg>
+                        </div>
+                    </div>
+                    <div class="post-card-body">
+                        <div class="post-card-meta">
+                            <span>April 16, 2025</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>7 min read</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>Eddie Gady</span>
+                        </div>
+                        <h2>What Is a Dry-Hire Bar Service and Why Is It Perfect for You?</h2>
+                        <p>If you've been comparing options for your Cincinnati event's bar setup, you've probably come across the term "dry-hire." Here's what it actually means — and why it might be the smartest decision you make for your event budget.</p>
+                        <a href="what-is-dry-hire-bar-service.html" class="post-card-link">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo"><img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips mobile bartending logo" style="height:50px;width:auto;display:inline-block;vertical-align:middle;filter:brightness(0) invert(1);"></a>
+                    <p>Elevating celebrations throughout Cincinnati with craft cocktails and professional bartending services.</p>
+                    <div class="fluid-dock">
+                        <a href="https://www.instagram.com/513sips/" target="_blank" class="dock-item" data-label="Instagram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/people/513Sips/61581731595256/" target="_blank" class="dock-item" data-label="Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#services">Weddings</a></li>
+                        <li><a href="../index.html#services">Corporate Events</a></li>
+                        <li><a href="../index.html#services">Private Parties</a></li>
+                        <li><a href="../index.html#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#about">About Us</a></li>
+                        <li><a href="../gallery.html">Gallery</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="../faq.html">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> 513Sips. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+        mobileMenuClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+
+        // GSAP entrance animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from('.page-hero h1, .page-hero p, .page-hero-eyebrow', {
+            opacity: 0, y: 30, duration: 0.8, stagger: 0.15, ease: 'power2.out', delay: 0.2
+        });
+        gsap.utils.toArray('.post-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 88%' },
+                opacity: 0, y: 40, duration: 0.7, delay: i * 0.1, ease: 'power2.out'
+            });
+        });
+    </script>
+</body>
+</html>
