@@ -19,6 +19,9 @@
     .tubelight-link:hover, .tubelight-link.active { color: #1a1a2e; }
     .tubelight-highlight { position: absolute; height: 100%; background: linear-gradient(135deg, rgba(184, 115, 51, 0.25), rgba(212, 145, 90, 0.15)); border-radius: 9999px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1; box-shadow: 0 2px 12px rgba(184, 115, 51, 0.3); border: 1px solid rgba(184, 115, 51, 0.3); }
     .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: #1a1a2e; }
+    .nav-back-link { display: none; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: #b87333; text-decoration: none; transition: color 0.3s ease; }
+    .nav-back-link:hover { color: #d4915a; }
+    .nav-back-link svg { flex-shrink: 0; }
     /* Mobile Menu */
     .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1a1a2e; z-index: 999; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transform: translateX(100%); transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
     .mobile-menu.active { opacity: 1; pointer-events: all; transform: translateX(0); }
@@ -35,12 +38,11 @@
     .mobile-menu-cta { display: block; width: 100%; padding: 1rem; background: linear-gradient(135deg, #b87333, #d4915a); color: #12121f; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; text-decoration: none; border-radius: 50px; border: none; cursor: pointer; transition: all 0.3s ease; }
     .mobile-menu-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(184,115,51,0.4); }
     @media (max-width: 768px) {
-      .tubelight-nav { top: 0.75rem; padding: 0.6rem 1rem; width: auto; min-width: 210px; }
+      .tubelight-nav { top: 1rem; padding: 0.6rem 1rem; width: auto; }
       .tubelight-links { display: none; }
-      .mobile-menu-btn { display: block; flex-shrink: 0; }
-      .tubelight-container::before { content: ''; width: 40px; flex-shrink: 0; }
-      .tubelight-logo { flex: 1; justify-content: center; margin-right: 0; }
-      .tubelight-logo img { height: 52px !important; width: auto !important; }
+      .mobile-menu-btn { display: none; }
+      .tubelight-logo { display: none; }
+      .nav-back-link { display: flex; }
     }
   `;
   if (!document.getElementById('nav-js-styles')) {
@@ -83,6 +85,10 @@
   const html = `
     <nav class="tubelight-nav" id="navbar">
       <div class="tubelight-container">
+        <a href="${root}index.html" class="nav-back-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back to Home
+        </a>
         <a href="${root}index.html" class="tubelight-logo">
           <img src="${LOGO}" alt="513Sips logo — premium mobile bartending Cincinnati" style="height:40px;width:auto;display:block;">
         </a>
