@@ -62,11 +62,9 @@
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2.5rem; }
         .post-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(26,26,46,0.07); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .post-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,26,46,0.13); }
-        .post-card-thumb { height: 200px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #3a3a5c 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .post-card-thumb::before { content: ''; position: absolute; top: -30%; left: -20%; width: 70%; height: 160%; background: radial-gradient(circle, rgba(184,115,51,0.35) 0%, transparent 65%); }
-        .post-card-thumb::after { content: ''; position: absolute; bottom: -20%; right: -10%; width: 50%; height: 120%; background: radial-gradient(circle, rgba(212,145,90,0.2) 0%, transparent 65%); }
-        .post-card-thumb-icon { position: relative; z-index: 2; opacity: 0.6; }
-        .post-card-thumb-icon svg { width: 48px; height: 48px; color: var(--copper-light); }
+        .post-card-thumb { height: 220px; position: relative; overflow: hidden; }
+        .post-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+        .post-card:hover .post-card-thumb img { transform: scale(1.05); }
         .post-card-category { position: absolute; top: 1rem; left: 1rem; background: var(--copper); color: white; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 9999px; z-index: 3; }
         .post-card-body { padding: 1.75rem; }
         .post-card-meta { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 500; color: rgba(45,55,72,0.55); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -123,13 +121,11 @@
                 <article class="post-card">
                     <div class="post-card-thumb">
                         <span class="post-card-category">Dry-Hire 101</span>
-                        <div class="post-card-thumb-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22H6a2 2 0 0 1-2-2V7l2-5h8l2 5v13a2 2 0 0 1-2 2h-2"/><path d="M6 12h12"/><circle cx="12" cy="17" r="3"/><path d="M12 14v6"/></svg>
-                        </div>
+                        <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_600,h_440,q_auto,f_webp/v1776711878/Easter_bar_V4_fan7cu.png" alt="513Sips bar setup at a Cincinnati event" loading="lazy">
                     </div>
                     <div class="post-card-body">
                         <div class="post-card-meta">
-                            <span>April 16, 2025</span>
+                            <span>April 16, 2026</span>
                             <span class="post-card-meta-dot"></span>
                             <span>7 min read</span>
                             <span class="post-card-meta-dot"></span>
@@ -138,6 +134,98 @@
                         <h2>What Is a Dry-Hire Bar Service and Why Is It Perfect for You?</h2>
                         <p>If you've been comparing options for your Cincinnati event's bar setup, you've probably come across the term "dry-hire." Here's what it actually means — and why it might be the smartest decision you make for your event budget.</p>
                         <a href="what-is-dry-hire-bar-service.html" class="post-card-link">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post Card: How Much Does a Mobile Bartender Cost -->
+                <article class="post-card">
+                    <div class="post-card-thumb">
+                        <span class="post-card-category">Pricing</span>
+                        <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_600,h_440,q_auto,f_webp/v1776711878/Easter_bar_V4_fan7cu.png" alt="513Sips bar setup at a Cincinnati event" loading="lazy">
+                    </div>
+                    <div class="post-card-body">
+                        <div class="post-card-meta">
+                            <span>April 23, 2026</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>6 min read</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>Eddie Gady</span>
+                        </div>
+                        <h2>How Much Does a Mobile Bartender Cost in Cincinnati?</h2>
+                        <p>Wondering what a mobile bartender costs in Cincinnati? Break down pricing for dry-hire bar services, packages, and what affects your quote with 513Sips.</p>
+                        <a href="how-much-does-a-mobile-bartender-cost.html" class="post-card-link">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post Card: What Does a Mobile Bartender Do -->
+                <article class="post-card">
+                    <div class="post-card-thumb">
+                        <span class="post-card-category">Event Planning</span>
+                        <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_600,h_440,q_auto,f_webp/v1776711878/Easter_bar_V4_fan7cu.png" alt="513Sips bar setup at a Cincinnati event" loading="lazy">
+                    </div>
+                    <div class="post-card-body">
+                        <div class="post-card-meta">
+                            <span>April 30, 2026</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>5 min read</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>Eddie Gady</span>
+                        </div>
+                        <h2>What Does a Mobile Bartender Actually Do at Your Event?</h2>
+                        <p>Curious what a mobile bartender actually does at your event? From setup to last call, here's everything 513Sips brings to Cincinnati events.</p>
+                        <a href="what-does-a-mobile-bartender-do.html" class="post-card-link">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post Card: Open Bar vs Cash Bar vs Consumption Bar -->
+                <article class="post-card">
+                    <div class="post-card-thumb">
+                        <span class="post-card-category">Event Planning</span>
+                        <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_600,h_440,q_auto,f_webp/v1776711878/Easter_bar_V4_fan7cu.png" alt="513Sips bar setup at a Cincinnati event" loading="lazy">
+                    </div>
+                    <div class="post-card-body">
+                        <div class="post-card-meta">
+                            <span>May 7, 2026</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>6 min read</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>Eddie Gady</span>
+                        </div>
+                        <h2>Open Bar vs Cash Bar vs Consumption Bar — Which Is Right for Your Event?</h2>
+                        <p>Not sure which bar setup is right for your Cincinnati event? We break down open bar, cash bar, and consumption bar — and how dry-hire fits into each.</p>
+                        <a href="open-bar-vs-cash-bar-vs-consumption-bar.html" class="post-card-link">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post Card: What to Expect When You Book 513Sips -->
+                <article class="post-card">
+                    <div class="post-card-thumb">
+                        <span class="post-card-category">Behind the Scenes</span>
+                        <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_600,h_440,q_auto,f_webp/v1776711878/Easter_bar_V4_fan7cu.png" alt="513Sips bar setup at a Cincinnati event" loading="lazy">
+                    </div>
+                    <div class="post-card-body">
+                        <div class="post-card-meta">
+                            <span>May 14, 2026</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>5 min read</span>
+                            <span class="post-card-meta-dot"></span>
+                            <span>Eddie Gady</span>
+                        </div>
+                        <h2>What to Expect When You Book 513Sips</h2>
+                        <p>Wondering what the booking process looks like with 513Sips? Here's exactly what happens from your first message to the last drink poured at your Cincinnati event.</p>
+                        <a href="what-to-expect-when-you-book-513sips.html" class="post-card-link">
                             Read More
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
