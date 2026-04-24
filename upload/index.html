@@ -510,9 +510,9 @@
     </div>
 
     <label class="drop-zone" id="drop-zone">
-      <input type="file" id="file-input" accept="image/*" multiple onchange="handleFiles(this.files)">
-      <span class="drop-icon">📷</span>
-      <span class="drop-title">Tap to Select Photos</span>
+      <input type="file" id="file-input" accept="image/*,video/*" multiple onchange="handleFiles(this.files)">
+      <span class="drop-icon">📷🎥</span>
+      <span class="drop-title">Tap to Select Photos or Videos</span>
       <span class="drop-hint">You can choose multiple at once</span>
     </label>
 
@@ -830,7 +830,7 @@
     fd.append('upload_preset', CONFIG.UPLOAD_PRESET);
     fd.append('folder',        folder);
     const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${CONFIG.CLOUD_NAME}/image/upload`,
+      `https://api.cloudinary.com/v1_1/${CONFIG.CLOUD_NAME}/auto/upload`,
       { method: 'POST', body: fd }
     );
     if (!res.ok) {
