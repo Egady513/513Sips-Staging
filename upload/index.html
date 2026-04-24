@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="513Sips Upload">
+  <meta name="theme-color" content="#1a1a2e">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <title>513Sips Photo Upload</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --navy:         #1a1a2e;
+      --navy-light:   #2d2d4a;
+      --navy-dark:    #12121f;
+      --cream:        #f5f2eb;
+      --copper:       #b87333;
+      --copper-light: #d4915a;
+      --copper-dark:  #8a5520;
+      --charcoal:     #2d3748;
+      --safe-top:    env(safe-area-inset-top,    20px);
+      --safe-bottom: env(safe-area-inset-bottom, 20px);
+    }
+
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--navy-dark);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Background glow ───────────────────────────────── */
+    .bg-glow {
+      position: fixed; inset: 0;
+      pointer-events: none; overflow: hidden; z-index: 0;
+    }
+    .bg-glow::before {
+      content: '';
+      position: absolute; top: -30%; right: -20%;
+      width: 550px; height: 550px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,115,51,.12) 0%, transparent 70%);
+    }
+    .bg-glow::after {
+      content: '';
+      position: absolute; bottom: -25%; left: -25%;
+      width: 450px; height: 450px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,115,51,.07) 0%, transparent 70%);
+    }
+
+    /* ── App shell ─────────────────────────────────────── */
+    #app { position: fixed; inset: 0; z-index: 1; }
+
+    /* ── Screens ───────────────────────────────────────── */
+    .screen {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      padding: calc(var(--safe-top) + 24px) 28px calc(var(--safe-bottom) + 24px);
+      opacity: 0; transform: translateX(32px);
+      transition: opacity .32s ease, transform .32s ease;
+      pointer-events: none; overflow-y: auto;
+    }
+    .screen.active {
+      opacity: 1; transform: translateX(0);
+      pointer-events: all;
+    }
+    .screen.exit {
+      opacity: 0; transform: translateX(-32px);
+    }
+
+    /* ── Shimmer (matches 513Sips site — dark bg variant) ─ */
+    @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+
+    /* ── Divider ───────────────────────────────────────── */
+    .divider {
+      width: 56px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--copper), transparent);
+      margin: 16px auto;
+    }
+
+    /* ── WELCOME ───────────────────────────────────────── */
+    #screen-welcome {
+      align-items: center; justify-content: center; text-align: center;
+    }
+    .welcome-logo {
+      height: 110px; width: auto;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 24px rgba(184,115,51,.25));
+    }
+    .welcome-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 50px; font-weight: 600;
+      background: linear-gradient(90deg, #fff 0%, var(--copper-light) 50%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      letter-spacing: 2px; line-height: 1.05; margin-bottom: 10px;
+    }
+    .welcome-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-style: italic;
+      color: var(--copper-light); margin-bottom: 8px;
+    }
+
+    /* Lock badge — shown when ?event= param is present */
+    .lock-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; margin-top: 16px;
+      background: rgba(184,115,51,.14);
+      border: 1px solid rgba(184,115,51,.35);
+      border-radius: 20px;
+      font-size: 12px; font-weight: 600; letter-spacing: .5px;
+      color: var(--copper-light);
+    }
+
+    .welcome-hint {
+      font-size: 11px; color: rgba(245,242,235,.45);
+      letter-spacing: .4px; margin-top: 18px; line-height: 1.6;
+    }
+
+    /* ── Screen header / back ──────────────────────────── */
+    .screen-header {
+      display: flex; align-items: center; margin-bottom: 24px; flex-shrink: 0;
+    }
+    .back-btn {
+      display: flex; align-items: center; gap: 6px;
+      background: none; border: none; cursor: pointer;
+      color: var(--copper-light); font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 8px 0; transition: opacity .2s;
+    }
+    .back-btn:active { opacity: .55; }
+
+    /* ── Screen titles ─────────────────────────────────── */
+    .screen-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px; font-weight: 600;
+      background: linear-gradient(90deg, #fff 0%, var(--copper-light) 50%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      letter-spacing: 1.5px; line-height: 1.05;
+      margin-bottom: 6px; flex-shrink: 0;
+    }
+    .screen-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-style: italic;
+      color: var(--copper-light);
+      margin-bottom: 24px; flex-shrink: 0;
+    }
+
+    /* ── Event selection list ──────────────────────────── */
+    .event-list {
+      display: flex; flex-direction: column; gap: 9px;
+      overflow-y: auto; flex: 1; padding-bottom: 4px;
+    }
+    .event-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 15px 18px;
+      background: rgba(45,45,74,.5);
+      border: 1px solid rgba(184,115,51,.18);
+      border-radius: 13px; cursor: pointer;
+      transition: all .2s;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; color: #f5f2eb; letter-spacing: .5px;
+      text-align: left; width: 100%;
+    }
+    .event-item:active, .event-item.selected {
+      border-color: var(--copper); background: rgba(184,115,51,.12);
+    }
+    .event-item.new-event-btn {
+      border-color: rgba(184,115,51,.3);
+      color: var(--copper-light);
+    }
+    .event-item.new-event-btn.selected {
+      border-color: var(--copper); background: rgba(184,115,51,.12);
+    }
+    .ev-check { margin-left: auto; color: var(--copper); opacity: 0; transition: opacity .2s; flex-shrink: 0; }
+    .event-item.selected .ev-check { opacity: 1; }
+
+    .loading-state {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 48px 20px;
+      color: rgba(245,242,235,.35); font-size: 12px; letter-spacing: 1px;
+    }
+    .spinner {
+      width: 20px; height: 20px;
+      border: 2px solid rgba(184,115,51,.2);
+      border-top-color: var(--copper);
+      border-radius: 50%; animation: spin .75s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── New event inline form ─────────────────────────── */
+    .new-event-form {
+      margin-top: 14px; flex-shrink: 0;
+    }
+    .form-label {
+      display: block; font-size: 10px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 8px;
+    }
+    .form-input {
+      background: rgba(45,45,74,.6);
+      border: 1px solid rgba(184,115,51,.3);
+      border-radius: 14px; padding: 15px 18px; width: 100%;
+      font-family: 'Cormorant Garamond', serif; font-size: 22px;
+      color: #f5f2eb; outline: none;
+      -webkit-appearance: none;
+      transition: border-color .2s;
+    }
+    .form-input::placeholder { color: rgba(245,242,235,.22); }
+    .form-input:focus { border-color: var(--copper); }
+
+    /* ── Photos screen ─────────────────────────────────── */
+    .event-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      background: rgba(184,115,51,.14);
+      border: 1px solid rgba(184,115,51,.3);
+      border-radius: 20px; margin-bottom: 20px; align-self: flex-start;
+      font-size: 12px; font-weight: 500; letter-spacing: .4px;
+      color: var(--copper-light); flex-shrink: 0; max-width: 100%;
+    }
+    .event-badge span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .drop-zone {
+      border: 2px dashed rgba(184,115,51,.3); border-radius: 22px;
+      padding: 36px 20px; flex-shrink: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+      cursor: pointer; transition: all .22s;
+      background: rgba(45,45,74,.22); text-align: center;
+      margin-bottom: 16px; position: relative;
+    }
+    .drop-zone.has-files { border-color: var(--copper); background: rgba(184,115,51,.07); }
+    .drop-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0;
+      cursor: pointer; width: 100%; height: 100%;
+    }
+    .drop-icon { font-size: 40px; line-height: 1; }
+    .drop-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; color: #f5f2eb; letter-spacing: .5px;
+    }
+    .drop-hint { font-size: 11px; color: rgba(245,242,235,.6); letter-spacing: .4px; }
+
+    .photo-count-badge {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--copper-light);
+      margin-bottom: 10px; text-align: center; flex-shrink: 0;
+    }
+    .photo-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 7px; margin-bottom: 4px; flex-shrink: 0;
+    }
+    .photo-thumb {
+      aspect-ratio: 1; border-radius: 10px;
+      overflow: hidden; background: var(--navy-light);
+      position: relative;
+    }
+    .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb-more {
+      position: absolute; inset: 0;
+      background: rgba(18,18,31,.72);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; color: var(--cream);
+    }
+
+    /* ── Progress screen ───────────────────────────────── */
+    #screen-progress { align-items: center; justify-content: center; text-align: center; }
+    .progress-wrap { width: 100%; max-width: 360px; }
+    .progress-cloud { font-size: 52px; margin-bottom: 20px; display: block; }
+    .progress-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 600;
+      background: linear-gradient(90deg, #fff 0%, var(--copper-light) 50%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      letter-spacing: 2px; margin-bottom: 6px;
+    }
+    .progress-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic;
+      color: rgba(245,242,235,.55); margin-bottom: 28px;
+    }
+    .progress-track {
+      width: 100%; height: 3px;
+      background: rgba(45,45,74,.9); border-radius: 2px;
+      overflow: hidden; margin-bottom: 8px;
+    }
+    .progress-fill {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, var(--copper-dark), var(--copper-light));
+      border-radius: 2px; transition: width .3s ease;
+    }
+    .progress-pct {
+      font-size: 11px; color: rgba(245,242,235,.3);
+      letter-spacing: 1px; margin-bottom: 24px;
+    }
+    .progress-files {
+      display: flex; flex-direction: column; gap: 7px;
+      max-height: 280px; overflow-y: auto; text-align: left; width: 100%;
+    }
+    .pf-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      background: rgba(45,45,74,.5); border-radius: 10px;
+      font-size: 12px; color: rgba(245,242,235,.55); letter-spacing: .3px;
+    }
+    .pf-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .pf-status { flex-shrink: 0; font-size: 15px; }
+
+    /* ── Success screen ────────────────────────────────── */
+    #screen-success { align-items: center; justify-content: center; text-align: center; }
+    .success-icon {
+      font-size: 68px; margin-bottom: 22px;
+      animation: pop .45s cubic-bezier(.175,.885,.32,1.275) both;
+    }
+    @keyframes pop {
+      0%   { transform: scale(.4); opacity: 0; }
+      100% { transform: scale(1);  opacity: 1; }
+    }
+    .success-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 46px; font-weight: 600;
+      background: linear-gradient(90deg, #fff 0%, var(--copper-light) 50%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      letter-spacing: 2.5px; margin-bottom: 10px;
+    }
+    .success-detail {
+      font-size: 13px; color: rgba(245,242,235,.72);
+      letter-spacing: .5px; line-height: 1.6; margin-bottom: 8px;
+    }
+    .success-event {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; font-style: italic;
+      color: var(--copper-light); margin-bottom: 44px;
+    }
+    .success-actions {
+      display: flex; flex-direction: column; gap: 12px;
+      width: 100%; max-width: 300px;
+    }
+
+    /* ── Buttons — matches 513Sips site exactly ────────── */
+    .btn-primary {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 18px 32px; width: 100%;
+      background: linear-gradient(135deg, var(--copper), var(--copper-light));
+      color: var(--navy-dark); border: none; border-radius: 50px; cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(184,115,51,.4);
+      transition: all .4s cubic-bezier(.4,0,.2,1);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute;
+      top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+      transition: left .5s ease;
+    }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184,115,51,.5); }
+    .btn-primary:active { transform: scale(.97); }
+    .btn-primary:disabled { opacity: .35; cursor: not-allowed; transform: none; }
+    .btn-secondary {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 17px 32px; width: 100%;
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.3); border-radius: 50px; cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      transition: all .4s cubic-bezier(.4,0,.2,1);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.6); transform: translateY(-2px); }
+    .btn-secondary:active { background: rgba(255,255,255,.06); }
+
+    .btn-area {
+      margin-top: auto; padding-top: 20px;
+      display: flex; flex-direction: column; gap: 10px; flex-shrink: 0;
+    }
+
+    /* ── Toast ─────────────────────────────────────────── */
+    .toast {
+      position: fixed; z-index: 999;
+      bottom: calc(var(--safe-bottom) + 28px); left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--charcoal); color: var(--cream);
+      padding: 12px 22px; border-radius: 12px;
+      font-size: 13px; letter-spacing: .3px; white-space: nowrap;
+      border: 1px solid rgba(184,115,51,.25);
+      opacity: 0; pointer-events: none;
+      transition: all .28s ease;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast.err   { border-color: rgba(229,57,53,.45); }
+
+    /* ── Scrollbar ─────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: rgba(184,115,51,.25); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div id="app">
+
+  <!-- ══════════════ WELCOME ══════════════ -->
+  <div class="screen active" id="screen-welcome">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <img
+        class="welcome-logo"
+        src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_scale,h_220,q_auto,f_webp/513Sips_White_ums9lm.png"
+        alt="513Sips"
+      >
+      <div class="divider"></div>
+      <h1 class="welcome-title">Photo Upload</h1>
+      <p class="welcome-sub" id="welcome-sub">Every celebration, beautifully preserved.</p>
+      <div class="lock-badge" id="lock-badge" style="display:none;">
+        📁 <span id="lock-event-label"></span>
+      </div>
+    </div>
+    <div class="btn-area">
+      <button class="btn-primary" onclick="handleGetStarted()">
+        Add Photos
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <p class="welcome-hint" id="welcome-hint">Tip: on iPhone, tap Share → "Add to Home Screen"<br>for a shortcut that opens like an app</p>
+    </div>
+  </div>
+
+  <!-- ══════════════ EVENT SELECTION (combined) ══════════════ -->
+  <div class="screen" id="screen-event">
+    <div class="screen-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </button>
+    </div>
+    <h2 class="screen-title">Add Photos</h2>
+    <p class="screen-sub">Which event are these for?</p>
+
+    <div class="event-list" id="event-list">
+      <div class="loading-state"><div class="spinner"></div>Loading events…</div>
+    </div>
+
+    <div class="new-event-form" id="new-event-form" style="display:none;">
+      <label class="form-label" for="new-event-input">Event Name</label>
+      <input
+        class="form-input"
+        type="text"
+        id="new-event-input"
+        placeholder="e.g. Yelp Cincy Night"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        oninput="onNewEventInput()"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();confirmEvent();}"
+      >
+    </div>
+
+    <div class="btn-area">
+      <button class="btn-primary" id="event-continue-btn" onclick="confirmEvent()" disabled>
+        Continue
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════ ADD PHOTOS ══════════════ -->
+  <div class="screen" id="screen-photos">
+    <div class="screen-header">
+      <button class="back-btn" onclick="goBack()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </button>
+    </div>
+    <h2 class="screen-title">Add Photos</h2>
+    <p class="screen-sub">We'll take it from here.</p>
+
+    <div class="event-badge">
+      📁&nbsp;<span id="selected-event-label"></span>
+    </div>
+
+    <label class="drop-zone" id="drop-zone">
+      <input type="file" id="file-input" accept="image/*" multiple onchange="handleFiles(this.files)">
+      <span class="drop-icon">📷</span>
+      <span class="drop-title">Tap to Select Photos</span>
+      <span class="drop-hint">You can choose multiple at once</span>
+    </label>
+
+    <div id="photo-preview-area" style="display:none;">
+      <div class="photo-count-badge" id="photo-count-label"></div>
+      <div class="photo-grid" id="photo-grid"></div>
+    </div>
+
+    <div class="btn-area">
+      <button class="btn-primary" id="upload-btn" onclick="startUpload()" disabled>
+        Upload Photos
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════ UPLOADING ══════════════ -->
+  <div class="screen" id="screen-progress">
+    <div class="progress-wrap">
+      <span class="progress-cloud">☁️</span>
+      <h2 class="progress-title">Uploading</h2>
+      <p class="progress-sub" id="progress-sub">Preparing…</p>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <p class="progress-pct" id="progress-pct">0%</p>
+      <div class="progress-files" id="progress-files"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SUCCESS ══════════════ -->
+  <div class="screen" id="screen-success">
+    <div class="success-icon">🥂</div>
+    <h2 class="success-title">All Done!</h2>
+    <p class="success-detail" id="success-detail"></p>
+    <p class="success-event" id="success-event"></p>
+    <div class="divider"></div>
+    <div class="success-actions" style="margin-top:40px;">
+      <button class="btn-primary" onclick="uploadMore()">Upload More Photos</button>
+      <button class="btn-secondary" onclick="resetHome()">Done</button>
+    </div>
+  </div>
+
+</div><!-- #app -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ─────────────────────────────────────────────────────────
+  //  CONFIG
+  // ─────────────────────────────────────────────────────────
+  const CONFIG = {
+    CLOUD_NAME:          'dkfypt2cb',
+    UPLOAD_PRESET:       '513Sips_Upload',
+    BASE_FOLDER:         'Do not use/Hannah Pictures',
+    SUBFOLDERS_ENDPOINT: 'https://eozk3boqsey4ykn.m.pipedream.net',
+  };
+
+  // ─────────────────────────────────────────────────────────
+  //  STATE
+  // ─────────────────────────────────────────────────────────
+  let nav       = ['screen-welcome'];
+  let curScreen = 'screen-welcome';
+  let eventName = '';
+  let files     = [];
+  let selSub    = '';
+  let isNew     = false;
+  let lockedEvent = ''; // set if ?event= URL param present
+
+  // ─────────────────────────────────────────────────────────
+  //  URL PARAM — event lock
+  // ─────────────────────────────────────────────────────────
+  (function initLock() {
+    const param = new URLSearchParams(window.location.search).get('event');
+    if (!param) return;
+    lockedEvent = param;
+    eventName   = param;
+    // Update welcome screen for locked mode
+    document.getElementById('welcome-sub').textContent   = 'Share your photos from tonight.';
+    document.getElementById('lock-badge').style.display  = 'inline-flex';
+    document.getElementById('lock-event-label').textContent = param;
+    document.getElementById('welcome-hint').style.display = 'none';
+  })();
+
+  // ─────────────────────────────────────────────────────────
+  //  NAVIGATION
+  // ─────────────────────────────────────────────────────────
+  function goTo(id) {
+    if (id === curScreen) return;
+    const cur = document.getElementById(curScreen);
+    const nxt = document.getElementById(id);
+    cur.classList.add('exit');
+    cur.classList.remove('active');
+    setTimeout(() => cur.classList.remove('exit'), 350);
+    nxt.classList.add('active');
+    nav.push(id);
+    curScreen = id;
+  }
+
+  function goBack() {
+    if (nav.length <= 1) return;
+    nav.pop();
+    const prev = nav[nav.length - 1];
+    document.getElementById(curScreen).classList.remove('active');
+    document.getElementById(prev).classList.add('active');
+    curScreen = prev;
+  }
+
+  function resetHome() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active','exit'));
+    document.getElementById('screen-welcome').classList.add('active');
+    nav = ['screen-welcome']; curScreen = 'screen-welcome';
+    if (!lockedEvent) eventName = '';
+    files = []; selSub = ''; isNew = false;
+    document.getElementById('new-event-input').value        = '';
+    document.getElementById('new-event-form').style.display = 'none';
+    document.getElementById('file-input').value             = '';
+    document.getElementById('photo-grid').innerHTML         = '';
+    document.getElementById('photo-preview-area').style.display = 'none';
+    document.getElementById('drop-zone').classList.remove('has-files');
+    document.getElementById('upload-btn').disabled          = true;
+    document.getElementById('event-continue-btn').disabled  = true;
+  }
+
+  // ─────────────────────────────────────────────────────────
+  //  GET STARTED
+  // ─────────────────────────────────────────────────────────
+  function handleGetStarted() {
+    if (lockedEvent) {
+      // Locked mode → skip event selection, go straight to photos
+      document.getElementById('selected-event-label').textContent = lockedEvent;
+      goTo('screen-photos');
+    } else {
+      goTo('screen-event');
+      loadEvents();
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────
+  //  EVENT SELECTION
+  // ─────────────────────────────────────────────────────────
+  function loadEvents() {
+    const list = document.getElementById('event-list');
+    list.innerHTML = '<div class="loading-state"><div class="spinner"></div>Loading events…</div>';
+    document.getElementById('event-continue-btn').disabled  = true;
+    document.getElementById('new-event-form').style.display = 'none';
+    selSub = ''; isNew = false;
+
+    fetch(CONFIG.SUBFOLDERS_ENDPOINT)
+      .then(r => r.json())
+      .then(data => {
+        const folders = (data.folders || []).sort((a, b) => a.localeCompare(b));
+        const items = folders.map(f =>
+          `<button class="event-item" onclick="selectExisting(this,'${esc(f)}')">
+            <span>📁</span>
+            <span style="flex:1;">${escH(f)}</span>
+            <span class="ev-check">✓</span>
+          </button>`
+        );
+        // Always append "New Event" at the bottom
+        items.push(
+          `<button class="event-item new-event-btn" onclick="selectNew(this)">
+            <span>＋</span>
+            <span style="flex:1;">New Event</span>
+            <span class="ev-check">✓</span>
+          </button>`
+        );
+        list.innerHTML = items.join('');
+      })
+      .catch(() => {
+        // If fetch fails, just show New Event option
+        list.innerHTML =
+          `<button class="event-item new-event-btn" onclick="selectNew(this)">
+            <span>＋</span>
+            <span style="flex:1;">New Event</span>
+            <span class="ev-check">✓</span>
+          </button>`;
+      });
+  }
+
+  function selectExisting(el, name) {
+    document.querySelectorAll('.event-item').forEach(i => i.classList.remove('selected'));
+    el.classList.add('selected');
+    selSub = name; isNew = false;
+    document.getElementById('new-event-form').style.display = 'none';
+    document.getElementById('event-continue-btn').disabled  = false;
+  }
+
+  function selectNew(el) {
+    document.querySelectorAll('.event-item').forEach(i => i.classList.remove('selected'));
+    el.classList.add('selected');
+    selSub = ''; isNew = true;
+    document.getElementById('new-event-form').style.display = 'block';
+    document.getElementById('event-continue-btn').disabled  = true;
+    setTimeout(() => document.getElementById('new-event-input').focus(), 50);
+  }
+
+  function onNewEventInput() {
+    const val = document.getElementById('new-event-input').value.trim();
+    document.getElementById('event-continue-btn').disabled = !val;
+  }
+
+  function confirmEvent() {
+    if (isNew) {
+      const val = document.getElementById('new-event-input').value.trim();
+      if (!val) { showToast('Please enter an event name', true); return; }
+      eventName = val;
+    } else {
+      if (!selSub) return;
+      eventName = selSub;
+    }
+    document.getElementById('selected-event-label').textContent = eventName;
+    // Reset file state when changing events
+    files = [];
+    document.getElementById('file-input').value             = '';
+    document.getElementById('photo-grid').innerHTML         = '';
+    document.getElementById('photo-preview-area').style.display = 'none';
+    document.getElementById('drop-zone').classList.remove('has-files');
+    document.getElementById('upload-btn').disabled          = true;
+    goTo('screen-photos');
+  }
+
+  // ─────────────────────────────────────────────────────────
+  //  FILE SELECTION
+  // ─────────────────────────────────────────────────────────
+  function handleFiles(fileList) {
+    if (!fileList || !fileList.length) return;
+    files = Array.from(fileList);
+
+    const grid     = document.getElementById('photo-grid');
+    const preview  = document.getElementById('photo-preview-area');
+    const countLbl = document.getElementById('photo-count-label');
+    const btn      = document.getElementById('upload-btn');
+    const dropZone = document.getElementById('drop-zone');
+
+    grid.innerHTML = '';
+    const show = Math.min(files.length, 9);
+    for (let i = 0; i < show; i++) {
+      const wrap = document.createElement('div');
+      wrap.className = 'photo-thumb';
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(files[i]);
+      wrap.appendChild(img);
+      if (i === 8 && files.length > 9) {
+        const more = document.createElement('div');
+        more.className = 'thumb-more';
+        more.textContent = `+${files.length - 8}`;
+        wrap.appendChild(more);
+      }
+      grid.appendChild(wrap);
+    }
+
+    const n = files.length;
+    countLbl.textContent   = `${n} photo${n !== 1 ? 's' : ''} selected`;
+    preview.style.display  = 'block';
+    dropZone.classList.add('has-files');
+    btn.disabled = false;
+    btn.innerHTML = `Upload ${n} Photo${n !== 1 ? 's' : ''}
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>`;
+  }
+
+  // ─────────────────────────────────────────────────────────
+  //  UPLOAD
+  // ─────────────────────────────────────────────────────────
+  async function startUpload() {
+    if (!files.length) return;
+    const folder = `${CONFIG.BASE_FOLDER}/${eventName}`;
+    const total  = files.length;
+
+    document.getElementById('progress-files').innerHTML = files.map((f, i) =>
+      `<div class="pf-row" id="pf-${i}">
+        <span class="pf-name">${escH(f.name)}</span>
+        <span class="pf-status" id="ps-${i}">⏳</span>
+      </div>`
+    ).join('');
+
+    goTo('screen-progress');
+
+    let done = 0, failed = 0;
+
+    for (let i = 0; i < total; i++) {
+      document.getElementById('progress-fill').style.width = Math.round((i / total) * 100) + '%';
+      document.getElementById('progress-pct').textContent  = Math.round((i / total) * 100) + '%';
+      document.getElementById('progress-sub').textContent  = `Photo ${i + 1} of ${total}`;
+      document.getElementById(`ps-${i}`).textContent = '⏫';
+      document.getElementById(`pf-${i}`).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      try {
+        await uploadOne(files[i], folder);
+        document.getElementById(`ps-${i}`).textContent = '✅';
+        done++;
+      } catch {
+        document.getElementById(`ps-${i}`).textContent = '❌';
+        failed++;
+      }
+    }
+
+    document.getElementById('progress-fill').style.width = '100%';
+    document.getElementById('progress-pct').textContent  = '100%';
+
+    await sleep(600);
+
+    document.getElementById('success-detail').textContent =
+      failed === 0
+        ? `${done} photo${done !== 1 ? 's' : ''} uploaded successfully ✨`
+        : `${done} uploaded · ${failed} failed`;
+    document.getElementById('success-event').textContent = `📁 ${eventName}`;
+    goTo('screen-success');
+  }
+
+  async function uploadOne(file, folder) {
+    const fd = new FormData();
+    fd.append('file',          file);
+    fd.append('upload_preset', CONFIG.UPLOAD_PRESET);
+    fd.append('folder',        folder);
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${CONFIG.CLOUD_NAME}/image/upload`,
+      { method: 'POST', body: fd }
+    );
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error?.message || 'Upload failed');
+    }
+    return res.json();
+  }
+
+  // ─────────────────────────────────────────────────────────
+  //  POST-UPLOAD
+  // ─────────────────────────────────────────────────────────
+  function uploadMore() {
+    const evt = eventName;
+    resetHome();
+    eventName = evt;
+    document.getElementById('selected-event-label').textContent = evt;
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active','exit'));
+    document.getElementById('screen-photos').classList.add('active');
+    nav = ['screen-welcome', 'screen-photos'];
+    curScreen = 'screen-photos';
+  }
+
+  // ─────────────────────────────────────────────────────────
+  //  UTILITIES
+  // ─────────────────────────────────────────────────────────
+  const escH  = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const esc   = s => s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  let toastT;
+  function showToast(msg, isErr = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isErr ? ' err' : '');
+    clearTimeout(toastT);
+    toastT = setTimeout(() => t.classList.remove('show'), 3200);
+  }
+
+  // ─────────────────────────────────────────────────────────
+  //  PWA
+  // ─────────────────────────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {});
+  }
+</script>
+</body>
+</html>

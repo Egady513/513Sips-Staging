@@ -1,0 +1,19 @@
+{
+  "name": "513Sips Photo Upload",
+  "short_name": "513Sips Upload",
+  "description": "Upload photos to 513Sips — for Hannah",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#12121f",
+  "theme_color": "#b87333",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
