@@ -188,7 +188,7 @@
         .pricing .section-subtitle { color: rgba(255, 255, 255, 0.8); }
         .pricing .section-tag { color: var(--copper-light); }
         .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .pricing-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(184, 115, 51, 0.2); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; filter: blur(10px); transform: translateY(40px); position: relative; overflow: hidden; }
+        .pricing-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(184, 115, 51, 0.2); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; filter: blur(10px); transform: translateY(40px); position: relative; overflow: hidden; display: flex; flex-direction: column; }
         .pricing-card.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
         .pricing-card:hover { transform: translateY(-10px); border-color: rgba(184, 115, 51, 0.5); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); }
         .pricing-card.featured { background: linear-gradient(135deg, rgba(184, 115, 51, 0.2), rgba(212, 145, 90, 0.1)); border-color: var(--copper); }
@@ -206,7 +206,7 @@
         .pricing-card-price { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--copper); margin-bottom: 0.5rem; }
         .pricing-card-price span { font-size: 1rem; color: rgba(255, 255, 255, 0.6); font-weight: 400; }
         .pricing-card-desc { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
-        .pricing-card-features { list-style: none; margin-bottom: 2rem; }
+        .pricing-card-features { list-style: none; margin-bottom: 2rem; flex: 1; }
         .pricing-card-features li { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9); }
         .pricing-card-features li i { color: var(--copper); flex-shrink: 0; margin-top: 0.15rem; }
         .pricing-cta { text-align: center; margin-top: 3rem; }
@@ -215,14 +215,15 @@
         .pricing-card.premier .pricing-card-name { background: linear-gradient(135deg, #d4915a, #f0c080, #d4915a); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmerText 3s linear infinite; }
         @keyframes shimmerText { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
         .pricing-card.premier .pricing-card-price { color: #f0c080; }
-        .pricing-card.premier .pricing-card-divider { border: none; border-top: 1px solid rgba(212, 145, 90, 0.3); margin: 1rem 0 1.5rem; }
+        .pricing-card-divider { border: none; border-top: 1px solid rgba(212, 145, 90, 0.25); margin: 1rem 0 1.5rem; }
         .addons-subtext { margin-top: 3rem; text-align: center; }
         .addons-subtext-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 0.4rem; letter-spacing: 0.5px; }
         .addons-subtext-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; }
-        .addons-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; max-width: 700px; margin: 0 auto; }
-        .addons-chip { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(184,115,51,0.25); border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.8rem; color: rgba(255,255,255,0.75); transition: all 0.25s ease; white-space: nowrap; }
+        .addons-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; max-width: 820px; margin: 0 auto; }
+        .addons-chip { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(184,115,51,0.25); border-radius: 999px; padding: 0.45rem 1.2rem; font-size: 0.85rem; color: rgba(255,255,255,0.75); transition: all 0.25s ease; white-space: nowrap; }
         .addons-chip:hover { border-color: rgba(184,115,51,0.6); color: rgba(255,255,255,0.95); background: rgba(184,115,51,0.1); }
         .addons-chip i { color: var(--copper-light); width: 13px; height: 13px; flex-shrink: 0; }
+        .chip-row-break { flex-basis: 100%; height: 0; }
         
         /* Gallery - Horizontal Scroll Style */
         .gallery { background: var(--cream); padding: 6rem 2rem; }
@@ -1037,6 +1038,7 @@
                         <div class="pricing-card-price">$650</div>
                         <p class="pricing-card-desc">Essential bar service for intimate gatherings</p>
                     </div>
+                    <hr class="pricing-card-divider">
                     <ul class="pricing-card-features">
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 3 hours of service</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Up to 50 guests</li>
@@ -1063,6 +1065,7 @@
                         <div class="pricing-card-price">$1,325</div>
                         <p class="pricing-card-desc">Premium experience for unforgettable events</p>
                     </div>
+                    <hr class="pricing-card-divider">
                     <ul class="pricing-card-features">
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 4 hours of service</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Up to 100 guests</li>
@@ -1098,17 +1101,17 @@
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Full bar service included</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 2 signature cocktails</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Alcohol sourcing &amp; procurement</li>
-                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Custom logo ice — 150 cubes (33% slower melt)</li>
-                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Premium glassware (225 glasses)</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Custom logo ice by DrinkBigIce</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Premium glassware</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Custom cocktail menu card</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Pre-event planning call</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Priority calendar booking</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Setup &amp; breakdown included</li>
                     </ul>
                     <span class="btn-magnetic" style="display: block;">
-                        <a href="#contact" class="btn btn-outline magnetic-btn" style="width: 100%; justify-content: center; border-color: rgba(212,145,90,0.6); color: #f0c080;">
+                        <a href="#contact" class="btn btn-outline magnetic-btn" style="width: 100%; justify-content: center;">
                             <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
-                            Inquire About Premier
+                            Contact Us
                         </a>
                     </span>
                 </div>
@@ -1122,6 +1125,7 @@
                         <div class="pricing-card-price">$650</div>
                         <p class="pricing-card-desc">Essential bar service for intimate gatherings</p>
                     </div>
+                    <hr class="pricing-card-divider">
                     <ul class="pricing-card-features">
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 3 hours of service</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Up to 50 guests</li>
@@ -1144,6 +1148,7 @@
                         <div class="pricing-card-price">$1,325</div>
                         <p class="pricing-card-desc">Premium experience for unforgettable events</p>
                     </div>
+                    <hr class="pricing-card-divider">
                     <ul class="pricing-card-features">
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 4 hours of service</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Up to 100 guests</li>
@@ -1174,17 +1179,17 @@
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Full bar service included</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> 2 signature cocktails</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Alcohol sourcing &amp; procurement</li>
-                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Custom logo ice — 150 cubes (33% slower melt)</li>
-                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Premium glassware (225 glasses)</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Custom logo ice by DrinkBigIce</li>
+                        <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Premium glassware</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Custom cocktail menu card</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Pre-event planning call</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Priority calendar booking</li>
                         <li><i data-lucide="check" style="width: 18px; height: 18px;"></i> Setup &amp; breakdown included</li>
                     </ul>
                     <span class="btn-magnetic" style="display: block;">
-                        <a href="#contact" class="btn btn-outline magnetic-btn" style="width: 100%; justify-content: center; border-color: rgba(212,145,90,0.6); color: #f0c080;">
+                        <a href="#contact" class="btn btn-outline magnetic-btn" style="width: 100%; justify-content: center;">
                             <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
-                            Inquire About Premier
+                            Contact Us
                         </a>
                     </span>
                 </div>
@@ -1208,15 +1213,16 @@
                 <p class="addons-subtext-title">Enhance Any Package</p>
                 <p class="addons-subtext-desc">Mix and match — most add-ons work with any tier</p>
                 <div class="addons-chips">
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Additional Hours +$75/hr</span>
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Extra Bartender +$225</span>
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Signature Cocktail +$125</span>
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Alcohol Procurement +$175</span>
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Formal Glassware from $2.50/guest</span>
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Coffee &amp; Hot Chocolate +$100</span>
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Arch Backdrop +$350</span>
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Tent Rental +$250</span>
-                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Full Bar Upgrade +$200</span>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Additional Hours</span>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Extra Bartender</span>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Signature Cocktail</span>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Alcohol Procurement</span>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Formal Glassware</span>
+                    <div class="chip-row-break"></div>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Coffee &amp; Hot Chocolate</span>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Arch Backdrop</span>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Tent Rental</span>
+                    <span class="addons-chip"><i data-lucide="plus-circle" style="width:13px;height:13px;"></i> Full Bar Upgrade</span>
                 </div>
             </div>
             <!-- Small Group Blurb -->
