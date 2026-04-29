@@ -53,12 +53,17 @@
   }
 
   // ── Path detection ──────────────────────────────────────────────────────────
-  const depth = window.location.pathname.split('/').filter(Boolean).length;
-  // GitHub Pages paths include the repo name as a segment, so blog posts are depth >= 2
-  // Local: /blog/post.html = depth 2. Root: /index.html = depth 0 or 1.
   const inSubdir = window.location.pathname.includes('/blog/');
   const root     = inSubdir ? '../' : '';
-  const homeAnchor = function(hash) { return inSubdir ? root + 'index.html' + hash : hash; };
+  // isHome: true when on index.html or the root path itself
+  const pathEnd  = window.location.pathname.split('/').pop();
+  const isHome   = pathEnd === '' || pathEnd === 'index.html';
+  // homeAnchor: on index just use the hash; on any other page prepend index.html
+  const homeAnchor = function(hash) {
+    if (inSubdir) return root + 'index.html' + hash;
+    if (!isHome)  return 'index.html' + hash;
+    return hash;
+  };
 
   const LOGO = 'https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png';
   const ARROW = '<svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
