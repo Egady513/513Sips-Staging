@@ -51,7 +51,7 @@
         body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
         
         /* Tubelight Navbar */
-        .tubelight-nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(245, 242, 235, 0.7); backdrop-filter: blur(20px); border-radius: 9999px; padding: 0.75rem 1.5rem; border: 1px solid rgba(184, 115, 51, 0.2); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tubelight-nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100vw - 2rem); z-index: 1000; background: rgba(245, 242, 235, 0.7); backdrop-filter: blur(20px); border-radius: 9999px; padding: 0.75rem 1.5rem; border: 1px solid rgba(184, 115, 51, 0.2); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .tubelight-nav.scrolled { background: rgba(245, 242, 235, 0.95); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.15); }
         .tubelight-container { display: flex; align-items: center; gap: 0.5rem; position: relative; }
         .tubelight-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); text-decoration: none; margin-right: 1.5rem; flex-shrink: 0; display: flex; align-items: center; }
@@ -862,7 +862,8 @@
                 <a href="gallery.html" class="tubelight-link" data-index="4">Gallery</a>
                 <a href="faq.html" class="tubelight-link" data-index="5">FAQ</a>
                 <a href="blog/" class="tubelight-link" data-index="6">Blog</a>
-                <a href="#contact" class="tubelight-link" data-index="7">Contact</a>
+                <a href="venues.html" class="tubelight-link" data-index="7">Venues</a>
+                <a href="#contact" class="tubelight-link" data-index="8">Contact</a>
             </div>
             <button class="mobile-menu-btn" id="mobile-menu-btn">
                 <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
@@ -885,6 +886,7 @@
             <a href="gallery.html"><span>Gallery</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             <a href="faq.html"><span>FAQ</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             <a href="blog/"><span>Blog</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a href="venues.html"><span>Venues</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             <a href="#contact"><span>Contact</span><svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
         <div class="mobile-menu-footer">
@@ -1656,6 +1658,7 @@
                     <ul class="footer-links">
                         <li><a href="#about">About Us</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="venues.html">For Venues &amp; Organizations</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
