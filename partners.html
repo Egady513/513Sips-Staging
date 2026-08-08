@@ -812,6 +812,24 @@
         .reveal { opacity: 0; filter: blur(10px); transform: translateY(30px); transition: all .8s ease; }
         .reveal.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
 
+
+        /* how we work: process timeline */
+        .proc-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 2.5rem; margin-top: 1rem; }
+        .pstep { position: relative; padding-left: 3.6rem; }
+        .pstep-num { position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%;
+            border: 1px solid rgba(184,115,51,0.5); background: rgba(184,115,51,0.12);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--copper-light); }
+        .pstep h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: .5rem; line-height: 1.2; }
+        .pstep p { font-size: .92rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
+        .pstep .pstep-you { display: block; margin-top: .5rem; font-size: .82rem; letter-spacing: .4px; text-transform: uppercase; color: var(--copper-light); font-weight: 600; }
+        .fineprint { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(184,115,51,0.25); }
+        .fineprint h4 { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: .5rem; }
+        .fineprint p { font-size: .92rem; line-height: 1.7; color: rgba(255,255,255,0.78); }
+        @media (max-width: 968px) {
+            .proc-steps, .fineprint { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
         /* snap-scroll dots (mobile). Matches index.html services/pricing pattern. */
         .v-scroll-dots { display: none; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
         .v-scroll-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(184,115,51,0.3); cursor: pointer; transition: all .3s ease; border: none; padding: 0; }
@@ -940,10 +958,10 @@
                     <p>Ladies nights, member socials, fundraisers, donor receptions, holiday parties. You already have the people and the space. We bring everything that goes behind the bar.</p>
                     <ul>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We bring our own bar, so it goes where your event needs it</span></li>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Need a second bar to keep the line down? We can staff it</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>A custom drink menu built around your theme, included</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Quantity guidance so you never over-buy or run dry</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We&#39;ll do the shopping and send back whatever goes unopened</span></li>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Running a season of events? We&#39;ll build the calendar with you</span></li>
                     </ul>
                     <a href="index.html#contact" class="btn btn-outline">Let's Work Together</a>
                 </div>
@@ -957,8 +975,8 @@
                     <p>Your client hired you to make it feel effortless. We treat their bar the same way you treat their day: we start by learning what they actually want, then build the drinks around it. You get the credit. We just make sure the bar earns it.</p>
                     <ul>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>It starts with a consultation, not a price sheet</span></li>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>A custom menu and custom drink names for their event, included</span></li>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>House-made syrups and candied citrus, the details their guests photograph</span></li>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Custom menu, custom drink names, house-made syrups and candied citrus. Included.</span></li>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Our bar can be their second bar: cocktail hour outside, main bar inside for dinner</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We&#39;ll coordinate with your other vendors, or stay in your lane. Your call.</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Contract and proof of insurance before you have to ask</span></li>
                     </ul>
@@ -998,52 +1016,71 @@
         </div>
     </section>
 
-    <!-- ===================== WHY VENUES RECOMMEND US ===================== -->
+    <!-- ===================== HOW WE WORK ===================== -->
     <section class="v-section navy">
-        <div class="v-narrow">
+        <div class="v-narrow wide">
             <div class="section-header reveal">
-                <p class="section-tag" style="color: var(--copper-light);">The Part That Matters To You</p>
-                <h2 class="section-title">Why venues are comfortable putting our name forward</h2>
-                <p class="section-subtitle">Recommending a vendor puts your reputation on the line. Here's why that's a safe bet with us.</p>
+                <p class="section-tag" style="color: var(--copper-light);">Our Process</p>
+                <h2 class="section-title">How we work</h2>
+                <p class="section-subtitle">Recommending a vendor puts your reputation on the line. Here is exactly what happens after someone says yes, so there are no unknowns.</p>
             </div>
 
-            <div class="reason-grid">
-                <div class="reason reveal">
-                    <div class="reason-num">01</div>
-                    <div>
-                        <h4>Your venue never buys or sells the alcohol</h4>
-                        <p>We work dry-hire. The client owns the alcohol before, during and after the event. We provide the bar, the bartenders and the experience. Nothing about the beverage side runs through your books.</p>
-                    </div>
+            <div class="proc-steps">
+                <div class="pstep reveal">
+                    <div class="pstep-num">1</div>
+                    <h4>Consultation</h4>
+                    <p>We learn the event before we plan a single drink. Who is in the room, what the day looks like, what they actually like to drink.</p>
+                    <span class="pstep-you">No charge</span>
                 </div>
-                <div class="reason reveal">
-                    <div class="reason-num">02</div>
-                    <div>
-                        <h4>Insured and certified, every single event</h4>
-                        <p>Vendor liability insurance on every event, plus ASK, TIPS and Food Safety certification. We'll send a certificate of insurance, the document naming your venue as covered, whenever you need one.</p>
-                    </div>
+                <div class="pstep reveal">
+                    <div class="pstep-num">2</div>
+                    <h4>The plan, in writing</h4>
+                    <p>Custom menu, drink names, quantity guidance and a written estimate. Nobody guesses how much to buy and nobody is surprised by a line item.</p>
+                    <span class="pstep-you">No charge</span>
                 </div>
-                <div class="reason reveal">
-                    <div class="reason-num">03</div>
-                    <div>
-                        <h4>We're not another thing for you to manage</h4>
-                        <p>One point of contact from first call to final cleanup. We schedule load-in and breakdown around your calendar, we follow your house rules and we don't need anyone from your team standing by.</p>
-                    </div>
+                <div class="pstep reveal">
+                    <div class="pstep-num">3</div>
+                    <h4>We walk your space</h4>
+                    <p>Power, water, ice access, load-in path, where the bar actually goes. We find the problems in advance instead of on the day.</p>
+                    <span class="pstep-you">We come to you</span>
                 </div>
-                <div class="reason reveal">
-                    <div class="reason-num">04</div>
-                    <div>
-                        <h4>Responsible service is the whole job</h4>
-                        <p>A bar that gets out of hand becomes a problem for everyone. Our bartenders are trained in Ohio liquor law and responsible service, and we'd rather cut someone off early than let your night go sideways.</p>
-                    </div>
+                <div class="pstep reveal">
+                    <div class="pstep-num">4</div>
+                    <h4>Prep happens before we arrive</h4>
+                    <p>Syrups, candied citrus and batching are done in our kitchen, not in your space. We show up ready to pour.</p>
+                    <span class="pstep-you">Off-site</span>
+                </div>
+                <div class="pstep reveal">
+                    <div class="pstep-num">5</div>
+                    <h4>Event day</h4>
+                    <p>We arrive early, set up, serve and read the room. If the line builds we can add a second bar. Nobody from your team needs to stand by.</p>
+                    <span class="pstep-you">One contact, start to finish</span>
+                </div>
+                <div class="pstep reveal">
+                    <div class="pstep-num">6</div>
+                    <h4>Breakdown and returns</h4>
+                    <p>We break down, haul out our own ice and trash, and leave the space the way we found it. Unopened alcohol goes back to the store on our trip, not yours.</p>
+                    <span class="pstep-you">Nothing left behind</span>
+                </div>
+            </div>
+
+            <div class="fineprint reveal">
+                <div>
+                    <h4>Your venue never buys or sells the alcohol</h4>
+                    <p>We work dry-hire. The client owns the alcohol before, during and after the event, and we provide the bar, the bartenders and the experience. Nothing about the beverage side runs through your books.</p>
+                </div>
+                <div>
+                    <h4>Responsible service is the whole job</h4>
+                    <p>A bar that gets out of hand becomes a problem for everyone. Our bartenders are trained in Ohio liquor law and responsible service, and we would rather cut someone off early than let the night go sideways.</p>
                 </div>
             </div>
 
             <div class="cred-strip reveal">
-                <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fully Insured</span>
-                <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ASK Certified</span>
-                <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>TIPS Trained</span>
-                <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Food Safety Certified</span>
-                <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Proof Of Insurance On Request</span>
+                <span class="cred-pill">Fully Insured</span>
+                <span class="cred-pill">ASK Certified</span>
+                <span class="cred-pill">TIPS Trained</span>
+                <span class="cred-pill">Food Safety Certified</span>
+                <span class="cred-pill">Proof Of Insurance On Request</span>
             </div>
         </div>
     </section>
