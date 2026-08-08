@@ -813,6 +813,30 @@
         .reveal.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
 
 
+
+        /* photo treatments */
+        .sig-card { padding: 0 0 2rem; overflow: hidden; border-radius: 18px; background: var(--cream); }
+        .sig-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-bottom: 1.5rem; }
+        .sig-card h4, .sig-card p { padding: 0 1.5rem; }
+
+        .bar-band { position: relative; min-height: 62vh; display: flex; align-items: flex-end; overflow: hidden; }
+        .bar-band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .bar-band .bb-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,18,31,0.92) 0%, rgba(18,18,31,0.35) 45%, rgba(18,18,31,0.1) 100%); }
+        .bar-band .bb-copy { position: relative; z-index: 3; max-width: 780px; margin: 0 auto; padding: 0 2rem 4.5rem; text-align: center; color: #fff; }
+        .bar-band h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,4.5vw,3.2rem); font-weight: 600; margin-bottom: 1rem; line-height: 1.2; }
+        .bar-band p { font-size: 1.05rem; line-height: 1.75; opacity: .9; }
+
+        .eddie-wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3.5rem; align-items: center; }
+        .eddie-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 20px; display: block; }
+        .eddie-copy h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem,3.4vw,2.6rem); font-weight: 600; color: var(--navy); margin-bottom: 1.1rem; line-height: 1.25; }
+        .eddie-copy p { line-height: 1.8; color: var(--charcoal); opacity: .88; margin-bottom: 1rem; }
+        .eddie-sig { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--copper); margin-top: 1.25rem; }
+        @media (max-width: 968px) {
+            .eddie-wrap { grid-template-columns: 1fr; gap: 2rem; }
+            .eddie-photo { max-width: 420px; margin: 0 auto; }
+            .bar-band { min-height: 56vh; }
+        }
+
         /* how we work: process timeline */
         .proc-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 2.5rem; margin-top: 1rem; }
         .pstep { position: relative; padding-left: 3.6rem; }
@@ -823,7 +847,7 @@
         .pstep h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: .5rem; line-height: 1.2; }
         .pstep p { font-size: .92rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
         .pstep .pstep-you { display: block; margin-top: .5rem; font-size: .82rem; letter-spacing: .4px; text-transform: uppercase; color: var(--copper-light); font-weight: 600; }
-        .fineprint { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(184,115,51,0.25); }
+        .fineprint { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(184,115,51,0.25); }
         .fineprint h4 { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: .5rem; }
         .fineprint p { font-size: .92rem; line-height: 1.7; color: rgba(255,255,255,0.78); }
         @media (max-width: 968px) {
@@ -972,13 +996,13 @@
                     </div>
                     <p class="track-eyebrow">You have the clients</p>
                     <h3>Hand off the bar and stop thinking about it</h3>
-                    <p>Your client hired you to make it feel effortless. We treat their bar the same way you treat their day: we start by learning what they actually want, then build the drinks around it. You get the credit. We just make sure the bar earns it.</p>
+                    <p>Planners, caterers, photographers. Your client hired you to make it feel effortless, and the bar is one more thing that has to live up to that. We treat it the way you treat your own work. You get the credit. We just make sure the bar earns it.</p>
                     <ul>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>It starts with a consultation, not a price sheet</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Custom menu, custom drink names, house-made syrups and candied citrus. Included.</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Our bar can be their second bar: cocktail hour outside, main bar inside for dinner</span></li>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We build around your service and your timeline, never through them</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We&#39;ll coordinate with your other vendors, or stay in your lane. Your call.</span></li>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Contract and proof of insurance before you have to ask</span></li>
                     </ul>
                     <a href="index.html#contact" class="btn btn-outline">Let's Work Together</a>
                 </div>
@@ -997,22 +1021,33 @@
             </div>
             <div class="sig-grid" id="sig-grid">
                 <div class="sig-card reveal">
-                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20"/><path d="M12 2a10 10 0 0 1 0 20"/></svg></div>
+                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/IMG_0455_n4nnl4.jpg" alt="A bartender placing a garnish on a foam-topped cocktail with a bar spoon" loading="lazy">
                     <h4>House-Made Candied Citrus</h4>
                     <p>We candy our own citrus from scratch: blanched, sugared and dried in house. It's the garnish guests photograph, and it's the thing they ask about at the bar.</p>
                 </div>
                 <div class="sig-card reveal">
-                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8"/><path d="M12 2v7"/><path d="m5 22 7-13 7 13z"/></svg></div>
+                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/IMG_4862_hzaq5e.jpg" alt="Gloved hands straining a fresh cocktail beside jiggers and shaking tins" loading="lazy">
                     <h4>Syrups &amp; Mixers From Scratch</h4>
                     <p>No sour mix, no bottled shortcuts. We build our own syrups for your event, which is why a drink at your party doesn't taste like a drink from anywhere else.</p>
                 </div>
                 <div class="sig-card reveal">
-                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/Image_25_inbreo.jpg" alt="A 513Sips mobile bar set up outdoors with a hand-lettered cocktail menu board" loading="lazy">
                     <h4>A Menu Built For Your Event</h4>
                     <p>Custom drinks, named for your occasion, printed and ready. It's included. We don't charge for menu design, drink naming or planning consultation.</p>
                 </div>
             </div>
             <div class="v-scroll-dots" data-dots-for="sig-grid"></div>
+        </div>
+    </section>
+
+
+    <!-- ===================== THE BAR ITSELF ===================== -->
+    <section class="bar-band">
+        <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_2000,h_1200,q_auto,f_auto/IMG_0637_riv7pu.jpg" alt="A dressed 513Sips mobile bar at night in front of a lit stone fireplace, with white florals and coupe glasses on a tray">
+        <div class="bb-scrim"></div>
+        <div class="bb-copy reveal">
+            <h2>The bar shows up dressed.</h2>
+            <p>It arrives clean, styled and lit, and it fits a courtyard, a barn, a ballroom or a pool deck. Your guests should notice it before they ever order from it.</p>
         </div>
     </section>
 
@@ -1053,7 +1088,7 @@
                 <div class="pstep reveal">
                     <div class="pstep-num">5</div>
                     <h4>Event day</h4>
-                    <p>We arrive early, set up, serve and read the room. If the line builds we can add a second bar. Nobody from your team needs to stand by.</p>
+                    <p>We arrive early, set up, serve and read the room. We work around dinner service and whatever else is running, never through it. Nobody from your team needs to stand by.</p>
                     <span class="pstep-you">One contact, start to finish</span>
                 </div>
                 <div class="pstep reveal">
@@ -1066,8 +1101,12 @@
 
             <div class="fineprint reveal">
                 <div>
-                    <h4>Your venue never buys or sells the alcohol</h4>
-                    <p>We work dry-hire. The client owns the alcohol before, during and after the event, and we provide the bar, the bartenders and the experience. Nothing about the beverage side runs through your books.</p>
+                    <h4>Nothing gets improvised</h4>
+                    <p>Every recipe is tested before your event, every quantity is calculated against real guest counts, and the whole plan is in writing before we load the truck. Eliminating surprises is where most of our effort goes.</p>
+                </div>
+                <div>
+                    <h4>We cap events at 200 guests</h4>
+                    <p>Everything we pour is made from scratch in small batches. Past 200 that stops being true, so we do not take those events. We would rather do fewer properly than stretch and serve something we would not drink ourselves.</p>
                 </div>
                 <div>
                     <h4>Responsible service is the whole job</h4>
@@ -1129,6 +1168,22 @@
                 <div class="proc-stat reveal">
                     <div class="stat-num">$0</div>
                     <p class="stat-label">markup on alcohol. Ever. We buy at retail prices and pass them straight through, then bring everything else the bar needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== WHO YOU'RE WORKING WITH ===================== -->
+    <section class="v-section" style="background:#fff;">
+        <div class="v-narrow">
+            <div class="eddie-wrap">
+                <img class="eddie-photo reveal" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_800,h_1000,q_auto,f_auto/IMG_0809_k4cb7k.jpg" alt="Eddie Gady of 513Sips presenting a finished cocktail behind the bar at an evening event">
+                <div class="eddie-copy reveal">
+                    <p class="section-tag">Who You Are Working With</p>
+                    <h3>You will be dealing with me. Every time.</h3>
+                    <p>I am Eddie, and 513Sips is mine. I take the first call, I build the menu, I walk your space and I am behind the bar on the night. When you recommend us, you are not handing your client off to a rotating roster and hoping it goes well.</p>
+                    <p>That is also why we stay small on purpose. I would rather be the name you trust for twenty events a year than a logo you gambled on once.</p>
+                    <p class="eddie-sig">Eddie Gady, Owner</p>
                 </div>
             </div>
         </div>
