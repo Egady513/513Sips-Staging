@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venues &amp; Organizations | 513Sips Mobile Bartending Cincinnati</title>
-    <meta name="description" content="513Sips partners with Cincinnati venues, clubs, and nonprofits. Fully insured, ASK and TIPS certified bar service with COI available. Add us to your preferred vendor list.">
+    <meta name="description" content="513Sips partners with Cincinnati venues, clubs, and nonprofits. Fully insured, ASK and TIPS certified bar service, proof of insurance on request. Add us to your preferred vendor list.">
     <meta name="keywords" content="preferred vendor bartender Cincinnati, venue bar service, club event bartending, nonprofit event bar Cincinnati">
     <link rel="canonical" href="https://www.513sips.com/venues.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.513sips.com/venues.html">
     <meta property="og:title" content="Venues &amp; Organizations | 513Sips">
-    <meta property="og:description" content="Bar service your venue can recommend without a second thought. Fully insured, certified, COI on request.">
+    <meta property="og:description" content="Bar service your venue can recommend without a second thought. Fully insured, certified, proof of insurance on request.">
     <meta property="og:image" content="https://res.cloudinary.com/dkfypt2cb/image/upload/b_black,c_pad,w_1200,h_630/513Sips_White_ums9lm.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -811,11 +811,34 @@
         .reveal { opacity: 0; filter: blur(10px); transform: translateY(30px); transition: all .8s ease; }
         .reveal.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
 
+        /* snap-scroll dots (mobile) — matches index.html services/pricing pattern */
+        .v-scroll-dots { display: none; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
+        .v-scroll-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(184,115,51,0.3); cursor: pointer; transition: all .3s ease; border: none; padding: 0; }
+        .v-scroll-dot.active { background: var(--copper); transform: scale(1.3); }
+        .v-section.navy .v-scroll-dot { background: rgba(255,255,255,0.3); }
+        .v-section.navy .v-scroll-dot.active { background: var(--copper); }
+
         @media (max-width: 968px) {
-            .track-grid, .reason-grid, .worked-grid, .sig-grid, .proc-wrap { grid-template-columns: 1fr; }
+            .reason-grid, .proc-wrap { grid-template-columns: 1fr; }
             .v-hero { padding: 9rem 1.5rem 4.5rem; }
             .v-section { padding: 4rem 1.5rem; }
             .proc-wrap { gap: 2.5rem; }
+
+            /* card grids become horizontal snap-scroll carousels */
+            .track-grid, .worked-grid, .sig-grid {
+                display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+                gap: 1rem; padding: 1rem .25rem 1.5rem;
+                margin-left: -1.5rem; margin-right: -1.5rem;
+                padding-left: 1.5rem; padding-right: 1.5rem;
+                scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;
+            }
+            .track-grid::-webkit-scrollbar, .worked-grid::-webkit-scrollbar, .sig-grid::-webkit-scrollbar { display: none; }
+            .track-grid > *, .worked-grid > *, .sig-grid > * {
+                flex: 0 0 82vw; max-width: 340px; scroll-snap-align: center;
+                opacity: 1; filter: none; transform: none;
+            }
+            .track-card { padding: 2rem 1.5rem; }
+            .v-scroll-dots { display: flex; }
         }
     </style>
 </head>
@@ -887,7 +910,7 @@
                 <p class="section-subtitle">Most of our partners start with one and grow into both.</p>
             </div>
 
-            <div class="track-grid">
+            <div class="track-grid" id="track-grid">
                 <div class="track-card reveal" id="partner">
                     <div class="track-icon">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
@@ -896,7 +919,7 @@
                     <h3>Add us to your preferred vendor list</h3>
                     <p>Your clients book the space, then ask you who handles the bar. We want to be the easy answer — and we make sure that recommendation always reflects well on you.</p>
                     <ul>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Certificate of insurance naming your venue, on request</span></li>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Proof of insurance naming your venue, whenever you need it</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We coordinate directly with your client — not through you</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We walk your space beforehand so nothing surprises anyone</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>You get the space back cleaner than we found it</span></li>
@@ -912,14 +935,45 @@
                     <h3>We'll run the bar at your next member event</h3>
                     <p>Ladies nights, member socials, fundraisers, donor receptions, holiday parties. You already have the people and the space — we bring everything that goes behind the bar.</p>
                     <ul>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We bring our own mobile bar — so we can set up almost anywhere, or run two bars to keep lines short</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>A custom drink menu built around your theme — at no charge</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Quantity guidance so you never over-buy or run dry</span></li>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We'll do the shopping too, if you'd rather not</span></li>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We'll do the shopping too, and send back whatever goes unopened</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Recurring programming? We'll hold your dates for the season</span></li>
                     </ul>
                     <a href="index.html#contact" class="btn btn-outline">Check Our Availability</a>
                 </div>
             </div>
+            <div class="v-scroll-dots" data-dots-for="track-grid"></div>
+        </div>
+    </section>
+
+    <!-- ===================== THE DETAILS (moved up — emotional hook before the rational case) ===================== -->
+    <section class="v-section" style="background:#fff;">
+        <div class="v-narrow">
+            <div class="section-header reveal">
+                <p class="section-tag">What People Remember</p>
+                <h2 class="section-title">The details that get talked about</h2>
+                <p class="section-subtitle">Anyone can pour a drink. These are the things guests bring up the next morning.</p>
+            </div>
+            <div class="sig-grid" id="sig-grid">
+                <div class="sig-card reveal">
+                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20"/><path d="M12 2a10 10 0 0 1 0 20"/></svg></div>
+                    <h4>House-Made Candied Citrus</h4>
+                    <p>We candy our own citrus from scratch — blanched, sugared, and dried in house. It's the garnish guests photograph, and it's the thing they ask about at the bar.</p>
+                </div>
+                <div class="sig-card reveal">
+                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8"/><path d="M12 2v7"/><path d="m5 22 7-13 7 13z"/></svg></div>
+                    <h4>Syrups &amp; Mixers From Scratch</h4>
+                    <p>No sour mix, no bottled shortcuts. We build our own syrups for your event, which is why a drink at your party doesn't taste like a drink from anywhere else.</p>
+                </div>
+                <div class="sig-card reveal">
+                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                    <h4>A Menu Built For Your Event</h4>
+                    <p>Custom drinks, named for your occasion, printed and ready. It's included — we don't charge for menu design, drink naming, or planning consultation.</p>
+                </div>
+            </div>
+            <div class="v-scroll-dots" data-dots-for="sig-grid"></div>
         </div>
     </section>
 
@@ -944,21 +998,21 @@
                     <div class="reason-num">02</div>
                     <div>
                         <h4>Insured and certified, every single event</h4>
-                        <p>Vendor liability insurance on every event, plus ASK, TIPS, and Food Safety certification. We'll send a certificate of insurance naming your venue whenever you need one.</p>
+                        <p>Vendor liability insurance on every event, plus ASK, TIPS, and Food Safety certification. We'll send a certificate of insurance — the document naming your venue as covered — whenever you need one.</p>
                     </div>
                 </div>
                 <div class="reason reveal">
                     <div class="reason-num">03</div>
                     <div>
                         <h4>We're not another thing for you to manage</h4>
-                        <p>One point of contact from first call to final cleanup. We handle load-in, service, and breakdown on our own timeline, and we work around your rules — not the other way around.</p>
+                        <p>One point of contact from first call to final cleanup. We schedule load-in and breakdown around your calendar, we follow your house rules, and we don't need anyone from your team standing by.</p>
                     </div>
                 </div>
                 <div class="reason reveal">
                     <div class="reason-num">04</div>
                     <div>
                         <h4>Responsible service is the whole job</h4>
-                        <p>A bar that gets out of hand becomes your problem, not ours. Our bartenders are trained in Ohio liquor law and responsible service, and we'd rather cut someone off early than let your night go sideways.</p>
+                        <p>A bar that gets out of hand becomes a problem for everyone. Our bartenders are trained in Ohio liquor law and responsible service, and we'd rather cut someone off early than let your night go sideways.</p>
                     </div>
                 </div>
             </div>
@@ -968,7 +1022,7 @@
                 <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ASK Certified</span>
                 <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>TIPS Trained</span>
                 <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Food Safety Certified</span>
-                <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>COI On Request</span>
+                <span class="cred-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Proof Of Insurance On Request</span>
             </div>
         </div>
     </section>
@@ -982,7 +1036,7 @@
                 <h2 class="section-title">Where we've poured</h2>
                 <p class="section-subtitle">Every space runs differently. We learn yours before we ever set up a bar in it.</p>
             </div>
-            <div class="worked-grid">
+            <div class="worked-grid" id="worked-grid">
                 <div class="worked-card reveal">
                     <p class="worked-type">Wedding Venue</p>
                     <h4>Hope's Way Gathering Venue</h4>
@@ -999,34 +1053,7 @@
                     <p>Studio celebrations and private parties in a space where the bar has to look as good as it tastes.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ===================== SIGNATURE ===================== -->
-    <section class="v-section" style="background:#fff;">
-        <div class="v-narrow">
-            <div class="section-header reveal">
-                <p class="section-tag">What People Remember</p>
-                <h2 class="section-title">The details that get talked about</h2>
-                <p class="section-subtitle">Anyone can pour a drink. These are the things guests bring up the next morning.</p>
-            </div>
-            <div class="sig-grid">
-                <div class="sig-card reveal">
-                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20"/><path d="M12 2a10 10 0 0 1 0 20"/></svg></div>
-                    <h4>House-Made Candied Citrus</h4>
-                    <p>We candy our own citrus from scratch — blanched, sugared, and dried in house. It's the garnish guests photograph, and it's the thing they ask about at the bar.</p>
-                </div>
-                <div class="sig-card reveal">
-                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8"/><path d="M12 2v7"/><path d="m5 22 7-13 7 13z"/></svg></div>
-                    <h4>Syrups &amp; Mixers From Scratch</h4>
-                    <p>No sour mix, no bottled shortcuts. We build our own syrups for your event, which is why a drink at your party doesn't taste like a drink from anywhere else.</p>
-                </div>
-                <div class="sig-card reveal">
-                    <div class="sig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-                    <h4>A Menu Built For Your Event</h4>
-                    <p>Custom drinks, named for your occasion, printed and ready. It's included — we don't charge for menu design, drink naming, or planning consultation.</p>
-                </div>
-            </div>
+            <div class="v-scroll-dots" data-dots-for="worked-grid"></div>
         </div>
     </section>
 
@@ -1038,12 +1065,12 @@
                     <p class="section-tag" style="color: var(--copper-light);">Alcohol Procurement</p>
                     <h3>If you'd rather not do the shopping, we'll handle that too.</h3>
                     <p>Because we work dry-hire, we never mark up alcohol — you pay retail, with receipts. That alone saves most events more than our fee. A bottle that runs $22 at Costco can carry a $60+ open-bar charge anywhere else.</p>
-                    <p>And here's the part people love most: <strong>whatever doesn't get opened, we take back.</strong> Unopened product goes back to the store on your behalf and the money returns to you. You never have to think about it, and you're never punished for planning generously.</p>
+                    <p>We plan generously on anything that can go back, so the bar never runs dry on your guests. <strong>Then we return every unopened bottle on your behalf</strong> and the money goes back to you. No guessing, no leftover cases in a closet, nothing for you to return.</p>
                     <p style="opacity:.75;font-size:.92rem;">Procurement is a flat service fee — reach out and we'll scope it for your event.</p>
                 </div>
                 <div class="proc-stat reveal">
-                    <div class="stat-num">$667</div>
-                    <p class="stat-label">returned to the client after a recent 115-guest wedding — unopened wine, champagne, beer, and seltzer, taken back on their behalf.</p>
+                    <div class="stat-num">$0</div>
+                    <p class="stat-label">markup on alcohol. Ever. You buy at retail prices, we bring everything else — and whatever goes unopened comes straight back to you.</p>
                 </div>
             </div>
         </div>
@@ -1153,7 +1180,29 @@
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-        document.querySelectorAll('.reveal, .section-header, .footer-grid').forEach(el => io.observe(el));
+        document.querySelectorAll('.reveal, .section-header').forEach(el => io.observe(el));
+
+        // snap-scroll dots (mobile) — mirrors index.html services/pricing behaviour
+        document.querySelectorAll('.v-scroll-dots').forEach(dotWrap => {
+            const track = document.getElementById(dotWrap.dataset.dotsFor);
+            if (!track) return;
+            const cards = Array.from(track.children);
+            cards.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'v-scroll-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to card ' + (i + 1));
+                dot.addEventListener('click', () => {
+                    cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+                dotWrap.appendChild(dot);
+            });
+            const dots = Array.from(dotWrap.children);
+            track.addEventListener('scroll', () => {
+                const cardWidth = cards[0] ? cards[0].offsetWidth + 16 : 1;
+                const idx = Math.round(track.scrollLeft / cardWidth);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            });
+        });
 
         // smooth scroll for in-page anchors
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
