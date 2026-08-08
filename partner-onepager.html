@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>513Sips — Partner One-Pager v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1a1a2e; --navy-light:#2d2d4a; --navy-dark:#12121f;
+    --cream:#f5f2eb; --copper:#b87333; --copper-light:#d4915a; --charcoal:#2d3748;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#6b6b6b;font-family:'Montserrat',sans-serif;padding:24px;}
+
+  /* 8.5 x 11 at 96dpi */
+  .page{
+    width:816px;height:1056px;background:var(--cream);
+    margin:0 auto;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+    box-shadow:0 10px 50px rgba(0,0,0,.45);
+  }
+  @page{size:8.5in 11in;margin:0;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .page{box-shadow:none;margin:0;}
+    .noprint{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;height:176px;flex-shrink:0;overflow:hidden;background:var(--navy-dark);}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;}
+  .hero .scrim{position:absolute;inset:0;
+    background:linear-gradient(105deg,rgba(18,18,31,.95) 0%,rgba(26,26,46,.86) 48%,rgba(45,45,74,.62) 100%);}
+  .hero .inner{position:relative;z-index:3;height:100%;padding:20px 38px 18px;display:flex;flex-direction:column;justify-content:space-between;}
+  .brandrow{display:flex;align-items:center;justify-content:space-between;}
+  .brandrow img.logo{height:40px;filter:brightness(0) invert(1);}
+  .eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--copper-light);letter-spacing:.4px;}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1.1;color:#fff;font-weight:700;max-width:640px;}
+  .hero h1 em{font-style:italic;color:var(--copper-light);}
+  .hero .sub{font-size:11.5px;color:rgba(255,255,255,.85);line-height:1.6;max-width:600px;margin-top:8px;}
+
+  /* ---------- shared ---------- */
+  .band{padding:9px 38px;}
+  .kicker{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--copper);margin-bottom:3px;}
+  .h2{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--navy);margin-bottom:9px;}
+
+  /* ---------- THREE TRACKS ---------- */
+  .tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .track{background:#fff;border:1px solid rgba(184,115,51,.28);border-radius:10px;padding:12px 12px 12px;}
+  .track .tlabel{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--navy);text-align:center;line-height:1.15;margin-bottom:4px;}
+  .track .toffer{font-size:9.5px;font-weight:600;color:var(--copper);text-align:center;line-height:1.35;min-height:26px;margin-bottom:9px;}
+  .track ul{list-style:none;}
+  .track li{display:flex;gap:6px;font-size:9.5px;line-height:1.42;color:var(--charcoal);margin-bottom:4px;}
+  .track li b{color:var(--copper);flex-shrink:0;font-weight:700;}
+
+  /* ---------- DRY HIRE ---------- */
+  .dry{background:var(--navy-dark);color:#fff;display:grid;grid-template-columns:1fr 168px;gap:26px;align-items:center;}
+  .dry h3{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;margin-bottom:7px;line-height:1.2;}
+  .dry p{font-size:10.5px;line-height:1.65;color:rgba(255,255,255,.85);}
+  .dry .stat{border:1px solid rgba(184,115,51,.5);background:rgba(184,115,51,.13);border-radius:10px;padding:14px 10px;text-align:center;}
+  .dry .stat .n{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--copper-light);line-height:1;}
+  .dry .stat .l{font-size:8.5px;line-height:1.45;color:rgba(255,255,255,.85);margin-top:5px;letter-spacing:.2px;}
+
+  /* ---------- PROCESS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 18px;}
+  .step{display:flex;gap:9px;}
+  .step .n{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--copper);line-height:1;width:16px;flex-shrink:0;}
+  .step h4{font-size:10px;font-weight:600;color:var(--navy);margin-bottom:2px;}
+  .step p{font-size:9px;line-height:1.45;color:var(--charcoal);opacity:.85;}
+
+  /* ---------- PROOF ---------- */
+  .proof{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;align-items:start;}
+  .creds{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px;}
+  .pill{font-size:8px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--copper);
+    border:1px solid rgba(184,115,51,.45);background:rgba(184,115,51,.08);border-radius:20px;padding:4px 9px;}
+  .venues{font-size:10px;line-height:1.7;color:var(--charcoal);}
+  .venues b{color:var(--navy);}
+  .handmade{background:#fff;border-left:3px solid var(--copper);border-radius:6px;padding:11px 13px;}
+  .handmade h4{font-size:10.5px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+  .handmade p{font-size:9.5px;line-height:1.55;color:var(--charcoal);opacity:.9;}
+
+  /* ---------- OWNER ---------- */
+  .owner{display:grid;grid-template-columns:76px 1fr;gap:15px;align-items:center;
+    border-top:1px solid rgba(184,115,51,.3);padding-top:12px;}
+  .owner img{width:76px;height:94px;object-fit:cover;border-radius:8px;}
+  .owner .q{font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.4;color:var(--navy);font-weight:500;}
+  .owner .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11.5px;color:var(--copper);margin-top:3px;}
+  .placeholder-note{font-size:8px;color:#b00;letter-spacing:.3px;margin-top:3px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{margin-top:auto;background:var(--navy-dark);color:#fff;padding:11px 38px;
+    display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;}
+  .contact img.logo{height:36px;filter:brightness(0) invert(1);}
+  .contact .lines{font-size:10px;line-height:1.68;color:rgba(255,255,255,.92);}
+  .contact .lines b{color:var(--copper-light);font-weight:600;}
+  .contact .qr{text-align:center;}
+  .contact .qr .box{width:74px;height:74px;background:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;}
+  .contact .qr .box img{width:66px;height:66px;}
+  .contact .qr .cap{font-size:7.5px;color:rgba(255,255,255,.75);margin-top:4px;letter-spacing:.4px;text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_1700,h_560,q_auto,f_auto/Eddie_Behind_Bar_Skyline_qza8e1.jpg" alt="">
+    <div class="scrim"></div>
+    <div class="inner">
+      <div class="brandrow">
+        <img class="logo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips">
+        <span class="eyebrow">For Venues, Planners &amp; Organizations</span>
+      </div>
+      <div>
+        <h1>Bar service you can recommend <em>without a second thought.</em></h1>
+        <p class="sub">A fully insured, certified mobile bar serving Cincinnati and Northern Kentucky. We handle the bar completely: setup, service, breakdown.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THREE TRACKS -->
+  <div class="band">
+    <p class="kicker">Three Ways We Work Together</p>
+    <div class="tracks">
+      <div class="track">
+        <div class="tlabel">You have<br>the space</div>
+        <div class="toffer">Add us to your preferred vendor list</div>
+        <ul>
+          <li><b>&check;</b><span>We can work behind the bar you already have, or bring ours. Your room, your call.</span></li>
+          <li><b>&check;</b><span>Proof of insurance naming your venue, whenever you need it</span></li>
+          <li><b>&check;</b><span>We follow your house rules, load-in window and shutdown time</span></li>
+        </ul>
+      </div>
+      <div class="track">
+        <div class="tlabel">You have<br>the members</div>
+        <div class="toffer">We'll run the bar at your next member event</div>
+        <ul>
+          <li><b>&check;</b><span>We bring the whole bar, so your space does not need to have one</span></li>
+          <li><b>&check;</b><span>Built around your theme, from a summer social to a donor reception</span></li>
+          <li><b>&check;</b><span>Running a season of events? We'll build the calendar with you</span></li>
+        </ul>
+      </div>
+      <div class="track">
+        <div class="tlabel">You have<br>the clients</div>
+        <div class="toffer">Hand off the bar and stop thinking about it</div>
+        <ul>
+          <li><b>&check;</b><span>Your client gets the consultation, menu and drink names. You get the credit.</span></li>
+          <li><b>&check;</b><span>We set up before guests arrive and break down after they leave</span></li>
+          <li><b>&check;</b><span>We'll coordinate with your other vendors, or stay in your lane. Your call.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRY HIRE -->
+  <div class="band dry">
+    <div>
+      <p class="kicker" style="color:var(--copper-light)">How Dry-Hire Works</p>
+      <h3>We don't profit on alcohol. That is the whole model.</h3>
+      <p>We bring the bar, the bartenders and the experience, and the alcohol is bought at cost. It does not matter who buys it, only that it is bought at retail, which is where the savings live. A bottle that runs $22 at Costco can carry a $60+ open-bar charge anywhere else. Don't want to make the run? We build the list, do the shopping, hand over every receipt and return whatever goes unopened.</p>
+    </div>
+    <div class="stat">
+      <div class="n">$0</div>
+      <div class="l">Markup on alcohol.<br>Ever.</div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="band">
+    <p class="kicker">Our Process</p>
+    <p class="h2">How we work</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><h4>Consultation</h4><p>We learn the event before we plan a single drink. No charge.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h4>The plan, in writing</h4><p>Custom menu, drink names, quantity guidance, written estimate.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h4>We walk your space</h4><p>Power, water, ice, load-in path, where the bar actually goes.</p></div></div>
+      <div class="step"><div class="n">4</div><div><h4>Prep before we arrive</h4><p>Syrups, candied citrus and batching done in our kitchen, not yours.</p></div></div>
+      <div class="step"><div class="n">5</div><div><h4>Event day</h4><p>We work around dinner service. Nobody from your team stands by.</p></div></div>
+      <div class="step"><div class="n">6</div><div><h4>Breakdown and returns</h4><p>We haul out our own ice and trash. Unopened alcohol goes back.</p></div></div>
+    </div>
+  </div>
+
+  <!-- PROOF -->
+  <div class="band proof">
+    <div>
+      <div class="creds">
+        <span class="pill">Fully Insured</span><span class="pill">ASK Certified</span><span class="pill">TIPS Trained</span>
+        <span class="pill">Food Safety Certified</span><span class="pill">Proof of Insurance on Request</span>
+      </div>
+      <p class="venues">
+        <b>Where we've poured:</b> Hope's Way Gathering Venue &middot; Montgomery Swim &amp; Tennis Club &middot; Selfie Cincy
+      </p>
+      <p class="placeholder-note">⚠ PENDING WRITTEN PERMISSION FROM ALL THREE VENUES</p>
+    </div>
+    <div class="handmade">
+      <h4>Everything is made by hand</h4>
+      <p>Every syrup, every candied garnish, every mixer, made in small batches. It is why we are built for events of 200 and under. Planning something bigger? Talk to us anyway.</p>
+    </div>
+  </div>
+
+  <!-- OWNER -->
+  <div class="band owner">
+    <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_260,h_330,q_auto,f_auto/IMG_0809_k4cb7k.jpg" alt="Eddie Gady">
+    <div>
+      <p class="q">"I take the first call, I build the menu, I walk your space and I am behind the bar on the night. We stay small on purpose."</p>
+      <p class="sig">Eddie Gady, Owner</p>
+      <p class="placeholder-note">⚠ OWNER STORY IN REDRAFT — SPACE RESERVED, COPY NOT FINAL</p>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <img class="logo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips">
+    <div class="lines">
+      <b>513-322-2645</b> &nbsp;&middot;&nbsp; contact@513Sips.com &nbsp;&middot;&nbsp; www.513Sips.com<br>
+      @513Sips on Instagram and Facebook &nbsp;&middot;&nbsp; Cincinnati, OH &amp; Northern Kentucky<br>
+      <b>Packages from $650</b>
+    </div>
+    <div class="qr">
+      <div class="box"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=https%3A%2F%2Fwww.513sips.com%2Fpartners.html" alt="QR"></div>
+      <div class="cap">513sips.com/partners</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
