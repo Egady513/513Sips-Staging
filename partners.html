@@ -754,10 +754,10 @@
         .track-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         .track-card { background: #fff; border: 1px solid rgba(184,115,51,0.25); border-radius: 20px; padding: 2.75rem 2.25rem; display: flex; flex-direction: column; transition: transform .35s ease, box-shadow .35s ease; }
         .track-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(26,26,46,0.13); }
-        .track-icon { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, var(--copper), var(--copper-light)); display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 1.5rem; }
-        .track-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 1.95rem; font-weight: 600; color: var(--navy); line-height: 1.15; margin-bottom: .5rem; }
-        .track-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: var(--copper); letter-spacing: .3px; margin-bottom: 1rem; line-height: 1.45; }
-        .track-card p { color: var(--charcoal); opacity: .88; margin-bottom: 1.4rem; line-height: 1.7; }
+        .track-icon { margin-left: auto; margin-right: auto; width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, var(--copper), var(--copper-light)); display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 1.5rem; }
+        .track-eyebrow { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.95rem; font-weight: 600; color: var(--navy); line-height: 1.15; margin-bottom: .5rem; }
+        .track-card h3 { text-align: center; min-height: 2.9rem; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: var(--copper); letter-spacing: .3px; margin-bottom: 1rem; line-height: 1.45; }
+        .track-card > p { color: var(--charcoal); opacity: .88; margin-bottom: 1.4rem; line-height: 1.7; min-height: 8.5rem; }
         .track-card ul { list-style: none; margin-bottom: 2rem; }
         .track-card li { display: flex; gap: .7rem; align-items: flex-start; margin-bottom: .7rem; font-size: .95rem; color: var(--charcoal); }
         .track-card li svg { flex-shrink: 0; margin-top: 3px; color: var(--copper); }
@@ -964,8 +964,8 @@
                     <h3>Add us to your preferred vendor list</h3>
                     <p>Your clients book the space, then ask you who handles the bar. We want to be the easy answer, and we make sure that recommendation always reflects well on you.</p>
                     <ul>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We can work behind the bar you already have, or bring ours where you need it</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Proof of insurance naming your venue, whenever you need it</span></li>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We can deal with your client directly, so you are not stuck relaying messages</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We follow your house rules, your load-in window and your shutdown time</span></li>
                     </ul>
                     <a href="index.html#contact" class="btn btn-outline">Let's Work Together</a>
@@ -977,10 +977,10 @@
                     </div>
                     <p class="track-eyebrow">You have the members</p>
                     <h3>We'll run the bar at your next member event</h3>
-                    <p>Ladies nights, member socials, fundraisers, donor receptions, holiday parties. You already have the people and the space. We bring everything that goes behind the bar.</p>
+                    <p>Member socials, fundraisers, donor receptions, holiday parties. You already have the people and the space. We bring everything that goes behind the bar.</p>
                     <ul>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We bring the whole bar, so your space does not need to have one</span></li>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Built around your theme, whether that is a ladies night or a donor reception</span></li>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Built around your theme, from a summer social to a donor reception</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Running a season of events? We&#39;ll build the calendar with you</span></li>
                     </ul>
                     <a href="index.html#contact" class="btn btn-outline">Let's Work Together</a>
@@ -995,7 +995,7 @@
                     <p>Planners, caterers, photographers. Your client hired you to make it feel effortless, and the bar is one more thing that has to live up to that. We treat it the way you treat your own work. You get the credit. We just make sure the bar earns it.</p>
                     <ul>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Your client gets the consultation, the custom menu and the drink names. You get the credit.</span></li>
-                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We can be the main bar or a second one, so cocktail hour and dinner can run in different spaces</span></li>
+                        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We set up before guests arrive and break down after they leave, so nobody watches us work</span></li>
                         <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>We&#39;ll coordinate with your other vendors, or stay in your lane. Your call.</span></li>
                     </ul>
                     <a href="index.html#contact" class="btn btn-outline">Let's Work Together</a>
@@ -1015,19 +1015,19 @@
             </div>
             <div class="sig-grid" id="sig-grid">
                 <div class="sig-card reveal">
-                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/IMG_0455_n4nnl4.jpg" alt="A bartender placing a garnish on a foam-topped cocktail with a bar spoon" loading="lazy">
-                    <h4>House-Made Candied Citrus</h4>
-                    <p>We candy our own citrus from scratch: blanched, sugared and dried in house. It's the garnish guests photograph, and it's the thing they ask about at the bar.</p>
+                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/IMG_0157_youxqw.jpg" alt="A cocktail being poured into a sugar-rimmed glass in front of a fire" loading="lazy">
+                    <h4>House-Made Candies &amp; Syrups</h4>
+                    <p>We candy our own citrus and build our own syrups from scratch. No sour mix, no bottled shortcuts. It is why a drink at your event does not taste like a drink from anywhere else.</p>
                 </div>
                 <div class="sig-card reveal">
-                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/IMG_4862_hzaq5e.jpg" alt="Gloved hands straining a fresh cocktail beside jiggers and shaking tins" loading="lazy">
-                    <h4>Syrups &amp; Mixers From Scratch</h4>
-                    <p>No sour mix, no bottled shortcuts. We build our own syrups for your event, which is why a drink at your party doesn't taste like a drink from anywhere else.</p>
+                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/IMG_0455_n4nnl4.jpg" alt="A bartender finishing a foam-topped cocktail with a garnish and bar spoon" loading="lazy">
+                    <h4>Themed Cocktails &amp; Bar Menus</h4>
+                    <p>Drinks built and named for the occasion, with the printed menus and bar signage made in house and delivered ready. Nothing for you or your client to design, source or set out.</p>
                 </div>
                 <div class="sig-card reveal">
-                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/Image_25_inbreo.jpg" alt="A 513Sips mobile bar set up outdoors with a hand-lettered cocktail menu board" loading="lazy">
-                    <h4>A Menu Built For Your Event</h4>
-                    <p>Custom drinks, named for your occasion, printed and ready. It's included. We don't charge for menu design, drink naming or planning consultation.</p>
+                    <img class="sig-photo" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_760,h_570,q_auto,f_auto/Image_25_inbreo.jpg" alt="The 513Sips mobile bar set up outdoors under a pavilion with a cocktail menu board" loading="lazy">
+                    <h4>A Bar That Fits Any Space</h4>
+                    <p>Courtyard, barn, ballroom, pool deck or your existing bar top. It can be the only bar in the room, or a second one so cocktail hour runs outside while dinner runs in.</p>
                 </div>
             </div>
             <div class="v-scroll-dots" data-dots-for="sig-grid"></div>
