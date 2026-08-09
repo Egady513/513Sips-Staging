@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>513Sips — Bio Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1a1a2e;--navy-light:#2d2d4a;--navy-dark:#12121f;--cream:#f5f2eb;
+        --copper:#b87333;--copper-light:#d4915a;--charcoal:#2d3748;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Montserrat',sans-serif;background:#e9e4da;color:var(--charcoal);
+       line-height:1.6;padding:0 0 5rem;}
+
+  /* ---- toolbar ---- */
+  .bar{position:sticky;top:0;z-index:50;background:var(--navy-dark);color:#fff;
+       padding:.85rem 1.5rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;
+       box-shadow:0 2px 20px rgba(0,0,0,.25);}
+  .bar h1{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-right:auto;}
+  .bar h1 span{color:var(--copper-light);}
+  button{font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.6px;
+         text-transform:uppercase;padding:.6rem 1.1rem;border-radius:50px;border:none;cursor:pointer;
+         transition:all .25s ease;}
+  .btn-primary{background:linear-gradient(135deg,var(--copper),var(--copper-light));color:var(--navy-dark);}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);}
+  .btn-ghost:hover{background:rgba(255,255,255,.1);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(184,115,51,.4);}
+  .saved{font-size:.7rem;color:var(--copper-light);letter-spacing:.5px;text-transform:uppercase;opacity:0;transition:opacity .3s;}
+  .saved.on{opacity:1;}
+
+  /* ---- rule checker ---- */
+  .checks{background:var(--navy);color:#fff;padding:.7rem 1.5rem;display:flex;gap:1.75rem;
+          flex-wrap:wrap;font-size:.78rem;align-items:center;}
+  .chk{display:flex;gap:.45rem;align-items:center;}
+  .chk .dot{width:9px;height:9px;border-radius:50%;background:#4ade80;flex-shrink:0;}
+  .chk.bad .dot{background:#f87171;}
+  .chk.warn .dot{background:#fbbf24;}
+  .chk b{color:var(--copper-light);font-weight:600;}
+  .chk small{opacity:.65;}
+
+  /* ---- the page ---- */
+  .sheet{max-width:820px;margin:2.5rem auto;background:var(--cream);border-radius:20px;
+         padding:3.5rem 3.25rem;box-shadow:0 20px 60px rgba(26,26,46,.18);}
+  .tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--copper);margin-bottom:.4rem;}
+  #doc{outline:none;}
+  #doc h2{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:600;color:var(--navy);
+          line-height:1.2;margin-bottom:1.5rem;}
+  #doc p{font-size:1.02rem;line-height:1.85;color:var(--charcoal);opacity:.9;margin-bottom:1.15rem;}
+  #doc p.beat{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;
+              color:var(--copper);opacity:1;margin:1.75rem 0;line-height:1.2;}
+  #doc p.sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;
+             color:var(--copper);margin-top:1.75rem;opacity:1;}
+  #doc:focus-within p:hover{background:rgba(184,115,51,.05);border-radius:4px;}
+
+  .hint{max-width:820px;margin:0 auto;padding:0 1rem;font-size:.8rem;color:#6b6355;text-align:center;}
+  .hint b{color:var(--copper);}
+  mark.flag{background:rgba(248,113,113,.28);border-radius:2px;padding:0 2px;}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>513<span>Sips</span> &nbsp;·&nbsp; Bio Editor</h1>
+  <span class="saved" id="saved">Saved</span>
+  <button class="btn-ghost" id="flagBtn">Highlight issues</button>
+  <button class="btn-ghost" id="resetBtn">Reset to original</button>
+  <button class="btn-primary" id="copyBtn">Copy text</button>
+</div>
+
+<div class="checks">
+  <div class="chk" id="c-words"><span class="dot"></span><span><b id="n-words">0</b> words</span></div>
+  <div class="chk" id="c-em"><span class="dot"></span><span><b id="n-em">0</b> em dashes <small>must be 0</small></span></div>
+  <div class="chk" id="c-ox"><span class="dot"></span><span><b id="n-ox">0</b> comma-before-and/or <small>check each: lists no, full sentences yes</small></span></div>
+</div>
+
+<p class="hint" style="margin:1.25rem auto .5rem;">Click anywhere and type. Edits save automatically in this browser. Hit <b>Copy text</b> when you're done and paste it back to me.</p>
+
+<div class="sheet">
+  <p class="tag">Who You Are Working With</p>
+  <div id="doc" contenteditable="true" spellcheck="true"></div>
+</div>
+
+<script>
+const ORIGINAL = `<h2>Meet the Owner</h2>
+<p>Born and raised in Cincinnati, Ohio. And before you ask, Madeira High School.</p>
+<p>I created 513Sips for two reasons: to pay homage to the city I love and to build something around a passion I have always had, bringing people together and finding ways to serve others.</p>
+<p>To my friends, I'm known as "The Hub," the one who hosts, makes the plans and finds a reason to get everyone together. As president of the Greater Cincinnati Penn State Alumni Association, I play a similar role on a larger scale. Since 2020, I've helped organize events that bring people together while finding new ways to give back to the community we live in.</p>
+<p>Along the way, I started to notice something about the best gatherings. A good bar is about more than what is being poured. It becomes a gathering place. Stories get told there. Friends linger there. Sometimes the moments you remember most happen there.</p>
+<p>During one philanthropy event, we were sponsored by a beer company and I used this as an opportunity to expand on a long-standing passion of mine.</p>
+<p class="beat">So I built a bar.</p>
+<p>513Sips grew from equal parts friends and family, a love of bringing people together, a heavy pour of serving others and a dash of wanting to make every event feel a little more special.</p>
+<p>By day, I'm a managing business consultant. That world has taught me how to build processes, create the right tools and run an operation that people can depend on. What I didn't expect was how much I would love the creative side of this business.</p>
+<p>Making syrups from scratch. Candying citrus and fruit by hand. Finding a new spin on a familiar cocktail. Working with a client to carry a theme from the menu to the garnish to the bar itself.</p>
+<p>Those are the details I obsess over because they are the details guests notice.</p>
+<p>And I know what it feels like to sit on both sides of an event. I've been the organizer putting my name behind it and the vendor being trusted to deliver it. That's why I stay personally involved from the first conversation and menu planning through setup and the final pour.</p>
+<p class="sig">Eddie Gady<br>Owner, 513Sips</p>`;
+
+const KEY='513sips-bio-draft-v1';
+const doc=document.getElementById('doc');
+const saved=document.getElementById('saved');
+
+doc.innerHTML = localStorage.getItem(KEY) || ORIGINAL;
+
+let t;
+function persist(){
+  clearTimeout(t);
+  t=setTimeout(()=>{
+    localStorage.setItem(KEY, doc.innerHTML);
+    saved.classList.add('on');
+    setTimeout(()=>saved.classList.remove('on'),1400);
+  },500);
+}
+
+function audit(){
+  const txt = doc.innerText;
+  const words = txt.split(/\s+/).filter(w=>/[a-z0-9]/i.test(w)).length;
+  const em = (txt.match(/—/g)||[]).length;
+  const ox = (txt.match(/,\s+(and|or)\s/g)||[]).length;
+
+  document.getElementById('n-words').textContent = words;
+  document.getElementById('n-em').textContent = em;
+  document.getElementById('n-ox').textContent = ox;
+
+  document.getElementById('c-em').className = 'chk' + (em>0 ? ' bad' : '');
+  document.getElementById('c-ox').className = 'chk' + (ox>0 ? ' warn' : '');
+  document.getElementById('c-words').className = 'chk' + (words>420 ? ' warn' : '');
+}
+
+doc.addEventListener('input',()=>{persist();audit();});
+audit();
+
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  if(!confirm('Discard your edits and restore the original?')) return;
+  doc.innerHTML = ORIGINAL;
+  localStorage.removeItem(KEY);
+  audit();
+});
+
+document.getElementById('copyBtn').addEventListener('click',async ()=>{
+  const text = [...doc.querySelectorAll('h2,p')].map(el=>el.innerText.trim()).filter(Boolean).join('\n\n');
+  try{ await navigator.clipboard.writeText(text); }
+  catch(e){
+    const ta=document.createElement('textarea');
+    ta.value=text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); ta.remove();
+  }
+  const b=document.getElementById('copyBtn');
+  const old=b.textContent; b.textContent='Copied';
+  setTimeout(()=>b.textContent=old,1600);
+});
+
+document.getElementById('flagBtn').addEventListener('click',()=>{
+  const on = doc.querySelector('mark.flag');
+  doc.querySelectorAll('h2,p').forEach(el=>{
+    if(on){ el.innerHTML = el.innerHTML.replace(/<\/?mark[^>]*>/g,''); return; }
+    el.innerHTML = el.innerHTML
+      .replace(/—/g,'<mark class="flag">—</mark>')
+      .replace(/,(\s+(?:and|or)\s)/g,'<mark class="flag">,</mark>$1');
+  });
+  document.getElementById('flagBtn').textContent = on ? 'Highlight issues' : 'Clear highlights';
+});
+</script>
+</body>
+</html>
