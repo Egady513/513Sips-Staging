@@ -788,7 +788,7 @@
         .sig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
         .sig-card { text-align: center; padding: 2rem 1.5rem; }
         .sig-card .sig-icon { width: 62px; height: 62px; margin: 0 auto 1.25rem; border-radius: 50%; border: 2px solid var(--copper); display: flex; align-items: center; justify-content: center; color: var(--copper); }
-        .sig-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); margin-bottom: .7rem; }
+        .sig-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); margin-bottom: .7rem; line-height: 1.25; min-height: 3.75rem; }
         .sig-card p { font-size: .95rem; line-height: 1.7; color: var(--charcoal); opacity: .88; }
 
         /* procurement highlight */
@@ -830,6 +830,9 @@
         .eddie-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 20px; display: block; position: sticky; top: 7.5rem; }
         .eddie-copy h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem,3.4vw,2.6rem); font-weight: 600; color: var(--navy); margin-bottom: 1.1rem; line-height: 1.25; }
         .eddie-copy p { line-height: 1.85; color: var(--charcoal); opacity: .88; margin-bottom: 1.15rem; }
+        .eddie-copy ul { list-style: none; margin: 0 0 1.15rem; }
+        .eddie-copy li { position: relative; padding-left: 1.25rem; line-height: 1.85; color: var(--charcoal); opacity: .88; margin-bottom: .45rem; }
+        .eddie-copy li::before { content: ''; position: absolute; left: 0; top: .78em; width: 6px; height: 6px; border-radius: 50%; background: var(--copper); }
         .eddie-copy .story-beat { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 600; color: var(--copper); opacity: 1; margin: 1.75rem 0; line-height: 1.2; }
         .eddie-sig { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--copper); margin-top: 1.25rem; }
         @media (max-width: 968px) {
@@ -1177,14 +1180,23 @@
             <div class="eddie-wrap">
                 <img class="eddie-photo reveal" src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,g_auto,w_800,h_1000,q_auto,f_auto/IMG_0809_k4cb7k.jpg" alt="Eddie Gady of 513Sips presenting a finished cocktail behind the bar at an evening event">
                 <div class="eddie-copy reveal">
-                    <p class="section-tag">Who You Are Working With</p>
-                    <h3>Eddie Gady</h3>
-                    <p>I own 513Sips and I work every event. Not a coordinator, not a crew I dispatch. I take the first call, I build the menu, I walk your space and I am behind the bar on the night.</p>
-                    <p>I am also president of the Greater Cincinnati Penn State Alumni Association, where I organize charity events across the city, five of them in a single year. So I have sat on your side of the table. I know what it is to put your name on an event and trust someone else to represent it well, and I know how it feels when that goes wrong.</p>
-                    <p>I am ASK certified, TIPS trained and Food Safety certified, and every event carries vendor liability insurance. You will have proof naming your venue before you have to ask for it. In our first year we have poured at a dozen events: a wedding, recurring club nights, a graduation, holiday parties and the charity tournament that started all of this.</p>
-                    <p>Everything we serve is made by hand. I candy the citrus, I build the syrups and I test every recipe before it reaches your guests. That is the part of this I did not expect to love and it is the part I will not hand off.</p>
-                    <p>Among my friends I have always been the one who hosts. That has not changed. It just has better equipment now.</p>
-                    <p class="eddie-sig">Owner &middot; 513Sips &middot; Cincinnati, OH</p>
+                    <h3>Meet the Owner</h3>
+                    <p>Born and raised in Cincinnati, Ohio (and before you ask, Madeira High School). I created 513Sips for two reasons: to pay homage to the city I love and to build something around a passion I have always had, bringing people together and finding ways to serve others.</p>
+                    <p>To my friends, I&#39;m known as &ldquo;The Hub,&rdquo; the one who hosts, makes the plans and finds a reason to get everyone together. As president of the Greater Cincinnati Penn State Alumni Association, I play a similar role on a larger scale. Since 2020, I&#39;ve organized dozens of philanthropy events to give back to the community we live in.</p>
+                    <p>Along the way, I started to notice something about the best gatherings. A good bar is about more than what is being poured. It becomes a gathering place. Stories get told there. Friends linger there. Sometimes the moments you remember most happen there.</p>
+                    <p>During one philanthropy event, we were sponsored by a beer company and I used this as an opportunity to expand on a long-standing passion of mine.</p>
+                    <p class="story-beat">So I built a bar.</p>
+                    <p>513Sips grew from equal parts friends and family, a love of bringing people together, a heavy pour of serving others and a dash of wanting to make every event feel a little more special.</p>
+                    <p>By day, I&#39;m a managing business consultant. That world has taught me how to build processes, create the right tools and run an operation that people can depend on. What I didn&#39;t expect was how much I would love the creative side of this business:</p>
+                    <ul>
+                        <li>Making syrups from scratch.</li>
+                        <li>Candying citrus and fruit by hand.</li>
+                        <li>Finding a new spin on a familiar cocktail.</li>
+                        <li>Working with a client to carry a theme from the menu to the garnish to the bar itself.</li>
+                    </ul>
+                    <p>Little details I now obsess over for every event, because they are the details that make things feel special.</p>
+                    <p>I know what it feels like to sit on both sides of an event. I&#39;ve been the organizer putting my name behind it and the vendor being trusted to deliver it. That&#39;s why I stay personally involved from the first conversation and menu planning through setup and the final pour.</p>
+                    <p class="eddie-sig">Eddie Gady<br>Owner, 513Sips</p>
                 </div>
             </div>
         </div>
