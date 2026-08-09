@@ -870,9 +870,10 @@
                 flex: 0 0 82vw; max-width: 340px; scroll-snap-align: center;
                 opacity: 1; filter: none; transform: none;
                 background: rgba(255,255,255,0.05); border: 1px solid rgba(184,115,51,0.22);
-                border-radius: 16px; padding: 1.5rem 1.5rem 1.5rem 4.1rem;
+                border-radius: 16px; padding: 1.5rem;
             }
-            .proc-steps > .pstep .pstep-num { left: 1.5rem; top: 1.5rem; }
+            /* number stacks above the text on mobile so it cannot collide and the copy gets full width */
+            .proc-steps > .pstep .pstep-num { position: static; margin-bottom: .9rem; }
             .track-card .btn { align-self: stretch; }
         }
 
@@ -1033,8 +1034,7 @@
             <div class="v-scroll-dots" data-dots-for="track-grid"></div>
 
             <div class="pricing-note reveal">
-                <p><strong>Packages start at $650.</strong> Every event is quoted individually, and the consultation is free either way.</p>
-                <a href="index.html#pricing" class="btn btn-outline btn-sm">See Our Packages</a>
+                <p><strong>Typical packages start at $650, but partnerships aren&#39;t one-size-fits-all.</strong> We price around the event, the relationship and what we can build together.</p>
             </div>
         </div>
     </section>
