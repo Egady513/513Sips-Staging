@@ -296,6 +296,82 @@
             font-weight: 600;
         }
         
+        /* Custom Items */
+        .custom-items-section {
+            margin-top: 15px;
+        }
+
+        .custom-item-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: var(--navy-lighter);
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        .custom-item-row input[type="text"] {
+            flex: 1;
+            padding: 10px 12px;
+            background: var(--navy);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .custom-item-row input[type="number"] {
+            width: 100px;
+            padding: 10px 12px;
+            background: var(--navy);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--gold);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .custom-item-row input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .custom-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .custom-item-remove:hover {
+            background: rgba(255, 107, 107, 0.15);
+        }
+
+        .add-custom-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed var(--gold);
+            border-radius: 10px;
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .add-custom-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
         /* Summary Panel */
         .summary-panel {
             position: sticky;
@@ -553,44 +629,59 @@
             float: right;
             font-weight: 500;
         }
-        /* Print styles for PDF export */
-        @media print {
-            @page { margin: 0.4in; }
-            body { background: #fff !important; padding: 0 !important; color: #1a1a1a !important; font-size: 12px !important; }
-            .header, .card:first-child, .notice { display: none !important; }
-            .calculator { display: block !important; }
-            .summary-panel { position: static !important; }
-            .card { background: #fff !important; box-shadow: none !important; border: none !important; padding: 10px 20px !important; }
-            .card-title { color: #0A1628 !important; border-bottom-color: #D4AF37 !important; font-size: 1.3em !important; margin-bottom: 15px !important; padding-bottom: 10px !important; }
-            .total-display { padding: 15px 0 !important; margin-bottom: 15px !important; }
-            .total-amount { color: #D4AF37 !important; font-size: 2.8em !important; }
-            .total-label { color: #0A1628 !important; }
-            .breakdown-item { color: #1a1a1a !important; border-bottom-color: #eee !important; padding: 8px 0 !important; font-size: 0.9em !important; }
-            .breakdown-item.addon { color: #B8941F !important; }
-            .breakdown-item.discount { color: #22c55e !important; }
-            .breakdown { margin-bottom: 15px !important; }
-            .deposit-section { background: #f8f6f1 !important; padding: 15px !important; margin-bottom: 15px !important; }
-            .deposit-row { color: #1a1a1a !important; padding: 5px 0 !important; font-size: 0.9em !important; }
-            .deposit-row.highlight { color: #B8941F !important; border-top-color: #D4AF37 !important; font-size: 1em !important; }
-            .btn { display: none !important; }
-            .updated { display: none !important; }
-            .tooltip-content { display: none !important; }
-            .tooltip-icon { display: none !important; }
-            #cupsRow { color: #888 !important; }
-            .print-header { display: block !important; text-align: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 3px solid #D4AF37; }
-            .print-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: #0A1628; margin: 0 0 5px; letter-spacing: 2px; }
-            .print-header p { color: #888; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
-            .print-event-details { display: flex !important; justify-content: center; gap: 30px; margin-bottom: 15px; padding: 12px 0; background: #f8f6f1; border-radius: 8px; }
-            .print-event-detail { text-align: center; }
-            .print-event-detail .label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-            .print-event-detail .value { font-size: 16px; font-weight: 700; color: #0A1628; }
-            .print-footer { display: block !important; text-align: center; margin-top: 20px; padding-top: 12px; border-top: 1px solid #eee; font-size: 10px; color: #aaa; }
-            .print-notes { display: block !important; margin-top: 15px; padding: 12px 15px; background: #f8f6f1; border-radius: 8px; font-size: 0.85em; color: #444; }
-            .print-notes:empty { display: none !important; }
-            .print-notes-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 5px; }
+
+        /* ── Multi-event tabs ── */
+        .evt-tab-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(10,22,40,0.6);
+            border: 1px solid rgba(212,175,55,0.25);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
         }
-        .print-header, .print-footer, .print-event-details, .print-notes { display: none; }
-        textarea:focus { outline: none; border-color: var(--gold) !important; box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1); }
+        .evt-tab {
+            padding: 7px 18px;
+            border-radius: 7px;
+            border: 1px solid rgba(212,175,55,0.3);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.88em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .evt-tab:hover { border-color: var(--gold); color: var(--gold); }
+        .evt-tab.active {
+            background: var(--gold);
+            color: var(--navy-dark, #0A1628);
+            border-color: var(--gold);
+            font-weight: 700;
+        }
+        .evt-combined-badge {
+            margin-left: auto;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1em;
+            padding: 4px 12px;
+            border: 1px solid rgba(212,175,55,0.4);
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        .combined-section {
+            border-top: 2px solid rgba(212,175,55,0.4);
+            margin-top: 14px;
+            padding-top: 12px;
+        }
+        .combined-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -602,11 +693,29 @@
             <p>Premium Mobile Bar Experience</p>
         </div>
         
+        <!-- Lead linkage banner (shown when opened from Books with ?name= param) -->
+        <div id="leadBanner" style="display:none; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.5); border-radius: 8px; padding: 12px 18px; margin-bottom: 18px; display:none; align-items:center; justify-content:space-between; gap:12px;">
+            <span style="color: var(--gold); font-weight: 600;">📋 Calculating quote for: <span id="leadBannerName"></span></span>
+            <button type="button" onclick="document.getElementById('leadBanner').style.display='none'" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.1em; line-height:1;">✕</button>
+        </div>
+
+        <!-- Multi-event tab bar — shown when ?events=2 or more -->
+        <div id="evtTabBar" class="evt-tab-bar" style="display:none;">
+            <!-- Tabs injected by JS -->
+            <div id="combinedBadge" class="evt-combined-badge">Combined: $0</div>
+        </div>
+
         <div class="calculator">
             <!-- Left Panel: Inputs -->
             <div class="card">
-                <h2 class="card-title">Event Details</h2>
+                <h2 class="card-title" id="eventDetailsTitle">Event Details</h2>
                 
+                <!-- Event name — only visible in multi-event mode -->
+                <div class="form-group" id="eventNameGroup" style="display:none;">
+                    <label>Event Name</label>
+                    <input type="text" id="eventName" placeholder="e.g. Women's Night" oninput="saveAndCalculate(); updateEventTabLabels()">
+                </div>
+
                 <div class="form-group">
                     <label>Event Date</label>
                     <input type="date" id="eventDate" onchange="saveAndCalculate()">
@@ -614,41 +723,50 @@
                 
                 <div class="form-group">
                     <label>Number of Guests</label>
-                    <input type="number" id="guestCount" min="1" max="150" value="50" onchange="syncGlassCount(); suggestBartenders(); saveAndCalculate()">
+                    <input type="number" id="guestCount" min="1" max="150" value="50" onchange="syncGlassCount(); saveAndCalculate()">
                 </div>
-                
+
+                <div class="form-group">
+                    <label class="checkbox-item" style="background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); cursor: pointer;">
+                        <input type="checkbox" id="smallGroup" onchange="toggleSmallGroup(); saveAndCalculate()" style="width:24px; height:24px; margin-right:15px; accent-color: var(--gold); cursor:pointer;">
+                        <span class="checkbox-label">
+                            <strong style="color: var(--gold);">Small Group Event</strong>
+                            <span style="display:block; font-size:0.8em; color:var(--text-muted); margin-top:2px;">≤20 guests · Focused package · Starting at $395</span>
+                        </span>
+                    </label>
+                </div>
+
                 <div class="form-group">
                     <label>Service Duration</label>
                     <select id="hours" onchange="saveAndCalculate()">
-                        <option value="3">3 Hours (Base Package)</option>
+                        <option value="2">2 Hours (-$75 from base)</option>
+                        <option value="3" selected>3 Hours (Base Package)</option>
                         <option value="4">4 Hours (+$75 per bartender)</option>
                         <option value="5">5 Hours (+$150 per bartender)</option>
                         <option value="6">6 Hours (+$225 per bartender)</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Number of Bartenders</label>
                     <select id="bartenderCount" onchange="saveAndCalculate()">
                         <option value="1">1 Bartender</option>
-                        <option value="2">2 Bartenders</option>
-                        <option value="3">3 Bartenders</option>
+                        <option value="2">2 Bartenders (+$75/hr)</option>
+                        <option value="3">3 Bartenders (+$150/hr)</option>
                     </select>
-                    <small style="color: var(--text-muted); font-size: 0.85em; display: block; margin-top: 5px;">Auto-suggested based on guest count. Override as needed.</small>
                 </div>
-
+                
                 <div class="form-group">
                     <label>Package Type</label>
                     <select id="packageType" onchange="saveAndCalculate()">
                         <option value="beerwine">Beer & Wine Only</option>
-                        <option value="fullbar">Additional Spirits & Basic Cocktails (+$200)</option>
+                        <option value="fullbar">Full Bar Service (+$15/hr per bartender)</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
                     <label>Glassware Selection</label>
                     <select id="glassware" onchange="saveAndCalculate()">
-                        <option value="cups">Plastic Cups (Included with Alcohol Procurement)</option>
                         <option value="plastic">Premium Hard Plastic ($2.50/glass)</option>
                         <option value="formal">Elegant Formal Glassware ($3.50/glass)</option>
                         <option value="none">Client Provides Glassware</option>
@@ -676,8 +794,34 @@
                         <option value="REFERRAL">REFERRAL — 5% Off (Referred by Friend)</option>
                         <option value="VENDOR50">VENDOR50 — $50 Off (Vendor Partner)</option>
                         <option value="LAUNCH50">LAUNCH50 — $50 Off Grand Opening Special</option>
+                        <optgroup label="── Recurring Client (Small Group) ──">
+                            <option value="RECURRING1">RECURRING1 — $10 Off (Repeat Booking)</option>
+                            <option value="RECURRING3">RECURRING3 — $20 Off (3-Event Commitment)</option>
+                            <option value="RECURRING6">RECURRING6 — $35 Off (6-Event Commitment)</option>
+                        </optgroup>
                     </select>
                     <div id="promoStatus" class="promo-status"></div>
+
+                    <!-- Custom discount entry -->
+                    <div style="margin-top: 14px; border-top: 1px solid rgba(212,175,55,0.15); padding-top: 12px;">
+                        <div style="font-size: 0.8em; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.5px;">— Custom Discount —</div>
+                        <div style="display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap;">
+                            <input type="text" id="customPromoLabel" placeholder='Label (e.g. "Venue Partner")'
+                                style="flex: 1; min-width: 120px; padding: 9px 12px; background: var(--navy); border: 1px solid rgba(212,175,55,0.25); border-radius: 8px; color: var(--text-light); font-size: 0.88em;">
+                            <input type="number" id="customPromoAmount" placeholder="0" min="0" step="1"
+                                style="width: 72px; padding: 9px 10px; background: var(--navy); border: 1px solid rgba(212,175,55,0.25); border-radius: 8px; color: var(--text-light); font-size: 0.88em; text-align: center;">
+                            <select id="customPromoType"
+                                style="padding: 9px 10px; background: var(--navy); border: 1px solid rgba(212,175,55,0.25); border-radius: 8px; color: var(--text-light); font-size: 0.88em; cursor: pointer;">
+                                <option value="fixed">$ off</option>
+                                <option value="percent">% off</option>
+                            </select>
+                            <button type="button" onclick="applyCustomPromo()"
+                                style="padding: 9px 16px; background: var(--gold); color: #0A1628; border: none; border-radius: 8px; font-weight: 700; font-size: 0.88em; cursor: pointer; white-space: nowrap;">
+                                Apply
+                            </button>
+                        </div>
+                        <div id="customPromoStatus" style="margin-top: 6px; font-size: 0.85em;"></div>
+                    </div>
                 </div>
                 
                 <h2 class="card-title" style="margin-top: 30px;">Signature Add-Ons</h2>
@@ -717,7 +861,21 @@
                         <span class="checkbox-label">Arch Backdrop (Photo Ready)</span>
                         <span class="checkbox-price">+$350</span>
                     </label>
-                    
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="drinkBigIce" onchange="toggleDrinkBigIce()">
+                        <span class="checkbox-label">Custom Logo Ice by DrinkBigIce</span>
+                        <span class="checkbox-price">$2.50/cube</span>
+                    </label>
+                    <div id="iceCountWrap" style="display: none; padding: 6px 0 8px 30px;">
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <input type="number" id="iceCount" min="0" value="100" onchange="saveAndCalculate()"
+                                style="width: 80px; padding: 8px 10px; background: var(--navy); border: 1px solid rgba(212,175,55,0.35); border-radius: 8px; color: var(--text-light); font-size: 0.9em;">
+                            <span style="color: var(--text-muted); font-size: 0.82em;">cubes &nbsp;·&nbsp; 50 = $125 &nbsp;·&nbsp; 100 = $250 &nbsp;·&nbsp; 150 = $375</span>
+                        </div>
+                        <small style="color: #f59e0b; font-size: 0.8em; display: block; margin-top: 5px;">⏱ 2-week lead time required — order ahead</small>
+                    </div>
+
                     <label class="checkbox-item">
                         <input type="checkbox" id="tentRental" onchange="saveAndCalculate()">
                         <span class="checkbox-label">Tent Rental</span>
@@ -730,30 +888,16 @@
                         <span class="checkbox-price">+$100</span>
                     </label>
                 </div>
-                
-                <!-- Custom "Other" Add-On -->
-                <div class="promo-section" style="margin-top: 25px;">
-                    <div class="promo-label">Custom Add-On (OTHER...)</div>
-                    <div style="display: grid; grid-template-columns: 2fr 1fr 0.5fr; gap: 12px; margin-bottom: 15px;">
-                        <input type="text" id="customItemName" placeholder="Item description (e.g., Custom Signage, Special Lighting)" style="padding: 12px 15px;">
-                        <input type="number" id="customItemPrice" placeholder="Price" min="0" step="10" value="0" style="padding: 12px 15px;">
-                        <button type="button" class="btn btn-primary" onclick="addCustomItem()" style="padding: 12px; font-size: 0.9em;">Add</button>
-                    </div>
-                    <div id="customItemsList" style="max-height: 200px; overflow-y: auto;">
-                        <!-- Custom items will appear here -->
-                    </div>
-                </div>
-                
-                <div class="form-group" style="margin-top: 25px;">
-                    <label>Notes (included on PDF quote)</label>
-                    <textarea id="quoteNotes" rows="3" placeholder="e.g., Client prefers bourbon-forward cocktails, outdoor venue — tent recommended..."
-                        onchange="saveAndCalculate()"
-                        style="width: 100%; padding: 15px 18px; background: var(--navy-lighter); border: 2px solid transparent; border-radius: 12px; color: var(--text-light); font-size: 14px; font-family: 'Inter', sans-serif; resize: vertical; transition: all 0.3s ease;"></textarea>
+
+                <!-- Custom Items -->
+                <div class="custom-items-section">
+                    <div id="customItems"></div>
+                    <button type="button" class="add-custom-btn" onclick="addCustomItem()">+ Add Custom Item</button>
                 </div>
 
                 <div class="notice">
-                    <strong>⚠️ Important:</strong> A 50% deposit is required to secure your date.
-                    Balance due 14 days prior to event. Late payments subject to 15% fee.
+                    <strong>⚠️ Important:</strong> A 50% deposit is required to secure your date. 
+                    Balance due 14 days prior to event. Late payments subject to 15% fee. 
                     All payments electronic only.
                 </div>
                 
@@ -762,24 +906,6 @@
             
             <!-- Right Panel: Summary -->
             <div class="card summary-panel">
-                <div class="print-header">
-                    <h1>513 Sips</h1>
-                    <p>Premium Mobile Bar Experience</p>
-                </div>
-                <div class="print-event-details">
-                    <div class="print-event-detail">
-                        <div class="label">Guests</div>
-                        <div class="value" id="printGuests">50</div>
-                    </div>
-                    <div class="print-event-detail">
-                        <div class="label">Hours</div>
-                        <div class="value" id="printHours">3</div>
-                    </div>
-                    <div class="print-event-detail">
-                        <div class="label">Bartenders</div>
-                        <div class="value" id="printBartenders">1</div>
-                    </div>
-                </div>
                 <h2 class="card-title">Quote Summary</h2>
                 
                 <div class="total-display">
@@ -790,14 +916,14 @@
                 <div class="breakdown" id="breakdown">
                     <div class="breakdown-item">
                         <div class="tooltip-container">
-                            <span>Base Package (3 hrs, ≤50 guests)</span>
+                            <span id="baseLabel">Base Package (3 hrs, ≤50 guests)</span>
                             <span class="tooltip-icon">?</span>
                             <div class="tooltip-content">
                                 <h4>✨ Base Package Breakdown ($650)</h4>
                                 <ul>
                                     <li>Bartending Service (3 hrs @ $75/hr) <span class="price">$225</span></li>
                                     <li>Single-Event Liability Insurance <span class="price">$150</span></li>
-                                    <li>Ice Purchase & Cold Storage <span class="price">$125</span></li>
+                                    <li>Ice Collection Service (coordination fee) <span class="price">$125</span></li>
                                     <li>Travel (within 30 miles) <span class="price">$30</span></li>
                                     <li>Operating Expenses, Admin & Margin <span class="price">$120</span></li>
                                 </ul>
@@ -809,25 +935,25 @@
                         <span id="staffingLabel">Additional Bartenders</span>
                         <span id="staffingPrice">$0</span>
                     </div>
-                    <div class="breakdown-item" id="hoursRow" style="display: none;">
-                        <span id="hoursLabel">Extended Service Hours</span>
-                        <span id="hoursPrice">$0</span>
-                    </div>
                     <div class="breakdown-item" id="volumeRow" style="display: none;">
                         <span>High-Volume Event Adjustment</span>
                         <span id="volumePrice">$0</span>
                     </div>
+                    <div class="breakdown-item discount" id="twoHrReductionRow" style="display: none;">
+                        <span id="twoHrReductionLabel">2-Hour Service Reduction</span>
+                        <span id="twoHrReductionPrice">-$0</span>
+                    </div>
+                    <div class="breakdown-item" id="hoursRow" style="display: none;">
+                        <span id="hoursLabel">Extended Service Hours</span>
+                        <span id="hoursPrice">$0</span>
+                    </div>
                     <div class="breakdown-item" id="packageRow" style="display: none;">
-                        <span>Additional Spirits & Basic Cocktails</span>
+                        <span>Full Bar Service</span>
                         <span id="packagePrice">$0</span>
                     </div>
                     <div class="breakdown-item" id="glassRow" style="display: none;">
                         <span id="glassLabel">Premium Glassware</span>
                         <span id="glassPrice">$0</span>
-                    </div>
-                    <div class="breakdown-item" id="cupsRow" style="display: none;">
-                        <span>✓ Plastic Cups (w/ Alcohol Procurement)</span>
-                        <span style="color: var(--text-muted); font-size: 0.85em;">Included</span>
                     </div>
                     <div class="breakdown-item" id="travelRow" style="display: none;">
                         <span>Travel Fee (beyond 30 miles)</span>
@@ -841,13 +967,17 @@
                         <span id="addonsLabel">Premium Add-Ons</span>
                         <span id="addonsPrice">$0</span>
                     </div>
-                    <div class="breakdown-item addon" id="customRow" style="display: none;">
-                        <span id="customLabel">Custom Add-Ons</span>
-                        <span id="customPrice">$0</span>
+                    <div class="breakdown-item addon" id="customItemsRow" style="display: none;">
+                        <span id="customItemsLabel">Custom Items</span>
+                        <span id="customItemsPrice">$0</span>
                     </div>
                     <div class="breakdown-item discount" id="discountRow" style="display: none;">
                         <span id="discountLabel">Promo Discount</span>
                         <span id="discountPrice">-$0</span>
+                    </div>
+                    <div class="breakdown-item discount" id="customDiscountRow" style="display: none;">
+                        <span id="customDiscountLabel">Custom Discount</span>
+                        <span id="customDiscountPrice">-$0</span>
                     </div>
                 </div>
                 
@@ -866,19 +996,25 @@
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" onclick="generateContract()">
-                    Generate Contract
+                <!-- Combined multi-event summary — shown when numEvents > 1 -->
+                <div id="combinedSummaryWrap" style="display:none;" class="combined-section">
+                    <div class="combined-label">📋 Combined Package</div>
+                    <div id="combinedSummaryRows"></div>
+                </div>
+
+                <!-- Save Quote to Books — only visible when opened from a lead -->
+                <button class="btn" id="saveQuoteBtn" onclick="saveQuoteToBooks()"
+                    style="display:none; background:#1a6b3a; color:#fff; border:none; width:100%; margin-bottom:4px;">
+                    📋 Create Quote in Books
                 </button>
-                <button class="btn btn-secondary" onclick="exportToPDF()" style="margin-top: 12px;">
-                    📄 Export Quote to PDF
+                <div id="saveQuoteStatus" style="display:none; font-size:0.82em; padding:6px 10px; border-radius:6px; margin-bottom:8px; text-align:center;"></div>
+
+                <button class="btn btn-primary" id="generateBtn" onclick="generateContract()">
+                    Generate Contract
                 </button>
 
                 <div class="updated" id="lastUpdated">
                     Calculating...
-                </div>
-                <div class="print-notes" id="printNotes"></div>
-                <div class="print-footer">
-                    513 Sips &bull; Premium Mobile Bartending &bull; Cincinnati, OH
                 </div>
             </div>
         </div>
@@ -887,22 +1023,468 @@
     <script>
         // Promo codes configuration
         const PROMO_CODES = {
-            'FIRST10': { type: 'percent', value: 0.10, desc: '10% Off First Event' },
-            'WEDDING2024': { type: 'percent', value: 0.05, desc: '5% Off Wedding' },
-            'REFERRAL': { type: 'percent', value: 0.05, desc: '5% Off Referral' },
-            'VENDOR50': { type: 'fixed', value: 50, desc: '$50 Off' },
-            'LAUNCH50': { type: 'fixed', value: 50, desc: '$50 Off Launch Special' }
+            'FIRST10':    { type: 'percent', value: 0.10, desc: '10% Off First Event' },
+            'WEDDING2024':{ type: 'percent', value: 0.05, desc: '5% Off Wedding' },
+            'REFERRAL':   { type: 'percent', value: 0.05, desc: '5% Off Referral' },
+            'VENDOR50':   { type: 'fixed',   value: 50,   desc: '$50 Off' },
+            'LAUNCH50':   { type: 'fixed',   value: 50,   desc: '$50 Off Launch Special' },
+            'RECURRING1': { type: 'fixed',   value: 10,   desc: '$10 Off — Repeat Booking',      smallGroupOnly: true },
+            'RECURRING3': { type: 'fixed',   value: 20,   desc: '$20 Off — 3-Event Commitment',  smallGroupOnly: true },
+            'RECURRING6': { type: 'fixed',   value: 35,   desc: '$35 Off — 6-Event Commitment',  smallGroupOnly: true }
         };
         
         let currentPromo = null;
-        
+        let currentLeadId = null;
+        let currentQuoteId = null; // set when editing an existing quote (URL ?quote_id=)
+        let existingVersionHistory = []; // preserved from loaded quote so we can append on update
+        let customPromo = null;  // { label, type: 'fixed'|'percent', value }
+
+        // ── Multi-event state ──
+        let numEvents = 1;
+        let currentEventIdx = 0;
+        let eventConfigs = [null];   // saved DOM snapshots per event
+        let eventTotals = [0];       // computed total per event
+        let eventBreakdowns = [null]; // computed breakdown snapshot per event
+        let eventPromos = [null];    // saved promo per event
+
+        // Custom Items
+        function addCustomItem(name = '', price = '') {
+            const container = document.getElementById('customItems');
+            const row = document.createElement('div');
+            row.className = 'custom-item-row';
+            row.innerHTML = `
+                <input type="text" placeholder="Item description" value="${name}" oninput="saveAndCalculate()">
+                <input type="number" placeholder="$0" min="0" step="1" value="${price}" oninput="saveAndCalculate()">
+                <button type="button" class="custom-item-remove" onclick="removeCustomItem(this)">&times;</button>
+            `;
+            container.appendChild(row);
+            saveAndCalculate();
+        }
+
+        function removeCustomItem(btn) {
+            btn.closest('.custom-item-row').remove();
+            saveAndCalculate();
+        }
+
+        function getCustomItems() {
+            const rows = document.querySelectorAll('.custom-item-row');
+            const items = [];
+            rows.forEach(row => {
+                const name = row.querySelector('input[type="text"]').value.trim();
+                const price = parseFloat(row.querySelector('input[type="number"]').value) || 0;
+                if (name || price > 0) {
+                    items.push({ name: name || 'Custom Item', price });
+                }
+            });
+            return items;
+        }
+
         // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            loadFromStorage();
-            loadCustomItems();
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Read URL params for Books lead linkage
+            const params = new URLSearchParams(window.location.search);
+            const leadName   = params.get('name');
+            const leadId     = params.get('lead_id');
+            const quoteId    = params.get('quote_id');
+            const guests     = params.get('guests');
+            const date       = params.get('date');
+            const eventsParam = parseInt(params.get('events') || '1', 10);
+
+            if (leadId) {
+                currentLeadId = leadId;
+                document.getElementById('saveQuoteBtn').style.display = 'block';
+            }
+            if (leadName) {
+                document.getElementById('leadBannerName').textContent = leadName;
+                document.getElementById('leadBanner').style.display = 'flex';
+            }
+
+            // Edit-mode: load existing quote and rehydrate the form
+            if (quoteId) {
+                currentQuoteId = quoteId;
+                document.getElementById('saveQuoteBtn').textContent = '⏳ Loading quote...';
+                const loaded = await loadExistingQuote(quoteId);
+                if (loaded) {
+                    // Switch UI to edit mode
+                    document.getElementById('saveQuoteBtn').textContent = '💾 Update Quote in Books';
+                    const banner = document.getElementById('leadBanner');
+                    const bannerLabel = banner.querySelector('span');
+                    if (bannerLabel) {
+                        bannerLabel.innerHTML = `✏️ Editing quote for: <span id="leadBannerName">${leadName || ''}</span>`;
+                    }
+                    calculate();
+                    return; // skip default population — quote data wins
+                } else {
+                    // Quote fetch failed — fall through to default-new-quote flow but warn
+                    document.getElementById('saveQuoteBtn').textContent = '📋 Create Quote in Books';
+                    currentQuoteId = null;
+                }
+            }
+
+            if (guests) { document.getElementById('guestCount').value = guests; syncGlassCount(); }
+            if (date)   { document.getElementById('eventDate').value = date; }
+
+            // Multi-event setup
+            if (eventsParam > 1) {
+                numEvents = eventsParam;
+                eventConfigs = Array.from({ length: numEvents }, (_, i) => ({
+                    eventName: `Event ${i + 1}`,
+                    eventDate: date || '',
+                    guestCount: guests || '50',
+                    hours: '3', packageType: 'beerwine', glassware: 'plastic',
+                    glassCount: guests || '50', distance: '0', cocktailCount: '0',
+                    bartenderCount: '1', smallGroup: false, alcoholProcurement: false,
+                    coffeeService: false, archBackdrop: false, drinkBigIce: false,
+                    iceCount: '100', tentRental: false, peakSeason: false,
+                    promoCode: '', customItems: []
+                }));
+                eventTotals = new Array(numEvents).fill(0);
+                eventBreakdowns = new Array(numEvents).fill(null);
+                eventPromos = new Array(numEvents).fill(null);
+                currentEventIdx = 0;
+
+                // Show tab bar + event name field
+                document.getElementById('evtTabBar').style.display = 'flex';
+                document.getElementById('eventNameGroup').style.display = 'block';
+                document.getElementById('eventDetailsTitle').textContent = 'Event Details';
+                buildEventTabs();
+
+                // Pre-fill Event 1 name from lead name if available
+                if (leadName) {
+                    eventConfigs[0].eventName = 'Event 1';
+                }
+                restoreConfig(eventConfigs[0]);
+            } else {
+                loadFromStorage();
+            }
+
             calculate();
         });
+
+        // Reverse-engineer a config from the legacy line-item `bd` shape.
+        // Used when a saved quote predates the `_config` snapshot field.
+        function legacyBdToConfig(bd, baseConfig) {
+            if (!bd || typeof bd !== 'object') return baseConfig;
+            const cfg = { ...baseConfig };
+
+            if (typeof bd.cocktails === 'number' && bd.cocktails > 0) {
+                cfg.cocktailCount = String(Math.round(bd.cocktails / 125));
+            }
+            if (bd.package > 0) cfg.packageType = 'fullbar';
+
+            // Glassware: bd.glassware is 0 when client provides their own.
+            // Plastic = round(glassCount * 2.50), formal = round(glassCount * 3.50).
+            if (typeof bd.glassware === 'number') {
+                if (bd.glassware === 0) {
+                    cfg.glassware = 'none';
+                    cfg.glassCount = '0';
+                } else {
+                    const guests = parseInt(cfg.guestCount) || 50;
+                    const plasticEstimate = Math.round(guests * 2.50);
+                    cfg.glassware = bd.glassware <= plasticEstimate + 5 ? 'plastic' : 'formal';
+                }
+            }
+
+            if (Array.isArray(bd.addonsList)) {
+                for (const label of bd.addonsList) {
+                    if (label === 'Alcohol Procurement') cfg.alcoholProcurement = true;
+                    else if (label === 'Coffee Service') cfg.coffeeService = true;
+                    else if (label === 'Arch Backdrop') cfg.archBackdrop = true;
+                    else if (typeof label === 'string' && label.startsWith('Custom Logo Ice')) {
+                        cfg.drinkBigIce = true;
+                        const m = label.match(/\((\d+)\s+cubes\)/);
+                        if (m) cfg.iceCount = m[1];
+                    } else if (label === 'Tent Rental') cfg.tentRental = true;
+                    else if (label === 'Peak Season') cfg.peakSeason = true;
+                }
+            }
+
+            if (typeof bd.customDiscount === 'number' && bd.customDiscount > 0) {
+                cfg.customPromo = {
+                    label: bd.customDiscountLabel || 'Custom Discount',
+                    type: 'fixed',
+                    value: bd.customDiscount,
+                    raw: bd.customDiscount,
+                };
+                cfg.customPromoLabel = bd.customDiscountLabel || '';
+                cfg.customPromoAmount = String(bd.customDiscount);
+                cfg.customPromoType = 'fixed';
+            }
+
+            if (typeof bd.staffing === 'number' && bd.staffing > 0) {
+                const hours = parseFloat(cfg.hours) || 3;
+                const extraB = Math.max(1, Math.round(bd.staffing / (75 * hours)));
+                cfg.bartenderCount = String(1 + extraB);
+            }
+            return cfg;
+        }
+
+        // Fetch a saved quote from Supabase and rehydrate the form.
+        // Returns true on success, false on failure (caller falls back to new-quote flow).
+        async function loadExistingQuote(quoteId) {
+            const SUPABASE_URL      = 'https://bixyltkdymoqjipaiujk.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpeHlsdGtkeW1vcWppcGFpdWprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTY0MTMsImV4cCI6MjA4OTM3MjQxM30.xqaK35aar9lSweeTA8ydeW8WT8ZiOrOl5NFa957MkjU';
+            try {
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/quotes?id=eq.${encodeURIComponent(quoteId)}&select=*`, {
+                    headers: {
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'apikey': SUPABASE_ANON_KEY,
+                    },
+                });
+                if (!res.ok) return false;
+                const rows = await res.json();
+                if (!Array.isArray(rows) || rows.length === 0) return false;
+                const quote = rows[0];
+                existingVersionHistory = Array.isArray(quote.version_history) ? quote.version_history : [];
+
+                const bd = quote.breakdown;
+                const isMultiEvent = Array.isArray(bd) && bd.length > 1;
+
+                if (isMultiEvent) {
+                    // Multi-event quote — rehydrate tabs
+                    numEvents = bd.length;
+                    eventConfigs = bd.map((evt, i) => {
+                        // Preferred: a full _config snapshot saved in 2026-06 forward
+                        if (evt && evt._config) return evt._config;
+                        // Fallback: reverse-engineer from legacy line-item breakdown
+                        const baseConfig = {
+                            eventName: evt?.name || `Event ${i + 1}`,
+                            eventDate: '',
+                            guestCount: String(evt?.guestCount || quote.guest_count || 50),
+                            hours: String(evt?.hours || quote.hours || 3),
+                            packageType: 'beerwine',
+                            glassware: 'plastic',
+                            glassCount: String(evt?.guestCount || 50),
+                            distance: '0', cocktailCount: '0',
+                            bartenderCount: String(evt?.bartenders || 1),
+                            smallGroup: false, alcoholProcurement: false,
+                            coffeeService: false, archBackdrop: false, drinkBigIce: false,
+                            iceCount: '100', tentRental: false, peakSeason: false,
+                            promoCode: '', customItems: []
+                        };
+                        return legacyBdToConfig(evt?.bd, baseConfig);
+                    });
+                    eventTotals = bd.map(evt => evt?.total || 0);
+                    eventBreakdowns = bd.map(evt => evt?.bd || null);
+                    eventPromos = new Array(numEvents).fill(null);
+                    currentEventIdx = 0;
+
+                    document.getElementById('evtTabBar').style.display = 'flex';
+                    document.getElementById('eventNameGroup').style.display = 'block';
+                    document.getElementById('eventDetailsTitle').textContent = 'Event Details';
+                    buildEventTabs();
+                    restoreConfig(eventConfigs[0]);
+                } else {
+                    // Single-event quote — restore from _config if present, else from top-level fields
+                    const cfg = (bd && typeof bd === 'object' && bd._config) ? bd._config : null;
+                    if (cfg) {
+                        restoreConfig(cfg);
+                        if (cfg.promoCode) {
+                            document.getElementById('promoCode').value = cfg.promoCode;
+                            applyPromo(false);
+                        }
+                    } else {
+                        // Legacy quote — only guest_count and hours are reliable
+                        document.getElementById('guestCount').value = String(quote.guest_count || 50);
+                        document.getElementById('hours').value = String(quote.hours || 3);
+                        if (quote.promo_code) {
+                            document.getElementById('promoCode').value = quote.promo_code;
+                            applyPromo(false);
+                        }
+                        syncGlassCount();
+                    }
+                }
+                return true;
+            } catch (err) {
+                console.error('Failed to load quote', err);
+                return false;
+            }
+        }
         
+        function toggleSmallGroup() {
+            const isSmall = document.getElementById('smallGroup').checked;
+            const hoursSelect = document.getElementById('hours');
+            const opt2hr = hoursSelect.querySelector('option[value="2"]');
+
+            if (isSmall) {
+                // Relabel 2hr option for small group context
+                if (opt2hr) opt2hr.textContent = '2 Hours (Small Group Base)';
+                // Cap guest count at 20
+                const guestEl = document.getElementById('guestCount');
+                if (parseInt(guestEl.value) > 20) {
+                    guestEl.value = 20;
+                    syncGlassCount();
+                }
+            } else {
+                // Restore standard 2hr label; fall back to 3 hrs if selected
+                if (opt2hr) opt2hr.textContent = '2 Hours (-$75 from base)';
+                if (hoursSelect.value === '2') hoursSelect.value = '3';
+                // Clear recurring promo if active
+                const promoEl = document.getElementById('promoCode');
+                if (['RECURRING1','RECURRING3','RECURRING6'].includes(promoEl.value)) {
+                    promoEl.value = '';
+                    currentPromo = null;
+                    const statusEl = document.getElementById('promoStatus');
+                    statusEl.className = 'promo-status';
+                    statusEl.style.display = 'none';
+                }
+            }
+        }
+
+        // ── Multi-event helpers ──
+
+        function buildEventTabs() {
+            const bar = document.getElementById('evtTabBar');
+            const badge = document.getElementById('combinedBadge');
+            // Remove old tabs (keep badge)
+            bar.querySelectorAll('.evt-tab').forEach(t => t.remove());
+            for (let i = 0; i < numEvents; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'evt-tab' + (i === currentEventIdx ? ' active' : '');
+                btn.id = `evtTab${i}`;
+                btn.textContent = eventConfigs[i]?.eventName || `Event ${i + 1}`;
+                btn.onclick = () => switchEvent(i);
+                bar.insertBefore(btn, badge);
+            }
+        }
+
+        function getCurrentConfig() {
+            return {
+                eventName: (document.getElementById('eventName')?.value || '').trim() || `Event ${currentEventIdx + 1}`,
+                eventDate: document.getElementById('eventDate').value,
+                guestCount: document.getElementById('guestCount').value,
+                hours: document.getElementById('hours').value,
+                packageType: document.getElementById('packageType').value,
+                glassware: document.getElementById('glassware').value,
+                glassCount: document.getElementById('glassCount').value,
+                distance: document.getElementById('distance').value,
+                cocktailCount: document.getElementById('cocktailCount').textContent,
+                bartenderCount: document.getElementById('bartenderCount').value,
+                smallGroup: document.getElementById('smallGroup').checked,
+                alcoholProcurement: document.getElementById('alcoholProcurement').checked,
+                coffeeService: document.getElementById('coffeeService').checked,
+                archBackdrop: document.getElementById('archBackdrop').checked,
+                drinkBigIce: document.getElementById('drinkBigIce').checked,
+                iceCount: document.getElementById('iceCount').value,
+                tentRental: document.getElementById('tentRental').checked,
+                peakSeason: document.getElementById('peakSeason').checked,
+                promoCode: document.getElementById('promoCode').value,
+                customItems: getCustomItems(),
+                customPromo: customPromo ? { ...customPromo } : null,
+                customPromoLabel: document.getElementById('customPromoLabel').value,
+                customPromoAmount: document.getElementById('customPromoAmount').value,
+                customPromoType: document.getElementById('customPromoType').value,
+            };
+        }
+
+        function restoreConfig(cfg) {
+            if (!cfg) return;
+            const nameEl = document.getElementById('eventName');
+            if (nameEl) nameEl.value = cfg.eventName || '';
+            if (cfg.eventDate) document.getElementById('eventDate').value = cfg.eventDate;
+            document.getElementById('guestCount').value = cfg.guestCount || '50';
+            document.getElementById('hours').value = cfg.hours || '3';
+            document.getElementById('packageType').value = cfg.packageType || 'beerwine';
+            document.getElementById('glassware').value = cfg.glassware || 'plastic';
+            document.getElementById('glassCount').value = cfg.glassCount || '50';
+            document.getElementById('distance').value = cfg.distance || '0';
+            document.getElementById('cocktailCount').textContent = cfg.cocktailCount || '0';
+            document.getElementById('bartenderCount').value = cfg.bartenderCount || '1';
+            document.getElementById('alcoholProcurement').checked = !!cfg.alcoholProcurement;
+            document.getElementById('coffeeService').checked = !!cfg.coffeeService;
+            document.getElementById('archBackdrop').checked = !!cfg.archBackdrop;
+            document.getElementById('drinkBigIce').checked = !!cfg.drinkBigIce;
+            document.getElementById('iceCountWrap').style.display = cfg.drinkBigIce ? 'block' : 'none';
+            document.getElementById('iceCount').value = cfg.iceCount || '100';
+            document.getElementById('tentRental').checked = !!cfg.tentRental;
+            document.getElementById('peakSeason').checked = !!cfg.peakSeason;
+            document.getElementById('smallGroup').checked = !!cfg.smallGroup;
+            document.getElementById('promoCode').value = cfg.promoCode || '';
+            document.getElementById('promoStatus').className = 'promo-status';
+            document.getElementById('promoStatus').style.display = 'none';
+            document.getElementById('customItems').innerHTML = '';
+            if (cfg.customItems && cfg.customItems.length > 0) {
+                cfg.customItems.forEach(item => addCustomItem(item.name, item.price));
+            }
+            if (cfg.smallGroup) toggleSmallGroup();
+            syncGlassCount();
+
+            // Restore custom promo
+            customPromo = cfg.customPromo || null;
+            document.getElementById('customPromoLabel').value = cfg.customPromoLabel || '';
+            document.getElementById('customPromoAmount').value = cfg.customPromoAmount || '';
+            if (cfg.customPromoType) document.getElementById('customPromoType').value = cfg.customPromoType;
+            const cpStatus = document.getElementById('customPromoStatus');
+            if (customPromo) {
+                const desc = customPromo.type === 'percent' ? `${cfg.customPromoAmount}% off` : `$${cfg.customPromoAmount} off`;
+                cpStatus.innerHTML = `✓ <strong>${customPromo.label}</strong> — ${desc} &nbsp;<button type="button" onclick="clearCustomPromo()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:0.9em;padding:0 4px;">✕ remove</button>`;
+                cpStatus.style.color = '#4ade80';
+            } else {
+                cpStatus.textContent = '';
+            }
+        }
+
+        function switchEvent(idx) {
+            if (idx === currentEventIdx) return;
+            // Save current event state
+            eventConfigs[currentEventIdx] = getCurrentConfig();
+            eventPromos[currentEventIdx] = currentPromo;
+
+            currentEventIdx = idx;
+            currentPromo = eventPromos[idx] || null;
+
+            // Update tab styles
+            for (let i = 0; i < numEvents; i++) {
+                const t = document.getElementById(`evtTab${i}`);
+                if (t) t.className = 'evt-tab' + (i === idx ? ' active' : '');
+            }
+
+            // Restore target event config
+            restoreConfig(eventConfigs[idx]);
+            if (currentPromo) applyPromo(false);
+            else { const s = document.getElementById('promoStatus'); s.style.display = 'none'; }
+            calculate();
+        }
+
+        function updateEventTabLabels() {
+            if (numEvents <= 1) return;
+            eventConfigs[currentEventIdx] = getCurrentConfig();
+            const tab = document.getElementById(`evtTab${currentEventIdx}`);
+            if (tab) tab.textContent = eventConfigs[currentEventIdx].eventName || `Event ${currentEventIdx + 1}`;
+        }
+
+        function updateCombinedSummary() {
+            if (numEvents <= 1) return;
+            const wrap = document.getElementById('combinedSummaryWrap');
+            const rows = document.getElementById('combinedSummaryRows');
+            const badge = document.getElementById('combinedBadge');
+            if (!wrap || !rows) return;
+
+            const combined = eventTotals.reduce((s, t) => s + (t || 0), 0);
+
+            let html = '';
+            for (let i = 0; i < numEvents; i++) {
+                const name = eventConfigs[i]?.eventName || `Event ${i + 1}`;
+                const t = eventTotals[i] || 0;
+                html += `<div class="deposit-row"><span>${name}</span><span style="color:var(--text-muted)">$${t.toLocaleString()}</span></div>`;
+            }
+            html += `<div class="deposit-row highlight" style="margin-top:6px;border-top:1px solid rgba(212,175,55,0.35);padding-top:8px;">
+                <span style="color:var(--gold);font-weight:700">${numEvents}-Event Package Total</span>
+                <span style="color:var(--gold);font-weight:700">$${combined.toLocaleString()}</span>
+            </div>
+            <div class="deposit-row"><span>Combined Deposit (50%)</span><span>$${Math.round(combined*0.5).toLocaleString()}</span></div>
+            <div class="deposit-row"><span>Combined Balance</span><span>$${(combined - Math.round(combined*0.5)).toLocaleString()}</span></div>`;
+
+            rows.innerHTML = html;
+            wrap.style.display = 'block';
+            if (badge) badge.textContent = `Package: $${combined.toLocaleString()}`;
+
+            // Update generate button label
+            const btn = document.getElementById('generateBtn');
+            if (btn) btn.textContent = `Generate Contract`;
+        }
+
         function updateCounter(change) {
             const el = document.getElementById('cocktailCount');
             let val = parseInt(el.textContent) + change;
@@ -912,6 +1494,12 @@
             saveAndCalculate();
         }
         
+        function toggleDrinkBigIce() {
+            const checked = document.getElementById('drinkBigIce').checked;
+            document.getElementById('iceCountWrap').style.display = checked ? 'block' : 'none';
+            saveAndCalculate();
+        }
+
         function syncGlassCount() {
             const guestCount = parseInt(document.getElementById('guestCount').value) || 50;
             const glassCountEl = document.getElementById('glassCount');
@@ -919,21 +1507,12 @@
             // (simple approach: always sync when guest count changes)
             glassCountEl.value = guestCount;
         }
-
-        function suggestBartenders() {
-            const guestCount = parseInt(document.getElementById('guestCount').value) || 50;
-            let suggested = 1;
-            if (guestCount > 50 && guestCount <= 100) suggested = 2;
-            else if (guestCount > 100) suggested = 3;
-            document.getElementById('bartenderCount').value = String(suggested);
-        }
         
         function saveToStorage() {
             const data = {
                 eventDate: document.getElementById('eventDate').value,
                 guestCount: document.getElementById('guestCount').value,
                 hours: document.getElementById('hours').value,
-                bartenderCount: document.getElementById('bartenderCount').value,
                 packageType: document.getElementById('packageType').value,
                 glassware: document.getElementById('glassware').value,
                 glassCount: document.getElementById('glassCount').value,
@@ -942,10 +1521,18 @@
                 alcoholProcurement: document.getElementById('alcoholProcurement').checked,
                 coffeeService: document.getElementById('coffeeService').checked,
                 archBackdrop: document.getElementById('archBackdrop').checked,
+                drinkBigIce: document.getElementById('drinkBigIce').checked,
+                iceCount: document.getElementById('iceCount').value,
                 tentRental: document.getElementById('tentRental').checked,
                 peakSeason: document.getElementById('peakSeason').checked,
                 promoCode: document.getElementById('promoCode').value,
-                quoteNotes: document.getElementById('quoteNotes').value
+                smallGroup: document.getElementById('smallGroup').checked,
+                bartenderCount: document.getElementById('bartenderCount').value,
+                customItems: getCustomItems(),
+                customPromo: customPromo ? { ...customPromo } : null,
+                customPromoLabel: document.getElementById('customPromoLabel').value,
+                customPromoAmount: document.getElementById('customPromoAmount').value,
+                customPromoType: document.getElementById('customPromoType').value,
             };
             localStorage.setItem('513sips_calc_v2', JSON.stringify(data));
         }
@@ -957,7 +1544,6 @@
                 if (data.eventDate) document.getElementById('eventDate').value = data.eventDate;
                 if (data.guestCount) document.getElementById('guestCount').value = data.guestCount;
                 if (data.hours) document.getElementById('hours').value = data.hours;
-                if (data.bartenderCount) document.getElementById('bartenderCount').value = data.bartenderCount;
                 if (data.packageType) document.getElementById('packageType').value = data.packageType;
                 if (data.glassware) document.getElementById('glassware').value = data.glassware;
                 if (data.glassCount) document.getElementById('glassCount').value = data.glassCount;
@@ -966,12 +1552,35 @@
                 if (data.alcoholProcurement) document.getElementById('alcoholProcurement').checked = true;
                 if (data.coffeeService) document.getElementById('coffeeService').checked = true;
                 if (data.archBackdrop) document.getElementById('archBackdrop').checked = true;
+                if (data.drinkBigIce) {
+                    document.getElementById('drinkBigIce').checked = true;
+                    document.getElementById('iceCountWrap').style.display = 'block';
+                }
+                if (data.iceCount) document.getElementById('iceCount').value = data.iceCount;
                 if (data.tentRental) document.getElementById('tentRental').checked = true;
                 if (data.peakSeason) document.getElementById('peakSeason').checked = true;
-                if (data.quoteNotes) document.getElementById('quoteNotes').value = data.quoteNotes;
+                if (data.smallGroup) {
+                    document.getElementById('smallGroup').checked = true;
+                    toggleSmallGroup();
+                }
+                if (data.bartenderCount) document.getElementById('bartenderCount').value = data.bartenderCount;
+                // Restore custom promo
+                if (data.customPromo) {
+                    customPromo = data.customPromo;
+                    document.getElementById('customPromoLabel').value = data.customPromoLabel || '';
+                    document.getElementById('customPromoAmount').value = data.customPromoAmount || '';
+                    if (data.customPromoType) document.getElementById('customPromoType').value = data.customPromoType;
+                    const desc = customPromo.type === 'percent' ? `${data.customPromoAmount}% off` : `$${data.customPromoAmount} off`;
+                    const s = document.getElementById('customPromoStatus');
+                    s.innerHTML = `✓ <strong>${customPromo.label}</strong> — ${desc} &nbsp;<button type="button" onclick="clearCustomPromo()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:0.9em;padding:0 4px;">✕ remove</button>`;
+                    s.style.color = '#4ade80';
+                }
                 if (data.promoCode) {
                     document.getElementById('promoCode').value = data.promoCode;
                     applyPromo(false);
+                }
+                if (data.customItems && data.customItems.length > 0) {
+                    data.customItems.forEach(item => addCustomItem(item.name, item.price));
                 }
             } else {
                 // Default: set glass count to match guest count
@@ -980,7 +1589,13 @@
         }
         
         function saveAndCalculate() {
-            saveToStorage();
+            if (numEvents > 1) {
+                // In multi-event mode, persist to event config array instead of localStorage
+                eventConfigs[currentEventIdx] = getCurrentConfig();
+                eventPromos[currentEventIdx] = currentPromo;
+            } else {
+                saveToStorage();
+            }
             calculate();
         }
         
@@ -997,6 +1612,17 @@
             }
             
             if (PROMO_CODES[code]) {
+                // Recurring codes are small group only
+                if (PROMO_CODES[code].smallGroupOnly && !document.getElementById('smallGroup').checked) {
+                    currentPromo = null;
+                    if (showStatus) {
+                        statusEl.textContent = '✗ This code applies to Small Group Events only';
+                        statusEl.className = 'promo-status invalid';
+                        statusEl.style.display = 'block';
+                    }
+                    calculate();
+                    return;
+                }
                 currentPromo = { code: code, ...PROMO_CODES[code] };
                 if (showStatus) {
                     statusEl.textContent = '✓ ' + PROMO_CODES[code].desc + ' applied!';
@@ -1013,17 +1639,61 @@
             }
         }
         
+        function applyCustomPromo() {
+            const label = (document.getElementById('customPromoLabel').value || '').trim();
+            const amount = parseFloat(document.getElementById('customPromoAmount').value) || 0;
+            const type = document.getElementById('customPromoType').value;
+            const statusEl = document.getElementById('customPromoStatus');
+
+            if (!amount || amount <= 0) {
+                statusEl.textContent = '✗ Enter an amount first';
+                statusEl.style.color = '#ef4444';
+                return;
+            }
+
+            customPromo = {
+                label: label || 'Custom Discount',
+                type,
+                value: type === 'percent' ? amount / 100 : amount,
+                raw: amount,
+            };
+
+            const desc = type === 'percent' ? `${amount}% off` : `$${amount} off`;
+            statusEl.innerHTML = `✓ <strong>${customPromo.label}</strong> — ${desc} &nbsp;<button type="button" onclick="clearCustomPromo()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:0.9em;padding:0 4px;">✕ remove</button>`;
+            statusEl.style.color = '#4ade80';
+
+            saveAndCalculate();
+        }
+
+        function clearCustomPromo() {
+            customPromo = null;
+            document.getElementById('customPromoLabel').value = '';
+            document.getElementById('customPromoAmount').value = '';
+            document.getElementById('customPromoStatus').textContent = '';
+            saveAndCalculate();
+        }
+
+        // Full Bar Service rate — per service hour, per bartender.
+        // Replaced the flat $200 on 2026-08-12; the flat rate had never been set or defended by any
+        // decision and did not scale with bartenders (a 2-station wedding paid the same as a house party).
+        const FULL_BAR_HOURLY = 15;
+
         function calculate() {
             const guestCount = parseInt(document.getElementById('guestCount').value) || 50;
             const hours = parseInt(document.getElementById('hours').value) || 3;
             const distance = parseInt(document.getElementById('distance').value) || 0;
             const cocktailCount = parseInt(document.getElementById('cocktailCount').textContent) || 0;
             const glassCount = parseInt(document.getElementById('glassCount').value) || guestCount;
-            
+            const isSmallGroup = document.getElementById('smallGroup') && document.getElementById('smallGroup').checked;
+
+            // Manual bartender selection
+            const bartenders = parseInt(document.getElementById('bartenderCount').value) || 1;
+
             let breakdown = {
-                base: 650,
+                base: isSmallGroup ? 395 : 650,
                 staffing: 0,
                 volume: 0,
+                twoHrReduction: 0,
                 extraHours: 0,
                 travel: 0,
                 package: 0,
@@ -1031,29 +1701,31 @@
                 cocktails: 0,
                 addons: 0,
                 addonsList: [],
-                custom: 0,
-                customList: [],
                 discount: 0
             };
-            
-            // Read bartender count from manual override dropdown
-            let bartenders = parseInt(document.getElementById('bartenderCount').value) || 1;
-            
-            // Staffing costs for additional bartenders
+
+            // Staffing costs for additional bartenders (base hours only)
+            const baseHours = isSmallGroup ? 2 : 3;
             if (bartenders > 1) {
-                breakdown.staffing = (bartenders - 1) * 75 * 3;
+                breakdown.staffing = (bartenders - 1) * 75 * baseHours;
             }
-            
+
             // High-volume adjustment
             if (guestCount > 50 && guestCount <= 100) {
                 breakdown.volume = 175;
             } else if (guestCount > 100) {
                 breakdown.volume = 250;
             }
-            
+
+            // 2-hour reduction: standard event only, saves 1 hour of bartender labor
+            if (hours < baseHours && !isSmallGroup) {
+                breakdown.twoHrReduction = (baseHours - hours) * 75 * bartenders;
+            }
+
             // Extra hours - all bartenders get paid
-            if (hours > 3) {
-                breakdown.extraHours = (hours - 3) * 75 * bartenders;
+            // Small group base covers 2 hrs; standard base covers 3 hrs
+            if (hours > baseHours) {
+                breakdown.extraHours = (hours - baseHours) * 75 * bartenders;
             }
             
             // Travel
@@ -1061,9 +1733,11 @@
                 breakdown.travel = Math.round((distance - 30) * 0.67 * 2);
             }
             
-            // Package type
+            // Package type — Full Bar billed per service hour, per bartender (Board 2026-08-12,
+            // replacing the undefended flat $200). Eddie is already paid $75/hr for the hour;
+            // this prices the added SKU load, tools, staging, and haul only.
             if (document.getElementById('packageType').value === 'fullbar') {
-                breakdown.package = 200;
+                breakdown.package = FULL_BAR_HOURLY * hours * bartenders;
             }
             
             // Glassware
@@ -1073,9 +1747,6 @@
             } else if (glassware === 'formal') {
                 breakdown.glassware = Math.round(glassCount * 3.50);
             }
-
-            // Plastic cups row (no cost, just visibility)
-            document.getElementById('cupsRow').style.display = glassware === 'cups' ? 'flex' : 'none';
             
             // Signature cocktails
             if (cocktailCount > 0) {
@@ -1095,6 +1766,13 @@
                 breakdown.addons += 350;
                 breakdown.addonsList.push('Arch Backdrop');
             }
+            if (document.getElementById('drinkBigIce').checked) {
+                const iceCount = parseInt(document.getElementById('iceCount').value) || 0;
+                if (iceCount > 0) {
+                    breakdown.addons += iceCount * 2.50;
+                    breakdown.addonsList.push('Custom Logo Ice (' + iceCount + ' cubes)');
+                }
+            }
             if (document.getElementById('tentRental').checked) {
                 breakdown.addons += 250;
                 breakdown.addonsList.push('Tent Rental');
@@ -1103,17 +1781,24 @@
                 breakdown.addons += 100;
                 breakdown.addonsList.push('Peak Season');
             }
-            
+
             // Custom items
-            breakdown.custom = getCustomItemsTotal();
-            breakdown.customList = getCustomItemsList();
-            
+            const customItems = getCustomItems();
+            breakdown.customItems = customItems;
+            breakdown.customItemsTotal = 0;
+            breakdown.customItemsList = [];
+            customItems.forEach(item => {
+                breakdown.customItemsTotal += item.price;
+                breakdown.customItemsList.push(item.name);
+            });
+
             // Calculate subtotal
-            let subtotal = breakdown.base + breakdown.staffing + breakdown.volume + 
-                          breakdown.extraHours + breakdown.travel + breakdown.package + 
-                          breakdown.glassware + breakdown.cocktails + breakdown.addons + breakdown.custom;
+            let subtotal = breakdown.base + breakdown.staffing + breakdown.volume +
+                          breakdown.extraHours - breakdown.twoHrReduction + breakdown.travel + breakdown.package +
+                          breakdown.glassware + breakdown.cocktails + breakdown.addons +
+                          breakdown.customItemsTotal;
             
-            // Apply promo
+            // Apply pre-defined promo
             if (currentPromo) {
                 if (currentPromo.type === 'percent') {
                     breakdown.discount = Math.round(subtotal * currentPromo.value);
@@ -1121,9 +1806,29 @@
                     breakdown.discount = currentPromo.value;
                 }
             }
+
+            // Apply custom discount (stacks on top of pre-defined promo)
+            breakdown.customDiscount = 0;
+            breakdown.customDiscountLabel = '';
+            if (customPromo) {
+                if (customPromo.type === 'percent') {
+                    breakdown.customDiscount = Math.round((subtotal - breakdown.discount) * customPromo.value);
+                } else {
+                    breakdown.customDiscount = customPromo.value;
+                }
+                breakdown.customDiscountLabel = customPromo.label;
+            }
+
+            let total = subtotal - breakdown.discount - breakdown.customDiscount;
             
-            let total = subtotal - breakdown.discount;
-            
+            // Update base label and price dynamically
+            document.getElementById('baseLabel').textContent = isSmallGroup
+                ? 'Small Group Package (2 hrs, ≤20 guests)'
+                : hours < baseHours
+                    ? 'Base Package (2 hrs, ≤50 guests)'
+                    : 'Base Package (3 hrs, ≤50 guests)';
+            document.getElementById('basePrice').textContent = '$' + breakdown.base;
+
             // Update displays
             document.getElementById('totalPrice').textContent = '$' + total.toLocaleString();
             document.getElementById('grandTotal').textContent = '$' + total.toLocaleString();
@@ -1131,16 +1836,26 @@
             document.getElementById('balanceAmount').textContent = '$' + Math.round(total * 0.5).toLocaleString();
             
             // Update breakdown visibility
-            updateBreakdownRow('staffingRow', 'staffingPrice', breakdown.staffing, 
-                breakdown.staffing > 0 ? '+' + (bartenders - 1) + ' bartender(s)' : '');
-            
+            updateBreakdownRow('staffingRow', 'staffingPrice', breakdown.staffing,
+                breakdown.staffing > 0 ? bartenders + ' bartenders' : '');
+
             updateBreakdownRow('volumeRow', 'volumePrice', breakdown.volume,
-                breakdown.volume > 0 ? (guestCount <= 100 ? '(51-100 guests)' : '(101- guests)') : '');
-            
+                breakdown.volume > 0 ? (guestCount <= 100 ? '(51-100 guests)' : '(101+ guests)') : '');
+
+            // 2hr reduction row (discount style — shown as negative)
+            const twoHrEl = document.getElementById('twoHrReductionRow');
+            if (breakdown.twoHrReduction > 0) {
+                twoHrEl.style.display = 'flex';
+                document.getElementById('twoHrReductionPrice').textContent = '-$' + breakdown.twoHrReduction;
+            } else {
+                twoHrEl.style.display = 'none';
+            }
+
             updateBreakdownRow('hoursRow', 'hoursPrice', breakdown.extraHours,
-                breakdown.extraHours > 0 ? '+' + (hours - 3) + ' hr(s) × ' + bartenders + ' staff' : '');
+                breakdown.extraHours > 0 ? '+' + (hours - baseHours) + ' hr(s) × ' + bartenders + ' staff' : '');
             
-            updateBreakdownRow('packageRow', 'packagePrice', breakdown.package);
+            updateBreakdownRow('packageRow', 'packagePrice', breakdown.package,
+                breakdown.package > 0 ? '($' + FULL_BAR_HOURLY + '/hr × ' + hours + ' hrs × ' + bartenders + ' bartender' + (bartenders > 1 ? 's' : '') + ')' : '');
             
             updateBreakdownRow('glassRow', 'glassPrice', breakdown.glassware,
                 breakdown.glassware > 0 ? '(' + glassCount + ' glasses)' : '');
@@ -1153,23 +1868,37 @@
             
             updateBreakdownRow('addonsRow', 'addonsPrice', breakdown.addons,
                 breakdown.addonsList.length > 0 ? '(' + breakdown.addonsList.join(', ') + ')' : '');
-            
-            updateBreakdownRow('customRow', 'customPrice', breakdown.custom,
-                breakdown.customList.length > 0 ? '(' + breakdown.customList.join(', ') + ')' : '');
-            
+
+            updateBreakdownRow('customItemsRow', 'customItemsPrice', breakdown.customItemsTotal,
+                breakdown.customItemsList.length > 0 ? '(' + breakdown.customItemsList.join(', ') + ')' : '');
+
             updateBreakdownRow('discountRow', 'discountPrice', breakdown.discount,
                 breakdown.discount > 0 && currentPromo ? currentPromo.code : '');
+
+            // Custom discount row
+            const cdRow = document.getElementById('customDiscountRow');
+            const cdPrice = document.getElementById('customDiscountPrice');
+            const cdLabel = document.getElementById('customDiscountLabel');
+            if (breakdown.customDiscount > 0) {
+                cdRow.style.display = 'flex';
+                cdPrice.textContent = '-$' + breakdown.customDiscount.toLocaleString();
+                if (cdLabel && breakdown.customDiscountLabel) cdLabel.textContent = breakdown.customDiscountLabel;
+            } else {
+                cdRow.style.display = 'none';
+            }
             
             document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString();
-
-            // Update print event details
-            document.getElementById('printGuests').textContent = guestCount;
-            document.getElementById('printHours').textContent = hours;
-            document.getElementById('printBartenders').textContent = bartenders;
             
             window.currentBreakdown = breakdown;
             window.currentTotal = total;
-            
+
+            // Multi-event: track per-event totals and update combined summary
+            if (numEvents > 1) {
+                eventTotals[currentEventIdx] = total;
+                eventBreakdowns[currentEventIdx] = { ...breakdown };
+                updateCombinedSummary();
+            }
+
             return total;
         }
         
@@ -1195,7 +1924,64 @@
             }
         }
         
+        // Hand off to contract.html with tiny URL params — contract.html fetches
+        // lead + quote from Supabase itself. Avoids URI Too Long when payloads grow.
+        // Only used when we already have a saved quote_id; if the user has unsaved
+        // edits, they should click Update Quote in Books first.
+        function generateContractFromLead() {
+            try {
+                localStorage.removeItem('513sips_contract_data');
+                localStorage.removeItem('513sips_quote');
+            } catch (e) { /* ignore */ }
+            window.location.href = `contract.html?lead_id=${encodeURIComponent(currentLeadId)}&quote_id=${encodeURIComponent(currentQuoteId)}`;
+        }
+
         function generateContract() {
+            // If editing a saved quote linked to a lead, hand off via lead_id+quote_id
+            // so contract.html pulls fresh client/venue/quote from Supabase. Only when
+            // we have a saved quote — for unsaved new-quote flows fall through.
+            if (currentLeadId && currentQuoteId) {
+                generateContractFromLead();
+                return;
+            }
+            if (numEvents > 1) {
+                // Save current event first
+                eventConfigs[currentEventIdx] = getCurrentConfig();
+                eventPromos[currentEventIdx] = currentPromo;
+                calculate(); // ensure latest total recorded
+
+                const combinedTotal = eventTotals.reduce((s, t) => s + (t || 0), 0);
+                const quoteData = {
+                    isMultiEvent: true,
+                    numEvents,
+                    combinedTotal,
+                    events: eventConfigs.map((cfg, i) => ({
+                        name: cfg?.eventName || `Event ${i + 1}`,
+                        total: eventTotals[i] || 0,
+                        deposit: Math.round((eventTotals[i] || 0) * 0.5),
+                        balance: (eventTotals[i] || 0) - Math.round((eventTotals[i] || 0) * 0.5),
+                        guestCount: parseInt(cfg?.guestCount) || 50,
+                        hours: parseInt(cfg?.hours) || 3,
+                        promoCode: eventPromos[i]?.code || null,
+                        customPromo: cfg?.customPromo || null,
+                        customPromoAmount: cfg?.customPromoAmount || null,
+                        isSmallGroup: cfg?.smallGroup || false,
+                        packageType: cfg?.packageType || 'beerwine',
+                        glassware: cfg?.glassware || 'plastic',
+                        cocktailCount: parseInt(cfg?.cocktailCount) || 0,
+                        drinkBigIce: cfg?.drinkBigIce || false,
+                        iceCount: parseInt(cfg?.iceCount) || 0,
+                    })),
+                    deposit: Math.round(combinedTotal * 0.5),
+                    balance: combinedTotal - Math.round(combinedTotal * 0.5),
+                    date: new Date().toLocaleDateString(),
+                };
+                localStorage.setItem('513sips_quote', JSON.stringify(quoteData));
+                window.location.href = 'contract.html';
+                return;
+            }
+
+            // Single event (existing behavior)
             const total = calculate();
             const quoteData = {
                 total: total,
@@ -1204,23 +1990,152 @@
                 breakdown: window.currentBreakdown,
                 guestCount: parseInt(document.getElementById('guestCount').value) || 50,
                 hours: parseInt(document.getElementById('hours').value) || 3,
-                bartenders: parseInt(document.getElementById('bartenderCount').value) || 1,
                 date: new Date().toLocaleDateString(),
                 promoCode: currentPromo ? currentPromo.code : null
             };
-            
+
             localStorage.setItem('513sips_quote', JSON.stringify(quoteData));
             window.location.href = 'contract.html';
         }
         
+        async function saveQuoteToBooks() {
+            if (!currentLeadId) return;
+
+            const btn = document.getElementById('saveQuoteBtn');
+            const statusEl = document.getElementById('saveQuoteStatus');
+            btn.disabled = true;
+            btn.textContent = '⏳ Saving...';
+            statusEl.style.display = 'none';
+
+            // Save current tab and recalculate
+            eventConfigs[currentEventIdx] = getCurrentConfig();
+            calculate();
+
+            let total, addonNotes, guests, hours, breakdown, promoCode;
+
+            if (numEvents > 1) {
+                // Multi-event: sum all event totals
+                total      = eventTotals.reduce((s, t) => s + (t || 0), 0);
+                guests     = parseInt(eventConfigs[0]?.guestCount) || 50;
+                hours      = parseFloat(eventConfigs[0]?.hours) || 3;
+                addonNotes = eventConfigs
+                    .map((cfg, i) => `Event ${i + 1} — ${cfg?.eventName || `Event ${i + 1}`}: $${eventTotals[i] || 0}`)
+                    .join('\n');
+                // Persist full per-event config in `_config` so future edits can fully restore the form
+                breakdown  = eventConfigs.map((cfg, i) => ({
+                    name: cfg?.eventName || `Event ${i + 1}`,
+                    total: eventTotals[i] || 0,
+                    guestCount: parseInt(cfg?.guestCount) || 50,
+                    hours: parseFloat(cfg?.hours) || 3,
+                    bartenders: parseInt(cfg?.bartenderCount) || 1,
+                    bd: eventBreakdowns[i] || null,
+                    _config: cfg || null,
+                }));
+                promoCode  = null;
+            } else {
+                // Single event: use current total and full breakdown
+                total      = calculate();
+                guests     = parseInt(document.getElementById('guestCount').value) || 50;
+                hours      = parseFloat(document.getElementById('hours').value) || 3;
+                addonNotes = '';
+                // Persist full form state alongside the line-item breakdown so edits can restore it
+                const lineItems = window.currentBreakdown || null;
+                breakdown  = lineItems ? { ...lineItems, _config: getCurrentConfig() } : { _config: getCurrentConfig() };
+                promoCode  = currentPromo ? currentPromo.code : null;
+            }
+
+            const deposit = Math.round(total * 0.5);
+            const balance = total - deposit;
+
+            // 30-day expiration
+            const exp = new Date(); exp.setDate(exp.getDate() + 30);
+            const validUntil = exp.toISOString().split('T')[0];
+
+            const now = new Date().toISOString();
+            const isUpdate = !!currentQuoteId;
+            const nextVersionNum = (existingVersionHistory.length || 0) + 1;
+            const versionHistory = isUpdate
+                ? [...existingVersionHistory, { versionNum: nextVersionNum, total, deposit, balance, edited_at: now }]
+                : [{ versionNum: 1, total, deposit, balance, status: 'draft', created_at: now }];
+
+            // On update, do NOT overwrite valid_until or status — preserve the existing row's lifecycle state.
+            const record = isUpdate
+                ? {
+                    total,
+                    deposit,
+                    balance,
+                    guest_count:     guests,
+                    hours,
+                    breakdown:       breakdown,
+                    promo_code:      promoCode,
+                    addon_notes:     addonNotes || null,
+                    version_history: versionHistory,
+                  }
+                : {
+                    lead_id:         currentLeadId,
+                    total,
+                    deposit,
+                    balance,
+                    guest_count:     guests,
+                    hours,
+                    breakdown:       breakdown,
+                    promo_code:      promoCode,
+                    addon_notes:     addonNotes || null,
+                    valid_until:     validUntil,
+                    status:          'draft',
+                    version_history: versionHistory,
+                  };
+
+            const SUPABASE_URL      = 'https://bixyltkdymoqjipaiujk.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpeHlsdGtkeW1vcWppcGFpdWprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3OTY0MTMsImV4cCI6MjA4OTM3MjQxM30.xqaK35aar9lSweeTA8ydeW8WT8ZiOrOl5NFa957MkjU';
+
+            try {
+                const url = isUpdate
+                    ? `${SUPABASE_URL}/rest/v1/quotes?id=eq.${encodeURIComponent(currentQuoteId)}`
+                    : `${SUPABASE_URL}/rest/v1/quotes`;
+                const res = await fetch(url, {
+                    method: isUpdate ? 'PATCH' : 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Prefer': 'return=minimal',
+                    },
+                    body: JSON.stringify(record),
+                });
+
+                if (!res.ok) {
+                    const err = await res.text();
+                    throw new Error(err || `HTTP ${res.status}`);
+                }
+
+                // Keep existingVersionHistory in sync for repeated saves in the same session
+                if (isUpdate) existingVersionHistory = versionHistory;
+
+                statusEl.style.display = 'block';
+                statusEl.style.background = 'rgba(34,197,94,0.15)';
+                statusEl.style.border = '1px solid rgba(34,197,94,0.3)';
+                statusEl.style.color = '#4ade80';
+                statusEl.innerHTML = `${isUpdate ? '✅ Quote updated!' : '✅ Quote saved!'} <a href="https://egady513.github.io/513Sips-Books/leads" target="_blank" style="color:#D4AF37;font-weight:600;">Open Books →</a>`;
+                btn.textContent = isUpdate ? '✅ Updated' : '✅ Saved';
+
+            } catch (err) {
+                statusEl.style.display = 'block';
+                statusEl.style.background = 'rgba(239,68,68,0.15)';
+                statusEl.style.border = '1px solid rgba(239,68,68,0.3)';
+                statusEl.style.color = '#fca5a5';
+                statusEl.textContent = `❌ ${err.message}`;
+                btn.disabled = false;
+                btn.textContent = isUpdate ? '💾 Update Quote in Books' : '📋 Create Quote in Books';
+            }
+        }
+
         function resetCalculator() {
             if (confirm('Reset all values to defaults?')) {
                 localStorage.removeItem('513sips_calc_v2');
-                localStorage.removeItem('513sips_custom_items');
                 document.getElementById('eventDate').value = '';
                 document.getElementById('guestCount').value = '50';
                 document.getElementById('hours').value = '3';
-                document.getElementById('bartenderCount').value = '1';
                 document.getElementById('packageType').value = 'beerwine';
                 document.getElementById('glassware').value = 'plastic';
                 document.getElementById('glassCount').value = '50';
@@ -1229,122 +2144,25 @@
                 document.getElementById('alcoholProcurement').checked = false;
                 document.getElementById('coffeeService').checked = false;
                 document.getElementById('archBackdrop').checked = false;
+                document.getElementById('drinkBigIce').checked = false;
+                document.getElementById('iceCountWrap').style.display = 'none';
+                document.getElementById('iceCount').value = '100';
                 document.getElementById('tentRental').checked = false;
                 document.getElementById('peakSeason').checked = false;
-                document.getElementById('quoteNotes').value = '';
                 document.getElementById('promoCode').value = '';
                 document.getElementById('promoStatus').className = 'promo-status';
                 document.getElementById('promoStatus').style.display = 'none';
                 currentPromo = null;
-                clearCustomItems();
+                document.getElementById('smallGroup').checked = false;
+                toggleSmallGroup();
+                document.getElementById('bartenderCount').value = '1';
+                customPromo = null;
+                document.getElementById('customPromoLabel').value = '';
+                document.getElementById('customPromoAmount').value = '';
+                document.getElementById('customPromoStatus').textContent = '';
+                document.getElementById('customItems').innerHTML = '';
                 calculate();
             }
-        }
-        
-        // Custom Items Functions
-        let customItems = [];
-        
-        function loadCustomItems() {
-            const saved = localStorage.getItem('513sips_custom_items');
-            if (saved) {
-                customItems = JSON.parse(saved);
-                renderCustomItems();
-            }
-        }
-        
-        function saveCustomItems() {
-            localStorage.setItem('513sips_custom_items', JSON.stringify(customItems));
-        }
-        
-        function addCustomItem() {
-            const name = document.getElementById('customItemName').value.trim();
-            const price = parseFloat(document.getElementById('customItemPrice').value) || 0;
-            
-            if (!name) {
-                alert('Please enter an item description.');
-                return;
-            }
-            if (price <= 0) {
-                alert('Please enter a price greater than $0.');
-                return;
-            }
-            
-            const item = {
-                id: Date.now(),
-                name: name,
-                price: price
-            };
-            
-            customItems.push(item);
-            saveCustomItems();
-            renderCustomItems();
-            clearCustomInputs();
-            saveAndCalculate();
-        }
-        
-        function removeCustomItem(id) {
-            customItems = customItems.filter(item => item.id !== id);
-            saveCustomItems();
-            renderCustomItems();
-            saveAndCalculate();
-        }
-        
-        function renderCustomItems() {
-            const container = document.getElementById('customItemsList');
-            if (customItems.length === 0) {
-                container.innerHTML = '<div style="color: var(--text-muted); font-style: italic; padding: 15px; text-align: center;">No custom items added yet.</div>';
-                return;
-            }
-            
-            let html = '<div style="display: flex; flex-direction: column; gap: 12px;">';
-            customItems.forEach(item => {
-                html += `
-                    <div style="display: flex; justify-content: space-between; align-items: center; 
-                        background: var(--navy-lighter); padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.2);">
-                        <div>
-                            <div style="font-weight: 500; color: var(--text-light);">${item.name}</div>
-                            <div style="font-size: 0.85em; color: var(--gold); margin-top: 3px;">+$${item.price.toLocaleString()}</div>
-                        </div>
-                        <button type="button" onclick="removeCustomItem(${item.id})" 
-                            style="background: rgba(233, 69, 96, 0.2); color: #E94560; border: none; border-radius: 6px; 
-                            padding: 8px 12px; font-size: 0.8em; cursor: pointer; transition: all 0.2s ease;">
-                            Remove
-                        </button>
-                    </div>
-                `;
-            });
-            html += '</div>';
-            container.innerHTML = html;
-        }
-        
-        function clearCustomItems() {
-            customItems = [];
-            saveCustomItems();
-            renderCustomItems();
-        }
-        
-        function clearCustomInputs() {
-            document.getElementById('customItemName').value = '';
-            document.getElementById('customItemPrice').value = '0';
-        }
-        
-        function getCustomItemsTotal() {
-            return customItems.reduce((sum, item) => sum + item.price, 0);
-        }
-        
-        function getCustomItemsList() {
-            return customItems.map(item => item.name);
-        }
-
-        function exportToPDF() {
-            const notes = document.getElementById('quoteNotes').value.trim();
-            const notesEl = document.getElementById('printNotes');
-            if (notes) {
-                notesEl.innerHTML = '<div class="print-notes-label">Notes</div>' + notes.replace(/\n/g, '<br>');
-            } else {
-                notesEl.innerHTML = '';
-            }
-            window.print();
         }
     </script>
 </body>
