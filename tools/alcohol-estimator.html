@@ -340,7 +340,15 @@
                     <label>Drinks Per Person Per Hour (After 2 Hours)</label>
                     <input type="number" id="drinksPerPersonAfter" min="0.5" max="5" step="0.1" value="1.0" onchange="calculate()">
                 </div>
-                
+
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 14px 16px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; margin-bottom: 25px;">
+                    <input type="checkbox" id="enableProcurement" onchange="calculate()" style="width: 20px; height: 20px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0;">
+                    <span>
+                        <span style="font-weight: 600; color: var(--gold);">🛒 Alcohol Procurement Service active</span>
+                        <p style="color: var(--text-muted); font-size: 0.8em; margin-top: 3px; line-height: 1.4;">513Sips does the shopping run for ALL alcohol — beer, wine, champagne, seltzer, cocktail spirits, and Full Bar liquors — instead of the client. Mixers and manually-added items keep their own individual "who buys" toggle either way.</p>
+                    </span>
+                </label>
+
                 <h2 class="card-title" style="margin-top: 30px;">Quick Select Profile</h2>
                 <div class="profile-grid">
                     <button type="button" class="profile-btn" onclick="setProfile('bbq')">
@@ -752,8 +760,16 @@
         let cocktails = []; // { id, name, pct, mixers: [{name, qty, unit, purchaser}] }
         let naBeverages = []; // { id, name, drinksPerGuest, mixers: [{name, qty, unit}] } — empty mixers = bought ready-to-serve
 
-        // Who's buying it — client (dry-hire default) or 513Sips (fronted, reimbursed via the prepay budget)
+        // Who's buying it — client (dry-hire default) or 513Sips (fronted, reimbursed via the prepay budget).
+        // ALL alcohol (beer, wine, champagne, seltzer, cocktail spirits, full bar liquors) is controlled by
+        // ONE switch — the real-world "Alcohol Procurement Service" add-on (see Pricing-Strategy, +$175):
+        // when it's active, 513Sips does the shopping run. Mixers and manually-added items keep their own
+        // individual toggle regardless, since who sources those varies item to item either way.
         const PURCHASERS = { client: 'Client', eddie: '513Sips' };
+        function defaultAlcoholPurchaser() {
+            const el = document.getElementById('enableProcurement');
+            return (el && el.checked) ? 'eddie' : 'client';
+        }
         function purchaserToggleHTML(current, onchangeAttr) {
             const p = current === 'eddie' ? 'eddie' : 'client';
             return '<select onchange="' + onchangeAttr + '" '
@@ -805,23 +821,32 @@
             }
         }
 
+        // Only Full Bar Mixers keep a per-item purchaser toggle. Every other alcohol category
+        // (Beer, Seltzer, Full Bar Liquors, and alcohol ingredients inside a cocktail recipe) is
+        // controlled by the single "Alcohol Procurement Service" switch instead — see
+        // defaultAlcoholPurchaser(). Mixers stay individually toggleable because who sources a
+        // syrup or a case of soda genuinely varies ingredient to ingredient.
+        function categoryHasPurchaserToggle(category) { return category === 'fullBarMixer'; }
+
         function renderBrands(category) {
             const container = document.getElementById(brandListElId(category));
             if (!container) return;
             const brands = brandArray(category);
+            const showPurchaser = categoryHasPurchaserToggle(category);
+            const cols = showPurchaser ? '2fr 60px 150px auto' : '2fr 1fr auto';
 
             if (brands.length === 0) {
                 container.innerHTML = '<div style="color: var(--text-muted); font-style: italic; font-size: 0.85em; padding: 10px;">No brands added. Click "+ Add Brand" to start.</div>';
             } else {
                 container.innerHTML = brands.map(brand => `
-                    <div class="brand-row" data-id="${brand.id}" style="grid-template-columns: 2fr 1fr auto auto;">
+                    <div class="brand-row" data-id="${brand.id}" style="grid-template-columns: ${cols};">
                         <input type="text" placeholder="Brand name (e.g., Bud Light)"
                             value="${brand.name}"
                             onchange="updateBrand('${category}', ${brand.id}, 'name', this.value)">
                         <input type="number" placeholder="%" min="0" max="100"
                             value="${brand.percentage || ''}"
                             onchange="updateBrand('${category}', ${brand.id}, 'percentage', this.value); calculate();">
-                        ${purchaserToggleHTML(brand.purchaser, "updateBrand('" + category + "', " + brand.id + ", 'purchaser', this.value); calculate();")}
+                        ${showPurchaser ? purchaserToggleHTML(brand.purchaser, "updateBrand('" + category + "', " + brand.id + ", 'purchaser', this.value); calculate();") : ''}
                         <button type="button" class="btn-remove-brand" onclick="removeBrand('${category}', ${brand.id})">Remove</button>
                     </div>
                 `).join('');
@@ -996,7 +1021,7 @@
                                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
                                     <input type="text" placeholder="Ingredient (e.g., Simple Syrup)"
                                         value="${mixer.name}"
-                                        onchange="updateMixer(${cocktail.id}, ${idx}, 'name', this.value)"
+                                        onchange="updateMixer(${cocktail.id}, ${idx}, 'name', this.value); renderCocktails(); calculate();"
                                         style="flex: 2; min-width: 140px; padding: 8px 10px; background: var(--navy-lighter); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; color: var(--text-light); font-size: 0.9em;">
                                     <input type="number" placeholder="Qty"
                                         value="${mixer.qty}"
@@ -1011,7 +1036,9 @@
                                         <option value="tsp" ${mixer.unit === 'tsp' ? 'selected' : ''}>tsp</option>
                                         <option value="each" ${mixer.unit === 'each' ? 'selected' : ''}>each</option>
                                     </select>
-                                    ${purchaserToggleHTML(mixer.purchaser, "updateMixer(" + cocktail.id + ", " + idx + ", 'purchaser', this.value); calculate();")}
+                                    ${classifyIngredient(mixer.name) === 'mixer'
+                                        ? purchaserToggleHTML(mixer.purchaser, "updateMixer(" + cocktail.id + ", " + idx + ", 'purchaser', this.value); calculate();")
+                                        : '<small style="color: var(--text-muted); font-style: italic; white-space: nowrap;" title="Alcohol follows the Alcohol Procurement Service switch above">alcohol — set above</small>'}
                                     ${cocktail.mixers.length > 1 ? `<button type="button" onclick="removeMixer(${cocktail.id}, ${idx})" style="padding: 6px 10px; background: transparent; border: 1px solid rgba(233, 69, 96, 0.3); border-radius: 6px; color: #E94560; font-size: 0.75em; cursor: pointer;">✕</button>` : ''}
                                 </div>
                             `).join('')}
@@ -1150,13 +1177,15 @@
                     if (!m.name || !m.qty) return;
                     const key = m.name.toLowerCase().trim();
                     const type = classifyIngredient(m.name);
-                    const purchaser = m.purchaser === 'eddie' ? 'eddie' : 'client';
                     if (type === 'mixer') {
+                        // Mixers keep their own individual "who buys" toggle
+                        const purchaser = m.purchaser === 'eddie' ? 'eddie' : 'client';
                         if (!mixers[key]) mixers[key] = { name: m.name, oz: 0, each: 0, purchaser };
                         if (m.unit === 'each') mixers[key].each += parseFloat(m.qty) * drinksPerCocktail;
                         else mixers[key].oz += toOz(m.qty, m.unit) * drinksPerCocktail;
                     } else {
-                        if (!alcohol[key]) alcohol[key] = { name: m.name, oz: 0, type, purchaser };
+                        // Real alcohol (spirit/champagne) follows the master Procurement switch, not its own field
+                        if (!alcohol[key]) alcohol[key] = { name: m.name, oz: 0, type, purchaser: defaultAlcoholPurchaser() };
                         alcohol[key].oz += toOz(m.qty, m.unit) * drinksPerCocktail;
                     }
                 });
@@ -1772,8 +1801,9 @@
                 if (fullBarLiquorBreakdown.length > 0) {
                     liquorContainer.innerHTML = fullBarLiquorBreakdown.map(b => {
                         const bottles = Math.ceil((b.drinks * FULL_BAR_LIQUOR_OZ) / OZ_PER_750);
+                        const who = defaultAlcoholPurchaser();
                         return '<div class="list-item" style="padding-left: 10px; border-left: 2px solid rgba(212,175,55,0.3);">'
-                            + '<span class="item-name">🥃 ' + b.name + ' (' + b.percentage + '%) <small style="color:' + (b.purchaser === 'eddie' ? 'var(--success)' : 'var(--text-muted)') + ';">' + PURCHASERS[b.purchaser] + '</small></span>'
+                            + '<span class="item-name">🥃 ' + b.name + ' (' + b.percentage + '%) <small style="color:' + (who === 'eddie' ? 'var(--success)' : 'var(--text-muted)') + ';">' + PURCHASERS[who] + '</small></span>'
                             + '<span class="item-qty">' + bottles + ' bottles (750ml)</span></div>';
                     }).join('');
                 } else {
@@ -1872,16 +1902,18 @@
             // norm); cocktail/full-bar-service ingredients and manual items carry their own real toggle.
             budgetItems = [];
 
+            const alcoholPurchaser = defaultAlcoholPurchaser();
+
             if (document.getElementById('enableBeer').checked && beerDrinks > 0) {
                 const packaging = document.getElementById('beerPackaging').value;
                 if (packaging === 'keg') {
-                    budgetItems.push({ key: 'keg|beer', label: 'Beer — 1/6 barrel keg', qty: Math.ceil(beerDrinks / DRINKS_PER_KEG), unitLabel: 'keg(s)', kind: 'keg', purchaser: 'client' });
+                    budgetItems.push({ key: 'keg|beer', label: 'Beer — 1/6 barrel keg', qty: Math.ceil(beerDrinks / DRINKS_PER_KEG), unitLabel: 'keg(s)', kind: 'keg', purchaser: alcoholPurchaser });
                 } else {
                     const beerBrandsB = getBrandBreakdown('beer', beerDrinks);
                     if (beerBrandsB.length > 0) {
-                        beerBrandsB.forEach(b => budgetItems.push({ key: 'beer-case|' + b.name.toLowerCase(), label: 'Beer — ' + b.name, qty: Math.ceil(b.drinks / BEER_PACK_SIZE), unitLabel: '24-packs', kind: 'beer-case', purchaser: 'client' }));
+                        beerBrandsB.forEach(b => budgetItems.push({ key: 'beer-case|' + b.name.toLowerCase(), label: 'Beer — ' + b.name, qty: Math.ceil(b.drinks / BEER_PACK_SIZE), unitLabel: '24-packs', kind: 'beer-case', purchaser: alcoholPurchaser }));
                     } else {
-                        budgetItems.push({ key: 'beer-case|beer', label: 'Beer', qty: Math.ceil(beerDrinks / BEER_PACK_SIZE), unitLabel: '24-packs', kind: 'beer-case', purchaser: 'client' });
+                        budgetItems.push({ key: 'beer-case|beer', label: 'Beer', qty: Math.ceil(beerDrinks / BEER_PACK_SIZE), unitLabel: '24-packs', kind: 'beer-case', purchaser: alcoholPurchaser });
                     }
                 }
             }
@@ -1891,41 +1923,44 @@
                 const pctWhiteB = parseInt(document.getElementById('pctWhite').value) || 50;
                 const redBottlesB = Math.ceil(Math.round(wineDrinks * (pctRedB / 100)) / DRINKS_PER_WINE_BOTTLE);
                 const whiteBottlesB = Math.ceil(Math.round(wineDrinks * (pctWhiteB / 100)) / DRINKS_PER_WINE_BOTTLE);
-                if (redBottlesB > 0) budgetItems.push({ key: 'wine|red', label: 'Red Wine (750ml)', qty: redBottlesB, unitLabel: 'bottles', kind: 'wine', purchaser: 'client' });
-                if (whiteBottlesB > 0) budgetItems.push({ key: 'wine|white', label: 'White Wine (750ml)', qty: whiteBottlesB, unitLabel: 'bottles', kind: 'wine', purchaser: 'client' });
+                if (redBottlesB > 0) budgetItems.push({ key: 'wine|red', label: 'Red Wine (750ml)', qty: redBottlesB, unitLabel: 'bottles', kind: 'wine', purchaser: alcoholPurchaser });
+                if (whiteBottlesB > 0) budgetItems.push({ key: 'wine|white', label: 'White Wine (750ml)', qty: whiteBottlesB, unitLabel: 'bottles', kind: 'wine', purchaser: alcoholPurchaser });
             }
 
-            // Alcohol from recipes — keyed by product name so same-name lines merge (source shown in rollup above)
+            // Alcohol from recipes — keyed by product name so same-name lines merge (source shown in rollup above).
+            // Purchaser follows the master Procurement switch, not the ingredient's own field (that field only
+            // matters for mixer-classified ingredients — see computeRecipeTotals).
             Object.values(recipeTotals.alcohol).forEach(a => {
                 const bottles = Math.ceil(a.oz / OZ_PER_750);
                 if (bottles > 0) {
                     budgetItems.push({
                         key: (a.type === 'champagne' ? 'champagne|' : 'spirit|') + a.name.toLowerCase().trim(),
                         label: a.name + ' (750ml)',
-                        qty: bottles, unitLabel: 'bottles', kind: a.type, purchaser: a.purchaser || 'client'
+                        qty: bottles, unitLabel: 'bottles', kind: a.type, purchaser: alcoholPurchaser
                     });
                 }
             });
             // Bar-service & toast champagne merge into a single "Champagne" line (same key); a differently-named recipe champagne stays separate
-            if (champagneBarBottles > 0) budgetItems.push({ key: 'champagne|champagne', label: 'Champagne (750ml)', qty: champagneBarBottles, unitLabel: 'bottles', kind: 'champagne', purchaser: 'client' });
-            if (champagneToastBottles > 0) budgetItems.push({ key: 'champagne|champagne', label: 'Champagne (750ml)', qty: champagneToastBottles, unitLabel: 'bottles', kind: 'champagne', purchaser: 'client' });
-            if (ciderToastBottles > 0) budgetItems.push({ key: 'cider|cider', label: 'Sparkling Cider (750ml)', qty: ciderToastBottles, unitLabel: 'bottles', kind: 'cider', purchaser: 'client' });
+            if (champagneBarBottles > 0) budgetItems.push({ key: 'champagne|champagne', label: 'Champagne (750ml)', qty: champagneBarBottles, unitLabel: 'bottles', kind: 'champagne', purchaser: alcoholPurchaser });
+            if (champagneToastBottles > 0) budgetItems.push({ key: 'champagne|champagne', label: 'Champagne (750ml)', qty: champagneToastBottles, unitLabel: 'bottles', kind: 'champagne', purchaser: alcoholPurchaser });
+            if (ciderToastBottles > 0) budgetItems.push({ key: 'cider|cider', label: 'Sparkling Cider (750ml)', qty: ciderToastBottles, unitLabel: 'bottles', kind: 'cider', purchaser: alcoholPurchaser });
 
             if (document.getElementById('enableSeltzer').checked && seltzerDrinks > 0) {
                 const seltzerBrandsB = getBrandBreakdown('seltzer', seltzerDrinks);
                 if (seltzerBrandsB.length > 0) {
-                    seltzerBrandsB.forEach(b => budgetItems.push({ key: 'seltzer-case|' + b.name.toLowerCase(), label: 'Seltzer — ' + b.name, qty: Math.ceil(b.drinks / 12), unitLabel: '12-packs', kind: 'seltzer-case', purchaser: 'client' }));
+                    seltzerBrandsB.forEach(b => budgetItems.push({ key: 'seltzer-case|' + b.name.toLowerCase(), label: 'Seltzer — ' + b.name, qty: Math.ceil(b.drinks / 12), unitLabel: '12-packs', kind: 'seltzer-case', purchaser: alcoholPurchaser }));
                 } else {
-                    budgetItems.push({ key: 'seltzer-case|seltzer', label: 'Hard Seltzer', qty: Math.ceil(seltzerDrinks / 12), unitLabel: '12-packs', kind: 'seltzer-case', purchaser: 'client' });
+                    budgetItems.push({ key: 'seltzer-case|seltzer', label: 'Hard Seltzer', qty: Math.ceil(seltzerDrinks / 12), unitLabel: '12-packs', kind: 'seltzer-case', purchaser: alcoholPurchaser });
                 }
             }
 
-            // Full Bar Service liquors — always bottles, no packaging-tier issue, safe to push directly
+            // Full Bar Service liquors — always bottles, no packaging-tier issue, safe to push directly.
+            // Purchaser follows the master Procurement switch (same as every other alcohol category).
             if (document.getElementById('enableFullBar').checked && fullBarDrinks > 0) {
                 fullBarLiquorBreakdown.forEach(b => {
                     const oz = b.drinks * FULL_BAR_LIQUOR_OZ;
                     const bottles = Math.ceil(oz / OZ_PER_750);
-                    if (bottles > 0) budgetItems.push({ key: 'spirit|' + b.name.toLowerCase().trim(), label: b.name + ' (750ml)', qty: bottles, unitLabel: 'bottles', kind: 'spirit', purchaser: b.purchaser || 'client' });
+                    if (bottles > 0) budgetItems.push({ key: 'spirit|' + b.name.toLowerCase().trim(), label: b.name + ' (750ml)', qty: bottles, unitLabel: 'bottles', kind: 'spirit', purchaser: alcoholPurchaser });
                 });
             }
 
@@ -2105,7 +2140,7 @@
                 csv += 'Full Bar Service,Total Drinks,' + csvFullBarDrinks + '\n';
                 getBrandBreakdown('fullBarLiquor', parseInt(csvFullBarDrinks) || 0).forEach(b => {
                     const bottles = Math.ceil((b.drinks * FULL_BAR_LIQUOR_OZ) / OZ_PER_750);
-                    csv += 'Full Bar Service,"Liquor: ' + b.name + ' (' + b.percentage + '%, ' + PURCHASERS[b.purchaser] + ')",' + bottles + ' bottles (750ml)\n';
+                    csv += 'Full Bar Service,"Liquor: ' + b.name + ' (' + b.percentage + '%, ' + PURCHASERS[defaultAlcoholPurchaser()] + ')",' + bottles + ' bottles (750ml)\n';
                 });
                 getBrandBreakdown('fullBarMixer', parseInt(csvFullBarDrinks) || 0).forEach(b => {
                     const purchase = mixerPurchase(b.drinks * FULL_BAR_MIXER_OZ);
@@ -2206,7 +2241,7 @@
                 const el = document.getElementById(id); if (el) inputs[id] = el.value;
             });
             const toggles = {};
-            ['enableBeer','enableWine','enableChampagne','enableChampagneToast','enableCocktails','enableSeltzer','enableFullBar','enableNA'].forEach(id => {
+            ['enableBeer','enableWine','enableChampagne','enableChampagneToast','enableCocktails','enableSeltzer','enableFullBar','enableProcurement','enableNA'].forEach(id => {
                 const el = document.getElementById(id); if (el) toggles[id] = el.checked;
             });
             let prepayTotal = null;
