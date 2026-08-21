@@ -716,12 +716,16 @@
                 </div>
                 
                 <div id="budgetSection" style="margin-top: 10px; border-top: 2px solid rgba(212, 175, 55, 0.3); padding-top: 20px; margin-bottom: 25px;">
-                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
-                        <label style="flex: 1; margin: 0; font-size: 0.85em; color: var(--text-muted);">🧊 Ice (lbs per guest — bump up if chilling bottles in tubs)</label>
+                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+                        <label style="flex: 1; margin: 0; font-size: 0.85em; color: var(--text-muted); min-width: 200px;">🧊 Ice (lbs per guest — bump up if chilling bottles in tubs)</label>
                         <input type="number" id="iceLbsPerGuest" value="1.5" min="0" step="0.25" onchange="onBudgetSettingChange()" style="width: 80px; padding: 8px 10px; text-align: center;">
+                        <select id="icePurchaser" onchange="calculate()" style="padding: 8px 10px; background: var(--navy-lighter); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; color: var(--gold); font-size: 0.85em; font-weight: 600;">
+                            <option value="client">Client buys</option>
+                            <option value="eddie">513Sips brings</option>
+                        </select>
                     </div>
 
-                    <h2 class="card-title" style="margin-bottom: 15px; font-size: 1.25em;">🛍️ What She Buys</h2>
+                    <h2 class="card-title" style="margin-bottom: 15px; font-size: 1.25em;">🛍️ What Client Buys</h2>
                     <p style="color: var(--text-muted); font-size: 0.85em; margin-bottom: 10px;">Client purchases directly — quantity checklist, no prepay math needed.</p>
                     <div id="clientBudgetRows"></div>
 
@@ -1383,7 +1387,7 @@
             });
 
             if (clientCount === 0) {
-                clientHTML = '<div style="color: var(--text-muted); font-style: italic; font-size: 0.85em; padding: 10px;">Nothing on her list yet — mark items "Client buys" above, or she\'s buying nothing directly for this event.</div>';
+                clientHTML = '<div style="color: var(--text-muted); font-style: italic; font-size: 0.85em; padding: 10px;">Nothing on the client\'s list yet — mark items "Client buys" above, or the client is buying nothing directly for this event.</div>';
             }
             if (eddieHTML === '') {
                 eddieHTML = '<div style="color: var(--text-muted); font-style: italic; font-size: 0.85em; padding: 10px;">Nothing on your list yet — mark items "513Sips brings" above, or add one directly.</div>';
@@ -1898,7 +1902,7 @@
 
             // ---- Build the shopping list (alcohol + mixers + ice, all pass-through at cost) ----
             // Every line carries `purchaser` ('client' or 'eddie') so renderBudget() can split it into
-            // "What She Buys" vs "What 513Sips Brings" — base categories default to the client (dry-hire
+            // "What Client Buys" vs "What 513Sips Brings" — base categories default to the client (dry-hire
             // norm); cocktail/full-bar-service ingredients and manual items carry their own real toggle.
             budgetItems = [];
 
@@ -2013,7 +2017,8 @@
             const iceLbsPerGuest = parseFloat(document.getElementById('iceLbsPerGuest').value) || 0;
             const iceBags = Math.ceil((guests * iceLbsPerGuest) / ICE_BAG_LBS);
             if (iceBags > 0) {
-                budgetItems.push({ key: 'ice|bags', label: 'Ice (' + guests + ' guests × ' + iceLbsPerGuest + ' lbs)', qty: iceBags, unitLabel: '20 lb bags', kind: 'ice', purchaser: 'client' });
+                const icePurchaserEl = document.getElementById('icePurchaser');
+                budgetItems.push({ key: 'ice|bags', label: 'Ice (' + guests + ' guests × ' + iceLbsPerGuest + ' lbs)', qty: iceBags, unitLabel: '20 lb bags', kind: 'ice', purchaser: (icePurchaserEl && icePurchaserEl.value === 'eddie') ? 'eddie' : 'client' });
             }
 
             // Merge same-product lines (e.g. champagne from cocktails + bar + toast → one line).
@@ -2171,12 +2176,12 @@
 
             // Shopping list, split by who's buying it
             if (budgetItems.length > 0 || manualBudgetItems.length > 0) {
-                csv += '\nWhat She Buys,Item,Quantity\n';
+                csv += '\nWhat Client Buys,Item,Quantity\n';
                 budgetItems.filter(i => itemPurchaser(i) === 'client').forEach(item => {
-                    csv += 'Her List,"' + item.label + '",' + item.qty + ' ' + item.unitLabel + '\n';
+                    csv += 'Client List,"' + item.label + '",' + item.qty + ' ' + item.unitLabel + '\n';
                 });
                 manualBudgetItems.filter(m => itemPurchaser(m) === 'client').forEach(m => {
-                    csv += 'Her List,"' + (m.name || 'Item') + '",' + m.qty + ' ' + m.unitLabel + '\n';
+                    csv += 'Client List,"' + (m.name || 'Item') + '",' + m.qty + ' ' + m.unitLabel + '\n';
                 });
 
                 csv += '\nWhat 513Sips Brings,Item,Quantity,Unit Price,Line Total\n';
@@ -2237,7 +2242,7 @@
         // ---- Full-estimate persistence: save the whole working state so it reloads later ----
         function collectFullState() {
             const inputs = {};
-            ['guestCount','duration','drinksPerPersonFirst','drinksPerPersonAfter','pctBeer','pctWine','pctChampagne','pctCocktails','pctSeltzer','pctFullBar','pctRed','pctWhite','beerPackaging','pctCiderToast','iceLbsPerGuest'].forEach(id => {
+            ['guestCount','duration','drinksPerPersonFirst','drinksPerPersonAfter','pctBeer','pctWine','pctChampagne','pctCocktails','pctSeltzer','pctFullBar','pctRed','pctWhite','beerPackaging','pctCiderToast','iceLbsPerGuest','icePurchaser'].forEach(id => {
                 const el = document.getElementById(id); if (el) inputs[id] = el.value;
             });
             const toggles = {};
