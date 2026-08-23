@@ -1163,9 +1163,8 @@
         // A cocktail's own % if set, else an even split across recipes that have no % (backward-compat
         // with saved estimates from before per-recipe weighting existed)
         function cocktailDrinkCount(cocktail, totalCocktailDrinks) {
-            const hasPct = cocktail.pct !== undefined && cocktail.pct !== null && cocktail.pct !== '';
-            const pct = hasPct ? (parseFloat(cocktail.pct) || 0) : (100 / cocktails.length);
-            return Math.round(totalCocktailDrinks * (pct / 100));
+            // Simplified to a flat even split across recipes — cleaner when every event runs 2-3 drinks anyway
+            return Math.round(totalCocktailDrinks / cocktails.length);
         }
 
         // Aggregate cocktail recipe ingredients: alcohol (by name) vs mixers (by name), purchaser carried per line
