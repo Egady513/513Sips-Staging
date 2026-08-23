@@ -846,7 +846,7 @@
                     <div class="brand-row" data-id="${brand.id}" style="grid-template-columns: ${cols};">
                         <input type="text" placeholder="Brand name (e.g., Bud Light)"
                             value="${brand.name}"
-                            onchange="updateBrand('${category}', ${brand.id}, 'name', this.value)">
+                            onchange="updateBrand('${category}', ${brand.id}, 'name', this.value); calculate();">
                         <input type="number" placeholder="%" min="0" max="100"
                             value="${brand.percentage || ''}"
                             onchange="updateBrand('${category}', ${brand.id}, 'percentage', this.value); calculate();">
@@ -1163,8 +1163,9 @@
         // A cocktail's own % if set, else an even split across recipes that have no % (backward-compat
         // with saved estimates from before per-recipe weighting existed)
         function cocktailDrinkCount(cocktail, totalCocktailDrinks) {
-            // Simplified to a flat even split across recipes — cleaner when every event runs 2-3 drinks anyway
-            return Math.round(totalCocktailDrinks / cocktails.length);
+            const hasPct = cocktail.pct !== undefined && cocktail.pct !== null && cocktail.pct !== '';
+            const pct = hasPct ? (parseFloat(cocktail.pct) || 0) : (100 / cocktails.length);
+            return Math.round(totalCocktailDrinks * (pct / 100));
         }
 
         // Aggregate cocktail recipe ingredients: alcohol (by name) vs mixers (by name), purchaser carried per line
