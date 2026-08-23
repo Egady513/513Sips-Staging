@@ -772,7 +772,8 @@
         const PURCHASERS = { client: 'Client', eddie: '513Sips' };
         function defaultAlcoholPurchaser() {
             const el = document.getElementById('enableProcurement');
-            return (el && el.checked) ? 'eddie' : 'client';
+            // Guard against the element not being ready yet on first paint
+            return (el && !el.checked) ? 'eddie' : 'client';
         }
         function purchaserToggleHTML(current, onchangeAttr) {
             const p = current === 'eddie' ? 'eddie' : 'client';
