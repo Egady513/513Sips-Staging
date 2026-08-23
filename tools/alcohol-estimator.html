@@ -351,15 +351,15 @@
 
                 <h2 class="card-title" style="margin-top: 30px;">Quick Select Profile</h2>
                 <div class="profile-grid">
-                    <button type="button" class="profile-btn" onclick="setProfile('bbq')">
+                    <button type="button" class="profile-btn" onclick="setProfile('bbq', this)">
                         <span class="emoji">🍖</span>
                         Casual BBQ
                     </button>
-                    <button type="button" class="profile-btn" onclick="setProfile('wedding')">
+                    <button type="button" class="profile-btn" onclick="setProfile('wedding', this)">
                         <span class="emoji">💒</span>
                         Wedding
                     </button>
-                    <button type="button" class="profile-btn active" onclick="setProfile('cocktail')">
+                    <button type="button" class="profile-btn active" onclick="setProfile('cocktail', this)">
                         <span class="emoji">🍸</span>
                         Cocktail Party
                     </button>
@@ -772,8 +772,7 @@
         const PURCHASERS = { client: 'Client', eddie: '513Sips' };
         function defaultAlcoholPurchaser() {
             const el = document.getElementById('enableProcurement');
-            // Guard against the element not being ready yet on first paint
-            return (el && !el.checked) ? 'eddie' : 'client';
+            return (el && el.checked) ? 'eddie' : 'client';
         }
         function purchaserToggleHTML(current, onchangeAttr) {
             const p = current === 'eddie' ? 'eddie' : 'client';
@@ -1425,10 +1424,13 @@
                 + '<span class="item-qty" style="font-size: 1.15em;">' + money(grand) + '</span></div>';
         }
         
-        function setProfile(profile) {
+        function setProfile(profile, btnEl) {
             document.querySelectorAll('.profile-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.closest('.profile-btn').classList.add('active');
-            
+            // btnEl is passed explicitly from the button's onclick (not read off the implicit global
+            // `event`) so this also works when called programmatically, e.g. from resetEstimator()
+            const activeBtn = btnEl || document.querySelector('.profile-btn[onclick*="\'' + profile + '\'"]');
+            if (activeBtn) activeBtn.classList.add('active');
+
             const p = PROFILES[profile];
             document.getElementById('pctBeer').value = p.beer;
             document.getElementById('pctWine').value = p.wine;
