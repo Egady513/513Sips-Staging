@@ -149,6 +149,8 @@
         .service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); background: linear-gradient(135deg, var(--copper), var(--copper-light)); color: var(--navy); box-shadow: 0 15px 40px rgba(184, 115, 51, 0.4); }
         .service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem; color: var(--navy); position: relative; z-index: 1; }
         .service-description { color: var(--charcoal); font-size: 0.95rem; line-height: 1.7; opacity: 0.8; position: relative; z-index: 1; }
+        .service-learn { color: var(--copper); display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; margin-top: 1.15rem; position: relative; text-decoration: none; text-transform: uppercase; z-index: 2; }
+        .service-learn:hover { color: var(--navy); }
         
         /* About with Animated Numbers */
         .about { background: var(--cream); overflow: hidden; }
@@ -838,11 +840,6 @@
                 "name": "513Sips",
                 "publisher": {
                     "@id": "https://www.513sips.com/#organization"
-                },
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://www.513sips.com/?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
                 }
             }
         ]
@@ -919,7 +916,7 @@
             <p class="hero-description" id="hero-description">Premium craft cocktails and professional bartending services for weddings, corporate events, and private celebrations throughout Cincinnati.</p>
             <div class="hero-buttons" id="hero-buttons">
                 <span class="btn-magnetic">
-                    <a href="#contact" class="btn btn-primary magnetic-btn">
+                    <a href="#contact" class="btn btn-primary magnetic-btn" data-analytics-event="book_event_click">
                         <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
                         Book Now
                     </a>
@@ -953,6 +950,7 @@
                     </div>
                     <h3 class="service-title">Weddings</h3>
                     <p class="service-description">Make your special day unforgettable with custom cocktail menus, champagne service, and professional bartenders who ensure every toast is perfect.</p>
+                    <a href="weddings/" class="service-learn" data-analytics-event="wedding_learn_more_click">Learn More <span aria-hidden="true">→</span></a>
                 </div>
                 <div class="service-card" data-spotlight>
                     <div class="spotlight"></div>
@@ -980,6 +978,7 @@
                     </div>
                     <h3 class="service-title">Weddings</h3>
                     <p class="service-description">Make your special day unforgettable with custom cocktail menus, champagne service, and professional bartenders who ensure every toast is perfect.</p>
+                    <a href="weddings/" class="service-learn" data-analytics-event="wedding_learn_more_click">Learn More <span aria-hidden="true">→</span></a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -1647,7 +1646,7 @@
                 <div class="footer-column">
                     <h4>Services</h4>
                     <ul class="footer-links">
-                        <li><a href="#services">Weddings</a></li>
+                        <li><a href="weddings/" data-analytics-event="wedding_learn_more_click">Weddings</a></li>
                         <li><a href="#services">Corporate Events</a></li>
                         <li><a href="#services">Private Parties</a></li>
                         <li><a href="#pricing">Pricing</a></li>
@@ -1678,6 +1677,7 @@
         </div>
     </footer>
 
+    <script src="scripts/journey-events.js?v=1"></script>
     <script>
         lucide.createIcons();
         gsap.registerPlugin(ScrollTrigger);
@@ -1944,6 +1944,9 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
+                    if (window.SipsAnalytics) {
+                        window.SipsAnalytics.track('inquiry_form_submit', { page_path: window.location.pathname });
+                    }
                     bookingForm.style.display = 'none';
                     document.getElementById('form-success').style.display = 'block';
                 } else {
