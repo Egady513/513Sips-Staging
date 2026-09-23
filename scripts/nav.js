@@ -4,7 +4,7 @@
  * Include this script on every page; it detects the path depth automatically.
  *
  * Usage (root pages):    <div id="site-nav"></div><script src="scripts/nav.js"></script>
- * Usage (blog/ pages):   <div id="site-nav"></div><script src="../scripts/nav.js"></script>
+ * Usage (subdir pages): <div id="site-nav"></div><script src="../scripts/nav.js"></script>
  */
 (function () {
   // ── Inject nav CSS ──────────────────────────────────────────────────────────
@@ -53,7 +53,9 @@
   }
 
   // ── Path detection ──────────────────────────────────────────────────────────
-  const inSubdir = window.location.pathname.includes('/blog/');
+  const inSubdir = ['/blog/', '/weddings/'].some(function (segment) {
+    return window.location.pathname.includes(segment);
+  });
   const root     = inSubdir ? '../' : '';
   // isHome: true when on index.html or the root path itself
   const pathEnd  = window.location.pathname.split('/').pop();
