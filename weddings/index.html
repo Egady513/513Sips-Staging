@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cincinnati Wedding Bartending &amp; Bar Service | 513Sips</title>
-  <meta name="description" content="Wedding bartending in Cincinnati with clear packages, alcohol planning, signature cocktails, venue coordination and professional setup. See what 513Sips handles and request your date.">
+  <meta name="description" content="Cincinnati wedding bartending built around your guests, with custom cocktails, housemade details, alcohol planning and service for the full reception.">
   <meta name="robots" content="noindex,follow"><!-- STAGING ONLY: remove after approval, before production -->
   <link rel="canonical" href="https://www.513sips.com/weddings/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.513sips.com/weddings/">
   <meta property="og:title" content="Cincinnati Wedding Bartending | 513Sips">
-  <meta property="og:description" content="A wedding bar plan that is clear before the first pour. Explore packages, responsibilities and real event details.">
+  <meta property="og:description" content="A wedding bar built around your people, from custom cocktails and housemade details to a clear plan for the full reception.">
   <meta property="og:image" content="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_1200,h_630,q_auto,f_webp/9-IMG_5228_swgnct">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,21 +45,23 @@
     .facts-grid { border:1px solid rgba(212,145,90,.24); border-radius:20px; display:grid; grid-template-columns:repeat(4,1fr); overflow:hidden; }
     .fact { padding:1.4rem; text-align:center; }
     .fact + .fact { border-left:1px solid rgba(212,145,90,.24); }
-    .fact strong { color:var(--copper-light); display:block; font-family:'Cormorant Garamond',serif; font-size:1.55rem; }
+    .fact strong { color:var(--copper-light); display:block; font-family:'Cormorant Garamond',serif; font-size:1.55rem; white-space:nowrap; }
     .fact span { font-size:.76rem; letter-spacing:.06em; opacity:.74; text-transform:uppercase; }
     section { padding:6rem 0; }
-    .responsibility-intro { margin-bottom:2.5rem; max-width:800px; }
-    .responsibility-grid { background:white; border:1px solid rgba(184,115,51,.16); border-radius:24px; box-shadow:0 15px 35px rgba(26,26,46,.06); display:grid; grid-template-columns:1fr 1fr; overflow:hidden; }
-    .info-card { background:white; border:1px solid rgba(184,115,51,.16); border-radius:22px; box-shadow:0 15px 35px rgba(26,26,46,.06); padding:2rem; }
-    .responsibility-grid .info-card { border:0; border-radius:0; box-shadow:none; padding:2.4rem; }
-    .responsibility-grid .info-card + .info-card { background:rgba(245,242,235,.72); border-left:1px solid rgba(184,115,51,.16); }
-    .role-label { color:var(--copper); font-size:.74rem; font-weight:700; letter-spacing:.12em; margin-bottom:.45rem; text-transform:uppercase; }
-    .info-card h3 { align-items:center; display:flex; gap:.65rem; margin-bottom:1rem; }
-    .info-card h3 svg { color:var(--copper); }
-    .check-list { list-style:none; }
-    .check-list li { border-top:1px solid rgba(26,26,46,.08); padding:.72rem 0 .72rem 1.55rem; position:relative; }
-    .check-list li:first-child { border-top:0; }
-    .check-list li::before { color:var(--copper); content:'✓'; font-weight:700; left:0; position:absolute; }
+    .collaboration-intro { margin-bottom:2.7rem; max-width:850px; }
+    .collaboration-grid { counter-reset:steps; display:grid; gap:1rem; grid-template-columns:repeat(5,1fr); }
+    .collaboration-step { background:white; border:1px solid rgba(184,115,51,.16); border-radius:20px; box-shadow:0 12px 30px rgba(26,26,46,.055); min-height:270px; padding:1.55rem; position:relative; }
+    .collaboration-step::before { color:rgba(184,115,51,.28); content:counter(steps,decimal-leading-zero); counter-increment:steps; font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:700; line-height:1; }
+    .role-label { color:var(--copper); display:block; font-size:.7rem; font-weight:700; letter-spacing:.11em; margin:.8rem 0 .35rem; text-transform:uppercase; }
+    .collaboration-step h3 { font-size:1.35rem; margin-bottom:.55rem; }
+    .collaboration-step p { font-size:.88rem; opacity:.82; }
+    .craft-section { margin-top:4.2rem; }
+    .craft-section h2 { font-size:clamp(2rem,4vw,3rem); max-width:700px; }
+    .craft-grid { display:grid; gap:1.1rem; grid-template-columns:repeat(3,1fr); margin-top:2rem; }
+    .craft-card { background:var(--navy); border-radius:20px; color:white; padding:2rem; }
+    .craft-card h3 { color:white; margin-bottom:.7rem; }
+    .craft-card p { font-size:.92rem; opacity:.78; }
+    .craft-card svg { color:var(--copper-light); height:26px; margin-bottom:1.2rem; width:26px; }
     .dark-section { background:linear-gradient(135deg,var(--navy-dark),var(--navy-light)); color:white; }
     .dark-section h2,.dark-section h3 { color:white; }
     .dark-section .eyebrow { color:var(--copper-light); }
@@ -71,12 +73,6 @@
     .package-card p { color:rgba(255,255,255,.75); font-size:.92rem; }
     .package-card .button { margin-top:auto; padding-top:1.6rem; }
     .package-note { color:rgba(255,255,255,.66); font-size:.88rem; margin:1.5rem auto 0; max-width:760px; text-align:center; }
-    .planning-grid { display:grid; gap:1.1rem; grid-template-columns:repeat(4,1fr); margin-top:2.5rem; }
-    .planning-card { background:white; border-radius:18px; padding:1.6rem; }
-    .planning-card .number { color:var(--copper); font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; }
-    .planning-card h3 { font-size:1.4rem; margin:.35rem 0 .55rem; }
-    .planning-card p { font-size:.9rem; opacity:.82; }
-    .staff-note { background:rgba(184,115,51,.1); border-left:4px solid var(--copper); border-radius:0 14px 14px 0; margin-top:2rem; padding:1.2rem 1.4rem; }
     .case-study { background:white; }
     .case-grid { align-items:center; display:grid; gap:4rem; grid-template-columns:1.05fr .95fr; }
     .photo-grid { display:grid; gap:.75rem; grid-template-columns:1.3fr .7fr; grid-template-rows:210px 210px; }
@@ -84,19 +80,37 @@
     .photo-grid img:first-child { grid-row:1 / 3; }
     .case-facts { display:grid; gap:.75rem; grid-template-columns:repeat(3,1fr); margin:1.5rem 0; }
     .case-fact { background:var(--cream); border-radius:14px; padding:1rem; }
-    .case-fact strong { color:var(--navy); display:block; font-family:'Montserrat',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:-.025em; }
-    .case-fact span { font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+    .case-fact strong { color:var(--navy); display:block; font-family:'Montserrat',sans-serif; font-size:1.08rem; font-weight:700; letter-spacing:-.025em; white-space:nowrap; }
     .case-copy { opacity:.86; }
+    .case-action { margin-top:1.5rem; }
     .faq-list { display:grid; gap:.8rem; margin:2.5rem auto 0; max-width:900px; }
     .centered { text-align:center; }
     details { background:white; border:1px solid rgba(184,115,51,.16); border-radius:16px; padding:1.15rem 1.35rem; }
     summary { color:var(--navy); cursor:pointer; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; }
     details p { margin-top:.75rem; opacity:.82; }
-    .final-cta { background:var(--navy-dark); color:white; overflow:hidden; position:relative; text-align:center; }
-    .final-cta::before { background:radial-gradient(circle,rgba(184,115,51,.22),transparent 68%); content:''; height:650px; left:50%; position:absolute; top:50%; transform:translate(-50%,-50%); width:650px; }
-    .final-cta .container { position:relative; }
-    .final-cta h2 { color:white; }
-    .final-cta p { margin:0 auto 1.8rem; max-width:650px; opacity:.8; }
+    .inquiry-section { background:var(--navy-dark); color:white; overflow:hidden; position:relative; }
+    .inquiry-section::before { background:radial-gradient(circle,rgba(184,115,51,.2),transparent 68%); content:''; height:700px; left:12%; position:absolute; top:50%; transform:translate(-50%,-50%); width:700px; }
+    .inquiry-grid { align-items:start; display:grid; gap:4rem; grid-template-columns:.85fr 1.15fr; position:relative; }
+    .inquiry-copy { padding-top:1.5rem; }
+    .inquiry-copy h2 { color:white; }
+    .inquiry-copy > p:not(.eyebrow) { opacity:.8; }
+    .inquiry-points { display:grid; gap:.8rem; list-style:none; margin-top:2rem; }
+    .inquiry-points li { padding-left:1.5rem; position:relative; }
+    .inquiry-points li::before { color:var(--copper-light); content:'✓'; font-weight:700; left:0; position:absolute; }
+    .contact-form { background:white; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.24); color:var(--charcoal); padding:2.3rem; }
+    .form-row { display:grid; gap:1rem; grid-template-columns:1fr 1fr; }
+    .form-group { margin-bottom:1.1rem; }
+    .form-group label { color:var(--navy); display:block; font-size:.8rem; font-weight:700; margin-bottom:.4rem; }
+    .form-group input,.form-group select,.form-group textarea { background:var(--cream); border:1px solid rgba(184,115,51,.3); border-radius:11px; color:var(--charcoal); font:inherit; font-size:16px; padding:.85rem .95rem; width:100%; }
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--copper); box-shadow:0 0 0 3px rgba(184,115,51,.12); outline:none; }
+    .form-group textarea { min-height:115px; resize:vertical; }
+    .honeypot { display:none; }
+    .form-note { font-size:.75rem; margin-top:.8rem; opacity:.7; text-align:center; }
+    .form-submit { border:0; cursor:pointer; width:100%; }
+    .form-success { padding:2.5rem 1rem; text-align:center; }
+    .form-success h3 { margin-bottom:.5rem; }
+    .form-success svg { color:var(--copper); height:42px; width:42px; }
+    .form-error { color:#9b2c2c; font-size:.85rem; margin-top:.8rem; text-align:center; }
     footer { background:#0c0c16; color:rgba(255,255,255,.7); padding:2.5rem 0; }
     .footer-inner { align-items:center; display:flex; gap:1.5rem; justify-content:space-between; }
     .footer-inner img { filter:brightness(0) invert(1); height:44px; width:auto; }
@@ -104,7 +118,9 @@
     .footer-links a { font-size:.83rem; text-decoration:none; }
     .sticky-cta { display:none; }
     @media (max-width:900px) {
-      .facts-grid,.planning-grid { grid-template-columns:repeat(2,1fr); }
+      .facts-grid { grid-template-columns:repeat(2,1fr); }
+      .collaboration-grid { grid-template-columns:repeat(2,1fr); }
+      .craft-grid { grid-template-columns:1fr; }
       .fact:nth-child(3) { border-left:0; border-top:1px solid rgba(212,145,90,.24); }
       .fact:nth-child(4) { border-top:1px solid rgba(212,145,90,.24); }
       .case-grid { grid-template-columns:1fr; }
@@ -119,12 +135,15 @@
       .hero h1 { font-size:3.5rem; }
       .hero-actions .button { width:100%; }
       section { padding:4.5rem 0; }
-      .facts-grid,.responsibility-grid,.planning-grid { grid-template-columns:1fr; }
-      .responsibility-grid .info-card + .info-card { border-left:0; border-top:1px solid rgba(184,115,51,.16); }
+      .facts-grid,.collaboration-grid { grid-template-columns:1fr; }
+      .collaboration-step { min-height:auto; }
       .fact + .fact { border-left:0; border-top:1px solid rgba(212,145,90,.24); }
       .photo-grid { grid-template-columns:1fr 1fr; grid-template-rows:260px 145px; }
       .photo-grid img:first-child { grid-column:1 / 3; grid-row:auto; }
       .case-facts { grid-template-columns:1fr; }
+      .inquiry-grid,.form-row { grid-template-columns:1fr; }
+      .inquiry-grid { gap:2rem; }
+      .contact-form { padding:1.5rem 1.1rem; }
       .footer-inner { align-items:flex-start; flex-direction:column; }
       .sticky-cta { background:rgba(18,18,31,.97); bottom:0; display:block; left:0; padding:.7rem .85rem; position:fixed; right:0; transform:translateY(110%); transition:transform .25s ease; z-index:1001; }
       .sticky-cta.visible { transform:translateY(0); }
@@ -150,7 +169,7 @@
         "mainEntity":[
           {"@type":"Question","name":"Does 513Sips provide the alcohol?","acceptedAnswer":{"@type":"Answer","text":"513Sips is a dry-hire bartending service, so the client purchases the alcohol. 513Sips can help estimate quantities and can coordinate sourcing when that service is included in the selected package or quote."}},
           {"@type":"Question","name":"How many bartenders does my wedding need?","acceptedAnswer":{"@type":"Answer","text":"Staffing depends on guest count, service style, venue layout and the drink menu. 513Sips confirms the staffing plan during quoting rather than using one rule for every wedding."}},
-          {"@type":"Question","name":"Can 513Sips create signature cocktails?","acceptedAnswer":{"@type":"Answer","text":"Yes. Signature cocktail service can include recipe planning, house-made syrups, garnishes and a custom menu card depending on the package."}},
+          {"@type":"Question","name":"Can 513Sips create signature cocktails?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips uses the couple's preferences to develop Signature Cocktail options for review and approval. Depending on the package and selected drinks, service can include housemade syrups, mixers, garnishes and a custom menu card."}},
           {"@type":"Question","name":"Is 513Sips insured and certified?","acceptedAnswer":{"@type":"Answer","text":"513Sips carries event liability coverage and lists ASK, TIPS and food-safety certifications on its website. Proof of insurance is available for venue coordination."}}
         ]
       }
@@ -167,10 +186,10 @@
       <div class="container">
         <div class="hero-content">
           <p class="eyebrow">Wedding Bartending in Cincinnati</p>
-          <h1>A bar plan you can understand before the first pour.</h1>
-          <p>513Sips handles the bartending, setup and beverage planning details that keep your wedding bar moving. You get a clear plan, a polished guest experience and fewer loose ends to chase.</p>
+          <h1>A wedding bar built around your people.</h1>
+          <p>You know what your guests love. We turn that into a personal cocktail menu, a clear alcohol plan and professional service built for the whole reception.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Check Your Date</a>
+            <a class="button button-primary" href="#wedding-inquiry" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Check Your Date</a>
           </div>
         </div>
       </div>
@@ -179,91 +198,58 @@
     <div class="quick-facts">
       <div class="container">
         <div class="facts-grid" role="group" aria-label="Wedding service highlights">
-          <div class="fact"><strong>$650</strong><span>Starting packages</span></div>
-          <div class="fact"><strong>Shopping List</strong><span>Know what to buy</span></div>
-          <div class="fact"><strong>Insured</strong><span>Venue-ready service</span></div>
-          <div class="fact"><strong>Setup to Breakdown</strong><span>We handle the bar</span></div>
+          <div class="fact"><strong>Made for You</strong><span>Signature cocktails</span></div>
+          <div class="fact"><strong>Housemade</strong><span>Syrups + garnishes</span></div>
+          <div class="fact"><strong>All-Night Plan</strong><span>Menu + staffing</span></div>
+          <div class="fact"><strong>$2M Insured</strong><span>Proof for your venue</span></div>
         </div>
       </div>
     </div>
 
-    <section>
+    <section id="how-it-works">
       <div class="container">
-        <div class="responsibility-intro">
-          <p class="eyebrow">Clear from the start</p>
-          <h2>Who handles what?</h2>
-          <p class="lead">You stay in control of the alcohol budget. We take the professional bar work off your plate, then make the few decisions we need from you easy to understand.</p>
+        <div class="collaboration-intro">
+          <p class="eyebrow">Your guests. Your choices. Our craft.</p>
+          <h2>A bar plan we build together.</h2>
+          <p class="lead">You know your people and stay in control of what you spend. We turn what they love into a personal menu and a bar plan that works from cocktail hour through last call.</p>
         </div>
-        <div class="responsibility-grid">
-          <article class="info-card">
-            <p class="role-label">What 513Sips provides</p>
-            <h3><i data-lucide="sparkles" aria-hidden="true"></i> The bar team and the plan</h3>
-            <ul class="check-list">
-              <li>Professional bartenders and the right staffing plan</li>
-              <li>Bar tools, equipment, setup and breakdown</li>
-              <li>A custom alcohol shopping list for your guest count and menu</li>
-              <li>Ice, cold storage and service-flow planning</li>
-              <li>Venue coordination and proof of insurance</li>
-              <li>Signature cocktail prep when selected</li>
-            </ul>
+        <div class="collaboration-grid">
+          <article class="collaboration-step">
+            <span class="role-label">You</span>
+            <h3>Tell us about your people</h3>
+            <p>Share your guest count, venue, timeline and the drinks your crowd actually enjoys.</p>
           </article>
-          <article class="info-card">
-            <p class="role-label">What you provide</p>
-            <h3><i data-lucide="clipboard-check" aria-hidden="true"></i> The choices only you can make</h3>
-            <ul class="check-list">
-              <li>The alcohol purchase, or our sourcing service as an add-on</li>
-              <li>Your final guest count, timeline and venue contact</li>
-              <li>Your drink choices and the guest experience you want</li>
-              <li>Any venue rules or required approvals</li>
-              <li>Your priorities, from short lines to signature drinks</li>
-              <li>Final approval of the proposal and bar plan</li>
-            </ul>
+          <article class="collaboration-step">
+            <span class="role-label">Together</span>
+            <h3>Shape the menu</h3>
+            <p>During your consultation, choose the Signature Cocktails and proven house cocktails that feel right for the room.</p>
+          </article>
+          <article class="collaboration-step">
+            <span class="role-label">513Sips</span>
+            <h3>Build the full plan</h3>
+            <p>We develop recipes, staffing, quantities, bar flow and venue details around the menu you selected.</p>
+          </article>
+          <article class="collaboration-step">
+            <span class="role-label">You</span>
+            <h3>Review and confirm</h3>
+            <p>Approve the final decisions, then buy from your custom alcohol list or add our sourcing service.</p>
+          </article>
+          <article class="collaboration-step">
+            <span class="role-label">513Sips</span>
+            <h3>Bring it to life</h3>
+            <p>We prep, set the quoted bar areas, serve your guests and break down the bar when service ends.</p>
           </article>
         </div>
-      </div>
-    </section>
 
-    <section class="dark-section" id="packages">
-      <div class="container">
-        <p class="eyebrow">Starting packages</p>
-        <h2>Choose the right level of help.</h2>
-        <p class="lead">Start with the service that fits your guest count and bar plan. Then add the details that matter to you.</p>
-        <div class="package-grid">
-          <article class="package-card">
-            <h3>Base Package</h3>
-            <div class="price"><small>Starting at</small>$650</div>
-            <p>Three hours of beer, wine, seltzer and champagne service for up to 50 guests with one bartender.</p>
-            <a class="button" href="../index.html#pricing" data-analytics-event="pricing_package_interaction">See package details</a>
-          </article>
-          <article class="package-card featured">
-            <h3>Signature Package</h3>
-            <div class="price"><small>Starting at</small>$1,325</div>
-            <p>Four hours for up to 100 guests with two bartenders, one signature cocktail and house-made details.</p>
-            <a class="button" href="../index.html#pricing" data-analytics-event="pricing_package_interaction">See package details</a>
-          </article>
-          <article class="package-card">
-            <h3>Premier Package</h3>
-            <div class="price"><small>Starting at</small>$2,988</div>
-            <p>A fuller wedding bar plan with two bartenders, two signature cocktails, sourcing support, glassware and custom details.</p>
-            <a class="button" href="../index.html#pricing" data-analytics-event="pricing_package_interaction">See package details</a>
-          </article>
+        <div class="craft-section">
+          <p class="eyebrow">What makes it 513Sips</p>
+          <h2>Personal details backed by a real service plan.</h2>
+          <div class="craft-grid">
+            <article class="craft-card"><i data-lucide="martini" aria-hidden="true"></i><h3>Designed for your guests</h3><p>Custom Signature Cocktails and complementary house cocktails start with your tastes, not a preset wedding menu.</p></article>
+            <article class="craft-card"><i data-lucide="citrus" aria-hidden="true"></i><h3>Made with intention</h3><p>Housemade syrups, mixers and garnishes bring the menu together, including candied citrus when it fits the drink.</p></article>
+            <article class="craft-card"><i data-lucide="clipboard-list" aria-hidden="true"></i><h3>Planned for the room</h3><p>Guest count, timing, staffing, quantities, cold storage and bar placement shape a plan for the full reception.</p></article>
+          </div>
         </div>
-        <p class="package-note">Final pricing depends on guest count, hours, staffing, venue needs and the options you choose. Every quote should make those choices easy to see.</p>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <p class="eyebrow">From inquiry to last call</p>
-        <h2>A simple planning process.</h2>
-        <p class="lead">The best wedding bar feels effortless to guests because the choices were settled well before the doors opened.</p>
-        <div class="planning-grid">
-          <article class="planning-card"><span class="number">01</span><h3>Share the basics</h3><p>Send your date, venue, guest count, service hours and the kind of bar you have in mind.</p></article>
-          <article class="planning-card"><span class="number">02</span><h3>Review your quote</h3><p>We personally review your inquiry and send a detailed proposal with service, staffing and options clearly explained.</p></article>
-          <article class="planning-card"><span class="number">03</span><h3>Plan it together</h3><p>After booking, your consultation covers the drink menu, alcohol quantities, venue details and service flow.</p></article>
-          <article class="planning-card"><span class="number">04</span><h3>Enjoy the wedding</h3><p>We arrive, set the bar, serve your guests and break everything down when service ends.</p></article>
-        </div>
-        <div class="staff-note"><strong>How many bartenders?</strong> Guest count matters, but so do the venue layout, service style and drink menu. We confirm staffing during the quote so the bar plan fits the actual wedding.</div>
       </div>
     </section>
 
@@ -276,14 +262,44 @@
         </div>
         <div>
           <p class="eyebrow">A real 513Sips wedding</p>
-          <h2>115 guests. Two bartenders. A plan built for the rush.</h2>
+          <h2>115 guests. Five hours. One complete bar plan.</h2>
           <div class="case-facts">
-            <div class="case-fact"><strong>115</strong><span>Guests</span></div>
-            <div class="case-fact"><strong>5 hours</strong><span>Bar service</span></div>
-            <div class="case-fact"><strong>2</strong><span>Bartenders</span></div>
+            <div class="case-fact"><strong>115 guests</strong></div>
+            <div class="case-fact"><strong>5 hours</strong></div>
+            <div class="case-fact"><strong>2 bartenders</strong></div>
           </div>
-          <p class="case-copy">At this Cincinnati-area wedding, one signature cocktail became the clear favorite during cocktail hour. Guests called out the house-made syrup and candied lemon garnish. That demand also showed why staffing, cold storage and alcohol quantities need to be planned around the busiest part of the reception, not just the total service time.</p>
+          <p class="case-copy">The custom Signature Cocktail became the cocktail-hour favorite, and guests specifically praised its housemade syrup and candied lemon. Across five hours, two bartenders served a bar stocked for beer, wine, Prosecco, seltzers, cider, lemonade and tea. Cocktail hour brought the only guest-facing rush. Last call needed closer monitoring, while service otherwise stayed smooth through the reception.</p>
+          <div class="case-action"><a class="button button-primary" href="#wedding-inquiry" data-analytics-event="book_event_click">Plan My Wedding Bar</a></div>
         </div>
+      </div>
+    </section>
+
+    <section class="dark-section" id="packages">
+      <div class="container">
+        <p class="eyebrow">Wedding service options</p>
+        <h2>Choose the right level of help.</h2>
+        <p class="lead">Start with the service that fits your guest count and the bar experience you want. We will confirm the right fit in your quote.</p>
+        <div class="package-grid">
+          <article class="package-card">
+            <h3>Base Package</h3>
+            <div class="price"><small>Starting at</small>$650</div>
+            <p>Best for intimate weddings: three hours of beer, wine, seltzer and champagne service for up to 50 guests with one bartender.</p>
+            <a class="button package-inquiry-link" href="#wedding-inquiry" data-package="Base Package" data-analytics-event="pricing_package_interaction">Ask About Base</a>
+          </article>
+          <article class="package-card featured">
+            <h3>Signature Package</h3>
+            <div class="price"><small>Starting at</small>$1,325</div>
+            <p>Best for a personal cocktail experience: four hours for up to 100 guests with two bartenders, one Signature Cocktail and housemade details.</p>
+            <a class="button package-inquiry-link" href="#wedding-inquiry" data-package="Signature Package" data-analytics-event="pricing_package_interaction">Ask About Signature</a>
+          </article>
+          <article class="package-card">
+            <h3>Premier Package</h3>
+            <div class="price"><small>Starting at</small>$2,988</div>
+            <p>Best for a fuller bar experience with two bartenders, two Signature Cocktails, sourcing support, glassware and custom details.</p>
+            <a class="button package-inquiry-link" href="#wedding-inquiry" data-package="Premier Package" data-analytics-event="pricing_package_interaction">Ask About Premier</a>
+          </article>
+        </div>
+        <p class="package-note">The $650 starting price is for the limited beer-and-wine Base Package shown above. Final pricing depends on guest count, hours, staffing, venue needs and the options you choose.</p>
       </div>
     </section>
 
@@ -296,7 +312,7 @@
         <div class="faq-list">
           <details><summary>Does 513Sips provide the alcohol?</summary><p>513Sips is a dry-hire bartending service, so you purchase the alcohol. We can help estimate quantities and can coordinate sourcing when that service is included in your package or quote.</p></details>
           <details><summary>How many bartenders does my wedding need?</summary><p>It depends on guest count, service style, venue layout and your drink menu. We confirm the staffing plan during quoting rather than using one rule for every wedding.</p></details>
-          <details><summary>Can you create signature cocktails?</summary><p>Yes. Signature cocktail service can include recipe planning, house-made syrups, garnishes and a custom menu card depending on your package.</p></details>
+          <details><summary>Can you create signature cocktails?</summary><p>Yes. We use your preferences to develop Signature Cocktail options, then you review and approve the menu. Depending on your package and selected drinks, that can include housemade syrups, mixers, garnishes and a custom menu card.</p></details>
           <details><summary>Will you coordinate with our venue?</summary><p>Yes. We can confirm access, setup needs, service timing and proof of insurance with your venue so the bar plan matches its requirements.</p></details>
           <details><summary>Are you insured and certified?</summary><p>513Sips carries event liability coverage and lists ASK, TIPS and food-safety certifications on the main website. Proof of insurance is available for venue coordination.</p></details>
           <details><summary>What areas do you serve?</summary><p>513Sips serves Greater Cincinnati and Northern Kentucky. Standard packages include travel within 30 miles. Ask about your venue when you inquire.</p></details>
@@ -304,12 +320,46 @@
       </div>
     </section>
 
-    <section class="final-cta">
-      <div class="container">
-        <p class="eyebrow">Start with your date</p>
-        <h2>Let’s make the bar one less thing to worry about.</h2>
-        <p>Tell us where you are getting married, how many guests you expect and what you want the bar to feel like. We will help turn that into a clear plan.</p>
-        <a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click"><i data-lucide="send" aria-hidden="true"></i> Book Your Event</a>
+    <section class="inquiry-section" id="wedding-inquiry">
+      <div class="container inquiry-grid">
+        <div class="inquiry-copy">
+          <p class="eyebrow">Start with your date</p>
+          <h2>Let’s build the bar your wedding deserves.</h2>
+          <p>Share the details you know today. We will personally review them and help you understand the right staffing, service and next step.</p>
+          <ul class="inquiry-points">
+            <li>A menu shaped around your guests</li>
+            <li>A clear quote built around the actual wedding</li>
+            <li>Guidance before you buy the alcohol</li>
+          </ul>
+        </div>
+        <div class="contact-form">
+          <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST">
+            <input type="hidden" name="event-type" value="Wedding">
+            <input type="hidden" name="_subject" value="Wedding inquiry from 513Sips.com">
+            <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-row">
+              <div class="form-group"><label for="wedding-name">Your Name</label><input type="text" id="wedding-name" name="name" autocomplete="name" required></div>
+              <div class="form-group"><label for="wedding-email">Email Address</label><input type="email" id="wedding-email" name="email" autocomplete="email" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="wedding-date">Wedding Date</label><input type="date" id="wedding-date" name="date"></div>
+              <div class="form-group"><label for="wedding-guests">Estimated Guests</label><input type="number" id="wedding-guests" name="guest-count" min="1" inputmode="numeric" placeholder="About how many?"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="wedding-venue">Venue or Area</label><input type="text" id="wedding-venue" name="venue" placeholder="Booked or considering"></div>
+              <div class="form-group"><label for="wedding-package">Service Interest</label><select id="wedding-package" name="package"><option value="">Not sure yet</option><option>Base Package</option><option>Signature Package</option><option>Premier Package</option><option>Custom Quote</option></select></div>
+            </div>
+            <div class="form-group"><label for="wedding-message">What do you want the bar to feel like?</label><textarea id="wedding-message" name="message" placeholder="Favorite drinks, service hours, venue rules or anything else you already know"></textarea></div>
+            <button type="submit" class="button button-primary form-submit"><i data-lucide="send" aria-hidden="true"></i> Check My Date</button>
+            <p class="form-error" id="form-error" hidden>Something went wrong. Please try again or email contact@513sips.com.</p>
+            <p class="form-note">We personally review every wedding inquiry.</p>
+          </form>
+          <div class="form-success" id="form-success" hidden>
+            <i data-lucide="circle-check-big" aria-hidden="true"></i>
+            <h3>Thank you!</h3>
+            <p>Your wedding details are on their way to us. We will be in touch within 24 hours.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -329,7 +379,7 @@
     </div>
   </footer>
 
-  <div class="sticky-cta"><a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click">Check Your Date</a></div>
+  <div class="sticky-cta"><a class="button button-primary" href="#wedding-inquiry" data-analytics-event="book_event_click">Check Your Date</a></div>
   <script src="../scripts/journey-events.js?v=1"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -340,6 +390,39 @@
       new IntersectionObserver(function (entries) {
         stickyCta.classList.toggle('visible', !entries[0].isIntersecting);
       }, { threshold: 0.05 }).observe(hero);
+    }
+    var bookingForm = document.getElementById('booking-form');
+    if (bookingForm) {
+      document.querySelectorAll('.package-inquiry-link').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var packageSelect = document.getElementById('wedding-package');
+          if (packageSelect) packageSelect.value = link.dataset.package;
+        });
+      });
+      bookingForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var submitButton = bookingForm.querySelector('button[type="submit"]');
+        var errorMessage = document.getElementById('form-error');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        errorMessage.hidden = true;
+        fetch(bookingForm.action, {
+          method: 'POST',
+          body: new FormData(bookingForm),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (response) {
+          if (!response.ok) throw new Error('Form submission failed');
+          if (window.SipsAnalytics) window.SipsAnalytics.track('inquiry_form_submit', { page_path: window.location.pathname, event_type: 'wedding' });
+          bookingForm.hidden = true;
+          document.getElementById('form-success').hidden = false;
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+        }).catch(function () {
+          submitButton.disabled = false;
+          submitButton.innerHTML = '<i data-lucide="send" aria-hidden="true"></i> Check My Date';
+          errorMessage.hidden = false;
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+      });
     }
   </script>
 </body>
