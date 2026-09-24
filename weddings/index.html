@@ -33,7 +33,6 @@
     .button { align-items:center; border-radius:999px; display:inline-flex; font-size:.86rem; font-weight:700; gap:.55rem; justify-content:center; letter-spacing:.06em; padding:.95rem 1.4rem; text-decoration:none; text-transform:uppercase; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
     .button:hover { transform:translateY(-2px); }
     .button-primary { background:linear-gradient(135deg,var(--copper),var(--copper-light)); color:var(--navy-dark); box-shadow:0 12px 30px rgba(184,115,51,.28); }
-    .button-secondary { border:1px solid rgba(255,255,255,.55); color:white; }
     .hero { align-items:flex-end; background:var(--navy-dark); display:flex; min-height:720px; overflow:hidden; padding:9rem 0 5.5rem; position:relative; }
     .hero::before { background:linear-gradient(90deg,rgba(18,18,31,.96) 0%,rgba(18,18,31,.8) 48%,rgba(18,18,31,.24) 100%),url('https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_1800,h_1000,g_auto,q_auto,f_webp/9-IMG_5228_swgnct') center/cover; content:''; inset:0; position:absolute; }
     .hero::after { background:linear-gradient(180deg,transparent 70%,var(--navy-dark)); content:''; inset:0; position:absolute; }
@@ -49,9 +48,12 @@
     .fact strong { color:var(--copper-light); display:block; font-family:'Cormorant Garamond',serif; font-size:1.55rem; }
     .fact span { font-size:.76rem; letter-spacing:.06em; opacity:.74; text-transform:uppercase; }
     section { padding:6rem 0; }
-    .intro-grid { align-items:start; display:grid; gap:4rem; grid-template-columns:.92fr 1.08fr; }
-    .responsibility-grid { display:grid; gap:1.25rem; grid-template-columns:1fr 1fr; }
+    .responsibility-intro { margin-bottom:2.5rem; max-width:800px; }
+    .responsibility-grid { background:white; border:1px solid rgba(184,115,51,.16); border-radius:24px; box-shadow:0 15px 35px rgba(26,26,46,.06); display:grid; grid-template-columns:1fr 1fr; overflow:hidden; }
     .info-card { background:white; border:1px solid rgba(184,115,51,.16); border-radius:22px; box-shadow:0 15px 35px rgba(26,26,46,.06); padding:2rem; }
+    .responsibility-grid .info-card { border:0; border-radius:0; box-shadow:none; padding:2.4rem; }
+    .responsibility-grid .info-card + .info-card { background:rgba(245,242,235,.72); border-left:1px solid rgba(184,115,51,.16); }
+    .role-label { color:var(--copper); font-size:.74rem; font-weight:700; letter-spacing:.12em; margin-bottom:.45rem; text-transform:uppercase; }
     .info-card h3 { align-items:center; display:flex; gap:.65rem; margin-bottom:1rem; }
     .info-card h3 svg { color:var(--copper); }
     .check-list { list-style:none; }
@@ -82,7 +84,8 @@
     .photo-grid img:first-child { grid-row:1 / 3; }
     .case-facts { display:grid; gap:.75rem; grid-template-columns:repeat(3,1fr); margin:1.5rem 0; }
     .case-fact { background:var(--cream); border-radius:14px; padding:1rem; }
-    .case-fact strong { color:var(--navy); display:block; font-family:'Cormorant Garamond',serif; font-size:1.55rem; }
+    .case-fact strong { color:var(--navy); display:block; font-family:'Montserrat',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:-.025em; }
+    .case-fact span { font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
     .case-copy { opacity:.86; }
     .faq-list { display:grid; gap:.8rem; margin:2.5rem auto 0; max-width:900px; }
     .centered { text-align:center; }
@@ -104,7 +107,7 @@
       .facts-grid,.planning-grid { grid-template-columns:repeat(2,1fr); }
       .fact:nth-child(3) { border-left:0; border-top:1px solid rgba(212,145,90,.24); }
       .fact:nth-child(4) { border-top:1px solid rgba(212,145,90,.24); }
-      .intro-grid,.case-grid { grid-template-columns:1fr; }
+      .case-grid { grid-template-columns:1fr; }
       .package-grid { grid-template-columns:1fr; }
       .package-card { min-height:auto; }
     }
@@ -117,6 +120,7 @@
       .hero-actions .button { width:100%; }
       section { padding:4.5rem 0; }
       .facts-grid,.responsibility-grid,.planning-grid { grid-template-columns:1fr; }
+      .responsibility-grid .info-card + .info-card { border-left:0; border-top:1px solid rgba(184,115,51,.16); }
       .fact + .fact { border-left:0; border-top:1px solid rgba(212,145,90,.24); }
       .photo-grid { grid-template-columns:1fr 1fr; grid-template-rows:260px 145px; }
       .photo-grid img:first-child { grid-column:1 / 3; grid-row:auto; }
@@ -167,7 +171,6 @@
           <p>513Sips handles the bartending, setup and beverage planning details that keep your wedding bar moving. You get a clear plan, a polished guest experience and fewer loose ends to chase.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Check Your Date</a>
-            <a class="button button-secondary" href="#packages" data-analytics-event="pricing_package_interaction"><i data-lucide="glass-water" aria-hidden="true"></i> See Starting Prices</a>
           </div>
         </div>
       </div>
@@ -176,42 +179,44 @@
     <div class="quick-facts">
       <div class="container">
         <div class="facts-grid" role="group" aria-label="Wedding service highlights">
-          <div class="fact"><strong>$650</strong><span>Packages start here</span></div>
-          <div class="fact"><strong>Dry Hire</strong><span>You buy the alcohol</span></div>
-          <div class="fact"><strong>Insured</strong><span>Proof available</span></div>
-          <div class="fact"><strong>Local</strong><span>Greater Cincinnati</span></div>
+          <div class="fact"><strong>$650</strong><span>Starting packages</span></div>
+          <div class="fact"><strong>Shopping List</strong><span>Know what to buy</span></div>
+          <div class="fact"><strong>Insured</strong><span>Venue-ready service</span></div>
+          <div class="fact"><strong>Setup to Breakdown</strong><span>We handle the bar</span></div>
         </div>
       </div>
     </div>
 
     <section>
-      <div class="container intro-grid">
-        <div>
+      <div class="container">
+        <div class="responsibility-intro">
           <p class="eyebrow">Clear from the start</p>
           <h2>Who handles what?</h2>
-          <p class="lead">A dry-hire wedding bar keeps you in control of the alcohol budget. It should not leave you guessing about everything else. Your proposal spells out the service, staffing and add-ons chosen for your day.</p>
+          <p class="lead">You stay in control of the alcohol budget. We take the professional bar work off your plate, then make the few decisions we need from you easy to understand.</p>
         </div>
         <div class="responsibility-grid">
           <article class="info-card">
-            <h3><i data-lucide="sparkles" aria-hidden="true"></i> 513Sips handles</h3>
+            <p class="role-label">What 513Sips provides</p>
+            <h3><i data-lucide="sparkles" aria-hidden="true"></i> The bar team and the plan</h3>
             <ul class="check-list">
-              <li>Professional bartending service</li>
+              <li>Professional bartenders and the right staffing plan</li>
               <li>Bar tools, equipment, setup and breakdown</li>
-              <li>Ice planning, cold storage and service flow</li>
-              <li>Alcohol quantity guidance</li>
+              <li>A custom alcohol shopping list for your guest count and menu</li>
+              <li>Ice, cold storage and service-flow planning</li>
               <li>Venue coordination and proof of insurance</li>
-              <li>Signature cocktails when selected</li>
+              <li>Signature cocktail prep when selected</li>
             </ul>
           </article>
           <article class="info-card">
-            <h3><i data-lucide="clipboard-check" aria-hidden="true"></i> Your plan makes clear</h3>
+            <p class="role-label">What you provide</p>
+            <h3><i data-lucide="clipboard-check" aria-hidden="true"></i> The choices only you can make</h3>
             <ul class="check-list">
-              <li>The alcohol shopping list and timing</li>
-              <li>Confirmed guest count and service hours</li>
-              <li>Venue contact and access details</li>
-              <li>Bar requirements and approvals</li>
-              <li>Drink choices and service priorities</li>
-              <li>What happens next and who handles it</li>
+              <li>The alcohol purchase, or our sourcing service as an add-on</li>
+              <li>Your final guest count, timeline and venue contact</li>
+              <li>Your drink choices and the guest experience you want</li>
+              <li>Any venue rules or required approvals</li>
+              <li>Your priorities, from short lines to signature drinks</li>
+              <li>Final approval of the proposal and bar plan</li>
             </ul>
           </article>
         </div>
@@ -253,9 +258,9 @@
         <h2>A simple planning process.</h2>
         <p class="lead">The best wedding bar feels effortless to guests because the choices were settled well before the doors opened.</p>
         <div class="planning-grid">
-          <article class="planning-card"><span class="number">01</span><h3>Tell us the basics</h3><p>Share your date, venue, guest count, service hours and the kind of bar you have in mind.</p></article>
-          <article class="planning-card"><span class="number">02</span><h3>Build the plan</h3><p>We match staffing, packages and drink service to your wedding instead of forcing a one-size-fits-all bar.</p></article>
-          <article class="planning-card"><span class="number">03</span><h3>Coordinate details</h3><p>We confirm alcohol quantities, venue access, setup needs, insurance and the final menu before the event.</p></article>
+          <article class="planning-card"><span class="number">01</span><h3>Share the basics</h3><p>Send your date, venue, guest count, service hours and the kind of bar you have in mind.</p></article>
+          <article class="planning-card"><span class="number">02</span><h3>Review your quote</h3><p>We personally review your inquiry and send a detailed proposal with service, staffing and options clearly explained.</p></article>
+          <article class="planning-card"><span class="number">03</span><h3>Plan it together</h3><p>After booking, your consultation covers the drink menu, alcohol quantities, venue details and service flow.</p></article>
           <article class="planning-card"><span class="number">04</span><h3>Enjoy the wedding</h3><p>We arrive, set the bar, serve your guests and break everything down when service ends.</p></article>
         </div>
         <div class="staff-note"><strong>How many bartenders?</strong> Guest count matters, but so do the venue layout, service style and drink menu. We confirm staffing during the quote so the bar plan fits the actual wedding.</div>
@@ -271,13 +276,13 @@
         </div>
         <div>
           <p class="eyebrow">A real 513Sips wedding</p>
-          <h2>115 guests. Five hours. One signature drink everyone wanted.</h2>
+          <h2>115 guests. Two bartenders. A plan built for the rush.</h2>
           <div class="case-facts">
             <div class="case-fact"><strong>115</strong><span>Guests</span></div>
             <div class="case-fact"><strong>5 hours</strong><span>Bar service</span></div>
             <div class="case-fact"><strong>2</strong><span>Bartenders</span></div>
           </div>
-          <p class="case-copy">For this Cincinnati-area wedding, the signature cocktail led the entire cocktail hour. Guests called out the house-made syrup and candied lemon garnish. The night also reinforced why venue access, cold storage, staffing and a realistic beverage plan are settled before service, not during it.</p>
+          <p class="case-copy">At this Cincinnati-area wedding, one signature cocktail became the clear favorite during cocktail hour. Guests called out the house-made syrup and candied lemon garnish. That demand also showed why staffing, cold storage and alcohol quantities need to be planned around the busiest part of the reception, not just the total service time.</p>
         </div>
       </div>
     </section>
