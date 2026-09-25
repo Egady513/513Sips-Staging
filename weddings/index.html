@@ -55,38 +55,24 @@
     .role-label { color:var(--copper); display:block; font-size:.7rem; font-weight:700; letter-spacing:.11em; margin:.8rem 0 .35rem; text-transform:uppercase; }
     .collaboration-step h3 { font-size:1.35rem; margin-bottom:.55rem; }
     .collaboration-step p { font-size:.88rem; opacity:.82; }
-    .craft-section { margin-top:4.2rem; }
-    .craft-section h2 { font-size:clamp(2rem,4vw,3rem); max-width:700px; }
-    .craft-grid { display:grid; gap:1.1rem; grid-template-columns:repeat(3,1fr); margin-top:2rem; }
-    .craft-card { background:var(--navy); border-radius:20px; color:white; padding:2rem; }
-    .craft-card h3 { color:white; margin-bottom:.7rem; }
-    .craft-card p { font-size:.92rem; opacity:.78; }
-    .craft-card svg { color:var(--copper-light); height:26px; margin-bottom:1.2rem; width:26px; }
-    .dark-section { background:linear-gradient(135deg,var(--navy-dark),var(--navy-light)); color:white; }
-    .dark-section h2,.dark-section h3 { color:white; }
-    .dark-section .eyebrow { color:var(--copper-light); }
-    .package-grid { display:grid; gap:1.25rem; grid-template-columns:repeat(3,1fr); margin-top:2.7rem; }
-    .package-card { background:rgba(255,255,255,.055); border:1px solid rgba(212,145,90,.23); border-radius:22px; display:flex; flex-direction:column; padding:2rem; }
-    .package-card.featured { background:linear-gradient(155deg,rgba(184,115,51,.22),rgba(255,255,255,.055)); border-color:var(--copper-light); }
-    .package-card .price { color:var(--copper-light); font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:700; line-height:1; margin:.75rem 0; }
-    .package-card .price small { color:rgba(255,255,255,.62); display:block; font-family:'Montserrat',sans-serif; font-size:.75rem; font-weight:500; letter-spacing:.05em; margin-bottom:.35rem; text-transform:uppercase; }
-    .package-card p { color:rgba(255,255,255,.75); font-size:.92rem; }
-    .package-card .button { margin-top:auto; padding-top:1.6rem; }
-    .package-note { color:rgba(255,255,255,.66); font-size:.88rem; margin:1.5rem auto 0; max-width:760px; text-align:center; }
     .case-study { background:white; }
     .case-grid { align-items:center; display:grid; gap:4rem; grid-template-columns:1.05fr .95fr; }
     .photo-grid { display:grid; gap:.75rem; grid-template-columns:1.3fr .7fr; grid-template-rows:210px 210px; }
     .photo-grid img { border-radius:18px; height:100%; object-fit:cover; width:100%; }
     .photo-grid img:first-child { grid-row:1 / 3; }
-    .case-facts { display:grid; gap:.75rem; grid-template-columns:repeat(3,1fr); margin:1.5rem 0; }
-    .case-fact { background:var(--cream); border-radius:14px; padding:1rem; }
-    .case-fact strong { color:var(--navy); display:block; font-family:'Montserrat',sans-serif; font-size:1.08rem; font-weight:700; letter-spacing:-.025em; white-space:nowrap; }
-    .case-copy { opacity:.86; }
+    .case-copy { display:grid; gap:1rem; opacity:.86; }
+    .case-promise { border-left:3px solid var(--copper); color:var(--navy); font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; line-height:1.35; margin-top:1.5rem; padding-left:1.25rem; }
     .case-action { margin-top:1.5rem; }
     .faq-list { display:grid; gap:.8rem; margin:2.5rem auto 0; max-width:900px; }
     .centered { text-align:center; }
-    details { background:white; border:1px solid rgba(184,115,51,.16); border-radius:16px; padding:1.15rem 1.35rem; }
-    summary { color:var(--navy); cursor:pointer; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; }
+    details { background:white; border:1px solid rgba(184,115,51,.16); border-radius:16px; overflow:hidden; padding:1.15rem 1.35rem 1.15rem 1.65rem; position:relative; }
+    details::before { background:transparent; content:''; inset:0 auto 0 0; position:absolute; transition:background .2s ease; width:4px; }
+    details[open] { border-color:rgba(184,115,51,.35); }
+    details[open]::before { background:var(--copper); }
+    summary { align-items:center; color:var(--navy); cursor:pointer; display:flex; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; gap:1rem; justify-content:space-between; list-style:none; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { color:var(--copper); content:'+'; flex-shrink:0; font-family:'Montserrat',sans-serif; font-size:1.4rem; font-weight:400; line-height:1; transition:transform .25s ease; }
+    details[open] summary::after { transform:rotate(45deg); }
     details p { margin-top:.75rem; opacity:.82; }
     .inquiry-section { background:var(--navy-dark); color:white; overflow:hidden; position:relative; }
     .inquiry-section::before { background:radial-gradient(circle,rgba(184,115,51,.2),transparent 68%); content:''; height:700px; left:12%; position:absolute; top:50%; transform:translate(-50%,-50%); width:700px; }
@@ -120,12 +106,9 @@
     @media (max-width:900px) {
       .facts-grid { grid-template-columns:repeat(2,1fr); }
       .collaboration-grid { grid-template-columns:repeat(2,1fr); }
-      .craft-grid { grid-template-columns:1fr; }
       .fact:nth-child(3) { border-left:0; border-top:1px solid rgba(212,145,90,.24); }
       .fact:nth-child(4) { border-top:1px solid rgba(212,145,90,.24); }
       .case-grid { grid-template-columns:1fr; }
-      .package-grid { grid-template-columns:1fr; }
-      .package-card { min-height:auto; }
     }
     @media (max-width:620px) {
       body { padding-bottom:72px; }
@@ -140,7 +123,6 @@
       .fact + .fact { border-left:0; border-top:1px solid rgba(212,145,90,.24); }
       .photo-grid { grid-template-columns:1fr 1fr; grid-template-rows:260px 145px; }
       .photo-grid img:first-child { grid-column:1 / 3; grid-row:auto; }
-      .case-facts { grid-template-columns:1fr; }
       .inquiry-grid,.form-row { grid-template-columns:1fr; }
       .inquiry-grid { gap:2rem; }
       .contact-form { padding:1.5rem 1.1rem; }
@@ -167,10 +149,12 @@
       {
         "@type":"FAQPage",
         "mainEntity":[
-          {"@type":"Question","name":"Does 513Sips provide the alcohol?","acceptedAnswer":{"@type":"Answer","text":"513Sips is a dry-hire bartending service, so the client purchases the alcohol. 513Sips can help estimate quantities and can coordinate sourcing when that service is included in the selected package or quote."}},
-          {"@type":"Question","name":"How many bartenders does my wedding need?","acceptedAnswer":{"@type":"Answer","text":"Staffing depends on guest count, service style, venue layout and the drink menu. 513Sips confirms the staffing plan during quoting rather than using one rule for every wedding."}},
-          {"@type":"Question","name":"Can 513Sips create signature cocktails?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips uses the couple's preferences to develop Signature Cocktail options for review and approval. Depending on the package and selected drinks, service can include housemade syrups, mixers, garnishes and a custom menu card."}},
-          {"@type":"Question","name":"Is 513Sips insured and certified?","acceptedAnswer":{"@type":"Answer","text":"513Sips carries event liability coverage and lists ASK, TIPS and food-safety certifications on its website. Proof of insurance is available for venue coordination."}}
+          {"@type":"Question","name":"What is the largest wedding 513Sips has booked?","acceptedAnswer":{"@type":"Answer","text":"The largest 513Sips wedding booking to date is for about 200 guests. The plan uses multiple bars and a larger team built around the venue layout, timeline and guest flow instead of forcing the wedding into a standard package."}},
+          {"@type":"Question","name":"How does 513Sips decide how many bartenders a wedding needs?","acceptedAnswer":{"@type":"Answer","text":"513Sips considers guest count, bar locations, menu, service hours and peak demand. A current 200-guest wedding plan uses four bartenders across three cocktail-hour service points and two reception bars."}},
+          {"@type":"Question","name":"Can we offer more Signature Cocktails?","acceptedAnswer":{"@type":"Answer","text":"Yes. A featured menu can combine custom Signature Cocktails with House Featured Cocktails. 513Sips explains how each option affects purchasing, bar placement and service speed before the couple decides."}},
+          {"@type":"Question","name":"Can 513Sips handle alcohol shopping and coordinate specialty vendors?","acceptedAnswer":{"@type":"Answer","text":"When included in the quote, 513Sips can plan quantities, shop, stage the alcohol and return eligible unopened product without marking up the alcohol. 513Sips can also coordinate specialty ice through DrinkBigIce, glassware rentals and trusted referrals for non-bar staff."}},
+          {"@type":"Question","name":"Will 513Sips work directly with our planner, venue and caterer?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips can confirm venue requirements, access, bar locations and service timing, then coordinate bar-related handoffs with the planner, caterer, rental company and other vendors."}},
+          {"@type":"Question","name":"Can our venue receive proof of insurance?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips carries $2 million in general and liquor liability coverage. Proof of insurance is available and, when applicable, the venue can be listed after its requirements are confirmed."}}
         ]
       }
     ]
@@ -246,15 +230,6 @@
           </article>
         </div>
 
-        <div class="craft-section">
-          <p class="eyebrow">What makes it 513Sips</p>
-          <h2>Personal details backed by a real service plan.</h2>
-          <div class="craft-grid">
-            <article class="craft-card"><i data-lucide="martini" aria-hidden="true"></i><h3>Designed for you</h3><p>Your vision, style and favorite flavors guide the drinks, menus and details, so the bar feels like part of your wedding.</p></article>
-            <article class="craft-card"><i data-lucide="citrus" aria-hidden="true"></i><h3>Made with intention</h3><p>Housemade syrups, mixers and garnishes bring the menu together, including candied citrus when it fits the drink.</p></article>
-            <article class="craft-card"><i data-lucide="clipboard-list" aria-hidden="true"></i><h3>Planned with clarity</h3><p>We connect your menu to the venue, staffing, service flow and recommended quantities, so you know what to buy and how the bar will work.</p></article>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -267,60 +242,30 @@
         </div>
         <div>
           <p class="eyebrow">A real 513Sips wedding</p>
-          <h2>115 guests. Five hours. One complete bar plan.</h2>
-          <div class="case-facts">
-            <div class="case-fact"><strong>115 guests</strong></div>
-            <div class="case-fact"><strong>5 hours</strong></div>
-            <div class="case-fact"><strong>2 bartenders</strong></div>
+          <h2>Made for your wedding. Handled so you can stay in it.</h2>
+          <div class="case-copy">
+            <p>A wedding brings more guests, more vendors and more moments that have to line up. The bar has to fit the venue, follow the planner’s timeline, move with dinner service and be ready when a full room arrives at once. 513Sips plans those moving pieces before the first pour, then runs the bar through last call.</p>
+            <p>At one 513Sips wedding, 115 guests arrived for cocktail hour at once. Two bartenders handled the rush, the custom Signature Cocktail became the favorite and service stayed smooth through the five-hour reception. Guests remembered the housemade syrup and candied lemon.</p>
           </div>
-          <p class="case-copy">The custom Signature Cocktail became the cocktail-hour favorite, and guests specifically praised its housemade syrup and candied lemon. Across five hours, two bartenders served a bar stocked for beer, wine, Prosecco, seltzers, cider, lemonade and tea. Cocktail hour brought the only guest-facing rush. Last call needed closer monitoring, while service otherwise stayed smooth through the reception.</p>
-          <div class="case-action"><a class="button button-primary" href="#wedding-inquiry" data-analytics-event="book_event_click">Plan My Wedding Bar</a></div>
+          <p class="case-promise">That is the standard for every 513Sips wedding: a bar that feels uniquely yours in every detail and never feels like yours to manage.</p>
+          <div class="case-action"><a class="button button-primary" href="#wedding-inquiry" data-analytics-event="book_event_click">Tell Us About My Wedding</a></div>
         </div>
-      </div>
-    </section>
-
-    <section class="dark-section" id="packages">
-      <div class="container">
-        <p class="eyebrow">Wedding service options</p>
-        <h2>Choose the right level of help.</h2>
-        <p class="lead">Start with the service that fits your guest count and the bar experience you want. We will confirm the right fit in your quote.</p>
-        <div class="package-grid">
-          <article class="package-card">
-            <h3>Base Package</h3>
-            <div class="price"><small>Starting at</small>$650</div>
-            <p>Best for intimate weddings: three hours of beer, wine, seltzer and champagne service for up to 50 guests with one bartender.</p>
-            <a class="button package-inquiry-link" href="#wedding-inquiry" data-package="Base Package" data-analytics-event="pricing_package_interaction">Ask About Base</a>
-          </article>
-          <article class="package-card featured">
-            <h3>Signature Package</h3>
-            <div class="price"><small>Starting at</small>$1,325</div>
-            <p>Best for a personal cocktail experience: four hours for up to 100 guests with two bartenders, one Signature Cocktail and housemade details.</p>
-            <a class="button package-inquiry-link" href="#wedding-inquiry" data-package="Signature Package" data-analytics-event="pricing_package_interaction">Ask About Signature</a>
-          </article>
-          <article class="package-card">
-            <h3>Premier Package</h3>
-            <div class="price"><small>Starting at</small>$2,988</div>
-            <p>Best for a fuller bar experience with two bartenders, two Signature Cocktails, sourcing support, glassware and custom details.</p>
-            <a class="button package-inquiry-link" href="#wedding-inquiry" data-package="Premier Package" data-analytics-event="pricing_package_interaction">Ask About Premier</a>
-          </article>
-        </div>
-        <p class="package-note">The $650 starting price is for the limited beer-and-wine Base Package shown above. Final pricing depends on guest count, hours, staffing, venue needs and the options you choose.</p>
       </div>
     </section>
 
     <section id="wedding-faq">
       <div class="container">
         <div class="centered">
-          <p class="eyebrow">Wedding bar questions</p>
-          <h2>What couples usually ask.</h2>
+          <p class="eyebrow">Wedding questions</p>
+          <h2>The questions that matter before you book.</h2>
         </div>
         <div class="faq-list">
-          <details><summary>Does 513Sips provide the alcohol?</summary><p>513Sips is a dry-hire bartending service, so you purchase the alcohol. We can help estimate quantities and can coordinate sourcing when that service is included in your package or quote.</p></details>
-          <details><summary>How many bartenders does my wedding need?</summary><p>It depends on guest count, service style, venue layout and your drink menu. We confirm the staffing plan during quoting rather than using one rule for every wedding.</p></details>
-          <details><summary>Can you create signature cocktails?</summary><p>Yes. We use your preferences to develop Signature Cocktail options, then you review and approve the menu. Depending on your package and selected drinks, that can include housemade syrups, mixers, garnishes and a custom menu card.</p></details>
-          <details><summary>Will you coordinate with our venue?</summary><p>Yes. We can confirm access, setup needs, service timing and proof of insurance with your venue so the bar plan matches its requirements.</p></details>
-          <details><summary>Are you insured and certified?</summary><p>513Sips carries event liability coverage and lists ASK, TIPS and food-safety certifications on the main website. Proof of insurance is available for venue coordination.</p></details>
-          <details><summary>What areas do you serve?</summary><p>513Sips serves Greater Cincinnati and Northern Kentucky. Standard packages include travel within 30 miles. Ask about your venue when you inquire.</p></details>
+          <details><summary>What is the largest wedding you have booked?</summary><p>Our largest wedding booking to date is for about 200 guests. The plan uses multiple bars and a larger team built around the venue layout, timeline and guest flow instead of forcing the wedding into a standard package.</p></details>
+          <details><summary>How do you decide how many bartenders a wedding needs?</summary><p>We look at more than guest count. Bar locations, menu, service hours and when demand will peak all shape the plan. Our current 200-guest wedding plan uses four bartenders across three cocktail-hour service points and two reception bars. A completed 115-guest wedding ran smoothly with two bartenders.</p></details>
+          <details><summary>Can we offer more Signature Cocktails?</summary><p>Yes. For our current 200-guest wedding, we created a four-cocktail option and a six-cocktail option by pairing custom Signature Cocktails with faster House Featured Cocktails that share ingredients and prep. We walk you through how more choices affect purchasing, bar placement and speed, then help you choose the menu that fits your celebration.</p></details>
+          <details><summary>Can you handle alcohol shopping and coordinate specialty vendors?</summary><p>Yes, when those services are included in your quote. 513Sips can build the quantity plan, shop, stage the alcohol for service and return eligible unopened product. You own the alcohol and pay no markup on it. You see every receipt, and any money left in the prepaid budget comes back to you after shopping and returns are complete. We can also coordinate specialty ice through our partner DrinkBigIce, arrange glassware rentals and connect you with a trusted catering referral for non-bar staff.</p></details>
+          <details><summary>Will you work directly with our planner, venue and caterer?</summary><p>Yes. We can confirm venue requirements, access, bar locations and service timing, then coordinate the bar-related handoffs with your planner, caterer, rental company and other vendors. You should not have to carry those details from one vendor to the next on your wedding day.</p></details>
+          <details><summary>Can our venue receive proof of insurance?</summary><p>Yes. 513Sips carries $2 million in general and liquor liability coverage. We can provide proof of insurance and, when applicable, list the venue after its requirements are confirmed.</p></details>
         </div>
       </div>
     </section>
@@ -328,13 +273,13 @@
     <section class="inquiry-section" id="wedding-inquiry">
       <div class="container inquiry-grid">
         <div class="inquiry-copy">
-          <p class="eyebrow">Start with your date</p>
-          <h2>Let’s build the bar your wedding deserves.</h2>
-          <p>Share the details you know today. We will personally review them and help you understand the right staffing, service and next step.</p>
+          <p class="eyebrow">Start with your wedding</p>
+          <h2>Your wedding first. Then the bar.</h2>
+          <p>You do not need to have every drink or service detail figured out before you reach out. Tell us what you want the day to feel like, what you already know and what is still open. We will personally review it, then help shape the bar around your wedding.</p>
           <ul class="inquiry-points">
-            <li>Cocktails shaped around your wedding</li>
-            <li>A clear quote built around the actual wedding</li>
-            <li>Guidance before you buy the alcohol</li>
+            <li>Your vision, style and favorite flavors come first</li>
+            <li>Staffing and service built around your actual day</li>
+            <li>Clear guidance before anything is purchased</li>
           </ul>
         </div>
         <div class="contact-form">
@@ -352,16 +297,16 @@
             </div>
             <div class="form-row">
               <div class="form-group"><label for="wedding-venue">Venue or Area</label><input type="text" id="wedding-venue" name="venue" placeholder="Booked or considering"></div>
-              <div class="form-group"><label for="wedding-package">Service Interest</label><select id="wedding-package" name="package"><option value="">Not sure yet</option><option>Base Package</option><option>Signature Package</option><option>Premier Package</option><option>Custom Quote</option></select></div>
+              <div class="form-group"><label for="wedding-package">What kind of bar are you imagining?</label><select id="wedding-package" name="bar-vision"><option value="">I’d like help choosing</option><option>Beer, wine and simple mixed drinks</option><option>Custom Signature Cocktails</option><option>A full wedding bar</option><option>Multiple bars or a larger guest count</option><option>Alcohol purchasing and vendor coordination</option><option>Something custom</option></select></div>
             </div>
-            <div class="form-group"><label for="wedding-message">What do you want the bar to feel like?</label><textarea id="wedding-message" name="message" placeholder="Favorite drinks, service hours, venue rules or anything else you already know"></textarea></div>
-            <button type="submit" class="button button-primary form-submit"><i data-lucide="send" aria-hidden="true"></i> Check My Date</button>
+            <div class="form-group"><label for="wedding-message">What do you want your wedding bar to feel like?</label><textarea id="wedding-message" name="message" placeholder="Your style, favorite flavors, must-have cocktails or anything else you want us to know"></textarea></div>
+            <button type="submit" class="button button-primary form-submit"><i data-lucide="send" aria-hidden="true"></i> Tell Us About My Wedding</button>
             <p class="form-error" id="form-error" hidden>Something went wrong. Please try again or email contact@513sips.com.</p>
             <p class="form-note">We personally review every wedding inquiry.</p>
           </form>
           <div class="form-success" id="form-success" hidden>
             <i data-lucide="circle-check-big" aria-hidden="true"></i>
-            <h3>Thank you!</h3>
+            <h3>We’ve got it.</h3>
             <p>Your wedding details are on their way to us. We will be in touch within 24 hours.</p>
           </div>
         </div>
@@ -398,12 +343,6 @@
     }
     var bookingForm = document.getElementById('booking-form');
     if (bookingForm) {
-      document.querySelectorAll('.package-inquiry-link').forEach(function (link) {
-        link.addEventListener('click', function () {
-          var packageSelect = document.getElementById('wedding-package');
-          if (packageSelect) packageSelect.value = link.dataset.package;
-        });
-      });
       bookingForm.addEventListener('submit', function (event) {
         event.preventDefault();
         var submitButton = bookingForm.querySelector('button[type="submit"]');
@@ -423,7 +362,7 @@
           if (typeof lucide !== 'undefined') lucide.createIcons();
         }).catch(function () {
           submitButton.disabled = false;
-          submitButton.innerHTML = '<i data-lucide="send" aria-hidden="true"></i> Check My Date';
+          submitButton.innerHTML = '<i data-lucide="send" aria-hidden="true"></i> Tell Us About My Wedding';
           errorMessage.hidden = false;
           if (typeof lucide !== 'undefined') lucide.createIcons();
         });
