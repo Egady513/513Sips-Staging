@@ -53,7 +53,7 @@
   }
 
   // ── Path detection ──────────────────────────────────────────────────────────
-  const inSubdir = ['/blog/', '/weddings/'].some(function (segment) {
+  const inSubdir = ['/blog/', '/weddings/', '/private-parties/'].some(function (segment) {
     return window.location.pathname.includes(segment);
   });
   const root     = inSubdir ? '../' : '';
