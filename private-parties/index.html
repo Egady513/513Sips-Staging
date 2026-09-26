@@ -51,19 +51,20 @@
     .case-study { background:var(--navy); color:rgba(255,255,255,.82); }
     .case-study h2 { color:var(--white); }
     .case-study .eyebrow { color:var(--copper-light); }
-    .case-grid { align-items:center; display:grid; gap:4.5rem; grid-template-columns:.92fr 1.08fr; }
-    .case-proof { align-items:center; background:linear-gradient(145deg,rgba(184,115,51,.22),rgba(255,255,255,.04)); border:1px solid rgba(212,145,90,.35); border-radius:26px; display:flex; flex-direction:column; justify-content:center; min-height:520px; padding:3rem; text-align:center; }
-    .case-proof strong { color:var(--white); font-family:'Cormorant Garamond',serif; font-size:clamp(4.75rem,9vw,7.5rem); font-weight:500; line-height:.8; }
-    .case-proof span { color:var(--copper-light); font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-style:italic; line-height:1.2; margin-top:1.5rem; max-width:260px; }
+    .case-grid { align-items:center; display:grid; gap:4.5rem; grid-template-columns:1.05fr .95fr; }
+    .photo-grid { display:grid; gap:.75rem; grid-template-columns:1.3fr .7fr; grid-template-rows:230px 230px; }
+    .photo-grid img { border-radius:18px; height:100%; object-fit:cover; width:100%; }
+    .photo-grid img:first-child { grid-row:1 / 3; }
+    .case-stats { display:grid; gap:.75rem; grid-template-columns:repeat(2,1fr); margin:1.8rem 0; }
+    .case-stat { border-left:2px solid var(--copper-light); padding:.15rem 0 .15rem 1rem; }
+    .case-stat strong { color:var(--white); display:block; font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:600; line-height:1; }
+    .case-stat span { color:rgba(255,255,255,.66); display:block; font-size:.72rem; letter-spacing:.06em; margin-top:.35rem; text-transform:uppercase; }
     .case-copy { font-size:1.02rem; }
     .case-copy > p { margin-top:1.15rem; }
     .cocktail-list { display:grid; gap:.75rem; margin:1.8rem 0; }
     .cocktail { border-bottom:1px solid rgba(212,145,90,.25); padding:0 0 .85rem; }
     .cocktail strong { color:var(--white); display:block; font-family:'Cormorant Garamond',serif; font-size:1.35rem; }
     .case-promise { color:var(--copper-light); font-family:'Cormorant Garamond',serif; font-size:1.55rem; line-height:1.3; }
-    .difference-grid { display:grid; gap:1.5rem; grid-template-columns:repeat(2,1fr); margin-top:3rem; }
-    .difference { border-top:2px solid var(--copper); padding:1.25rem 0; }
-    .difference p { margin-top:.55rem; }
     .faq-section { background:#ece7dc; }
     .faq-list { margin:2.5rem auto 0; max-width:850px; }
     details { background:var(--white); border:1px solid rgba(184,115,51,.14); border-radius:16px; margin-bottom:.75rem; overflow:hidden; }
@@ -102,7 +103,7 @@
       .fact:nth-child(4) { border-top:1px solid rgba(212,145,90,.24); }
       .process-grid { grid-template-columns:1fr 1fr; }
       .case-grid { grid-template-columns:1fr; }
-      .case-proof { min-height:390px; }
+      .photo-grid { grid-template-rows:260px 220px; }
     }
     @media (max-width:620px) {
       body { padding-bottom:72px; }
@@ -110,10 +111,12 @@
       section { padding:4.5rem 0; }
       .hero { background:linear-gradient(180deg,rgba(18,18,31,.42),rgba(18,18,31,.93) 72%),url('https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_800,h_1000,g_auto,q_auto,f_webp/Serving_Drinks_katc9z') center/cover; min-height:690px; padding-bottom:3.5rem; }
       .hero h1 { font-size:3.5rem; }
-      .facts-grid,.process-grid,.difference-grid,.inquiry-grid,.form-row { grid-template-columns:1fr; }
+      .facts-grid,.process-grid,.inquiry-grid,.form-row { grid-template-columns:1fr; }
       .process-step { min-height:auto; }
       .fact + .fact { border-left:0; border-top:1px solid rgba(212,145,90,.24); }
-      .case-proof { min-height:300px; }
+      .photo-grid { grid-template-columns:1fr 1fr; grid-template-rows:260px 150px; }
+      .photo-grid img:first-child { grid-column:1 / 3; grid-row:auto; }
+      .case-stats { gap:1rem .65rem; }
       .inquiry-grid { gap:2rem; }
       .contact-form { padding:1.5rem 1.1rem; }
       .footer-inner { align-items:flex-start; flex-direction:column; }
@@ -157,10 +160,10 @@
     <div class="quick-facts">
       <div class="container">
         <div class="facts-grid" role="group" aria-label="Private party service highlights">
-          <div class="fact"><strong>Made for Your Party</strong><span>Theme + favorite flavors</span></div>
-          <div class="fact"><strong>Housemade</strong><span>Syrups + garnishes</span></div>
-          <div class="fact"><strong>Handled for You</strong><span>Setup + bar breakdown</span></div>
-          <div class="fact"><strong>$2M Insured</strong><span>Proof for your venue</span></div>
+          <div class="fact"><strong>Built Around You</strong><span>Signature cocktails + full bar</span></div>
+          <div class="fact"><strong>Housemade Details</strong><span>Syrups + garnishes + menus</span></div>
+          <div class="fact"><strong>Shopping, Handled</strong><span>Available with no markup</span></div>
+          <div class="fact"><strong>Enjoy Your Party</strong><span>We run the bar</span></div>
         </div>
       </div>
     </div>
@@ -185,35 +188,27 @@
 
     <section class="case-study">
       <div class="container case-grid">
-        <div class="case-proof" aria-label="Casino Night birthday with three themed featured cocktails and a full bar">
-          <strong>30th</strong>
-          <span>Casino Night birthday</span>
+        <div class="photo-grid" role="group" aria-label="Real photographs from a 513Sips Casino Night birthday">
+          <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_850,h_980,g_auto,q_auto,f_webp/IMG_6289_eoy3n9" alt="513Sips serving from the custom Casino Night birthday bar" loading="lazy">
+          <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_520,h_480,g_auto,q_auto,f_webp/IMG_6403_h4mjrd" alt="Casino Night Signature Cocktail and full bar menus" loading="lazy">
+          <img src="https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_520,h_480,g_auto,q_auto,f_webp/IMG_6472_1_ucfsna" alt="Lucky 7 Espresso Martini from the Casino Night birthday" loading="lazy">
         </div>
         <div class="case-copy">
-          <p class="eyebrow">A real casino-themed birthday</p>
-          <h2>Casino Night did not need a generic bar.</h2>
-          <p>For a casino-themed 30th birthday, the bar plan carried the theme into the drinks instead of stopping at the decorations. The featured menu paired a full bar with three cocktails made for the night:</p>
+          <p class="eyebrow">A real Casino Night birthday</p>
+          <h2>A full bar with Casino Night written all over it.</h2>
+          <div class="case-stats" aria-label="Casino Night event details">
+            <div class="case-stat"><strong>4 hours</strong><span>of bar service</span></div>
+            <div class="case-stat"><strong>75 guests</strong><span>served</span></div>
+            <div class="case-stat"><strong>3 Signature Cocktails</strong><span>made for the theme</span></div>
+            <div class="case-stat"><strong>Full-service bar</strong><span>for the whole party</span></div>
+          </div>
+          <p>Casino Night was the idea from the start, and the bar carried it all the way through. Three Signature Cocktails gave the theme its own menu. A full bar gave guests more options, and the housemade ingredients and custom signs pulled the whole thing together.</p>
           <div class="cocktail-list">
             <div class="cocktail"><strong>High Roller Old Fashioned</strong><span>Bourbon, housemade orange-demerara syrup and a candied orange garnish.</span></div>
             <div class="cocktail"><strong>Double Down Margarita</strong><span>Tequila, house margarita mix and a dehydrated lime wheel.</span></div>
             <div class="cocktail"><strong>Lucky 7 Espresso Martini</strong><span>Vodka, cold-brew espresso concentrate, coffee liqueur and house demerara syrup.</span></div>
           </div>
-          <p class="case-promise">That is what personal means to us: the bar should belong to the party, not look like it was dropped into the room.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="intro">
-          <p class="eyebrow">More than pouring drinks</p>
-          <h2>The details should feel thoughtful. The night should feel easy.</h2>
-        </div>
-        <div class="difference-grid">
-          <article class="difference"><h3>A menu with a reason</h3><p>Your celebration, favorite flavors and theme guide the drinks. We help you choose what belongs instead of handing you a list to sort through alone.</p></article>
-          <article class="difference"><h3>Housemade touches</h3><p>Syrups, mixers and garnishes are prepared for the menu in your quote, including candied citrus when it fits the drink.</p></article>
-          <article class="difference"><h3>A plan for your actual space</h3><p>We look at access, bar placement, service flow and what the venue or home can support before the event begins.</p></article>
-          <article class="difference"><h3>Clear ownership</h3><p>You buy and own the alcohol. We help determine quantities and can coordinate purchasing when that service is included.</p></article>
+          <p class="case-promise">A party with a point of view deserves a bar that shares it.</p>
         </div>
       </div>
     </section>
