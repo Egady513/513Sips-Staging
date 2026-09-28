@@ -1,12 +1,35 @@
 /**
- * 513Sips customer-journey events.
+ * 513Sips analytics and customer-journey events.
  *
- * This file intentionally contains no GA4 Measurement ID, GTM container ID or
- * Microsoft Clarity project ID. Once an approved provider snippet is present,
- * events are forwarded to it. Until then, the event names can be QA'd without
- * inventing account credentials.
+ * Google Analytics 4 reports acquisition, page journeys and conversions.
+ * Microsoft Clarity supplies heatmaps and privacy-masked session recordings.
  */
 (function () {
+  if (window.__sipsAnalyticsLoaded) return;
+  window.__sipsAnalyticsLoaded = true;
+
+  var GA_MEASUREMENT_ID = 'G-CN86E930T5';
+  var CLARITY_PROJECT_ID = 'ypdt613hbr';
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', GA_MEASUREMENT_ID);
+
+  var gaScript = document.createElement('script');
+  gaScript.async = true;
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_MEASUREMENT_ID);
+  document.head.appendChild(gaScript);
+
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+    t = l.createElement(r);
+    t.async = 1;
+    t.src = 'https://www.clarity.ms/tag/' + i;
+    y = l.getElementsByTagName(r)[0];
+    y.parentNode.insertBefore(t, y);
+  })(window, document, 'clarity', 'script', CLARITY_PROJECT_ID);
+
   function cleanParams(params) {
     return Object.keys(params || {}).reduce(function (result, key) {
       if (params[key] !== undefined && params[key] !== null && params[key] !== '') {
@@ -19,9 +42,6 @@
   function track(eventName, params) {
     var eventParams = cleanParams(params || {});
     document.documentElement.dataset.lastAnalyticsEvent = eventName;
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(Object.assign({ event: eventName }, eventParams));
 
     if (typeof window.gtag === 'function') {
       window.gtag('event', eventName, eventParams);
@@ -38,15 +58,23 @@
 
   window.SipsAnalytics = { track: track };
 
-  var formStarted = false;
-  var inquiryForm = document.getElementById('booking-form');
-  if (inquiryForm) {
-    inquiryForm.addEventListener('input', function () {
-      if (!formStarted) {
-        formStarted = true;
-        track('inquiry_form_start', { page_path: window.location.pathname });
-      }
-    }, { passive: true });
+  function initializeInquiryFormTracking() {
+    var formStarted = false;
+    var inquiryForm = document.getElementById('booking-form');
+    if (inquiryForm) {
+      inquiryForm.addEventListener('input', function () {
+        if (!formStarted) {
+          formStarted = true;
+          track('inquiry_form_start', { page_path: window.location.pathname });
+        }
+      }, { passive: true });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeInquiryFormTracking, { once: true });
+  } else {
+    initializeInquiryFormTracking();
   }
 
   document.addEventListener('click', function (event) {

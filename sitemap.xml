@@ -37,6 +37,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.513sips.com/privacy.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://www.513sips.com/blog/</loc>
     <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>

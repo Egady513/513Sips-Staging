@@ -7,6 +7,15 @@
  * Usage (subdir pages): <div id="site-nav"></div><script src="../scripts/nav.js"></script>
  */
 (function () {
+  // Load site analytics on every public page that uses the shared navigation.
+  if (!document.querySelector('script[src*="journey-events.js"]')) {
+    const navScript = document.currentScript;
+    const analyticsScript = document.createElement('script');
+    analyticsScript.src = new URL('journey-events.js?v=2', navScript.src).href;
+    analyticsScript.dataset.sipsAnalytics = 'true';
+    document.head.appendChild(analyticsScript);
+  }
+
   // ── Inject nav CSS ──────────────────────────────────────────────────────────
   const NAV_CSS = `
     /* Tubelight Navbar */
