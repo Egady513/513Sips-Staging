@@ -1576,7 +1576,10 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST">
+                    <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST" data-inquiry-form>
+                        <input type="hidden" name="inquiry-page" value="Homepage">
+                        <input type="hidden" name="_subject" value="Event inquiry from 513Sips.com">
+                        <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="contact-name">Your Name</label>
@@ -1590,26 +1593,108 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="contact-phone">Phone Number</label>
-                                <input type="tel" id="contact-phone" name="phone">
+                                <input type="tel" id="contact-phone" name="phone" autocomplete="tel">
                             </div>
                             <div class="form-group">
+                                <label for="contact-referral-source">How did you hear about 513Sips?</label>
+                                <select id="contact-referral-source" name="referral-source">
+                                    <option value="">Select one (optional)</option>
+                                    <option>Google Search</option>
+                                    <option>Google Maps / Business Profile</option>
+                                    <option>Instagram</option>
+                                    <option>Facebook</option>
+                                    <option>Friend / Family Referral</option>
+                                    <option>Previous 513Sips Event</option>
+                                    <option>Venue / Event Planner Referral</option>
+                                    <option>Vendor / Partner Referral</option>
+                                    <option>Penn State / Community Event</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" data-referral-other hidden>
+                            <label for="contact-referral-other">Please tell us how you found us</label>
+                            <input type="text" id="contact-referral-other" name="referral-source-other" disabled>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
                                 <label for="contact-date">Event Date</label>
-                                <input type="date" id="contact-date" name="date">
+                                <input type="date" id="contact-date" name="event-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-event-type">Event Type</label>
+                                <select id="contact-event-type" name="event-type">
+                                    <option value="">Select event type</option>
+                                    <option>Wedding</option>
+                                    <option>Corporate Event</option>
+                                    <option>Private Party</option>
+                                    <option>Nonprofit / Community Event</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-venue">Venue or Location</label>
+                                <input type="text" id="contact-venue" name="venue-location" placeholder="Venue, city or neighborhood">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-guests">Estimated Guest Count *</label>
+                                <input type="number" id="contact-guests" name="guest-count" min="1" max="500" inputmode="numeric" placeholder="About how many?" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-service-hours">Requested Bar Service Hours *</label>
+                                <select id="contact-service-hours" name="service-hours" required>
+                                    <option value="">Select hours</option>
+                                    <option value="2">2 hours</option><option value="3">3 hours</option><option value="4">4 hours</option><option value="5">5 hours</option><option value="6">6 hours</option><option value="7">7 hours</option><option value="8">8 hours</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-bar-service">Desired Bar Service</label>
+                                <select id="contact-bar-service" name="bar-service">
+                                    <option value="">Select one</option>
+                                    <option>Beer, wine and seltzers only</option>
+                                    <option>Beer, wine, seltzers and Signature Cocktails</option>
+                                    <option>Full bar with standard mixed drinks</option>
+                                    <option>Full bar with a custom cocktail menu</option>
+                                    <option>Not sure — recommend the best fit</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-signature-count">Number of Signature Cocktails</label>
+                                <select id="contact-signature-count" name="signature-cocktail-count">
+                                    <option value="">Not sure yet</option><option value="0">None</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8+">8 or more</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-procurement">Alcohol Procurement</label>
+                                <select id="contact-procurement" name="procurement-interest">
+                                    <option value="">Select one</option>
+                                    <option>Interested in 513Sips procurement and return service</option>
+                                    <option>Client or venue will purchase the alcohol</option>
+                                    <option>Not sure — need guidance</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="contact-event-type">Event Type</label>
-                            <select id="contact-event-type" name="event-type">
-                                <option value="">Select Event Type</option>
-                                <option value="wedding">Wedding</option>
-                                <option value="corporate">Corporate Event</option>
-                                <option value="private">Private Party</option>
-                                <option value="other">Other</option>
+                            <label for="contact-glassware">Glassware or Serviceware Preference</label>
+                            <select id="contact-glassware" name="glassware-serviceware">
+                                <option value="">Select one</option>
+                                <option>Client or venue will provide glassware or cups</option>
+                                <option>513Sips premium hard plastic</option>
+                                <option>513Sips plastic serviceware billed separately at cost</option>
+                                <option>513Sips elegant formal glassware</option>
+                                <option>Please price multiple options</option>
+                                <option>Not sure — need guidance</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="contact-message">Tell Us About Your Event</label>
-                            <textarea id="contact-message" name="message" placeholder="Number of guests, venue, special requests..."></textarea>
+                            <label for="contact-comments">Anything Else We Should Know?</label>
+                            <textarea id="contact-comments" name="comments" placeholder="Theme, favorite flavors, accessibility needs or special requests"></textarea>
                         </div>
                         <span class="btn-magnetic" style="display: block;">
                             <button type="submit" class="btn btn-primary magnetic-btn" style="width:100%;">
@@ -1680,6 +1765,7 @@
     </footer>
 
     <script src="scripts/journey-events.js?v=2"></script>
+    <script src="scripts/inquiry-form.js"></script>
     <script>
         lucide.createIcons();
         gsap.registerPlugin(ScrollTrigger);

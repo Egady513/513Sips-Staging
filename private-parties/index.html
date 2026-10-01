@@ -237,8 +237,8 @@
           <ul class="inquiry-points"><li>Your occasion and vision come first</li><li>Menu and staffing shaped around your party</li><li>Clear guidance before anything is purchased</li></ul>
         </div>
         <div class="contact-form">
-          <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST">
-            <input type="hidden" name="event-type" value="Private Party">
+          <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST" data-inquiry-form>
+            <input type="hidden" name="inquiry-page" value="Private Parties">
             <input type="hidden" name="_subject" value="Private party inquiry from 513Sips.com">
             <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="form-row">
@@ -246,15 +246,28 @@
               <div class="form-group"><label for="party-email">Email Address</label><input type="email" id="party-email" name="email" autocomplete="email" required></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label for="party-date">Event Date</label><input type="date" id="party-date" name="date"></div>
-              <div class="form-group"><label for="party-guests">Estimated Guests</label><input type="number" id="party-guests" name="guest-count" min="1" inputmode="numeric" placeholder="About how many?"></div>
+              <div class="form-group"><label for="party-phone">Phone Number</label><input type="tel" id="party-phone" name="phone" autocomplete="tel"></div>
+              <div class="form-group"><label for="party-referral-source">How did you hear about 513Sips?</label><select id="party-referral-source" name="referral-source"><option value="">Select one (optional)</option><option>Google Search</option><option>Google Maps / Business Profile</option><option>Instagram</option><option>Facebook</option><option>Friend / Family Referral</option><option>Previous 513Sips Event</option><option>Venue / Event Planner Referral</option><option>Vendor / Partner Referral</option><option>Penn State / Community Event</option><option>Other</option></select></div>
+            </div>
+            <div class="form-group" data-referral-other hidden><label for="party-referral-other">Please tell us how you found us</label><input type="text" id="party-referral-other" name="referral-source-other" disabled></div>
+            <div class="form-row">
+              <div class="form-group"><label for="party-date">Event Date</label><input type="date" id="party-date" name="event-date"></div>
+              <div class="form-group"><label for="party-type">Event Type</label><select id="party-type" name="event-type"><option value="">Choose one</option><option>Birthday</option><option>Anniversary</option><option>Graduation</option><option>Shower</option><option>Holiday Party</option><option>Corporate Event</option><option>Nonprofit / Community Event</option><option>Other</option></select></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label for="party-type">What are you celebrating?</label><select id="party-type" name="celebration"><option value="">Choose one</option><option>Birthday</option><option>Anniversary</option><option>Graduation</option><option>Shower</option><option>Holiday party</option><option>Other</option></select></div>
-              <div class="form-group"><label for="party-venue">Venue or Area</label><input type="text" id="party-venue" name="venue" placeholder="Home, venue or neighborhood"></div>
+              <div class="form-group"><label for="party-venue">Venue or Location</label><input type="text" id="party-venue" name="venue-location" placeholder="Home, venue, city or neighborhood"></div>
+              <div class="form-group"><label for="party-guests">Estimated Guest Count *</label><input type="number" id="party-guests" name="guest-count" min="1" max="500" inputmode="numeric" placeholder="About how many?" required></div>
             </div>
-            <div class="form-group"><label for="party-vision">What kind of bar are you imagining?</label><select id="party-vision" name="bar-vision"><option value="">I’d like help choosing</option><option>Beer, wine and simple mixed drinks</option><option>Custom Signature Cocktails</option><option>A full bar</option><option>A themed cocktail menu</option><option>Alcohol purchasing coordination</option><option>Something custom</option></select></div>
-            <div class="form-group"><label for="party-message">What do you want the party to feel like?</label><textarea id="party-message" name="message" placeholder="Theme, favorite flavors, must-have drinks or anything else you want us to know"></textarea></div>
+            <div class="form-row">
+              <div class="form-group"><label for="party-service-hours">Requested Bar Service Hours *</label><select id="party-service-hours" name="service-hours" required><option value="">Select hours</option><option value="2">2 hours</option><option value="3">3 hours</option><option value="4">4 hours</option><option value="5">5 hours</option><option value="6">6 hours</option><option value="7">7 hours</option><option value="8">8 hours</option></select></div>
+              <div class="form-group"><label for="party-bar-service">Desired Bar Service</label><select id="party-bar-service" name="bar-service"><option value="">Select one</option><option>Beer, wine and seltzers only</option><option>Beer, wine, seltzers and Signature Cocktails</option><option>Full bar with standard mixed drinks</option><option>Full bar with a custom cocktail menu</option><option>Not sure — recommend the best fit</option></select></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="party-signature-count">Number of Signature Cocktails</label><select id="party-signature-count" name="signature-cocktail-count"><option value="">Not sure yet</option><option value="0">None</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8+">8 or more</option></select></div>
+              <div class="form-group"><label for="party-procurement">Alcohol Procurement</label><select id="party-procurement" name="procurement-interest"><option value="">Select one</option><option>Interested in 513Sips procurement and return service</option><option>Client or venue will purchase the alcohol</option><option>Not sure — need guidance</option></select></div>
+            </div>
+            <div class="form-group"><label for="party-glassware">Glassware or Serviceware Preference</label><select id="party-glassware" name="glassware-serviceware"><option value="">Select one</option><option>Client or venue will provide glassware or cups</option><option>513Sips premium hard plastic</option><option>513Sips plastic serviceware billed separately at cost</option><option>513Sips elegant formal glassware</option><option>Please price multiple options</option><option>Not sure — need guidance</option></select></div>
+            <div class="form-group"><label for="party-comments">Anything Else We Should Know?</label><textarea id="party-comments" name="comments" placeholder="Theme, favorite flavors, must-have drinks or special requests"></textarea></div>
             <button type="submit" class="button button-primary form-submit"><i data-lucide="send" aria-hidden="true"></i> Tell Us About My Party</button>
             <p class="form-error" id="form-error" hidden>Something went wrong. Please try again or email contact@513sips.com.</p>
             <p class="form-note">We personally review every inquiry.</p>
@@ -273,6 +286,7 @@
     </div>
   </footer>
   <div class="sticky-cta"><a class="button button-primary" href="#party-inquiry" data-analytics-event="book_event_click">Tell Us About Your Party</a></div>
+  <script src="../scripts/inquiry-form.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     if (typeof lucide !== 'undefined') lucide.createIcons();
