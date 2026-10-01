@@ -285,8 +285,9 @@
           </ul>
         </div>
         <div class="contact-form">
-          <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST">
+          <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST" data-inquiry-form>
             <input type="hidden" name="event-type" value="Wedding">
+            <input type="hidden" name="inquiry-page" value="Weddings">
             <input type="hidden" name="_subject" value="Wedding inquiry from 513Sips.com">
             <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="form-row">
@@ -294,14 +295,27 @@
               <div class="form-group"><label for="wedding-email">Email Address</label><input type="email" id="wedding-email" name="email" autocomplete="email" required></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label for="wedding-date">Wedding Date</label><input type="date" id="wedding-date" name="date"></div>
-              <div class="form-group"><label for="wedding-guests">Estimated Guests</label><input type="number" id="wedding-guests" name="guest-count" min="1" inputmode="numeric" placeholder="About how many?"></div>
+              <div class="form-group"><label for="wedding-phone">Phone Number</label><input type="tel" id="wedding-phone" name="phone" autocomplete="tel"></div>
+              <div class="form-group"><label for="wedding-referral-source">How did you hear about 513Sips?</label><select id="wedding-referral-source" name="referral-source"><option value="">Select one (optional)</option><option>Google Search</option><option>Google Maps / Business Profile</option><option>Instagram</option><option>Facebook</option><option>Friend / Family Referral</option><option>Previous 513Sips Event</option><option>Venue / Event Planner Referral</option><option>Vendor / Partner Referral</option><option>Penn State / Community Event</option><option>Other</option></select></div>
+            </div>
+            <div class="form-group" data-referral-other hidden><label for="wedding-referral-other">Please tell us how you found us</label><input type="text" id="wedding-referral-other" name="referral-source-other" disabled></div>
+            <div class="form-row">
+              <div class="form-group"><label for="wedding-date">Wedding Date</label><input type="date" id="wedding-date" name="event-date"></div>
+              <div class="form-group"><label for="wedding-venue">Venue or Location</label><input type="text" id="wedding-venue" name="venue-location" placeholder="Booked or considering"></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label for="wedding-venue">Venue or Area</label><input type="text" id="wedding-venue" name="venue" placeholder="Booked or considering"></div>
-              <div class="form-group"><label for="wedding-package">What kind of bar are you imagining?</label><select id="wedding-package" name="bar-vision"><option value="">I’d like help choosing</option><option>Beer, wine and simple mixed drinks</option><option>Custom Signature Cocktails</option><option>A full wedding bar</option><option>Multiple bars or a larger guest count</option><option>Alcohol purchasing and vendor coordination</option><option>Something custom</option></select></div>
+              <div class="form-group"><label for="wedding-guests">Estimated Guest Count *</label><input type="number" id="wedding-guests" name="guest-count" min="1" max="500" inputmode="numeric" placeholder="About how many?" required></div>
+              <div class="form-group"><label for="wedding-service-hours">Requested Bar Service Hours *</label><select id="wedding-service-hours" name="service-hours" required><option value="">Select hours</option><option value="2">2 hours</option><option value="3">3 hours</option><option value="4">4 hours</option><option value="5">5 hours</option><option value="6">6 hours</option><option value="7">7 hours</option><option value="8">8 hours</option></select></div>
             </div>
-            <div class="form-group"><label for="wedding-message">What do you want your wedding bar to feel like?</label><textarea id="wedding-message" name="message" placeholder="Your style, favorite flavors, must-have cocktails or anything else you want us to know"></textarea></div>
+            <div class="form-row">
+              <div class="form-group"><label for="wedding-bar-service">Desired Bar Service</label><select id="wedding-bar-service" name="bar-service"><option value="">Select one</option><option>Beer, wine and seltzers only</option><option>Beer, wine, seltzers and Signature Cocktails</option><option>Full bar with standard mixed drinks</option><option>Full bar with a custom cocktail menu</option><option>Not sure — recommend the best fit</option></select></div>
+              <div class="form-group"><label for="wedding-signature-count">Number of Signature Cocktails</label><select id="wedding-signature-count" name="signature-cocktail-count"><option value="">Not sure yet</option><option value="0">None</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8+">8 or more</option></select></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="wedding-procurement">Alcohol Procurement</label><select id="wedding-procurement" name="procurement-interest"><option value="">Select one</option><option>Interested in 513Sips procurement and return service</option><option>Client or venue will purchase the alcohol</option><option>Not sure — need guidance</option></select></div>
+              <div class="form-group"><label for="wedding-glassware">Glassware or Serviceware Preference</label><select id="wedding-glassware" name="glassware-serviceware"><option value="">Select one</option><option>Client or venue will provide glassware or cups</option><option>513Sips premium hard plastic</option><option>513Sips plastic serviceware billed separately at cost</option><option>513Sips elegant formal glassware</option><option>Please price multiple options</option><option>Not sure — need guidance</option></select></div>
+            </div>
+            <div class="form-group"><label for="wedding-comments">Anything Else We Should Know?</label><textarea id="wedding-comments" name="comments" placeholder="Your style, favorite flavors, must-have drinks, timeline notes or special requests"></textarea></div>
             <button type="submit" class="button button-primary form-submit"><i data-lucide="send" aria-hidden="true"></i> Tell Us About My Wedding</button>
             <p class="form-error" id="form-error" hidden>Something went wrong. Please try again or email contact@513sips.com.</p>
             <p class="form-note">We personally review every wedding inquiry.</p>
@@ -333,6 +347,7 @@
   </footer>
 
   <div class="sticky-cta"><a class="button button-primary" href="#wedding-inquiry" data-analytics-event="book_event_click">Check Your Date</a></div>
+  <script src="../scripts/inquiry-form.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     if (typeof lucide !== 'undefined') lucide.createIcons();
