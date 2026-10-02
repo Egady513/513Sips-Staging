@@ -152,7 +152,7 @@
           <p class="eyebrow">Private Party Bartending in Cincinnati</p>
           <h1>Your party, all the way to the bar.</h1>
           <p>Tell us what you are celebrating and how you want it to feel. We will shape the drinks, details and service around your party, then handle the bar so you can be part of the night you planned.</p>
-          <a class="button button-primary" href="#party-inquiry" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Tell Us About Your Party</a>
+          <a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Tell Us About Your Party</a>
         </div>
       </div>
     </section>
@@ -228,54 +228,6 @@
       </div>
     </section>
 
-    <section class="inquiry-section" id="party-inquiry">
-      <div class="container inquiry-grid">
-        <div class="inquiry-copy">
-          <p class="eyebrow">Start with your party</p>
-          <h2>What are we celebrating?</h2>
-          <p>You do not need every detail figured out. Tell us what you are planning, how you want it to feel and what is still open. We will personally review it and help you shape the bar from there.</p>
-          <ul class="inquiry-points"><li>Your occasion and vision come first</li><li>Menu and staffing shaped around your party</li><li>Clear guidance before anything is purchased</li></ul>
-        </div>
-        <div class="contact-form">
-          <form id="booking-form" action="https://formspree.io/f/mvzvldbe" method="POST" data-inquiry-form>
-            <input type="hidden" name="inquiry-page" value="Private Parties">
-            <input type="hidden" name="_subject" value="Private party inquiry from 513Sips.com">
-            <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <div class="form-row">
-              <div class="form-group"><label for="party-name">Your Name</label><input type="text" id="party-name" name="name" autocomplete="name" required></div>
-              <div class="form-group"><label for="party-email">Email Address</label><input type="email" id="party-email" name="email" autocomplete="email" required></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label for="party-phone">Phone Number</label><input type="tel" id="party-phone" name="phone" autocomplete="tel"></div>
-              <div class="form-group"><label for="party-referral-source">How did you hear about 513Sips?</label><select id="party-referral-source" name="referral-source"><option value="">Select one (optional)</option><option>Google Search</option><option>Google Maps / Business Profile</option><option>Instagram</option><option>Facebook</option><option>Friend / Family Referral</option><option>Previous 513Sips Event</option><option>Venue / Event Planner Referral</option><option>Vendor / Partner Referral</option><option>Penn State / Community Event</option><option>Other</option></select></div>
-            </div>
-            <div class="form-group" data-referral-other hidden><label for="party-referral-other">Please tell us how you found us</label><input type="text" id="party-referral-other" name="referral-source-other" disabled></div>
-            <div class="form-row">
-              <div class="form-group"><label for="party-date">Event Date</label><input type="date" id="party-date" name="event-date"></div>
-              <div class="form-group"><label for="party-type">Event Type</label><select id="party-type" name="event-type"><option value="">Choose one</option><option>Birthday</option><option>Anniversary</option><option>Graduation</option><option>Shower</option><option>Holiday Party</option><option>Corporate Event</option><option>Nonprofit / Community Event</option><option>Other</option></select></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label for="party-venue">Venue or Location</label><input type="text" id="party-venue" name="venue-location" placeholder="Home, venue, city or neighborhood"></div>
-              <div class="form-group"><label for="party-guests">Estimated Guest Count *</label><input type="number" id="party-guests" name="guest-count" min="1" max="500" inputmode="numeric" placeholder="About how many?" required></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label for="party-service-hours">Requested Bar Service Hours *</label><select id="party-service-hours" name="service-hours" required><option value="">Select hours</option><option value="2">2 hours</option><option value="3">3 hours</option><option value="4">4 hours</option><option value="5">5 hours</option><option value="6">6 hours</option><option value="7">7 hours</option><option value="8">8 hours</option></select></div>
-              <div class="form-group"><label for="party-bar-service">Desired Bar Service</label><select id="party-bar-service" name="bar-service"><option value="">Select one</option><option>Beer, wine and seltzers only</option><option>Beer, wine, seltzers and Signature Cocktails</option><option>Full bar with standard mixed drinks</option><option>Full bar with a custom cocktail menu</option><option>Not sure — recommend the best fit</option></select></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label for="party-signature-count">Number of Signature Cocktails</label><select id="party-signature-count" name="signature-cocktail-count"><option value="">Not sure yet</option><option value="0">None</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8+">8 or more</option></select></div>
-              <div class="form-group"><label for="party-procurement">Alcohol Procurement</label><select id="party-procurement" name="procurement-interest"><option value="">Select one</option><option>Interested in 513Sips procurement and return service</option><option>Client or venue will purchase the alcohol</option><option>Not sure — need guidance</option></select></div>
-            </div>
-            <div class="form-group"><label for="party-glassware">Glassware or Serviceware Preference</label><select id="party-glassware" name="glassware-serviceware"><option value="">Select one</option><option>Client or venue will provide glassware or cups</option><option>513Sips premium hard plastic</option><option>513Sips plastic serviceware billed separately at cost</option><option>513Sips elegant formal glassware</option><option>Please price multiple options</option><option>Not sure — need guidance</option></select></div>
-            <div class="form-group"><label for="party-comments">Anything Else We Should Know?</label><textarea id="party-comments" name="comments" placeholder="Theme, favorite flavors, must-have drinks or special requests"></textarea></div>
-            <button type="submit" class="button button-primary form-submit"><i data-lucide="send" aria-hidden="true"></i> Tell Us About My Party</button>
-            <p class="form-error" id="form-error" hidden>Something went wrong. Please try again or email contact@513sips.com.</p>
-            <p class="form-note">We personally review every inquiry.</p>
-          </form>
-          <div class="form-success" id="form-success" hidden><i data-lucide="circle-check-big" aria-hidden="true"></i><h3>We’ve got it.</h3><p>Your party details are on their way to us. We will be in touch within 24 hours.</p></div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -285,8 +237,7 @@
       <small>&copy; <span id="year"></span> 513Sips</small>
     </div>
   </footer>
-  <div class="sticky-cta"><a class="button button-primary" href="#party-inquiry" data-analytics-event="book_event_click">Tell Us About Your Party</a></div>
-  <script src="../scripts/inquiry-form.js"></script>
+  <div class="sticky-cta"><a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click">Tell Us About Your Party</a></div>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     if (typeof lucide !== 'undefined') lucide.createIcons();
@@ -294,29 +245,6 @@
     var hero = document.querySelector('.hero');
     if (stickyCta && hero && 'IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) { stickyCta.classList.toggle('visible', !entries[0].isIntersecting); }, { threshold:0.05 }).observe(hero);
-    }
-    var bookingForm = document.getElementById('booking-form');
-    if (bookingForm) {
-      bookingForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        var submitButton = bookingForm.querySelector('button[type="submit"]');
-        var errorMessage = document.getElementById('form-error');
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending...';
-        errorMessage.hidden = true;
-        fetch(bookingForm.action, { method:'POST', body:new FormData(bookingForm), headers:{ 'Accept':'application/json' } }).then(function (response) {
-          if (!response.ok) throw new Error('Form submission failed');
-          if (window.SipsAnalytics) window.SipsAnalytics.track('inquiry_form_submit', { page_path:window.location.pathname, event_type:'private_party' });
-          bookingForm.hidden = true;
-          document.getElementById('form-success').hidden = false;
-          if (typeof lucide !== 'undefined') lucide.createIcons();
-        }).catch(function () {
-          submitButton.disabled = false;
-          submitButton.innerHTML = '<i data-lucide="send" aria-hidden="true"></i> Tell Us About My Party';
-          errorMessage.hidden = false;
-          if (typeof lucide !== 'undefined') lucide.createIcons();
-        });
-      });
     }
   </script>
 </body>
