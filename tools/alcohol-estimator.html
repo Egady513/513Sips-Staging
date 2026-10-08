@@ -956,6 +956,7 @@
                 id,
                 name: '',
                 drinksPerGuest: 0.5,
+                purchaser: 'client',
                 mixers: []  // optional recipe ingredients; empty = bought as-is (2L bottles)
             };
             naBeverages.push(bev);
@@ -1077,6 +1078,7 @@
                                 value="${bev.drinksPerGuest}"
                                 onchange="updateNABeverage(${bev.id}, 'drinksPerGuest', this.value); calculate();"
                                 style="width: 80px; padding: 8px 10px; background: var(--navy-lighter); border: 1px solid rgba(74, 222, 128, 0.2); border-radius: 6px; color: var(--success); font-weight: 600; font-size: 0.9em; text-align: center;">
+                            ${purchaserToggleHTML(bev.purchaser, "updateNABeverage(" + bev.id + ", 'purchaser', this.value); calculate();")}
                         </div>
                         <div style="margin-bottom: 8px; font-size: 0.8em; color: var(--success); font-weight: 500;">Recipe ingredients (leave empty if bought ready-to-serve):</div>
                         <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -1137,11 +1139,14 @@
         const CHAMPAGNE_WORDS = ['champagne', 'prosecco', 'sparkling wine', 'cava', 'brut', 'spumante'];
         const SPIRIT_WORDS = ['vodka', 'tequila', 'rum', 'gin', 'whiskey', 'whisky', 'bourbon', 'scotch', 'brandy', 'cognac', 'mezcal', 'triple sec', 'cointreau', 'curacao', 'liqueur', 'amaretto', 'kahlua', 'baileys', 'vermouth', 'aperol', 'campari', 'cello', 'schnapps', 'soju', 'absinthe', 'chambord', 'frangelico', 'midori', 'st germain', 'st-germain'];
 
+        // Short spirit names that hide inside other words ("ginger", "drum") must match as whole words
+        const WHOLE_WORD_SPIRITS = ['gin', 'rum'];
+
         // Alcohol is recognized by ingredient NAME — same spelling everywhere = same shopping line
         function classifyIngredient(name) {
             const n = (name || '').toLowerCase();
             if (CHAMPAGNE_WORDS.some(w => n.includes(w))) return 'champagne';
-            if (SPIRIT_WORDS.some(w => n.includes(w))) return 'spirit';
+            if (SPIRIT_WORDS.some(w => WHOLE_WORD_SPIRITS.includes(w) ? new RegExp('\\b' + w + '\\b').test(n) : n.includes(w))) return 'spirit';
             return 'mixer';
         }
 
@@ -1206,7 +1211,8 @@
                 (bev.mixers || []).forEach(m => {
                     if (!m.name || !m.qty) return;
                     const key = m.name.toLowerCase().trim();
-                    if (!mixers[key]) mixers[key] = { name: m.name, oz: 0, each: 0 };
+                    // NA ingredients follow their beverage's "who buys" toggle
+                    if (!mixers[key]) mixers[key] = { name: m.name, oz: 0, each: 0, purchaser: bev.purchaser === 'eddie' ? 'eddie' : 'client' };
                     if (m.unit === 'each') mixers[key].each += parseFloat(m.qty) * bevDrinks;
                     else mixers[key].oz += toOz(m.qty, m.unit) * bevDrinks;
                 });
@@ -2011,7 +2017,7 @@
                     const hasRecipe = (bev.mixers || []).some(m => m.name && m.qty);
                     const bevDrinks = Math.round(guests * (parseFloat(bev.drinksPerGuest) || 0));
                     if (!hasRecipe && bevDrinks > 0) {
-                        budgetItems.push({ key: 'soda2l|' + (bev.name || 'na beverage').toLowerCase().trim(), label: (bev.name || 'NA Beverage') + ' (2L)', qty: Math.ceil(bevDrinks / 8), unitLabel: 'bottles', kind: 'soda2l', purchaser: 'client' });
+                        budgetItems.push({ key: 'soda2l|' + (bev.name || 'na beverage').toLowerCase().trim(), label: (bev.name || 'NA Beverage') + ' (2L)', qty: Math.ceil(bevDrinks / 8), unitLabel: 'bottles', kind: 'soda2l', purchaser: bev.purchaser === 'eddie' ? 'eddie' : 'client' });
                     }
                 });
             }
@@ -2291,7 +2297,7 @@
                     mixers: (c.mixers || []).map(m => ({ purchaser: 'client', ...m }))
                 };
             });
-            naBeverages = state.naBeverages || [];
+            naBeverages = (state.naBeverages || []).map(b => ({ purchaser: 'client', ...b }));
             beerBrands = (state.beerBrands || []).map(b => ({ purchaser: 'client', ...b }));
             seltzerBrands = (state.seltzerBrands || []).map(b => ({ purchaser: 'client', ...b }));
             fullBarLiquors = (state.fullBarLiquors || []).map(b => ({ purchaser: 'client', ...b }));
