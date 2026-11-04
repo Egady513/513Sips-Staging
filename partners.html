@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex, nofollow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partners | Venues, Planners &amp; Organizations | 513Sips Cincinnati</title>
@@ -16,8 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@1.65.0"></script>
     <style>
         :root { --navy: #1a1a2e; --navy-light: #2d2d4a; --navy-dark: #12121f; --cream: #f5f2eb; --copper: #b87333; --copper-light: #d4915a; --charcoal: #2d3748; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -913,6 +913,7 @@
             .v-scroll-dots { display: flex; }
         }
     </style>
+    <link rel="stylesheet" href="css/tailwind.css">
 </head>
 <body>
 
@@ -1160,7 +1161,7 @@
                 <h2 class="section-title">Where we've poured</h2>
                 <p class="section-subtitle">Every space runs differently. We learn yours before we ever set up a bar in it.</p>
             </div>
-            <div class="worked-grid" id="worked-grid">
+            <div class="worked-grid" id="worked-grid" style="grid-template-columns:repeat(2,1fr);">
                 <div class="worked-card reveal">
                     <p class="worked-type">Wedding Venue</p>
                     <h4>Hope's Way Gathering Venue</h4>
@@ -1175,6 +1176,12 @@
                     <p class="worked-type">Event Studio</p>
                     <h4>Selfie Cincy</h4>
                     <p>Studio celebrations and private parties in a space where the bar has to look as good as it tastes.</p>
+                </div>
+                <div class="worked-card reveal">
+                    <p class="worked-type">Venue &amp; Nonprofit Partner</p>
+                    <h4>Greenacres Arts Center</h4>
+                    <p>Indian Hill. We ran the VIP speakeasy bar at the Giving with Grace fundraiser on September 30, 2026.</p>
+                    <p style="margin-top:.9rem;"><a href="gallery.html#greenacres-giving-with-grace" style="color:var(--copper);font-weight:600;text-decoration:none;">See the photos &rarr;</a></p>
                 </div>
             </div>
             <div class="v-scroll-dots" data-dots-for="worked-grid"></div>
@@ -1305,7 +1312,7 @@
         </div>
     </footer>
 
-    <script src="scripts/journey-events.js?v=2"></script>
+    <script src="scripts/journey-events.js?v=3"></script>
     <script>
         lucide.createIcons();
 

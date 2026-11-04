@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#0A1628"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#D4AF37" stroke-width="3"/>
+  
+  <!-- Dog Silhouette -->
+  <g fill="#D4AF37">
+    <!-- Head -->
+    <ellipse cx="100" cy="85" rx="35" ry="32"/>
+    <!-- Ears -->
+    <ellipse cx="72" cy="70" rx="12" ry="22" transform="rotate(-20 72 70)"/>
+    <ellipse cx="128" cy="70" rx="12" ry="22" transform="rotate(20 128 70)"/>
+    <!-- Snout -->
+    <ellipse cx="100" cy="95" rx="18" ry="14"/>
+    <!-- Nose -->
+    <ellipse cx="100" cy="90" rx="8" ry="6" fill="#0A1628"/>
+    <!-- Body -->
+    <path d="M70 110 Q65 140 70 160 L85 160 Q80 140 85 115 Z"/>
+    <path d="M130 110 Q135 140 130 160 L115 160 Q120 140 115 115 Z"/>
+    <!-- Collar with C -->
+    <rect x="75" y="108" width="50" height="12" rx="6" fill="#0A1628"/>
+    <text x="100" y="117" font-family="Georgia, serif" font-size="10" fill="#D4AF37" text-anchor="middle" font-weight="bold">C</text>
+  </g>
+  
+  <!-- Eyes (friendly) -->
+  <ellipse cx="88" cy="80" rx="5" ry="7" fill="#0A1628"/>
+  <ellipse cx="112" cy="80" rx="5" ry="7" fill="#0A1628"/>
+  <circle cx="89" cy="78" r="2" fill="white"/>
+  <circle cx="113" cy="78" r="2" fill="white"/>
+</svg>
