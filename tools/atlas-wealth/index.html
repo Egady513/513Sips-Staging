@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlas Wealth - Portfolio Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="branding">
+        <div class="logo">A</div>
+        <h1>Atlas <span>Wealth</span></h1>
+      </div>
+      <div class="portfolio-summary">
+        <div class="total-value">
+          <div class="label">Portfolio Value</div>
+          <div class="value" id="portfolio-value">$100,000.00</div>
+        </div>
+        <div class="returns">
+          <div class="return-item">
+            <div class="label">Today's Return</div>
+            <div class="value positive" id="today-return">+$0.00 (+0.00%)</div>
+          </div>
+          <div class="return-item">
+            <div class="label">All-Time Return</div>
+            <div class="value positive" id="alltime-return">+$0.00 (+0.00%)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-tabs">
+    <div class="nav-tabs-content">
+      <button class="tab-btn active" data-tab="performance">Performance</button>
+      <button class="tab-btn" data-tab="holdings">Holdings</button>
+      <button class="tab-btn" data-tab="activity">Activity</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Performance Tab -->
+    <div id="performance-tab" class="tab-content active">
+      <div class="card">
+        <div class="time-selector">
+          <button class="time-btn" data-range="1D">1D</button>
+          <button class="time-btn" data-range="1W">1W</button>
+          <button class="time-btn" data-range="1M">1M</button>
+          <button class="time-btn" data-range="YTD">YTD</button>
+          <button class="time-btn" data-range="1Y">1Y</button>
+          <button class="time-btn active" data-range="6M">6M</button>
+          <button class="time-btn" data-range="ALL">All</button>
+        </div>
+        <div class="chart-container">
+          <canvas id="performance-chart"></canvas>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="label">Total Return</div>
+          <div class="value positive" id="stat-total-return">+0.00%</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Alpha vs S&P 500</div>
+          <div class="value positive" id="stat-alpha">+0.00%</div>
+          <div class="sub">Outperformance</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Sharpe Ratio</div>
+          <div class="value" id="stat-sharpe">1.20</div>
+          <div class="sub">Risk-adjusted return</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Max Drawdown</div>
+          <div class="value negative" id="stat-drawdown">-0.00%</div>
+          <div class="sub">Peak to trough</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Holdings Tab -->
+    <div id="holdings-tab" class="tab-content">
+      <div class="card">
+        <div class="card-title">Asset Allocation</div>
+        <div class="allocation-bar" id="allocation-bar">
+          <!-- Dynamically filled -->
+        </div>
+        <div class="allocation-legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background: #D4AF37;"></div>
+            <span>VOO (S&P 500)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #3B82F6;"></div>
+            <span>VTI (Total Market)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #8B5CF6;"></div>
+            <span>VXUS (International)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #10B981;"></div>
+            <span>BND (Bonds)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #64748B;"></div>
+            <span>Cash</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Holdings</div>
+        <div class="holdings-list" id="holdings-list">
+          <!-- Dynamically filled -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity Tab -->
+    <div id="activity-tab" class="tab-content">
+      <div class="card">
+        <div class="card-title">Trade History</div>
+        <div class="activity-timeline" id="activity-timeline">
+          <div class="activity-item buy">
+            <div class="activity-card">
+              <div class="activity-header">
+                <span class="activity-action buy">● BUY</span>
+                <span class="activity-date">Sep 15, 2025</span>
+              </div>
+              <div class="activity-details">
+                <span class="activity-ticker">VOO</span>
+                <span class="activity-shares">89.52 shares</span>
+                <span class="activity-value">$40,000.00</span>
+              </div>
+              <div class="activity-rationale">"Core S&P 500 position for long-term US equity exposure. Low-cost beta."</div>
+              <div class="activity-status profit">● Currently +5.2% since trade</div>
+            </div>
+          </div>
+
+          <div class="activity-item buy">
+            <div class="activity-card">
+              <div class="activity-header">
+                <span class="activity-action buy">● BUY</span>
+                <span class="activity-date">Sep 15, 2025</span>
+              </div>
+              <div class="activity-details">
+                <span class="activity-ticker">VTI</span>
+                <span class="activity-shares">104.17 shares</span>
+                <span class="activity-value">$25,000.00</span>
+              </div>
+              <div class="activity-rationale">"Total market exposure for broader diversification beyond S&P 500."</div>
+              <div class="activity-status profit">● Currently +6.1% since trade</div>
+            </div>
+          </div>
+
+          <div class="activity-item buy">
+            <div class="activity-card">
+              <div class="activity-header">
+                <span class="activity-action buy">● BUY</span>
+                <span class="activity-date">Sep 15, 2025</span>
+              </div>
+              <div class="activity-details">
+                <span class="activity-ticker">VXUS</span>
+                <span class="activity-shares">199.60 shares</span>
+                <span class="activity-value">$20,000.00</span>
+              </div>
+              <div class="activity-rationale">"International diversification. Valuations overseas more attractive than US."</div>
+              <div class="activity-status loss">● Currently -1.8% since trade</div>
+            </div>
+          </div>
+
+          <div class="activity-item buy">
+            <div class="activity-card">
+              <div class="activity-header">
+                <span class="activity-action buy">● BUY</span>
+                <span class="activity-date">Sep 15, 2025</span>
+              </div>
+              <div class="activity-details">
+                <span class="activity-ticker">BND</span>
+                <span class="activity-shares">130.04 shares</span>
+                <span class="activity-value">$10,000.00</span>
+              </div>
+              <div class="activity-rationale">"Ballast position for portfolio stability. Rates expected to stabilize."</div>
+              <div class="activity-status profit">● Currently +1.4% since trade</div>
+            </div>
+          </div>
+
+          <div class="activity-item rebalance">
+            <div class="activity-card">
+              <div class="activity-header">
+                <span class="activity-action rebalance">● REBALANCE</span>
+                <span class="activity-date">Nov 20, 2025</span>
+              </div>
+              <div class="activity-details">
+                <span class="activity-ticker">VXUS</span>
+                <span class="activity-shares">-25.00 shares</span>
+                <span class="activity-value">$2,462.50</span>
+              </div>
+              <div class="activity-rationale">"Trimmed international to add cash buffer. Markets looking frothy."</div>
+              <div class="activity-status profit">● Preserved capital, avoided -2.1% drop</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Market Overview -->
+    <div class="market-overview">
+      <div class="card">
+        <div class="card-title">Market Overview</div>
+        <div class="market-grid" id="market-grid">
+          <!-- Dynamically filled -->
+        </div>
+        <div class="news-section">
+          <div class="news-title">Market News</div>
+          <div class="news-item">📈 S&P 500 reaches new all-time high on tech earnings strength</div>
+          <div class="news-item">💼 Fed signals potential rate cuts in coming quarters</div>
+          <div class="news-item">🌍 International markets mixed amid geopolitical tensions</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Holding Detail Modal -->
+  <div class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">VOO</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-row">
+          <span class="modal-label">Full Name</span>
+          <span class="modal-value" id="modal-name">Vanguard S&P 500 ETF</span>
+        </div>
+        <div class="modal-row">
+          <span class="modal-label">Shares</span>
+          <span class="modal-value" id="modal-shares">89.52</span>
+        </div>
+        <div class="modal-row">
+          <span class="modal-label">Avg Cost</span>
+          <span class="modal-value" id="modal-avg-price">$446.82</span>
+        </div>
+        <div class="modal-row">
+          <span class="modal-label">Current Price</span>
+          <span class="modal-value" id="modal-current-price">$475.23</span>
+        </div>
+        <div class="modal-row">
+          <span class="modal-label">Current Value</span>
+          <span class="modal-value" id="modal-value">$42,543.21</span>
+        </div>
+        <div class="modal-row">
+          <span class="modal-label">Total Cost</span>
+          <span class="modal-value" id="modal-cost">$40,000.00</span>
+        </div>
+        <div class="modal-row">
+          <span class="modal-label">Gain/Loss</span>
+          <span class="modal-value positive" id="modal-gain">+$2,543.21 (+6.36%)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="portfolio-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

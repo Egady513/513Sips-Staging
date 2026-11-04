@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Letting Us Serve You</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: Georgia, 'Times New Roman', serif; background-color: #f8f6f3; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+        .header { background: linear-gradient(135deg, #1a2744 0%, #2d3e5f 100%); padding: 40px 30px; text-align: center; }
+        .header h1 { color: #c9a227; font-size: 24px; margin: 0; font-weight: 400; letter-spacing: 2px; }
+        .content { padding: 40px 30px; }
+        .greeting { font-size: 18px; color: #1a2744; margin-bottom: 20px; }
+        .body-text { font-size: 16px; line-height: 1.7; color: #333333; margin-bottom: 20px; }
+        .highlight-box { background-color: #f8f6f3; border-left: 4px solid #c9a227; padding: 20px; margin: 25px 0; }
+        .photo-placeholder { background-color: #e8e6e3; height: 200px; display: flex; align-items: center; justify-content: center; margin: 25px 0; color: #888; font-size: 14px; }
+        .cta-button { display: inline-block; background-color: #c9a227; color: #1a2744; text-decoration: none; padding: 15px 35px; font-size: 14px; font-weight: 600; letter-spacing: 1px; margin: 20px 0; border-radius: 3px; }
+        .testimonial-prompt { background-color: #1a2744; padding: 25px; margin: 30px 0; }
+        .testimonial-prompt h3 { color: #c9a227; margin: 0 0 15px; font-size: 16px; }
+        .testimonial-prompt p { color: #ffffff; font-size: 14px; line-height: 1.6; margin: 0 0 15px; }
+        .signature { margin-top: 30px; padding-top: 30px; border-top: 1px solid #e0e0e0; }
+        .footer { background-color: #1a2744; padding: 30px; text-align: center; }
+        .footer p { color: #ffffff; font-size: 12px; margin: 5px 0; opacity: 0.8; }
+        .footer a { color: #c9a227; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>THANK YOU</h1>
+        </div>
+        
+        <div class="content">
+            <p class="greeting">Dear {{first_name}}{{#if spouse_name}} & {{spouse_name}}{{/if}},</p>
+            
+            <p class="body-text">
+                What an incredible {{event_type}}! As I reflect on yesterday's celebration, I'm filled 
+                with gratitude for the opportunity to be part of your special day.
+            </p>
+            
+            <div class="highlight-box">
+                <p>From the first toast to the last call, it was an honor to serve you and your guests. 
+                Thank you for trusting 513 Sips with such an important part of your celebration.</p>
+            </div>
+            
+            <p class="body-text">
+                We hope the bar service exceeded your expectations and that your guests enjoyed the 
+                experience as much as we enjoyed creating it. Moments like these remind us why we do 
+                what we do—bringing people together, one perfectly crafted drink at a time.
+            </p>
+            
+            <div class="photo-placeholder">
+                [Event Photo - Optional: Include a great shot from the event]
+            </div>
+            
+            <p class="body-text">
+                As you settle back into everyday life, we'd love to hear about your experience. Your 
+                feedback helps us continue to improve and serve future clients even better.
+            </p>
+            
+            <div class="testimonial-prompt">
+                <h3>Share Your Experience</h3>
+                <p>Would you be willing to leave us a quick review? It takes just 2 minutes and means 
+                the world to a small business like ours.</p>
+                <center>
+                    <a href="https://g.page/513sips/review" style="display: inline-block; background-color: #c9a227; color: #1a2744; text-decoration: none; padding: 12px 30px; font-size: 13px; font-weight: 600;">LEAVE A REVIEW</a>
+                </center>
+            </div>
+            
+            <p class="body-text">
+                Also, if you captured any photos of the bar setup or signature drinks, we'd love to see them! 
+                Feel free to reply to this email with any highlights.
+            </p>
+            
+            <p class="body-text">
+                Wishing you all the best in this new chapter. May your marriage{{#if_eq event_type 'wedding'}}{{else}} and future endeavors{{/if_eq}} be blessed with joy, 
+                love, and many more celebrations to come.
+            </p>
+            
+            <p class="body-text">
+                With heartfelt gratitude,<br>
+                Eddie
+            </p>
+            
+            <div class="signature">
+                <p style="font-size: 14px; color: #666;">
+                    <strong>P.S.</strong> Know someone planning an event? Send them our way! We offer 
+                    $100 referral credits as a thank you for spreading the word.
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>513 Sips | Elevated Mobile Bar Service</p>
+            <p><a href="mailto:hello@513sips.com">hello@513sips.com</a> | <a href="https://513sips.com">513sips.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+---
+PLAIN TEXT VERSION ---
+
+Dear {{first_name}}{{#if spouse_name}} & {{spouse_name}}{{/if}},
+
+What an incredible {{event_type}}! As I reflect on yesterday's celebration, I'm filled with gratitude for the opportunity to be part of your special day.
+
+From the first toast to the last call, it was an honor to serve you and your guests. Thank you for trusting 513 Sips with such an important part of your celebration.
+
+We hope the bar service exceeded your expectations and that your guests enjoyed the experience as much as we enjoyed creating it. Moments like these remind us why we do what we do—bringing people together, one perfectly crafted drink at a time.
+
+As you settle back into everyday life, we'd love to hear about your experience. Your feedback helps us continue to improve and serve future clients even better.
+
+SHARE YOUR EXPERIENCE
+Would you be willing to leave us a quick review? It takes just 2 minutes and means the world to a small business like ours.
+
+Leave a review: https://g.page/513sips/review
+
+Also, if you captured any photos of the bar setup or signature drinks, we'd love to see them! Feel free to reply to this email with any highlights.
+
+Wishing you all the best in this new chapter. May your marriage{{#if_eq event_type 'wedding'}}{{else}} and future endeavors{{/if_eq}} be blessed with joy, love, and many more celebrations to come.
+
+With heartfelt gratitude,
+Eddie
+
+P.S. Know someone planning an event? Send them our way! We offer $100 referral credits as a thank you for spreading the word.
+
+---
+513 Sips | Elevated Mobile Bar Service
+hello@513sips.com | 513sips.com

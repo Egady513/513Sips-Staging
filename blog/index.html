@@ -20,28 +20,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: { DEFAULT: '#1a1a2e', light: '#2d2d4a', dark: '#12121f' },
-                        cream: '#f5f2eb',
-                        copper: { DEFAULT: '#b87333', light: '#d4915a' },
-                        charcoal: '#2d3748'
-                    },
-                    fontFamily: {
-                        serif: ['Cormorant Garamond', 'serif'],
-                        sans: ['Montserrat', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://unpkg.com/lucide@1.65.0"></script>
     <style>
         :root { --navy: #1a1a2e; --navy-light: #2d2d4a; --navy-dark: #12121f; --cream: #f5f2eb; --copper: #b87333; --copper-light: #d4915a; --charcoal: #2d3748; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -100,11 +81,12 @@
             .blog-grid { grid-template-columns: 1fr; }
         }
     </style>
+    <link rel="stylesheet" href="../css/tailwind.css">
 </head>
 <body>
 
     <div id="site-nav"></div>
-    <script src="../scripts/nav.js?v=5"></script>
+    <script src="../scripts/nav.js?v=7"></script>
 
     <!-- Page Hero -->
     <section class="page-hero">

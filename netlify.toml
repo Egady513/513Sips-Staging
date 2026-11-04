@@ -1,0 +1,25 @@
+# netlify.toml — build & deploy config for 513Sips
+
+[build]
+  # Runs before every deploy — fetches Cloudinary folders → writes gallery-data.json
+  command = "node scripts/fetch-gallery.js"
+  # Serve files from the root of the repo
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirect www → apex domain (set your actual domain below once DNS is live)
+# [[redirects]]
+#   from = "https://www.513sips.com/*"
+#   to   = "https://513sips.com/:splat"
+#   status = 301
+#   force  = true
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"

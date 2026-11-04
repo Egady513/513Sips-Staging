@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Plan Your Perfect Event</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: Georgia, 'Times New Roman', serif; background-color: #f8f6f3; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+        .header { background: linear-gradient(135deg, #1a2744 0%, #2d3e5f 100%); padding: 40px 30px; text-align: center; }
+        .header h1 { color: #c9a227; font-size: 24px; margin: 0; font-weight: 400; letter-spacing: 2px; }
+        .content { padding: 40px 30px; }
+        .greeting { font-size: 18px; color: #1a2744; margin-bottom: 20px; }
+        .body-text { font-size: 16px; line-height: 1.7; color: #333333; margin-bottom: 20px; }
+        .urgency-box { background-color: #fff8e6; border: 2px solid #c9a227; padding: 20px; margin: 25px 0; text-align: center; }
+        .urgency-box p { margin: 0; font-size: 15px; color: #1a2744; }
+        .urgency-box strong { color: #c9a227; font-size: 16px; }
+        .checklist { background-color: #f8f6f3; padding: 25px; margin: 25px 0; }
+        .checklist h3 { color: #1a2744; margin: 0 0 15px; font-size: 16px; }
+        .checklist ul { margin: 0; padding-left: 20px; }
+        .checklist li { padding: 8px 0; font-size: 15px; color: #333; }
+        .cta-button { display: inline-block; background-color: #c9a227; color: #1a2744; text-decoration: none; padding: 15px 35px; font-size: 14px; font-weight: 600; letter-spacing: 1px; margin: 20px 0; border-radius: 3px; }
+        .secondary-cta { display: inline-block; background-color: transparent; color: #1a2744; text-decoration: none; padding: 12px 25px; font-size: 13px; border: 2px solid #1a2744; margin: 10px 0; }
+        .signature { margin-top: 30px; padding-top: 30px; border-top: 1px solid #e0e0e0; }
+        .footer { background-color: #1a2744; padding: 30px; text-align: center; }
+        .footer p { color: #ffffff; font-size: 12px; margin: 5px 0; opacity: 0.8; }
+        .footer a { color: #c9a227; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LET'S MAKE IT OFFICIAL</h1>
+        </div>
+        
+        <div class="content">
+            <p class="greeting">Hello {{first_name}},</p>
+            
+            <p class="body-text">
+                I hope this email finds you well and that you're getting excited about your upcoming 
+                {{event_type}}! By now, you should have received your personalized quote from our team.
+            </p>
+            
+            <p class="body-text">
+                Planning an event involves countless details, and we want to make the bar service 
+                portion as seamless as possible. Whether you're envisioning a signature cocktail 
+                that tells your story, a curated wine selection, or a full open bar experience, 
+                we're here to bring that vision to life.
+            </p>
+            
+            <div class="urgency-box">
+                <p><strong>⏰ Dates Are Filling Fast</strong><br>
+                {{event_date}} is a popular date, and we only book one event per day to ensure 
+                dedicated service. Secure your date before it's gone!</p>
+            </div>
+            
+            <div class="checklist">
+                <h3>What happens when you book with 513 Sips:</h3>
+                <ul>
+                    <li>✓ Your date is reserved exclusively for your event</li>
+                    <li>✓ We schedule a consultation to discuss your vision</li>
+                    <li>✓ Custom menu planning tailored to your preferences</li>
+                    <li>✓ We handle all permits, insurance, and logistics</li>
+                    <li>✓ Day-of coordination with your venue and vendors</li>
+                    <li>✓ Professional, TABC-certified bartenders</li>
+                    <li>✓ Full setup, service, and breakdown included</li>
+                </ul>
+            </div>
+            
+            <p class="body-text">
+                Ready to move forward? Simply reply to your quote email or click below to schedule 
+                a quick call. We'll answer any questions and walk you through the simple booking process.
+            </p>
+            
+            <center>
+                <a href="https://513sips.com/book" class="cta-button">BOOK YOUR DATE</a>
+                <br>
+                <a href="https://513sips.com/contact" class="secondary-cta">SCHEDULE A CALL</a>
+            </center>
+            
+            <p class="body-text">
+                Not quite ready? That's okay too. Feel free to reach out with any questions—no pressure, 
+                ever. We're here to help, whether you book with us or not.
+            </p>
+            
+            <p class="body-text">
+                Looking forward to celebrating with you,<br>
+                Eddie & The 513 Sips Team
+            </p>
+            
+            <div class="signature">
+                <p style="font-size: 14px; color: #666;">
+                    <strong>P.S.</strong> Have friends or family planning events? We offer referral 
+                    credits for every booking you send our way. Just have them mention your name!
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>513 Sips | Elevated Mobile Bar Service</p>
+            <p><a href="mailto:hello@513sips.com">hello@513sips.com</a> | <a href="https://513sips.com">513sips.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+---
+PLAIN TEXT VERSION ---
+
+Hello {{first_name}},
+
+I hope this email finds you well and that you're getting excited about your upcoming {{event_type}}! By now, you should have received your personalized quote from our team.
+
+Planning an event involves countless details, and we want to make the bar service portion as seamless as possible. Whether you're envisioning a signature cocktail that tells your story, a curated wine selection, or a full open bar experience, we're here to bring that vision to life.
+
+⏰ DATES ARE FILLING FAST
+{{event_date}} is a popular date, and we only book one event per day to ensure dedicated service. Secure your date before it's gone!
+
+WHAT HAPPENS WHEN YOU BOOK WITH 513 SIPS:
+
+✓ Your date is reserved exclusively for your event
+✓ We schedule a consultation to discuss your vision
+✓ Custom menu planning tailored to your preferences
+✓ We handle all permits, insurance, and logistics
+✓ Day-of coordination with your venue and vendors
+✓ Professional, TABC-certified bartenders
+✓ Full setup, service, and breakdown included
+
+Ready to move forward? Simply reply to your quote email or visit https://513sips.com/book to schedule a quick call. We'll answer any questions and walk you through the simple booking process.
+
+Not quite ready? That's okay too. Feel free to reach out with any questions—no pressure, ever. We're here to help, whether you book with us or not.
+
+Looking forward to celebrating with you,
+Eddie & The 513 Sips Team
+
+P.S. Have friends or family planning events? We offer referral credits for every booking you send our way. Just have them mention your name!
+
+---
+513 Sips | Elevated Mobile Bar Service
+hello@513sips.com | 513sips.com

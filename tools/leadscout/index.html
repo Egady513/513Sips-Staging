@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadScout - Sales Intelligence Dashboard | 513 Sips</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <a href="../index.html" class="back-link">← Back to Tools</a>
+                <h1>LeadScout</h1>
+                <p class="tagline">Sales Intelligence for 513 Sips</p>
+            </div>
+            <div class="header-right">
+                <div class="stat-badge">
+                    <span class="stat-number" id="totalLeads">0</span>
+                    <span class="stat-label">Total Leads</span>
+                </div>
+                <div class="stat-badge hot">
+                    <span class="stat-number" id="hotLeads">0</span>
+                    <span class="stat-label">Hot Leads (90+)</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters Bar -->
+        <div class="filters-bar">
+            <div class="filter-group">
+                <label>Hot Score</label>
+                <select id="filterScore" onchange="applyFilters()">
+                    <option value="all">All Scores</option>
+                    <option value="90+">90+ (🔥 Hot)</option>
+                    <option value="75-89">75-89 (Warm)</option>
+                    <option value="50-74">50-74 (Cool)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Business Type</label>
+                <select id="filterType" onchange="applyFilters()">
+                    <option value="all">All Types</option>
+                    <option value="Restaurant">Restaurant</option>
+                    <option value="Corporate Office">Corporate Office</option>
+                    <option value="Venue">Venue</option>
+                    <option value="Brewery">Brewery</option>
+                    <option value="Hotel">Hotel</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Territory</label>
+                <select id="filterTerritory" onchange="applyFilters()">
+                    <option value="all">All Areas</option>
+                    <option value="Hyde Park">Hyde Park</option>
+                    <option value="Oakley">Oakley</option>
+                    <option value="Mt Lookout">Mt Lookout</option>
+                    <option value="Rookwood">Rookwood</option>
+                    <option value="Kenwood">Kenwood</option>
+                    <option value="O'Bryonville">O'Bryonville</option>
+                    <option value="Over-the-Rhine">Over-the-Rhine</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Pipeline Stage</label>
+                <select id="filterStage" onchange="applyFilters()">
+                    <option value="all">All Stages</option>
+                    <option value="New Lead">New Lead</option>
+                    <option value="Contacted">Contacted</option>
+                    <option value="Meeting Scheduled">Meeting Scheduled</option>
+                    <option value="Proposal Sent">Proposal Sent</option>
+                    <option value="Negotiating">Negotiating</option>
+                    <option value="Closed Won">Closed Won</option>
+                    <option value="Closed Lost">Closed Lost</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sort By</label>
+                <select id="sortBy" onchange="applyFilters()">
+                    <option value="score-desc">Hot Score (High → Low)</option>
+                    <option value="score-asc">Hot Score (Low → High)</option>
+                    <option value="date-found-desc">Date Found (Newest)</option>
+                    <option value="date-found-asc">Date Found (Oldest)</option>
+                    <option value="event-date">Event Date (Soonest)</option>
+                </select>
+            </div>
+            <button class="btn btn-secondary btn-small" onclick="clearFilters()">Clear</button>
+        </div>
+
+        <!-- Lead Grid -->
+        <div class="leads-grid" id="leadsGrid">
+            <!-- Leads will be rendered here by JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">🔍</div>
+            <h3>No leads match your filters</h3>
+            <p>Try adjusting your filters or clear them to see all leads.</p>
+            <button class="btn btn-primary" onclick="clearFilters()">Clear Filters</button>
+        </div>
+
+        <!-- Connect Real Data Section -->
+        <div class="connect-section">
+            <h3>🚀 Connect Real Data</h3>
+            <p>Currently showing demo data. To power LeadScout with live intelligence:</p>
+            <div class="connect-options">
+                <div class="connect-card">
+                    <div class="connect-icon">📱</div>
+                    <h4>Reddit API</h4>
+                    <p>Monitor r/cincinnati, r/HydePark, local subreddits for event mentions and business news</p>
+                    <code>PRAW + r/cincinnati</code>
+                </div>
+                <div class="connect-card">
+                    <div class="connect-icon">🏢</div>
+                    <h4>LinkedIn Sales Navigator</h4>
+                    <p>Track company updates, hiring announcements, and expansion news</p>
+                    <code>LinkedIn API v2</code>
+                </div>
+                <div class="connect-card">
+                    <div class="connect-icon">📰</div>
+                    <h4>Google Alerts</h4>
+                    <p>Monitor local news for "new restaurant opening" or "corporate expansion"</p>
+                    <code>Google Alerts RSS</code>
+                </div>
+                <div class="connect-card">
+                    <div class="connect-icon">📍</div>
+                    <h4>Google Places API</h4>
+                    <p>Enrich lead data with business details, hours, reviews, and contact info</p>
+                    <code>Places API (New)</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lead Detail Modal -->
+    <div class="modal" id="leadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Lead detail content rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

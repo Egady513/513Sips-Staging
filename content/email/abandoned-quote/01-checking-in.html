@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking In - Your Quote from 513 Sips</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: Georgia, 'Times New Roman', serif; background-color: #f8f6f3; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+        .header { background: linear-gradient(135deg, #1a2744 0%, #2d3e5f 100%); padding: 40px 30px; text-align: center; }
+        .header h1 { color: #c9a227; font-size: 24px; margin: 0; font-weight: 400; letter-spacing: 2px; }
+        .content { padding: 40px 30px; }
+        .greeting { font-size: 18px; color: #1a2744; margin-bottom: 20px; }
+        .body-text { font-size: 16px; line-height: 1.7; color: #333333; margin-bottom: 20px; }
+        .quote-reminder { background-color: #f8f6f3; border: 1px solid #e0e0e0; padding: 20px; margin: 25px 0; }
+        .quote-reminder h3 { color: #1a2744; margin: 0 0 10px; font-size: 16px; }
+        .quote-reminder p { margin: 5px 0; font-size: 15px; color: #555; }
+        .quote-amount { font-size: 24px; color: #c9a227; font-weight: 600; }
+        .help-box { background-color: #fff8e6; border-left: 4px solid #c9a227; padding: 20px; margin: 25px 0; }
+        .help-box p { margin: 0; font-size: 15px; color: #1a2744; }
+        .cta-button { display: inline-block; background-color: #c9a227; color: #1a2744; text-decoration: none; padding: 15px 35px; font-size: 14px; font-weight: 600; letter-spacing: 1px; margin: 10px 0; border-radius: 3px; }
+        .secondary-cta { display: inline-block; background-color: transparent; color: #1a2744; text-decoration: none; padding: 12px 25px; font-size: 13px; border: 2px solid #1a2744; margin: 10px 0; }
+        .signature { margin-top: 30px; padding-top: 30px; border-top: 1px solid #e0e0e0; }
+        .footer { background-color: #1a2744; padding: 30px; text-align: center; }
+        .footer p { color: #ffffff; font-size: 12px; margin: 5px 0; opacity: 0.8; }
+        .footer a { color: #c9a227; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JUST CHECKING IN</h1>
+        </div>
+        
+        <div class="content">
+            <p class="greeting">Hi {{first_name}},</p>
+            
+            <p class="body-text">
+                I hope you're doing well! I wanted to follow up on the quote we sent over for your 
+                {{event_type}} on {{event_date}}.
+            </p>
+            
+            <div class="quote-reminder">
+                <h3>Your Quote Summary</h3>
+                <p><strong>Event:</strong> {{event_type}}</p>
+                <p><strong>Date:</strong> {{event_date}}</p>
+                <p><strong>Quoted:</strong> <span class="quote-amount">{{quote_amount}}</span></p>
+                <p style="font-size: 13px; color: #888; margin-top: 10px;">Quote sent: {{quote_date}}</p>
+            </div>
+            
+            <p class="body-text">
+                I know planning an event involves juggling countless details, and sometimes emails 
+                get buried. No pressure at all—I just wanted to make sure you received everything 
+                and see if you have any questions.
+            </p>
+            
+            <div class="help-box">
+                <p><strong>How can I help?</strong><br>
+                Whether you need to adjust the package, have questions about our services, or want 
+                to explore different options, I'm here to make this easy for you.</p>
+            </div>
+            
+            <p class="body-text">
+                A quick heads up: {{event_date}} is approaching, and we do book up—especially for 
+                weekend dates. If you're interested in moving forward, I'd recommend securing your 
+                date soon to ensure we're available.
+            </p>
+            
+            <center>
+                <a href="https://513sips.com/book" class="cta-button">BOOK YOUR DATE</a>
+                <br>
+                <a href="https://513sips.com/contact" class="secondary-cta">ASK A QUESTION</a>
+            </center>
+            
+            <p class="body-text">
+                If you've decided to go in a different direction, no worries at all—I completely 
+                understand. Just let me know so I can update our records.
+            </p>
+            
+            <p class="body-text">
+                Looking forward to hearing from you when you're ready.
+            </p>
+            
+            <p class="body-text">
+                Best,<br>
+                Eddie
+            </p>
+            
+            <div class="signature">
+                <p style="font-size: 13px; color: #888;">
+                    <strong>P.S.</strong> Not ready to book yet? That's okay! Feel free to save this 
+                    email and reach out whenever you're ready. We'll be here.
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>513 Sips | Elevated Mobile Bar Service</p>
+            <p><a href="mailto:hello@513sips.com">hello@513sips.com</a> | <a href="https://513sips.com">513sips.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+---
+PLAIN TEXT VERSION ---
+
+Hi {{first_name}},
+
+I hope you're doing well! I wanted to follow up on the quote we sent over for your {{event_type}} on {{event_date}}.
+
+YOUR QUOTE SUMMARY:
+Event: {{event_type}}
+Date: {{event_date}}
+Quoted: {{quote_amount}}
+Quote sent: {{quote_date}}
+
+I know planning an event involves juggling countless details, and sometimes emails get buried. No pressure at all—I just wanted to make sure you received everything and see if you have any questions.
+
+HOW CAN I HELP?
+Whether you need to adjust the package, have questions about our services, or want to explore different options, I'm here to make this easy for you.
+
+A quick heads up: {{event_date}} is approaching, and we do book up—especially for weekend dates. If you're interested in moving forward, I'd recommend securing your date soon to ensure we're available.
+
+Book your date: https://513sips.com/book
+Ask a question: https://513sips.com/contact
+
+If you've decided to go in a different direction, no worries at all—I completely understand. Just let me know so I can update our records.
+
+Looking forward to hearing from you when you're ready.
+
+Best,
+Eddie
+
+P.S. Not ready to book yet? That's okay! Feel free to save this email and reach out whenever you're ready. We'll be here.
+
+---
+513 Sips | Elevated Mobile Bar Service
+hello@513sips.com | 513sips.com

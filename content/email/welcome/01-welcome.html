@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to 513 Sips</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: Georgia, 'Times New Roman', serif; background-color: #f8f6f3; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+        .header { background: linear-gradient(135deg, #1a2744 0%, #2d3e5f 100%); padding: 40px 30px; text-align: center; }
+        .header h1 { color: #c9a227; font-size: 28px; margin: 0; font-weight: 400; letter-spacing: 2px; }
+        .header p { color: #ffffff; font-size: 14px; margin: 10px 0 0; opacity: 0.9; }
+        .content { padding: 40px 30px; }
+        .greeting { font-size: 18px; color: #1a2744; margin-bottom: 20px; }
+        .body-text { font-size: 16px; line-height: 1.7; color: #333333; margin-bottom: 20px; }
+        .highlight-box { background-color: #f8f6f3; border-left: 4px solid #c9a227; padding: 20px; margin: 25px 0; }
+        .highlight-box p { margin: 0; font-size: 15px; color: #1a2744; }
+        .cta-button { display: inline-block; background-color: #c9a227; color: #1a2744; text-decoration: none; padding: 15px 35px; font-size: 14px; font-weight: 600; letter-spacing: 1px; margin: 20px 0; border-radius: 3px; }
+        .signature { margin-top: 30px; padding-top: 30px; border-top: 1px solid #e0e0e0; }
+        .signature-name { font-size: 18px; color: #1a2744; font-weight: 600; margin-bottom: 5px; }
+        .signature-title { font-size: 14px; color: #666666; margin-bottom: 15px; }
+        .footer { background-color: #1a2744; padding: 30px; text-align: center; }
+        .footer p { color: #ffffff; font-size: 12px; margin: 5px 0; opacity: 0.8; }
+        .footer a { color: #c9a227; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>513 SIPS</h1>
+            <p>Elevated Mobile Bar Service</p>
+        </div>
+        
+        <div class="content">
+            <p class="greeting">Dear {{first_name}},</p>
+            
+            <p class="body-text">
+                Welcome to the 513 Sips family! Thank you for reaching out about your upcoming {{event_type}}. 
+                We're truly honored that you're considering us to be part of your special day.
+            </p>
+            
+            <p class="body-text">
+                At 513 Sips, we believe every celebration deserves to be elevated. Whether you're planning 
+                an intimate gathering or a grand celebration, our mission is simple: to craft exceptional 
+                beverage experiences that your guests will remember long after the last toast.
+            </p>
+            
+            <div class="highlight-box">
+                <p><strong>What happens next?</strong><br>
+                Our team is reviewing your inquiry and will send a personalized quote within 24 hours. 
+                In the meantime, feel free to explore our services and previous events.</p>
+            </div>
+            
+            <p class="body-text">
+                We operate on a first-come, first-served basis, and dates fill quickly—especially during 
+                peak season. If you have a specific date in mind ({{event_date}}), we recommend securing 
+                your booking as soon as possible.
+            </p>
+            
+            <center>
+                <a href="https://513sips.com/services" class="cta-button">EXPLORE OUR SERVICES</a>
+            </center>
+            
+            <p class="body-text">
+                Have questions? Simply reply to this email or call us at (513) 555-SIPS. We're here to help 
+                make your vision a reality.
+            </p>
+            
+            <p class="body-text">
+                With gratitude,<br>
+                The 513 Sips Team
+            </p>
+            
+            <div class="signature">
+                <p class="signature-name">Eddie Gady</p>
+                <p class="signature-title">Founder & Lead Bartender</p>
+                <p style="font-size: 13px; color: #888;">Elevated Ventures EG, LLC</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>513 Sips | Elevated Mobile Bar Service</p>
+            <p>Cincinnati, Ohio | <a href="mailto:hello@513sips.com">hello@513sips.com</a></p>
+            <p><a href="https://513sips.com">513sips.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+---
+PLAIN TEXT VERSION ---
+
+Dear {{first_name}},
+
+Welcome to the 513 Sips family! Thank you for reaching out about your upcoming {{event_type}}. We're truly honored that you're considering us to be part of your special day.
+
+At 513 Sips, we believe every celebration deserves to be elevated. Whether you're planning an intimate gathering or a grand celebration, our mission is simple: to craft exceptional beverage experiences that your guests will remember long after the last toast.
+
+WHAT HAPPENS NEXT?
+Our team is reviewing your inquiry and will send a personalized quote within 24 hours. In the meantime, feel free to explore our services and previous events at https://513sips.com/services
+
+We operate on a first-come, first-served basis, and dates fill quickly—especially during peak season. If you have a specific date in mind ({{event_date}}), we recommend securing your booking as soon as possible.
+
+Have questions? Simply reply to this email or call us at (513) 555-SIPS. We're here to help make your vision a reality.
+
+With gratitude,
+The 513 Sips Team
+
+Eddie Gady
+Founder & Lead Bartender
+Elevated Ventures EG, LLC
+
+---
+513 Sips | Elevated Mobile Bar Service
+Cincinnati, Ohio | hello@513sips.com | 513sips.com

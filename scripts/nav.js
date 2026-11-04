@@ -11,7 +11,7 @@
   if (!document.querySelector('script[src*="journey-events.js"]')) {
     const navScript = document.currentScript;
     const analyticsScript = document.createElement('script');
-    analyticsScript.src = new URL('journey-events.js?v=2', navScript.src).href;
+    analyticsScript.src = new URL('journey-events.js?v=3', navScript.src).href;
     analyticsScript.dataset.sipsAnalytics = 'true';
     document.head.appendChild(analyticsScript);
   }
@@ -19,7 +19,7 @@
   // ── Inject nav CSS ──────────────────────────────────────────────────────────
   const NAV_CSS = `
     /* Tubelight Navbar */
-    .tubelight-nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(245, 242, 235, 0.96); border-radius: 9999px; overflow: hidden; padding: 0.75rem 1.5rem; border: 1px solid rgba(184, 115, 51, 0.2); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .tubelight-nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(245, 242, 235, 0.7); backdrop-filter: blur(20px); border-radius: 9999px; padding: 0.75rem 1.5rem; border: 1px solid rgba(184, 115, 51, 0.2); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     .tubelight-nav.scrolled { background: rgba(245, 242, 235, 0.95); box-shadow: 0 8px 32px rgba(26, 26, 46, 0.15); }
     .tubelight-container { display: flex; align-items: center; gap: 0.5rem; position: relative; }
     .tubelight-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: #1a1a2e; text-decoration: none; margin-right: 1.5rem; flex-shrink: 0; display: flex; align-items: center; }
@@ -87,6 +87,7 @@
     { label: 'Gallery',  href: root + 'gallery.html'  },
     { label: 'FAQ',      href: root + 'faq.html'      },
     { label: 'Blog',     href: root + 'blog/'         },
+    { label: 'Partners', href: root + 'partners.html' },
     { label: 'Contact',  href: homeAnchor('#contact') },
   ];
 

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513 Sips | Elevated Mobile Bartending</title>
+    <meta name="description" content="513 Sips brings the bar to you. Premium mobile bartending for weddings, corporate events, and private parties in Cincinnati.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { DEFAULT: '#1a2744', light: '#2a3f5f', dark: '#0f172a' },
+                        cream: '#faf8f5',
+                        copper: { DEFAULT: '#c9a962', light: '#e0c078' },
+                        charcoal: '#2d3748'
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --navy: #1a2744; --navy-light: #2a3f5f; --navy-dark: #0f172a; --cream: #faf8f5; --copper: #c9a962; --copper-light: #e0c078; --charcoal: #2d3748; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
+        .tubelight-nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(250, 248, 245, 0.7); backdrop-filter: blur(20px); border-radius: 9999px; padding: 0.75rem 1.5rem; border: 1px solid rgba(201, 169, 98, 0.2); box-shadow: 0 8px 32px rgba(26, 39, 68, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tubelight-nav.scrolled { background: rgba(250, 248, 245, 0.95); box-shadow: 0 8px 32px rgba(26, 39, 68, 0.15); }
+        .tubelight-container { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+        .tubelight-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); text-decoration: none; margin-right: 1.5rem; }
+        .tubelight-logo span { color: var(--copper); }
+        .tubelight-links { display: flex; position: relative; gap: 0.25rem; }
+        .tubelight-link { padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 500; color: var(--charcoal); text-decoration: none; border-radius: 9999px; position: relative; z-index: 2; transition: color 0.3s ease; white-space: nowrap; }
+        .tubelight-link:hover, .tubelight-link.active { color: var(--navy); }
+        .tubelight-highlight { position: absolute; height: 100%; background: linear-gradient(135deg, rgba(201, 169, 98, 0.25), rgba(224, 192, 120, 0.15)); border-radius: 9999px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1; box-shadow: 0 2px 12px rgba(201, 169, 98, 0.3); border: 1px solid rgba(201, 169, 98, 0.3); }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--navy); }
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%); }
+        .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; pointer-events: none; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(201, 169, 98, 0.6), transparent 70%); top: -10%; left: -10%; animation: float-orb 20s infinite ease-in-out; }
+        .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(224, 192, 120, 0.4), transparent 70%); bottom: 10%; right: -5%; animation: float-orb 15s infinite ease-in-out reverse; }
+        .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(201, 169, 98, 0.3), transparent 70%); top: 40%; left: 30%; animation: float-orb 18s infinite ease-in-out; animation-delay: -5s; }
+        @keyframes float-orb { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(30px, -30px) scale(1.1); } 50% { transform: translate(-20px, 20px) scale(0.95); } 75% { transform: translate(20px, 10px) scale(1.05); } }
+        .hero-content { text-align: center; color: white; padding: 0 2rem; max-width: 900px; z-index: 10; position: relative; }
+        .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--copper-light); margin-bottom: 1rem; opacity: 0; }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; opacity: 0; }
+        .hero-title span { color: var(--copper); display: inline-block; }
+        .hero-description { font-size: 1.1rem; font-weight: 300; max-width: 600px; margin: 0 auto 2.5rem; opacity: 0; color: rgba(255, 255, 255, 0.9); }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; opacity: 0; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 50px; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: none; }
+        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s ease; }
+        .btn:hover::before { left: 100%; }
+        .btn-primary { background: linear-gradient(135deg, var(--copper), var(--copper-light)); color: var(--navy-dark); box-shadow: 0 4px 20px rgba(201, 169, 98, 0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(201, 169, 98, 0.5); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid rgba(255, 255, 255, 0.5); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: white; transform: translateY(-3px); }
+        .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+        .scroll-indicator { width: 24px; height: 40px; border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 12px; position: relative; }
+        .scroll-indicator::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; background: var(--copper); border-radius: 2px; animation: scroll-bounce 2s infinite; }
+        @keyframes scroll-bounce { 0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; } 50% { transform: translateX(-50%) translateY(12px); opacity: 0.3; } }
+        section { padding: 6rem 2rem; position: relative; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-tag { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--copper); margin-bottom: 0.5rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; color: var(--navy); margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.1rem; color: var(--charcoal); max-width: 600px; margin: 0 auto; opacity: 0.8; }
+        .services { background: white; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .service-card { background: var(--cream); border-radius: 24px; padding: 3rem 2rem; text-align: center; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: 1px solid rgba(201, 169, 98, 0.1); }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--copper), var(--copper-light)); transform: scaleX(0); transition: transform 0.4s ease; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(26, 39, 68, 0.1); border-color: rgba(201, 169, 98, 0.3); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon { width: 90px; height: 90px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--navy), var(--navy-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--copper); transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(26, 39, 68, 0.2); }
+        .service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); background: linear-gradient(135deg, var(--copper), var(--copper-light)); color: var(--navy); box-shadow: 0 15px 40px rgba(201, 169, 98, 0.4); }
+        .service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem; color: var(--navy); }
+        .service-description { color: var(--charcoal); font-size: 0.95rem; line-height: 1.7; opacity: 0.8; }
+        .about { background: var(--cream); overflow: hidden; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-image { position: relative; }
+        .about-image-main { border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(26, 39, 68, 0.2); position: relative; }
+        .about-image-main img { width: 100%; height: 500px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+        .about-image:hover .about-image-main img { transform: scale(1.05); }
+        .about-image-accent { position: absolute; bottom: -30px; right: -30px; width: 200px; height: 200px; background: linear-gradient(135deg, var(--copper), var(--copper-light)); border-radius: 24px; z-index: -1; }
+        .about-content { padding: 2rem 0; }
+        .about-tag { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--copper); margin-bottom: 0.5rem; }
+        .about-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.2; }
+        .about-text { color: var(--charcoal); margin-bottom: 1.5rem; line-height: 1.8; opacity: 0.85; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(201, 169, 98, 0.3); }
+        .stat-item { text-align: center; }
+        .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--copper); display: block; }
+        .stat-label { font-size: 0.8rem; color: var(--charcoal); text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
+        .team { background: white; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        .team-card { background: var(--cream); border-radius: 24px; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(201, 169, 98, 0.1); }
+        .team-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(26, 39, 68, 0.12); }
+        .team-image { width: 100%; height: 320px; background: linear-gradient(135deg, var(--navy-light), var(--navy)); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: var(--copper); }
+        .team-info { padding: 1.5rem; text-align: center; }
+        .team-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
+        .team-role { color: var(--copper); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.75rem; }
+        .team-bio { color: var(--charcoal); font-size: 0.9rem; opacity: 0.8; line-height: 1.6; }
+        .pricing { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; }
+        .pricing .section-title { color: white; }
+        .pricing .section-subtitle { color: rgba(255, 255, 255, 0.8); }
+        .pricing .section-tag { color: var(--copper-light); }
+        .pricing-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .pricing-calculator { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(201, 169, 98, 0.2); }
+        .pricing-result { background: linear-gradient(135deg, rgba(201, 169, 98, 0.2), rgba(224, 192, 120, 0.1)); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(201, 169, 98, 0.3); text-align: center; position: sticky; top: 120px; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500; color: rgba(255, 255, 255, 0.9); }
+        .form-group input, .form-group select { width: 100%; padding: 1rem 1.25rem; border: 2px solid rgba(201, 169, 98, 0.2); border-radius: 12px; font-family: 'Montserrat', sans-serif; font-size: 1rem; background: rgba(255, 255, 255, 0.1); color: white; transition: all 0.3s ease; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--copper); box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.1); }
+        .form-group input::placeholder { color: rgba(255, 255, 255, 0.4); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .estimate-amount { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; color: var(--copper); margin-bottom: 0.5rem; }
+        .estimate-label { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .estimate-details { text-align: left; background: rgba(0, 0, 0, 0.2); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .estimate-item { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 0.9rem; }
+        .estimate-item:last-child { margin-bottom: 0; padding-top: 0.75rem; border-top: 1px solid rgba(201, 169, 98, 0.2); font-weight: 600; }
+        .gallery { background: var(--cream); }
+        .gallery-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .gallery-filter { padding: 0.75rem 1.5rem; background: white; border: 2px solid rgba(201, 169, 98, 0.2); border-radius: 9999px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 500; color: var(--charcoal); cursor: pointer; transition: all 0.3s ease; }
+        .gallery-filter:hover, .gallery-filter.active { background: var(--copper); border-color: var(--copper); color: var(--navy); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; perspective: 1000px; }
+        .flip-card { aspect-ratio: 4/3; cursor: pointer; opacity: 0; transform: translateY(30px); }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; border-radius: 16px; overflow: hidden; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; overflow: hidden; }
+        .flip-card-front { background: linear-gradient(135deg, var(--navy-light), var(--navy)); }
+        .flip-card-front img { width: 100%; height: 100%; object-fit: cover; }
+        .flip-card-back { background: linear-gradient(135deg, var(--navy), var(--navy-light)); transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; text-align: center; color: white; }
+        .flip-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--copper); }
+        .flip-card-category { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; margin-bottom: 1rem; }
+        .flip-card-description { font-size: 0.9rem; opacity: 0.9; line-height: 1.6; }
+        .testimonials { background: white; overflow: hidden; }
+        .testimonials-container { position: relative; max-width: 800px; margin: 0 auto; }
+        .testimonial-slider { position: relative; min-height: 350px; }
+        .testimonial-item { position: absolute; width: 100%; opacity: 0; transform: translateX(50px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; padding: 2rem; }
+        .testimonial-item.active { opacity: 1; transform: translateX(0); }
+        .testimonial-image { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--copper), var(--copper-light)); padding: 4px; overflow: hidden; }
+        .testimonial-image-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: var(--copper); }
+        .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.6; }
+        .testimonial-author { font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
+        .testimonial-event { font-size: 0.9rem; color: var(--copper); }
+        .testimonial-nav { display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem; }
+        .testimonial-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(201, 169, 98, 0.3); cursor: pointer; transition: all 0.3s ease; }
+        .testimonial-dot.active { background: var(--copper); transform: scale(1.2); }
+        .instagram { background: var(--navy); color: white; padding: 4rem 0; overflow: hidden; }
+        .instagram .section-title { color: white; }
+        .instagram .section-tag { color: var(--copper-light); }
+        .instagram-slider-container { position: relative; width: 100%; overflow: hidden; margin: 3rem 0; }
+        .instagram-slider { display: flex; gap: 1rem; animation: slide-infinite 30s linear infinite; width: max-content; }
+        .instagram-item { width: 280px; height: 280px; border-radius: 16px; overflow: hidden; flex-shrink: 0; position: relative; background: linear-gradient(135deg, var(--navy-light), var(--navy)); }
+        .instagram-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .instagram-item:hover img { transform: scale(1.1); }
+        .instagram-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(201, 169, 98, 0.8); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+        .instagram-item:hover .instagram-overlay { opacity: 1; }
+        .instagram-icon { color: white; font-size: 1.5rem; }
+        @keyframes slide-infinite { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .instagram-cta { text-align: center; margin-top: 2rem; }
+        .faq { background: white; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--cream); border-radius: 16px; margin-bottom: 1rem; overflow: hidden; border: 1px solid rgba(201, 169, 98, 0.1); transition: all 0.3s ease; }
+        .faq-item:hover { border-color: rgba(201, 169, 98, 0.3); }
+        .faq-question { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; color: var(--navy); transition: all 0.3s ease; }
+        .faq-question:hover { color: var(--copper); }
+        .faq-icon { width: 24px; height: 24px; transition: transform 0.3s ease; color: var(--copper); }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-item.active .faq-answer { max-height: 300px; padding: 0 1.5rem 1.5rem; }
+        .faq-answer p { color: var(--charcoal); opacity: 0.8; line-height: 1.7; }
+        .contact { background: var(--cream); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .contact-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--navy); }
+        .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+        .contact-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--copper), var(--copper-light)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s ease; }
+        .contact-item:hover .contact-icon { transform: scale(1.1) rotate(5deg); }
+        .contact-details h4 { font-size: 1rem; color: var(--navy); margin-bottom: 0.25rem; }
+        .contact-details p, .contact-details a { color: var(--charcoal); text-decoration: none; transition: color 0.3s ease; opacity: 0.8; }
+        .contact-details a:hover { color: var(--copper); }
+        .contact-form { background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 20px 40px rgba(26, 39, 68, 0.1); }
+        .contact-form .form-group { margin-bottom: 1.5rem; }
+        .contact-form .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500; color: var(--navy); }
+        .contact-form .form-group input, .contact-form .form-group textarea, .contact-form .form-group select { width: 100%; padding: 1rem; border: 2px solid rgba(201, 169, 98, 0.2); border-radius: 12px; font-family: 'Montserrat', sans-serif; font-size: 1rem; background: var(--cream); color: var(--charcoal); transition: all 0.3s ease; }
+        .contact-form .form-group input:focus, .contact-form .form-group textarea:focus, .contact-form .form-group select:focus { outline: none; border-color: var(--copper); box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.1); }
+        .contact-form .form-group textarea { min-height: 120px; resize: vertical; }
+        .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .footer { background: var(--navy-dark); color: white; padding: 4rem 2rem 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-brand .logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: white; margin-bottom: 1rem; display: inline-block; text-decoration: none; }
+        .footer-brand .logo span { color: var(--copper); }
+        .footer-brand p { color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .fluid-dock { display: flex; gap: 1rem; padding: 0.75rem 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 9999px; border: 1px solid rgba(201, 169, 98, 0.2); width: fit-content; }
+        .dock-item { width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+        .dock-item:hover { background: var(--copper); color: var(--navy); transform: scale(1.2) translateY(-5px); }
+        .dock-item::before { content: attr(data-label); position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; color: var(--copper); }
+        .dock-item:hover::before { opacity: 1; }
+        .footer-column h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 1.5rem; color: white; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s ease; display: inline-block; }
+        .footer-links a:hover { color: var(--copper); transform: translateX(5px); }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; }
+        .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 39, 68, 0.98); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .mobile-menu.active { opacity: 1; pointer-events: all; }
+        .mobile-menu a { color: white; font-size: 1.5rem; font-weight: 500; text-decoration: none; transition: color 0.3s ease; }
+        .mobile-menu a:hover { color: var(--copper); }
+        .mobile-menu-close { position: absolute; top: 2rem; right: 2rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+        @media (max-width: 1024px) {
+            .about-grid, .contact-grid, .pricing-container { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .pricing-result { position: static; }
+        }
+        @media (max-width: 768px) {
+            .tubelight-nav { width: calc(100% - 2rem); padding: 0.75rem 1rem; }
+            .tubelight-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; justify-content: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: 1fr; gap: 1.5rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .contact-form { padding: 2rem 1.5rem; }
+            .contact-form .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .fluid-dock { margin: 0 auto; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="tubelight-nav" id="navbar">
+        <div class="tubelight-container">
+            <a href="#" class="tubelight-logo">513 <span>Sips</span></a>
+            <div class="tubelight-links" id="tubelight-links">
+                <div class="tubelight-highlight" id="tubelight-highlight"></div>
+                <a href="#home" class="tubelight-link active" data-index="0">Home</a>
+                <a href="#services" class="tubelight-link" data-index="1">Services</a>
+                <a href="#about" class="tubelight-link" data-index="2">Who We Are</a>
+                <a href="#team" class="tubelight-link" data-index="3">Bartenders</a>
+                <a href="#gallery" class="tubelight-link" data-index="4">Gallery</a>
+                <a href="#pricing" class="tubelight-link" data-index="5">Pricing</a>
+                <a href="#faq" class="tubelight-link" data-index="6">FAQ</a>
+                <a href="#contact" class="tubelight-link" data-index="7">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="mobile-menu-close" id="mobile-menu-close">
+            <i data-lucide="x" style="width: 32px; height: 32px;"></i>
+        </button>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">Who We Are</a>
+        <a href="#team">Bartenders</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section class="hero" id="home">
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Elevated Mobile Bartending</p>
+            <h1 class="hero-title">We Bring the <span>Bar</span> to You</h1>
+            <p class="hero-description">Premium craft cocktails and professional bartending services for weddings, corporate events, and private celebrations throughout Cincinnati.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+                    Book Now
+                </a>
+                <a href="#gallery" class="btn btn-secondary">
+                    <i data-lucide="images" style="width: 18px; height: 18px;"></i>
+                    View Gallery
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-indicator"></div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">What We Offer</p>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">From intimate gatherings to grand celebrations, we create unforgettable beverage experiences tailored to your event.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="heart" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Weddings</h3>
+                    <p class="service-description">Make your special day unforgettable with custom cocktail menus, champagne service, and professional bartenders who ensure every toast is perfect.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="building-2" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Corporate Events</h3>
+                    <p class="service-description">Elevate your company gatherings, holiday parties, and networking events with sophisticated beverage service that impresses clients and colleagues.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="party-popper" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 class="service-title">Private Parties</h3>
+                    <p class="service-description">From birthday celebrations to anniversary parties, we bring the bar experience to your home or venue with personalized service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-image-main">
+                        <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?w=800&h=600&fit=crop" alt="513 Sips Bartending">
+                    </div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <p class="about-tag">Our Story</p>
+                    <h2 class="about-title">Crafting Memories, One Cocktail at a Time</h2>
+                    <p class="about-text">513 Sips was founded with a simple mission: to bring the art of craft cocktails to every celebration. Based in Cincinnati, we combine professional expertise with a passion for hospitality to create memorable experiences.</p>
+                    <p class="about-text">Our team of certified bartenders brings creativity, professionalism, and attention to detail to every event. We handle everything from setup to cleanup, so you can focus on enjoying your celebration.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Events Served</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Signature Drinks</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">The Team</p>
+                <h2 class="section-title">Meet the Bartenders</h2>
+                <p class="section-subtitle">Our talented team of mixologists and bartenders are passionate about creating exceptional experiences.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <i data-lucide="user" style="width: 80px; height: 80px;"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Alex Thompson</h3>
+                        <p class="team-role">Lead Mixologist</p>
+                        <p class="team-bio">With 10+ years of experience, Alex crafts signature cocktails that tell a story.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <i data-lucide="user" style="width: 80px; height: 80px;"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Jordan Lee</h3>
+                        <p class="team-role">Event Specialist</p>
+                        <p class="team-bio">Jordan ensures every event runs smoothly from setup to last call.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <i data-lucide="user" style="width: 80px; height: 80px;"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Morgan Chen</h3>
+                        <p class="team-role">Creative Director</p>
+                        <p class="team-bio">Morgan designs custom menus that perfectly match your event's theme.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Get an Estimate</p>
+                <h2 class="section-title">Pricing Calculator</h2>
+                <p class="section-subtitle">Plan your event budget with our interactive pricing tool. Get an instant estimate based on your needs.</p>
+            </div>
+            <div class="pricing-container">
+                <div class="pricing-calculator">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-type">Event Type</label>
+                            <select id="event-type">
+                                <option value="wedding">Wedding</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="private">Private Party</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guest-count">Number of Guests</label>
+                            <input type="number" id="guest-count" min="10" max="500" value="50">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hours">Event Duration (Hours)</label>
+                            <input type="number" id="hours" min="2" max="12" value="4">
+                        </div>
+                        <div class="form-group">
+                            <label for="bartenders">Number of Bartenders</label>
+                            <input type="number" id="bartenders" min="1" max="10" value="2">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-level">Service Level</label>
+                        <select id="service-level">
+                            <option value="basic">Basic - Beer & Wine</option>
+                            <option value="standard" selected>Standard - Full Bar</option>
+                            <option value="premium">Premium - Craft Cocktails</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="pricing-result">
+                    <div class="estimate-amount" id="estimate-amount">$850</div>
+                    <div class="estimate-label">Estimated Total</div>
+                    <div class="estimate-details">
+                        <div class="estimate-item">
+                            <span>Base Service Fee</span>
+                            <span id="base-fee">$400</span>
+                        </div>
+                        <div class="estimate-item">
+                            <span>Bartenders (2)</span>
+                            <span id="bartender-fee">$300</span>
+                        </div>
+                        <div class="estimate-item">
+                            <span>Service Level</span>
+                            <span id="service-fee">$150</span>
+                        </div>
+                        <div class="estimate-item">
+                            <span>Total Estimate</span>
+                            <span id="total-fee">$850</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%;">
+                        <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                        Get Detailed Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Our Work</p>
+                <h2 class="section-title">Event Gallery</h2>
+                <p class="section-subtitle">Browse through moments we've helped create at weddings, corporate events, and private celebrations.</p>
+            </div>
+            <div class="gallery-filters">
+                <button class="gallery-filter active" data-filter="all">All</button>
+                <button class="gallery-filter" data-filter="wedding">Weddings</button>
+                <button class="gallery-filter" data-filter="corporate">Corporate</button>
+                <button class="gallery-filter" data-filter="private">Private</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="flip-card" data-category="wedding">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=450&fit=crop" alt="Wedding Event">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="flip-card-title">Elegant Wedding</h3>
+                            <p class="flip-card-category">Wedding</p>
+                            <p class="flip-card-description">A beautiful summer wedding with signature cocktails and champagne service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" data-category="corporate">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=450&fit=crop" alt="Corporate Event">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="flip-card-title">Corporate Gala</h3>
+                            <p class="flip-card-category">Corporate</p>
+                            <p class="flip-card-description">Annual company celebration with premium bar service for 200 guests.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" data-category="private">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&h=450&fit=crop" alt="Private Party">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="flip-card-title">Birthday Celebration</h3>
+                            <p class="flip-card-category">Private</p>
+                            <p class="flip-card-description">40th birthday bash with custom cocktails and personalized service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" data-category="wedding">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&h=450&fit=crop" alt="Wedding Reception">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="flip-card-title">Garden Wedding</h3>
+                            <p class="flip-card-category">Wedding</p>
+                            <p class="flip-card-description">Outdoor ceremony with refreshing summer cocktails and mocktails.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" data-category="corporate">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=450&fit=crop" alt="Corporate Party">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="flip-card-title">Product Launch</h3>
+                            <p class="flip-card-category">Corporate</p>
+                            <p class="flip-card-description">Tech company launch event with themed cocktails and professional service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" data-category="private">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=600&h=450&fit=crop" alt="Private Event">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3 class="flip-card-title">Anniversary Party</h3>
+                            <p class="flip-card-category">Private</p>
+                            <p class="flip-card-description">25th anniversary celebration with vintage cocktails and elegant presentation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Testimonials</p>
+                <h2 class="section-title">What Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from the people we've had the pleasure of serving.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-item active" data-index="0">
+                        <div class="testimonial-image">
+                            <div class="testimonial-image-inner">
+                                <i data-lucide="user" style="width: 50px; height: 50px;"></i>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"513 Sips made our wedding day absolutely perfect. The signature cocktails were a huge hit with our guests, and the bartenders were professional and friendly."</p>
+                        <p class="testimonial-author">Sarah & Michael Johnson</p>
+                        <p class="testimonial-event">Wedding - June 2024</p>
+                    </div>
+                    <div class="testimonial-item" data-index="1">
+                        <div class="testimonial-image">
+                            <div class="testimonial-image-inner">
+                                <i data-lucide="user" style="width: 50px; height: 50px;"></i>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"Our company holiday party was elevated to the next level thanks to 513 Sips. The craft cocktails were amazing and the service was impeccable."</p>
+                        <p class="testimonial-author">David Chen</p>
+                        <p class="testimonial-event">Corporate Event - December 2024</p>
+                    </div>
+                    <div class="testimonial-item" data-index="2">
+                        <div class="testimonial-image">
+                            <div class="testimonial-image-inner">
+                                <i data-lucide="user" style="width: 50px; height: 50px;"></i>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"I hired 513 Sips for my 50th birthday party and couldn't be happier. They took care of everything, allowing me to actually enjoy my own party!"</p>
+                        <p class="testimonial-author">Amanda Rodriguez</p>
+                        <p class="testimonial-event">Private Party - August 2024</p>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-index="0"></div>
+                    <div class="testimonial-dot" data-index="1"></div>
+                    <div class="testimonial-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="instagram" id="instagram">
+        <div class="container" style="text-align: center;">
+            <p class="section-tag">Follow Along</p>
+            <h2 class="section-title">@513sips</h2>
+        </div>
+        <div class="instagram-slider-container">
+            <div class="instagram-slider">
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&h=400&fit=crop" alt="Instagram 1">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=400&fit=crop" alt="Instagram 2">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&h=400&fit=crop" alt="Instagram 3">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400&h=400&fit=crop" alt="Instagram 4">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=400&fit=crop" alt="Instagram 5">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=400&fit=crop" alt="Instagram 6">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&h=400&fit=crop" alt="Instagram 1">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=400&fit=crop" alt="Instagram 2">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&h=400&fit=crop" alt="Instagram 3">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400&h=400&fit=crop" alt="Instagram 4">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=400&fit=crop" alt="Instagram 5">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=400&fit=crop" alt="Instagram 6">
+                    <div class="instagram-overlay">
+                        <i data-lucide="instagram" class="instagram-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="instagram-cta">
+            <a href="https://instagram.com/513sips" target="_blank" class="btn btn-primary">
+                <i data-lucide="instagram" style="width: 18px; height: 18px;"></i>
+                Follow Us
+            </a>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Questions</p>
+                <h2 class="section-title">Frequently Asked</h2>
+                <p class="section-subtitle">Find answers to common questions about our mobile bartending services.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What areas do you serve?</span>
+                        <i data-lucide="plus" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We primarily serve the Greater Cincinnati area, including Northern Kentucky and Southeast Indiana. For events outside this area, please contact us for availability and travel fees.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide the alcohol?</span>
+                        <i data-lucide="plus" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Due to Ohio liquor laws, we cannot sell alcohol directly. However, we provide a detailed shopping list based on your selected menu and can assist with delivery coordination for an additional fee.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How far in advance should I book?</span>
+                        <i data-lucide="plus" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We recommend booking at least 3-6 months in advance for weddings and large events. For smaller private parties, 4-6 weeks notice is typically sufficient. Last-minute bookings may be accommodated based on availability.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's included in your service?</span>
+                        <i data-lucide="plus" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our service includes professional bartenders, portable bar setup, all necessary bar tools and equipment, glassware (if requested), mixers and garnishes, ice, and complete cleanup. We handle everything so you can enjoy your event.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can we create a custom cocktail menu?</span>
+                        <i data-lucide="plus" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We love creating custom cocktails that match your event theme or personal preferences. During our consultation, we'll discuss your vision and create signature drinks that will wow your guests.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Get In Touch</p>
+                <h2 class="section-title">Book Your Event</h2>
+                <p class="section-subtitle">Ready to elevate your next event? Let's discuss how we can create the perfect beverage experience for you.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="mail" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <a href="mailto:hello@513sips.com">hello@513sips.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="phone" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <a href="tel:+15133222645">(513) 322-2645</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="map-pin" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Cincinnati, OH<br>Serving Greater Cincinnati Area</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="clock" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div class="contact-details>
+                            <h4>Hours</h4>
+                            <p>Available 7 Days a Week<br>By Appointment Only</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Your Name</label>
+                                <input type="text" id="contact-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email Address</label>
+                                <input type="email" id="contact-email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-phone">Phone Number</label>
+                                <input type="tel" id="contact-phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-date">Event Date</label>
+                                <input type="date" id="contact-date" name="date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-event-type">Event Type</label>
+                            <select id="contact-event-type" name="event-type">
+                                <option value="">Select Event Type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="private">Private Party</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Tell Us About Your Event</label>
+                            <textarea id="contact-message" name="message" placeholder="Number of guests, venue, special requests..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">
+                            <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                            Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">513 <span>Sips</span></a>
+                    <p>Elevating celebrations throughout Cincinnati with craft cocktails and professional bartending services.</p>
+                    <div class="fluid-dock">
+                        <a href="https://instagram.com/513sips" target="_blank" class="dock-item" data-label="Instagram">
+                            <i data-lucide="instagram" style="width: 22px; height: 22px;"></i>
+                        </a>
+                        <a href="https://facebook.com/513sips" target="_blank" class="dock-item" data-label="Facebook">
+                            <i data-lucide="facebook" style="width: 22px; height: 22px;"></i>
+                        </a>
+                        <a href="https://tiktok.com/@513sips" target="_blank" class="dock-item" data-label="TikTok">
+                            <i data-lucide="music" style="width: 22px; height: 22px;"></i>
+                        </a>
+                        <a href="mailto:hello@513sips.com" class="dock-item" data-label="Email">
+                            <i data-lucide="mail" style="width: 22px; height: 22px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Weddings</a></li>
+                        <li><a href="#services">Corporate Events</a></li>
+                        <li><a href="#services">Private Parties</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 513 Sips. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animations
+        const heroTl = gsap.timeline();
+        heroTl.to('.hero-subtitle', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' })
+        .to('.hero-title', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7')
+        .to('.hero-description', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7')
+        .to('.hero-buttons', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7')
+        .to('.hero-scroll', { opacity: 1, duration: 1, ease: 'power3.out' }, '-=0.5');
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Tubelight highlight effect
+        const tubelightLinks = document.querySelectorAll('.tubelight-link');
+        const tubelightHighlight = document.getElementById('tubelight-highlight');
+        const tubelightLinksContainer = document.getElementById('tubelight-links');
+
+        function updateHighlight(link) {
+            const rect = link.getBoundingClientRect();
+            const containerRect = tubelightLinksContainer.getBoundingClientRect();
+            tubelightHighlight.style.width = rect.width + 'px';
+            tubelightHighlight.style.left = (rect.left - containerRect.left) + 'px';
+        }
+
+        const activeLink = document.querySelector('.tubelight-link.active');
+        if (activeLink) {
+            setTimeout(() => updateHighlight(activeLink), 100);
+        }
+
+        tubelightLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => updateHighlight(link));
+            link.addEventListener('click', (e) => {
+                tubelightLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                updateHighlight(link);
+            });
+        });
+
+        tubelightLinksContainer.addEventListener('mouseleave', () => {
+            const active = document.querySelector('.tubelight-link.active');
+            if (active) updateHighlight(active);
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+        mobileMenuClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+
+        // Scroll animations
+        gsap.utils.toArray('.service-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 50, duration: 0.6, delay: i * 0.1, ease: 'power3.out'
+            });
+        });
+
+        gsap.from('.about-image', {
+            scrollTrigger: { trigger: '.about', start: 'top 70%' },
+            opacity: 0, x: -50, duration: 0.8, ease: 'power3.out'
+        });
+
+        gsap.from('.about-content', {
+            scrollTrigger: { trigger: '.about', start: 'top 70%' },
+            opacity: 0, x: 50, duration: 0.8, delay: 0.2, ease: 'power3.out'
+        });
+
+        gsap.utils.toArray('.team-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 85%' },
+                opacity: 0, y: 50, duration: 0.6, delay: i * 0.1, ease: 'power3.out'
+            });
+        });
+
+        gsap.utils.toArray('.flip-card').forEach((card, i) => {
+            gsap.to(card, {
+                scrollTrigger: { trigger: card, start: 'top 85%' },
+                opacity: 1, y: 0, duration: 0.6, delay: i * 0.05, ease: 'power3.out'
+            });
+        });
+
+        // Gallery filter
+        const galleryFilters = document.querySelectorAll('.gallery-filter');
+        const galleryCards = document.querySelectorAll('.flip-card');
+
+        galleryFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                galleryFilters.forEach(f => f.classList.remove('active'));
+                filter.classList.add('active');
+                const category = filter.dataset.filter;
+
+                galleryCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        gsap.to(card, { opacity: 1, scale: 1, duration: 0.4, ease: 'power2.out' });
+                    } else {
+                        gsap.to(card, { opacity: 0, scale: 0.8, duration: 0.4, ease: 'power2.out', onComplete: () => { card.style.display = 'none'; } });
+                    }
+                });
+            });
+        });
+
+        // Testimonials auto-rotation
+        const testimonialItems = document.querySelectorAll('.testimonial-item');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        let currentTestimonial = 0;
+        let testimonialInterval;
+
+        function showTestimonial(index) {
+            testimonialItems.forEach((item, i) => {
+                item.classList.remove('active');
+                testimonialDots[i].classList.remove('active');
+            });
+            testimonialItems[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        function nextTestimonial() {
+            const next = (currentTestimonial + 1) % testimonialItems.length;
+            showTestimonial(next);
+        }
+
+        function startTestimonialRotation() {
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+        }
+
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(testimonialInterval);
+                showTestimonial(index);
+                startTestimonialRotation();
+            });
+        });
+
+        startTestimonialRotation();
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Pricing calculator
+        const eventType = document.getElementById('event-type');
+        const guestCount = document.getElementById('guest-count');
+        const hours = document.getElementById('hours');
+        const bartenders = document.getElementById('bartenders');
+        const serviceLevel = document.getElementById('service-level');
+        const estimateAmount = document.getElementById('estimate-amount');
+        const baseFeeEl = document.getElementById('base-fee');
+        const bartenderFeeEl = document.getElementById('bartender-fee');
+        const serviceFeeEl = document.getElementById('service-fee');
+        const totalFeeEl = document.getElementById('total-fee');
+
+        function calculateEstimate() {
+            const baseFees = { wedding: 500, corporate: 400, private: 300 };
+            const serviceMultipliers = { basic: 1, standard: 1.5, premium: 2.5 };
+
+            const base = baseFees[eventType.value] || 400;
+            const bartenderCost = parseInt(bartenders.value) * 50 * parseInt(hours.value);
+            const serviceCost = (parseInt(guestCount.value) * 3) * serviceMultipliers[serviceLevel.value];
+            const total = base + bartenderCost + serviceCost;
+
+            estimateAmount.textContent = '$' + total.toLocaleString();
+            baseFeeEl.textContent = '$' + base.toLocaleString();
+            bartenderFeeEl.textContent = '$' + bartenderCost.toLocaleString() + ' (' + bartenders.value + ' bartenders)';
+            serviceFeeEl.textContent = '$' + serviceCost.toLocaleString();
+            totalFeeEl.textContent = '$' + total.toLocaleString();
+        }
+
+        [eventType, guestCount, hours, bartenders, serviceLevel].forEach(input => {
+            input.addEventListener('change', calculateEstimate);
+            input.addEventListener('input', calculateEstimate);
+        });
+
+        // Contact form
+        document.getElementById('booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will be in touch soon.');
+            e.target.reset();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Section header animations
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section.querySelectorAll('.section-header'), {
+                scrollTrigger: { trigger: section, start: 'top 80%' },
+                opacity: 0, y: 30, duration: 0.8, ease: 'power3.out'
+            });
+        });
+    </script>
+</body>
+</html>
