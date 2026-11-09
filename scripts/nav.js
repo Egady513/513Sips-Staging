@@ -46,6 +46,15 @@
     .mobile-menu-footer { padding: 1.5rem; border-top: 1px solid rgba(184,115,51,0.15); }
     .mobile-menu-cta { display: block; width: 100%; padding: 1rem; background: linear-gradient(135deg, #b87333, #d4915a); color: #12121f; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; text-decoration: none; border-radius: 50px; border: none; cursor: pointer; transition: all 0.3s ease; }
     .mobile-menu-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(184,115,51,0.4); }
+    /* Page CSS often sets img { max-width: 100% }. On this shrink-to-fit pill that drops the logo from the width
+       calculation, so the pill comes out narrower than its contents and the last link (Contact) spills out. */
+    #navbar .tubelight-logo img { max-width: none; }
+    /* Narrow windows: the full-size pill is wider than the window below about 830px, so tighten it. The 768px block below overrides this on phones. */
+    @media (max-width: 1024px) {
+      .tubelight-nav { padding: 0.75rem 1rem; }
+      .tubelight-logo { margin-right: 0.75rem; }
+      .tubelight-link { padding: 0.6rem 0.5rem; font-size: 0.8rem; }
+    }
     @media (max-width: 768px) {
       .tubelight-nav { top: 1rem; padding: 0.6rem 1rem; width: auto; }
       .tubelight-links { display: none; }
@@ -66,14 +75,15 @@
     return window.location.pathname.includes(segment);
   });
   const root     = inSubdir ? '../' : '';
-  // isHome: true when on index.html or the root path itself
+  // isHome: true on the home page, whether the address ends in the folder or in its file name
   const pathEnd  = window.location.pathname.split('/').pop();
-  const isHome   = pathEnd === '' || pathEnd === 'index.html';
-  // homeAnchor: on index just use the hash; on any other page prepend index.html
+  const isHome   = /^(index\.html)?$/.test(pathEnd);
+  // Home links point at the folder (./ or ../), never at the file name, so search engines see one home address
+  const homeUrl  = root || './';
+  // homeAnchor: on the home page just use the hash; on any other page go to the home folder
   const homeAnchor = function(hash) {
-    if (inSubdir) return root + 'index.html' + hash;
-    if (!isHome)  return 'index.html' + hash;
-    return hash;
+    if (!inSubdir && isHome) return hash;
+    return homeUrl + hash;
   };
 
   const LOGO = 'https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png';
@@ -102,11 +112,11 @@
   const html = `
     <nav class="tubelight-nav" id="navbar">
       <div class="tubelight-container">
-        <a href="${root}index.html" class="nav-back-link">
+        <a href="${homeUrl}" class="nav-back-link">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
           Back to Home
         </a>
-        <a href="${root}index.html" class="tubelight-logo">
+        <a href="${homeUrl}" class="tubelight-logo">
           <img src="${LOGO}" alt="513Sips logo — premium mobile bartending Cincinnati" style="height:40px;width:auto;display:block;">
         </a>
         <div class="tubelight-links" id="tubelight-links">

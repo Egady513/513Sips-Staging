@@ -24,13 +24,11 @@
     .updated { margin:0 0 2.25rem; font-size:.9rem; color:#616171; }
     a { color:#925820; text-underline-offset:3px; }
     ul { padding-left:1.25rem; }
-    footer { background:var(--navy-dark); color:rgba(255,255,255,.75); padding:2rem 1.5rem; text-align:center; }
-    footer a { color:var(--copper-light); }
   </style>
 </head>
 <body>
   <div id="site-nav"></div>
-  <script src="scripts/nav.js?v=7"></script>
+  <script src="scripts/nav.js?v=8"></script>
 
   <main>
     <article>
@@ -67,9 +65,7 @@
     </article>
   </main>
 
-  <footer>
-    <p>&copy; <span id="year"></span> 513Sips &nbsp;|&nbsp; <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="mailto:contact@513sips.com">Contact</a></p>
-  </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <div id="site-footer"></div>
+  <script src="scripts/footer.js?v=1"></script>
 </body>
 </html>

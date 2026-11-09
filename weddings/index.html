@@ -22,7 +22,7 @@
     * { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
     body { background:var(--cream); color:var(--charcoal); font-family:'Montserrat',sans-serif; line-height:1.7; overflow-x:hidden; }
-    #navbar.tubelight-nav { backdrop-filter:none; background:rgba(245,242,235,.96); overflow:hidden; }
+    #navbar.tubelight-nav { backdrop-filter:none; background:rgba(245,242,235,.96); }
     img { display:block; max-width:100%; }
     a { color:inherit; }
     .container { width:min(1180px,calc(100% - 2.5rem)); margin:0 auto; }
@@ -99,11 +99,6 @@
     .form-success h3 { margin-bottom:.5rem; }
     .form-success svg { color:var(--copper); height:42px; width:42px; }
     .form-error { color:#9b2c2c; font-size:.85rem; margin-top:.8rem; text-align:center; }
-    footer { background:#0c0c16; color:rgba(255,255,255,.7); padding:2.5rem 0; }
-    .footer-inner { align-items:center; display:flex; gap:1.5rem; justify-content:space-between; }
-    .footer-inner img { filter:brightness(0) invert(1); height:44px; width:auto; }
-    .footer-links { display:flex; flex-wrap:wrap; gap:1.2rem; }
-    .footer-links a { font-size:.83rem; text-decoration:none; }
     .sticky-cta { display:none; }
     @media (max-width:900px) {
       .facts-grid { grid-template-columns:repeat(2,1fr); }
@@ -128,7 +123,6 @@
       .inquiry-grid,.form-row { grid-template-columns:1fr; }
       .inquiry-grid { gap:2rem; }
       .contact-form { padding:1.5rem 1.1rem; }
-      .footer-inner { align-items:flex-start; flex-direction:column; }
       .sticky-cta { background:rgba(18,18,31,.97); bottom:0; display:block; left:0; padding:.7rem .85rem; position:fixed; right:0; transform:translateY(110%); transition:transform .25s ease; z-index:1001; }
       .sticky-cta.visible { transform:translateY(0); }
       .sticky-cta .button { width:100%; }
@@ -156,7 +150,7 @@
           {"@type":"Question","name":"Can we offer more Signature Cocktails?","acceptedAnswer":{"@type":"Answer","text":"Yes. A featured menu can combine custom Signature Cocktails with House Featured Cocktails. 513Sips explains how each option affects purchasing, bar placement and service speed before the couple decides."}},
           {"@type":"Question","name":"Can 513Sips handle alcohol shopping and coordinate specialty vendors?","acceptedAnswer":{"@type":"Answer","text":"When included in the quote, 513Sips can plan quantities, shop, stage the alcohol and return eligible unopened product without marking up the alcohol. 513Sips can also coordinate specialty ice through DrinkBigIce, glassware rentals and trusted referrals for non-bar staff."}},
           {"@type":"Question","name":"Will 513Sips work directly with our planner, venue and caterer?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips can confirm venue requirements, access, bar locations and service timing, then coordinate bar-related handoffs with the planner, caterer, rental company and other vendors."}},
-          {"@type":"Question","name":"Can our venue receive proof of insurance?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips carries $2 million in general and liquor liability coverage. Proof of insurance is available and, when applicable, the venue can be listed after its requirements are confirmed."}}
+          {"@type":"Question","name":"Can our venue receive proof of insurance?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips carries an annual general liability and liquor liability policy, each with limits of $1 million per occurrence and $2 million aggregate. Proof of insurance is available and, when applicable, the venue can be listed after its requirements are confirmed."}}
         ]
       }
     ]
@@ -165,7 +159,7 @@
 </head>
 <body>
   <div id="site-nav"></div>
-  <script src="../scripts/nav.js?v=7"></script>
+  <script src="../scripts/nav.js?v=8"></script>
 
   <main>
     <section class="hero">
@@ -175,7 +169,7 @@
           <h1>A wedding bar that feels like yours.</h1>
           <p>Your wedding should feel like yours, all the way to the bar. We start with your vision, style and favorite flavors, then shape the cocktails, presentation and service around the celebration you are creating.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Check Your Date</a>
+            <a class="button button-primary" href="../#contact" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Check Your Date</a>
           </div>
         </div>
       </div>
@@ -187,7 +181,7 @@
           <div class="fact"><strong>Made for You</strong><span>Signature cocktails</span></div>
           <div class="fact"><strong>Housemade</strong><span>Syrups + garnishes</span></div>
           <div class="fact"><strong>All-Night Plan</strong><span>Menu + staffing</span></div>
-          <div class="fact"><strong>$2M Insured</strong><span>Proof for your venue</span></div>
+          <div class="fact"><strong>Fully Insured</strong><span>Proof for your venue</span></div>
         </div>
       </div>
     </div>
@@ -251,7 +245,7 @@
           </div>
           <p class="case-promise">That is the standard for every 513Sips wedding: a bar that feels uniquely yours in every detail and never feels like yours to manage.</p>
           <p class="case-options">This couple chose one Signature Cocktail. We also create larger featured menus and full wedding bars for couples who want more variety.</p>
-          <div class="case-action"><a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click">Tell Us About Your Wedding</a></div>
+          <div class="case-action"><a class="button button-primary" href="../#contact" data-analytics-event="book_event_click">Tell Us About Your Wedding</a></div>
         </div>
       </div>
     </section>
@@ -268,32 +262,18 @@
           <details><summary>Can we offer more Signature Cocktails?</summary><p>Yes. For our current 200-guest wedding, we created a four-cocktail option and a six-cocktail option by pairing custom Signature Cocktails with faster House Featured Cocktails that share ingredients and prep. We walk you through how more choices affect purchasing, bar placement and speed, then help you choose the menu that fits your celebration.</p></details>
           <details><summary>Can you handle alcohol shopping and coordinate specialty vendors?</summary><p>Yes, when those services are included in your quote. 513Sips can build the quantity plan, shop, stage the alcohol for service and return eligible unopened product. You own the alcohol and pay no markup on it. You see every receipt, and any money left in the prepaid budget comes back to you after shopping and returns are complete. We can also coordinate specialty ice through our partner DrinkBigIce, arrange glassware rentals and connect you with a trusted catering referral for non-bar staff.</p></details>
           <details><summary>Will you work directly with our planner, venue and caterer?</summary><p>Yes. We can confirm venue requirements, access, bar locations and service timing, then coordinate the bar-related handoffs with your planner, caterer, rental company and other vendors. You should not have to carry those details from one vendor to the next on your wedding day.</p></details>
-          <details><summary>Can our venue receive proof of insurance?</summary><p>Yes. 513Sips carries $2 million in general and liquor liability coverage. We can provide proof of insurance and, when applicable, list the venue after its requirements are confirmed.</p></details>
+          <details><summary>Can our venue receive proof of insurance?</summary><p>Yes. 513Sips carries an annual general liability and liquor liability policy, each with limits of $1 million per occurrence and $2 million aggregate. We can provide proof of insurance and, when applicable, list the venue after its requirements are confirmed.</p></details>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <a href="../index.html"><img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips"></a>
-      <div class="footer-links">
-        <a href="../index.html#services">Services</a>
-        <a href="../index.html#pricing">Packages</a>
-        <a href="../gallery.html">Gallery</a>
-        <a href="../faq.html">FAQ</a>
-        <a href="../privacy.html">Privacy</a>
-        <a href="mailto:contact@513sips.com">Email</a>
-        <a href="tel:+15133222645">(513)&nbsp;322&#8209;2645</a>
-      </div>
-      <small>&copy; <span id="year"></span> 513Sips</small>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
+  <script src="../scripts/footer.js?v=1"></script>
 
-  <div class="sticky-cta"><a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click">Check Your Date</a></div>
+  <div class="sticky-cta"><a class="button button-primary" href="../#contact" data-analytics-event="book_event_click">Check Your Date</a></div>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
     if (typeof lucide !== 'undefined') lucide.createIcons();
     var stickyCta = document.querySelector('.sticky-cta');
     var hero = document.querySelector('.hero');
