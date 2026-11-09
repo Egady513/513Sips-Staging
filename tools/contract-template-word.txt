@@ -1,7 +1,7 @@
 513SIPS MOBILE BAR SERVICE AGREEMENT
 A division of Elevated Ventures EG, LLC
 Cincinnati, Ohio | contact@513sips.com
-© 2025 Elevated Ventures EG, LLC — All Rights Reserved
+© 2026 Elevated Ventures EG, LLC — All Rights Reserved
 
 1. AGREEMENT
 This Service Agreement ("Agreement") is entered into on this _________________, by and between:
@@ -26,7 +26,7 @@ Package selection and add-ons are detailed in Attachment A (Event Summary).
 
 Dry-Hire Service: 513Sips does not make any profit from alcohol sales. The Client maintains full control over alcohol selection, quantity, and budget. 513Sips is not responsible for purchasing too much or too little alcohol, and all alcohol remains Client's property before, during, and after the event.
 
-By default, Client is responsible for purchasing and transporting all alcoholic beverages in compliance with Ohio law. However, Client may purchase the Alcohol Procurement Add-On, in which case 513Sips will shop for alcohol on Client's behalf using Client's provided budget. Alcohol will be purchased at cost with receipts provided; 513Sips charges only a flat service fee for this convenience.
+By default, Client is responsible for purchasing and transporting all alcoholic beverages in compliance with Ohio law. However, Client may purchase the Alcohol Procurement Add-On, in which case 513Sips will shop for alcohol on Client's behalf using Client's provided budget. Alcohol will be purchased at cost with receipts provided; 513Sips charges only the procurement service fee shown on the quote for this convenience.
 
 All service packages include: insured and certified bartenders, complete bar setup and breakdown, bar tools, and equipment. Glassware may be included depending on package selected.
 
@@ -37,8 +37,7 @@ This dry-hire structure ensures full legal compliance with Ohio liquor laws whil
 4. PAYMENT TERMS
 • Deposit: 50% non-refundable deposit due at signing.
 • Remaining Balance: Due 14 days before the event.
-• Late Payments: Subject to a 15% late fee.
-• Payment Methods: Electronic only (Venmo, PayPal, Zelle). No cash or checks.
+• Payment Methods: Check, Venmo or Zelle. No cash or credit cards accepted.
 • Non-Payment: If the remaining balance is not paid by 7 days prior, 513Sips may cancel with no refund of deposit.
 
 5. SETUP & TAKEDOWN EXPECTATIONS
@@ -99,7 +98,7 @@ Licensing: Client must confirm the venue permits outside bartending services. 51
 • Client is responsible for guest conduct and any incidents arising from alcohol consumption.
 
 13. INSURANCE
-Service Provider maintains general liability and liquor liability insurance per event. Certificate of Insurance available upon request.
+Service Provider carries general liability and liquor liability insurance, each with limits of $1,000,000 per occurrence and $2,000,000 aggregate. A Certificate of Insurance is available upon request.
 
 14. INDEMNIFICATION (PROTECTION FOR 513SIPS)
 Client agrees to protect 513Sips from any claims, damages, or legal costs that arise from:

@@ -389,30 +389,6 @@
             transition: all 0.3s ease;
         }
         .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(184, 115, 51, 0.5); }
-
-        /* ── Footer ── */
-        .footer { background: var(--navy-dark); color: white; padding: 4rem 2rem 2rem; }
-        .footer .container { max-width: 1400px; margin: 0 auto; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-        .footer-brand .logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: white; margin-bottom: 1rem; display: inline-block; text-decoration: none; }
-        .footer-brand .logo span { color: var(--copper); }
-        .footer-brand p { color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
-        .fluid-dock { display: flex; gap: 1rem; padding: 0.75rem 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 9999px; border: 1px solid rgba(184, 115, 51, 0.2); width: fit-content; }
-        .dock-item { position: relative; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: rgba(255,255,255,0.7); text-decoration: none; border-radius: 50%; transition: all 0.3s ease; }
-        .dock-item::before { content: attr(data-label); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--copper); color: white; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 4px; white-space: nowrap; opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
-        .dock-item:hover { color: var(--copper); transform: translateY(-4px); }
-        .dock-item:hover::before { opacity: 1; }
-        .footer-column h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 1.5rem; color: white; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 0.75rem; }
-        .footer-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s ease; display: inline-block; }
-        .footer-links a:hover { color: var(--copper); transform: translateX(5px); }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; }
-
-        @media (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
         @media (max-width: 768px) {
             .blog-hero { padding: 7rem 1.5rem 4rem; }
             .blog-hero h1 { font-size: clamp(1.85rem, 6vw, 2.5rem); }
@@ -421,9 +397,6 @@
             .step-number { width: 2.75rem; height: 2.75rem; font-size: 1.3rem; }
             .step-body h2 { font-size: 1.4rem; }
             .cta-contact-info { flex-direction: column; align-items: center; gap: 1rem; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-            .fluid-dock { margin: 0 auto; }
-            .footer-bottom { flex-direction: column; text-align: center; }
             .back-to-top { bottom: 1.5rem; right: 1.25rem; }
         }
     </style>
@@ -432,7 +405,7 @@
 <body>
 
     <div id="site-nav"></div>
-    <script src="../scripts/nav.js?v=7"></script>
+    <script src="../scripts/nav.js?v=8"></script>
 
     <!-- ── Back to top ── -->
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">
@@ -606,53 +579,8 @@
         </article>
     </main>
 
-    <!-- ── Footer ── -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="../index.html" class="logo"><img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips mobile bartending logo" style="height:50px;width:auto;display:inline-block;vertical-align:middle;filter:brightness(0) invert(1);"></a>
-                    <p>Elevating celebrations throughout Cincinnati with craft cocktails and professional bartending services.</p>
-                    <div class="fluid-dock">
-                        <a href="https://www.instagram.com/513sips/" target="_blank" class="dock-item" data-label="Instagram">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                        </a>
-                        <a href="https://www.facebook.com/people/513Sips/61581731595256/" target="_blank" class="dock-item" data-label="Facebook">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h4>Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="../index.html#services">Weddings</a></li>
-                        <li><a href="../index.html#services">Corporate Events</a></li>
-                        <li><a href="../index.html#services">Private Parties</a></li>
-                        <li><a href="../index.html#pricing">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="../index.html#about">About Us</a></li>
-                        <li><a href="../gallery.html">Gallery</a></li>
-                        <li><a href="../index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="../faq.html">FAQ</a></li>
-                        <li><a href="../privacy.html">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <script>document.write(new Date().getFullYear())</script> 513Sips. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
+    <script src="../scripts/footer.js?v=1"></script>
 
     <script>
         lucide.createIcons();

@@ -354,15 +354,12 @@
                 columns: 2;
             }
         }
-        .gallery-footer { background: var(--navy-dark); color: rgba(255,255,255,.72); padding: 2rem 1.5rem; text-align: center; font-size: .85rem; }
-        .gallery-footer a { color: var(--copper-light); text-decoration: none; }
-        .gallery-footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
     <div id="site-nav"></div>
-    <script src="scripts/nav.js?v=7"></script>
+    <script src="scripts/nav.js?v=8"></script>
 
     <!-- Page header -->
     <header class="gallery-header">
@@ -385,12 +382,11 @@
     <section class="cta-bar">
         <h2>Love What You See?</h2>
         <p>Let's create unforgettable moments at your next event.</p>
-        <a href="index.html#contact" class="btn">Book Your Event</a>
+        <a href="./#contact" class="btn">Book Your Event</a>
     </section>
 
-    <footer class="gallery-footer">
-        <p>&copy; <span id="gallery-year"></span> 513Sips &nbsp;|&nbsp; <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="privacy.html">Privacy</a></p>
-    </footer>
+    <div id="site-footer"></div>
+    <script src="scripts/footer.js?v=1"></script>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
@@ -408,7 +404,6 @@
     </div>
 
     <script>
-        document.getElementById('gallery-year').textContent = new Date().getFullYear();
         // ── Cloudinary URL helpers ────────────────────────────────────────────
         function thumbUrl(id) {
             return `https://res.cloudinary.com/dkfypt2cb/image/upload/c_fill,w_600,q_auto,f_webp/${id}.jpg`;
@@ -504,6 +499,70 @@
             });
         }
 
+        // ── Album links (gallery.html#<album-id>) ─────────────────────────────
+        // Real bottom edge of the sticky tab bar, so an album lands just below it.
+        // Its position is fixed (sticky top + height), so this is the same wherever the page is scrolled.
+        function stickyOffset() {
+            const bar = document.getElementById('tab-bar');
+            return bar.offsetHeight + (parseFloat(getComputedStyle(bar).top) || 0);
+        }
+        function linkedSection() {
+            if (!location.hash) return null;
+            let el = null;
+            try { el = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) { return null; }
+            return el && el.classList.contains('gallery-section') ? el : null;
+        }
+        let unlockTabs = () => {};
+
+        // Jump to the linked album and keep it pinned while the photos above it load.
+        // Photos have no reserved height until they arrive, so albums above the link grow after the jump
+        // and would push it down. The 24 photos nearest above it are fetched right away (not lazily) so they
+        // settle quickly; the rest stay lazy. Pinning ends when those 24 have finished loading, after
+        // 8 seconds, or on the first scroll, tap, click or key press, whichever comes first.
+        function pinToAlbum(target) {
+            let done = false;
+            let settleTimer = null;
+            const main = document.getElementById('gallery-main');
+            const sections = [...main.querySelectorAll('.gallery-section')];
+            const EAGER_LIMIT = 24;
+            const above = sections.slice(0, sections.indexOf(target)).flatMap(sec => [...sec.querySelectorAll('img')]).slice(-EAGER_LIMIT);
+            const inputEvents = ['wheel', 'touchstart', 'pointerdown', 'mousedown', 'keydown'];
+
+            above.forEach(img => { img.loading = 'eager'; });
+
+            function align() {
+                const top = Math.max(0, Math.round(target.getBoundingClientRect().top + window.scrollY - stickyOffset()));
+                if (Math.abs(top - window.scrollY) > 1) window.scrollTo({ top, behavior: 'instant' });
+            }
+            function release() {
+                if (done) return;
+                done = true;
+                clearTimeout(settleTimer);
+                clearTimeout(capTimer);
+                resizeObs.disconnect();
+                main.removeEventListener('load', onChange, true);
+                main.removeEventListener('error', onChange, true);
+                inputEvents.forEach(e => window.removeEventListener(e, release, true));
+                unlockTabs();
+            }
+            function onChange() {
+                if (done) return;
+                align();
+                clearTimeout(settleTimer);
+                // Once the nearest photos above have loaded (or failed), give the layout a moment to settle, then let go
+                if (above.every(img => img.complete)) settleTimer = setTimeout(() => { align(); release(); }, 400);
+            }
+
+            const resizeObs = new ResizeObserver(onChange);
+            resizeObs.observe(main);
+            main.addEventListener('load', onChange, true);   // photo loads do not bubble; capture them
+            main.addEventListener('error', onChange, true);
+            inputEvents.forEach(e => window.addEventListener(e, release, { capture: true, passive: true }));
+            const capTimer = setTimeout(release, 8000);
+
+            onChange();
+        }
+
         // ── Wire up scroll spy + tab clicks after DOM is built ───────────────
         function initTabBehavior() {
             const tabButtons = document.querySelectorAll('.tab-btn');
@@ -512,17 +571,22 @@
             function setActiveTab(sectionId) {
                 tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.section === sectionId));
                 const active = document.querySelector(`.tab-btn[data-section="${sectionId}"]`);
-                if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+                // Move the tab bar sideways only; scrollIntoView would also scroll the page and fight the album jump
+                const bar = active && active.parentElement;
+                if (bar) bar.scrollTo({ left: active.offsetLeft - (bar.clientWidth - active.offsetWidth) / 2, behavior: 'smooth' });
             }
 
-            // Set the first tab active immediately on load before the observer fires
+            // Set the starting tab immediately: the linked album when the address has one, else the first
+            const linked = linkedSection();
             if (sectionEls.length > 0) {
-                setActiveTab(sectionEls[0].id);
+                setActiveTab(linked ? linked.id : sectionEls[0].id);
             }
 
             let observerReady = false;
-            // Delay observer activation so it doesn't override the initial active state
-            setTimeout(() => { observerReady = true; }, 400);
+            // Delay observer activation so it doesn't override the initial active state.
+            // With an album link, the observer stays off until the jump has settled.
+            if (!linked) setTimeout(() => { observerReady = true; }, 400);
+            unlockTabs = () => { observerReady = true; };
 
             const observer = new IntersectionObserver(entries => {
                 if (!observerReady) return;
@@ -535,7 +599,7 @@
                 btn.addEventListener('click', () => {
                     const target = document.getElementById(btn.dataset.section);
                     if (target) {
-                        const top = target.getBoundingClientRect().top + window.scrollY - 140;
+                        const top = target.getBoundingClientRect().top + window.scrollY - stickyOffset();
                         window.scrollTo({ top, behavior: 'smooth' });
                     }
                 });
@@ -577,14 +641,9 @@
                 data.sections.forEach(populateGrid);
                 initTabBehavior();
 
-                // Deep link: gallery.html#<section-id> jumps to that album once it is built
-                const hashTarget = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
-                if (hashTarget && hashTarget.classList.contains('gallery-section')) {
-                    // Wait out the initial active-tab scroll so it doesn't cancel the jump
-                    setTimeout(() => {
-                        window.scrollTo({ top: hashTarget.getBoundingClientRect().top + window.scrollY - 140, behavior: 'instant' });
-                    }, 500);
-                }
+                // Deep link: gallery.html#<section-id> jumps to that album once it is built, and stays pinned to it
+                const hashTarget = linkedSection();
+                if (hashTarget) pinToAlbum(hashTarget);
             })
             .catch(err => {
                 console.error('[gallery] Failed to load gallery-data.json:', err);

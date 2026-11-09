@@ -91,11 +91,6 @@
     .honeypot { left:-9999px; position:absolute; }
     .form-success { padding:2rem 1rem; text-align:center; }
     .form-success svg { color:var(--copper); height:42px; margin:0 auto 1rem; width:42px; }
-    footer { background:var(--navy-dark); color:rgba(255,255,255,.6); padding:2.2rem 0; }
-    .footer-inner { align-items:center; display:flex; gap:2rem; justify-content:space-between; }
-    footer img { height:40px; width:auto; }
-    .footer-links { display:flex; flex-wrap:wrap; gap:1rem; }
-    .footer-links a { color:rgba(255,255,255,.72); font-size:.82rem; text-decoration:none; }
     .sticky-cta { display:none; }
     @media (max-width:900px) {
       .facts-grid { grid-template-columns:1fr 1fr; }
@@ -119,7 +114,6 @@
       .case-stats { gap:1rem .65rem; }
       .inquiry-grid { gap:2rem; }
       .contact-form { padding:1.5rem 1.1rem; }
-      .footer-inner { align-items:flex-start; flex-direction:column; }
       .sticky-cta { background:rgba(18,18,31,.97); bottom:0; display:block; left:0; padding:.7rem .85rem; position:fixed; right:0; transform:translateY(110%); transition:transform .25s ease; z-index:1001; }
       .sticky-cta.visible { transform:translateY(0); }
       .sticky-cta .button { width:100%; }
@@ -136,7 +130,7 @@
         {"@type":"Question","name":"Who buys the alcohol for a private party?","acceptedAnswer":{"@type":"Answer","text":"The client buys and owns the alcohol. When procurement is included in the quote, 513Sips can create the quantity plan, shop with a prepaid budget and provide receipts without marking up the alcohol."}},
         {"@type":"Question","name":"Can 513Sips serve at a home or outdoor party?","acceptedAnswer":{"@type":"Answer","text":"Often, yes. 513Sips confirms access, bar placement, power, water, cold storage and a covered weather plan before the event."}},
         {"@type":"Question","name":"What does setup and cleanup include?","acceptedAnswer":{"@type":"Answer","text":"513Sips sets up the quoted bar areas, keeps those stations organized during service and breaks them down when service ends. Venue-wide setup, bussing and cleanup require separate event staff."}},
-        {"@type":"Question","name":"Is 513Sips insured?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips carries $2 million in general and liquor liability coverage. Proof of insurance is available for a venue when applicable."}}
+        {"@type":"Question","name":"Is 513Sips insured?","acceptedAnswer":{"@type":"Answer","text":"Yes. 513Sips carries an annual general liability and liquor liability policy, each with limits of $1 million per occurrence and $2 million aggregate. Proof of insurance is available for a venue when applicable."}}
       ]}
     ]
   }
@@ -144,7 +138,7 @@
 </head>
 <body>
   <div id="site-nav"></div>
-  <script src="../scripts/nav.js?v=7"></script>
+  <script src="../scripts/nav.js?v=8"></script>
   <main>
     <section class="hero">
       <div class="container">
@@ -152,7 +146,7 @@
           <p class="eyebrow">Private Party Bartending in Cincinnati</p>
           <h1>Your party, all the way to the bar.</h1>
           <p>Tell us what you are celebrating and how you want it to feel. We will shape the drinks, details and service around your party, then handle the bar so you can be part of the night you planned.</p>
-          <a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Tell Us About Your Party</a>
+          <a class="button button-primary" href="../#contact" data-analytics-event="book_event_click"><i data-lucide="calendar" aria-hidden="true"></i> Tell Us About Your Party</a>
         </div>
       </div>
     </section>
@@ -209,7 +203,7 @@
             <div class="cocktail"><strong>Lucky 7 Espresso Martini</strong><span>Vodka, cold-brew espresso concentrate, coffee liqueur and house demerara syrup.</span></div>
           </div>
           <p class="case-promise">A party with a point of view deserves a bar that shares it.</p>
-          <div class="case-action"><a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click">Tell Us About Your Party</a></div>
+          <div class="case-action"><a class="button button-primary" href="../#contact" data-analytics-event="book_event_click">Tell Us About Your Party</a></div>
         </div>
       </div>
     </section>
@@ -224,23 +218,17 @@
           <details><summary>Can you serve at a home or outdoor party?</summary><p>Often, yes. We confirm access, bar placement, power, water, cold storage and a covered weather plan before the event. If a space creates a concern, we will talk through it before you book.</p></details>
           <details><summary>How do you decide how many bartenders we need?</summary><p>Guest count is only one part of it. We also consider the menu, service hours, bar locations and when everyone is likely to arrive. Your quote explains the staffing plan for your party.</p></details>
           <details><summary>What does setup and cleanup include?</summary><p>We set up the quoted bar areas, keep those stations organized during service and break them down when service ends. Venue-wide setup, bussing and cleanup require separate event staff.</p></details>
-          <details><summary>Are you insured?</summary><p>Yes. 513Sips carries $2 million in general and liquor liability coverage. We can provide proof of insurance and, when applicable, list your venue after its requirements are confirmed.</p></details>
+          <details><summary>Are you insured?</summary><p>Yes. 513Sips carries an annual general liability and liquor liability policy, each with limits of $1 million per occurrence and $2 million aggregate. We can provide proof of insurance and, when applicable, list your venue after its requirements are confirmed.</p></details>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <a href="../index.html"><img src="https://res.cloudinary.com/dkfypt2cb/image/upload/v1774966027/can_you_recreate_this_so_that_i_have_an_upscaled_v_019d442b-f054-7f42-b500-7cea6b3a3998_pb1nhn.png" alt="513Sips"></a>
-      <div class="footer-links"><a href="../index.html#services">Services</a><a href="../index.html#pricing">Packages</a><a href="../gallery.html">Gallery</a><a href="../faq.html">FAQ</a><a href="../privacy.html">Privacy</a><a href="mailto:contact@513sips.com">Email</a><a href="tel:+15133222645">(513)&nbsp;322&#8209;2645</a></div>
-      <small>&copy; <span id="year"></span> 513Sips</small>
-    </div>
-  </footer>
-  <div class="sticky-cta"><a class="button button-primary" href="../index.html#contact" data-analytics-event="book_event_click">Tell Us About Your Party</a></div>
+  <div id="site-footer"></div>
+  <script src="../scripts/footer.js?v=1"></script>
+  <div class="sticky-cta"><a class="button button-primary" href="../#contact" data-analytics-event="book_event_click">Tell Us About Your Party</a></div>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
     if (typeof lucide !== 'undefined') lucide.createIcons();
     var stickyCta = document.querySelector('.sticky-cta');
     var hero = document.querySelector('.hero');
