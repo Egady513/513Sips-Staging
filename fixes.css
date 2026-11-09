@@ -1,0 +1,121 @@
+/* Fix for navigation readability and color contrast */
+
+/* Make navbar more readable - darker background with better contrast */
+nav,
+.fixed.z-50,
+[class*="fixed"][class*="z-50"] {
+  background: rgba(10, 22, 40, 0.95) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Ensure nav text is white and readable */
+nav *,
+.fixed.z-50 *,
+[class*="fixed"][class*="z-50"] * {
+  color: #ffffff !important;
+}
+
+/* Nav links hover state */
+nav a:hover,
+.fixed.z-50 a:hover,
+[class*="fixed"][class*="z-50"] a:hover {
+  color: #D4AF37 !important;
+}
+
+/* Better contrast for text on light backgrounds */
+.text-\[\#0A1628\] {
+  color: #0f172a !important;
+}
+
+/* Improve readability of muted text */
+.text-\[\#0A1628\]\/60,
+.text-\[\#0A1628\]\/70,
+.text-\[\#0A1628\]\/80 {
+  color: #1e293b !important;
+}
+
+/* Ensure gold accents pop more */
+.text-\[\#D4AF37\],
+.text-\[\#CA8A04\] {
+  color: #f59e0b !important;
+  font-weight: 600 !important;
+}
+
+/* Better button contrast */
+.btn-luxury,
+button[class*="luxury"],
+[class*="btn-luxury"] {
+  background: linear-gradient(135deg, #d97706, #f59e0b) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+/* Glass cards - slightly darker for better text contrast */
+.liquid-glass,
+[class*="liquid-glass"] {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Dark glass cards - ensure text is white */
+.liquid-glass-dark,
+[class*="liquid-glass-dark"] {
+  background: rgba(10, 22, 40, 0.9) !important;
+}
+
+.liquid-glass-dark *,
+[class*="liquid-glass-dark"] * {
+  color: #ffffff !important;
+}
+
+/* Hero section text - ensure white */
+.min-h-screen .text-white,
+[class*="min-h-screen"] .text-white {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+/* Improve link visibility */
+a {
+  transition: color 0.3s ease !important;
+}
+
+a:hover {
+  color: #d97706 !important;
+}
+
+/* Fix any low contrast text in cards */
+.luxury-card,
+[class*="luxury-card"] {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Ensure headings stand out */
+h1, h2, h3, h4, h5, h6 {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* White headings on dark backgrounds */
+.bg-\[\#0A1628\] h1,
+.bg-\[\#0A1628\] h2,
+.bg-\[\#0A1628\] h3,
+.bg-gradient-to-br h1,
+.bg-gradient-to-br h2,
+.bg-gradient-to-br h3,
+[class*="bg-gradient"] h1,
+[class*="bg-gradient"] h2,
+[class*="bg-gradient"] h3 {
+  color: #ffffff !important;
+}
+
+/* Mobile menu improvements */
+@media (max-width: 1024px) {
+  nav,
+  .fixed.z-50 {
+    background: rgba(10, 22, 40, 0.98) !important;
+  }
+}

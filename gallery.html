@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex, nofollow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | 513Sips — Event Photos & Cocktail Portfolio</title>
@@ -14,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@1.65.0"></script>
     <style>
         :root {
             --navy: #1a1a2e;
@@ -361,7 +362,7 @@
 <body>
 
     <div id="site-nav"></div>
-    <script src="scripts/nav.js?v=5"></script>
+    <script src="scripts/nav.js?v=7"></script>
 
     <!-- Page header -->
     <header class="gallery-header">
@@ -575,6 +576,15 @@
 
                 data.sections.forEach(populateGrid);
                 initTabBehavior();
+
+                // Deep link: gallery.html#<section-id> jumps to that album once it is built
+                const hashTarget = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+                if (hashTarget && hashTarget.classList.contains('gallery-section')) {
+                    // Wait out the initial active-tab scroll so it doesn't cancel the jump
+                    setTimeout(() => {
+                        window.scrollTo({ top: hashTarget.getBoundingClientRect().top + window.scrollY - 140, behavior: 'instant' });
+                    }, 500);
+                }
             })
             .catch(err => {
                 console.error('[gallery] Failed to load gallery-data.json:', err);

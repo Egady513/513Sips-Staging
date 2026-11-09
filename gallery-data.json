@@ -1,13 +1,56 @@
 {
-  "lastUpdated": "2026-04-13T18:39:51.527Z",
-  "totalPhotos": 69,
+  "lastUpdated": "2026-10-31T16:43:22.149Z",
+  "totalPhotos": 116,
   "sections": [
+    {
+      "id": "weddings",
+      "label": "Weddings",
+      "folderName": "Weddings",
+      "gridSize": "grid-medium",
+      "photos": [
+        "9-IMG_5228_swgnct",
+        "8-IMG_7969_tfbb1c",
+        "7-IMG_5294_zymmf3",
+        "6-IMG_5305_og6ll1",
+        "5-IMG_5326_zijhzt",
+        "4-IMG_5333_j2rszp",
+        "3-IMG_1705_qs6eoz",
+        "1-IMG_1778_qc1pqu",
+        "Image_50_better_edit_sraqse"
+      ]
+    },
+    {
+      "id": "greenacres-giving-with-grace",
+      "label": "Greenacres Giving with Grace",
+      "folderName": "Greenacres Giving with Grace",
+      "gridSize": "grid-medium",
+      "photos": [
+        "greenacres-giving-with-grace-7112",
+        "greenacres-giving-with-grace-7082",
+        "greenacres-giving-with-grace-7073",
+        "greenacres-giving-with-grace-7063",
+        "greenacres-giving-with-grace-7059",
+        "greenacres-giving-with-grace-7053",
+        "greenacres-giving-with-grace-6990",
+        "greenacres-giving-with-grace-6948",
+        "greenacres-giving-with-grace-6881",
+        "greenacres-giving-with-grace-6873",
+        "greenacres-giving-with-grace-97",
+        "greenacres-giving-with-grace-96",
+        "greenacres-giving-with-grace-84",
+        "greenacres-giving-with-grace-cocktail-spotlight"
+      ]
+    },
     {
       "id": "cocktails",
       "label": "Cocktails",
       "folderName": "Cocktails",
       "gridSize": "grid-large",
       "photos": [
+        "IMG_6472_1_sgurd7",
+        "IMG_6341_1_tvcymb",
+        "IMG_6138_p89dkm",
+        "2-IMG_1775_q7dvvf",
         "IMG_2199_ujbwgh",
         "IMG_1948_vtnm5m",
         "IMG_0456_m5g2f1",
@@ -30,8 +73,12 @@
       "id": "behind-the-bar",
       "label": "Behind the Bar",
       "folderName": "General bar photos",
-      "gridSize": "grid-medium",
+      "gridSize": "grid-large",
       "photos": [
+        "IMG_6442_rcg4rd",
+        "IMG_6486_1_nvah0e",
+        "IMG_5622_rwmf9k",
+        "Easter_bar_V4_fan7cu",
         "Eddie_Behind_Bar_Skyline_qza8e1",
         "IMG_2348_qwpaoo",
         "IMG_4989_ojbnrp",
@@ -43,6 +90,24 @@
         "IMG_0350_fg18ru",
         "IMG_0534_h0ktfq",
         "Image_25_inbreo"
+      ]
+    },
+    {
+      "id": "casino-night-birthday",
+      "label": "Casino Night Birthday",
+      "folderName": "Casino Night Birthday",
+      "gridSize": "grid-medium",
+      "photos": [
+        "IMG_6472_1_ucfsna",
+        "IMG_6455_1_fmghao",
+        "IMG_6353_ldu3xa",
+        "IMG_6403_h4mjrd",
+        "IMG_6307_mbixr3",
+        "IMG_6303_p5mzaj",
+        "IMG_6282_ajsgy4",
+        "IMG_6251_npwooq",
+        "IMG_6332_1_yjx0bm",
+        "IMG_6289_eoy3n9"
       ]
     },
     {
@@ -93,6 +158,20 @@
         "IMG_4809_kjmxpv",
         "IMG_5013_kw9unz",
         "IMG_4930_cv0gzs"
+      ]
+    },
+    {
+      "id": "mstc-men-s-and-women-s-nights",
+      "label": "MSTC - Men's and Women's Nights",
+      "folderName": "MSTC - Men's and Women's Nights",
+      "gridSize": "grid-medium",
+      "photos": [
+        "IMG_5587_pgok5o",
+        "5-1-3_hx0hv3",
+        "3_amigos_men_s_night_x5e2qh",
+        "Cheers_kqltlj",
+        "Serving_Drink_Men_s_Night_kzcbq9",
+        "IMG_5632_cbf7vl"
       ]
     },
     {
